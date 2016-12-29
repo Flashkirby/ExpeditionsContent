@@ -1,0 +1,1 @@
+Adds custom expeditions to the Expeditions mod.
