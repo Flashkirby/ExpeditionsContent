@@ -1,11 +1,11 @@
 author = Flashkirby99
-version = 0.1
-displayName = Expeditions+
+version = 1.0
+displayName = Expeditions Content
 homepage = http://forums.terraria.org/index.php?threads/expeditions-mod-modular-quest-system.52517/
 
 modReferences = Expeditions
 hideCode = false
 hideResources = false
 includeSource = true
-buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, *.suo, *.sln, .git, *.md, .git\*
+buildIgnore = *.csproj, *.user, obj\*, bin\*, .vs\*, *.suo, *.sln, .git, *.md, .git\*, *.fw.png *.TMP
 includePDB = false

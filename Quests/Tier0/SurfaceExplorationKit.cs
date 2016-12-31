@@ -4,14 +4,14 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsPlus.Tier0
+namespace ExpeditionsContent.Quests.Tier0
 {
     class SurfaceExplorationKit : ModExpedition
     {
         public override void SetDefaults()
         {
             expedition.name = "Surface Exploration Kit";
-            SetNPCHead(API.NPCIDClerk);
+            SetNPCHead(NPCID.Guide);
             expedition.difficulty = 0;
             expedition.ctgExplore = true;
 
@@ -21,17 +21,13 @@ namespace ExpeditionsPlus.Tier0
         }
         public override void AddItemsOnLoad()
         {
+            expedition.AddDeliverable(ItemID.CordageGuide, 1);
+
             AddRewardItem(ItemID.Aglet);
-            AddRewardItem(ItemID.ClimbingClaws);
         }
         public override string Description(bool complete)
         {
-            return "I'm looking to map out the surrounding area, so any info would be super useful! If you can do that for me I've got a couple of items that should help you navigate any terrain you encounter further out. ";
-        }
-
-        public override bool CheckPrerequisites(Player player)
-        {
-            return API.CompletedInitialQuest();
+            return "Map out the area so you have a good idea of where to build your house. ";
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)

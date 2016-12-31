@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsPlus.Tier0
+namespace ExpeditionsContent.Quests.Tier0
 {
     class MakingBase : ModExpedition
     {
@@ -12,9 +12,12 @@ namespace ExpeditionsPlus.Tier0
             expedition.name = "Setting up Base Camp";
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
+            expedition.repeatable = true;
         }
         public override void AddItemsOnLoad()
         {
+            expedition.AddDeliverable(ItemID.GoldCoin, 5);
+
             AddRewardItem(ItemID.Wood, 128);
             AddRewardItem(ItemID.GrayBrick, 64);
             AddRewardItem(ItemID.WorkBench);
@@ -34,9 +37,15 @@ namespace ExpeditionsPlus.Tier0
         }
         public override string Description(bool complete)
         {
-            return "Someone's just left all these materials lying about, likely with intentions to set up a base camp. ";
+            return @"TO WHOEVER READS THIS: Rich? Impatient? Strangers asking you for residency? Well look no further, do we have a once in a lifetime limited time offer deal for you! For one time only*, all your problems** can be solved right now!
+*Valid only in " + Main.worldName + @". 
+** Not guaranteed to be all/any of your problems. ";
         }
 
-
+        public override bool CheckPrerequisites(Player player)
+        {
+            // LIMITED TIME OFFER™
+            return !Main.expertMode && !Main.hardMode && !NPC.downedBoss2 && player.statLifeMax >= 200;
+        }
     }
 }

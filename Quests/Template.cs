@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsPlus
+namespace ExpeditionsContent
 {
     class Template : ModExpedition
     {

@@ -1,1 +1,9 @@
-Adds custom expeditions to the Expeditions mod.
+The main content addon for the Expeditions Base mod.
+
+* Various quests.
+* Clerk NPC that sells expedition-unlockable items.
+
+Credits:
+Flashkirby99 - I am making this mod.
+Supeh Mario - Original sprite for fox familiar.
+Eli10293 - Resprite of Wayfarer's Staff.

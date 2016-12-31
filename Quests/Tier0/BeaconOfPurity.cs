@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsPlus.Tier0
+namespace ExpeditionsContent.Quests.Tier0
 {
     class BeaconOfPurity : ModExpedition
     {
@@ -22,15 +22,15 @@ namespace ExpeditionsPlus.Tier0
         }
         public override string Description(bool complete)
         {
-            return "When I got posted here I was expecting rolling hills and stretches of untouched woodland, but a giant tree!? How exciting! ";
+            return "You found a living tree. ";
         }
 
         public override bool CheckPrerequisites(Player player)
         {
             if (!expedition.condition1Met)
             {
-                Explorer.TileCheckList.Add(TileID.LivingWood);
-                int treeCount = Explorer.CountTilesInChecked(TileID.LivingWood);
+                API.TileCheckList.Add(TileID.LivingWood);
+                int treeCount = API.CountTilesInCheckedOnScreen(TileID.LivingWood);
                 if (treeCount > 64) return true;
             }
             return expedition.condition1Met;
