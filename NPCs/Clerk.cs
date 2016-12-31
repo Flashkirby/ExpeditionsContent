@@ -15,11 +15,16 @@ namespace ExpeditionsContent.NPCs
     /// communicate, but they send plenty of shipments over everytime a 
     /// new report rolls in, which she is more than happy to divulge.
     /// 
-    /// Enjoys discovering and documenting new things, but both annoyed 
-    /// and concerned with effectively being stuck at the bottom of the
-    /// corporate ladder.
+    /// LIKES:
+    /// Discovering and documenting new things.
+    /// Uses magic gratuitously in everyday life.
+    /// Books.
     /// 
-    /// Uses magic gratuitously in everyday life, akin to the Wizard.
+    /// DISLIKES:
+    /// Being stuck at the bottom of the corporate ladder.
+    /// Rain.
+    /// Not having coffee.
+    /// 
     /// </summary>
     class Clerk : ModNPC
     {
@@ -362,14 +367,29 @@ namespace ExpeditionsContent.NPCs
             string theTime = GetTheTime();
             if (npc.homeless)
             {
-                switch (Main.rand.Next(3))
+                if(Main.bloodMoon)
                 {
-                    case 1:
-                        return "Hmm... maybe a tent over here... ";
-                    case 2:
-                        return "Now, you wouldn't happen to know a realtor, would you? ";
-                    default:
-                        return "I could really do with a coffee right now. Or a water cooler. Or an office. ";
+                    switch (Main.rand.Next(3))
+                    {
+                        case 1:
+                            return "Hey what's the difference between me and zombies? I'm still alive - but not for much longer out here. Hahahah, get it? It's not funny. ";
+                        case 2:
+                            return "Gee, wouldn't it be great if SOMEBODY pulled their own weight and built some housing. ";
+                        default:
+                            return "I don't mean to sound overbearing... but COFFEE. NOW. ";
+                    }
+                }
+                else
+                {
+                    switch (Main.rand.Next(3))
+                    {
+                        case 1:
+                            return "Hmm... maybe a tent over here... ";
+                        case 2:
+                            return "Now, you wouldn't happen to know a realtor, would you? ";
+                        default:
+                            return "I could really do with a coffee right now. Or a water cooler. Or an office. ";
+                    }
                 }
             }
 
@@ -393,7 +413,7 @@ namespace ExpeditionsContent.NPCs
                     speech.Add("Good morning, d'you need to look at today's agenda? ");
                     speech.Add("I hate mondays. *Yawn*. ");
                     speech.Add("Did you know, 63% of all statistics are made up? ");
-                    speech.Add("How do I post expeditions on every notice board? Magic. ");
+                    speech.Add("How do I post expeditions on every notice board at the same time? Magic. ");
                 }
                 else if (Main.time <= 37800.0)
                 {
@@ -407,8 +427,8 @@ namespace ExpeditionsContent.NPCs
                 else
                 {
                     speech.Add("Good evening, do you have any completed expeditions for me to sign off? ");
-                    speech.Add("I tried using a magic self-writing quill once. All my notes ended up looking like tabloids. ");
-                    speech.Add("Does the fact that everything seems to carry money strike you as weird? Or is it just me. ");
+                    speech.Add("I tried using a magical self-writing quill once. All my notes ended up looking like tabloids. ");
+                    speech.Add("Does the fact that everything seems to carry money strike you as weird? Or is it just me? ");
                     speech.Add("Why can I hold all these items? Magic. ");
                 }
             }
@@ -427,6 +447,7 @@ namespace ExpeditionsContent.NPCs
 
                     speech.Add("I'll have you know I am unbeaten in waste paper basketball. ");
                     speech.Add("I'll have you know I excel at spreadsheets. ");
+                    speech.Add("I'll have you know I was employee of the month once. ");
                     speech.Add("Sometimes I miss the urban sprawl. Less of everything trying to kill you - well most of the time. ");
                     speech.Add("What is 'sleep' anyways? ");
                     speech.Add("How do I stay up all night? Coffee. Uh... I mean magic. ");
@@ -438,7 +459,7 @@ namespace ExpeditionsContent.NPCs
             if (name != null) speech.Add(name + " seems like a really helpful guy, but I heard he has a notorious reputation for inappropriate door opening. ");
 
             name = NPC.GetFirstNPCNameOrNull(NPCID.TravellingMerchant);
-            if (name != null) speech.Add(name + " seems to have been to all sorts of places, only he never tells me where exactly. ");
+            if (name != null) speech.Add(name + " tells me he's been to all sorts of places, only he never tells me where exactly. At least not without paying up. ");
 
             name = NPC.GetFirstNPCNameOrNull(NPCID.Wizard);
             if (name != null) speech.Add(name + " has been showing me some cool tricks, wanna to see? No? Ok. ");

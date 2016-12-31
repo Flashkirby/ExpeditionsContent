@@ -1,5 +1,5 @@
-
-    Remove the current quests: this mod becomes just the framework. The only items included will be the expedition board/log (sold by merchant/skele merch), and possibly the quest boxes.This also means no need for config files, and also leads into:
+	
+	The only items included will be the expedition board/log (sold by merchant/skele merch), and possibly the quest boxes.This also means no need for config files, and also leads into:
 	
     Turn the current quests and mod items into a mod extension, probably called "Expeditions Main Content". This also means if you want to use the mod for other things without all the kerfuffle of the current inbuilt quests, you can just not load the extension. See Iara's tip #2,6,4,7 (and yes I need help with this very much so - I actually do have a large list of things that need to be made into quests but haven't done so yet).
 	
@@ -22,8 +22,9 @@ http://javid.ddns.net/tModLoader/widget/widgetimage/Expeditions.png
 
 Credits:
 Flashkirby99 - I am making this mod.
-jopojelly - Additional advice on mod referencing and .tmod usage
-Supeh Mario - Original sprite for fox
+Supeh Mario - Original sprite for fox familiar.
+Eli10293 - Resprite of Wayfarer's Staff.
+Iara - 
 
 REMINDER:
 Compile, 

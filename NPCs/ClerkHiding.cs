@@ -139,9 +139,9 @@ namespace ExpeditionsContent.NPCs
                 case 1:
                     return "Waah!? I wasn't sleeping on the job, honest. ";
                 case 2:
-                    return "Oh! Don't mind me, I was just taking a power nap. ";
+                    return "Oh! Don't mind me, I was just taking a... power nap. Yes. ";
                 default:
-                    return "Y-yes sir? Wait a minute, you're not my boss. ";
+                    return "Y-yes sir? Wait a minute, you're not my boss. Eh, whatever. ";
             }
         }
     }
