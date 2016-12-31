@@ -17,7 +17,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.ctgImportant = true;
 
             expedition.conditionDescription1 = "Gain access to the Jungle Temple";
-            expedition.conditionDescription1 = "Enter the Jungle Temple";
+            expedition.conditionDescription2 = "Enter the Jungle Temple";
         }
         public override void AddItemsOnLoad()
         {
