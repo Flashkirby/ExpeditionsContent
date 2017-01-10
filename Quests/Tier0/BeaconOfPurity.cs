@@ -25,20 +25,19 @@ namespace ExpeditionsContent.Quests.Tier0
             return "You found a living tree. ";
         }
 
-        public override bool CheckPrerequisites(Player player)
+        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!expedition.condition1Met)
+            if (!cond1)
             {
                 API.TileCheckList.Add(TileID.LivingWood);
                 int treeCount = API.CountTilesInCheckedOnScreen(TileID.LivingWood);
-                if (treeCount > 64) return true;
+                if (treeCount > 64) cond1 = true;
             }
-            return expedition.condition1Met;
+            return cond1;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = true;
             return cond1;
         }
     }
