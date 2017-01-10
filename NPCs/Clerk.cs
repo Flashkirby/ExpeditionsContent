@@ -364,7 +364,6 @@ namespace ExpeditionsContent.NPCs
         public override string GetChat()
         {
             Expeditions.Expeditions.CloseExpeditionMenu(true); // Stop conflict caused by Bounty Book
-            string theTime = GetTheTime();
             if (npc.homeless)
             {
                 if(Main.bloodMoon)
@@ -400,6 +399,8 @@ namespace ExpeditionsContent.NPCs
                 return "Let's make this party one to remember! And also cake. Lots of cake. ";
             }
 
+            string theTime = GetTheTime();
+            string theMap = GetTheMap();
             if (Main.dayTime)
             {
                 if (Main.raining) speech.Add("Watch out! There's water coming from the sky! Haha, just kidding. ");
@@ -407,6 +408,7 @@ namespace ExpeditionsContent.NPCs
 
                 speech.Add(theTime);
                 speech.Add(theTime);
+                speech.Add(theMap);
 
                 if (Main.time < 16200.0)
                 {
@@ -444,6 +446,8 @@ namespace ExpeditionsContent.NPCs
                 else
                 {
                     speech.Add(theTime);
+                    speech.Add(theMap);
+                    speech.Add(theMap);
 
                     speech.Add("I'll have you know I am unbeaten in waste paper basketball. ");
                     speech.Add("I'll have you know I excel at spreadsheets. ");
@@ -453,10 +457,16 @@ namespace ExpeditionsContent.NPCs
                     speech.Add("How do I stay up all night? Coffee. Uh... I mean magic. ");
                 }
             }
-             
 
+            // End early
+            if (Main.bloodMoon) return speech[Main.rand.Next(speech.Count)];
+
+            // NPC extra dialogues, irrespective of time
             string name = NPC.GetFirstNPCNameOrNull(NPCID.Guide);
             if (name != null) speech.Add(name + " seems like a really helpful guy, but I heard he has a notorious reputation for inappropriate door opening. ");
+
+            name = NPC.GetFirstNPCNameOrNull(NPCID.GoblinTinkerer);
+            if (name != null) speech.Add("Can you believe goblins don't know their east from west? " + name + " seems to be a bit more educated though.");
 
             name = NPC.GetFirstNPCNameOrNull(NPCID.TravellingMerchant);
             if (name != null) speech.Add(name + " tells me he's been to all sorts of places, only he never tells me where exactly. At least not without paying up. ");
@@ -484,6 +494,65 @@ namespace ExpeditionsContent.NPCs
             if (minutes < 10) divider += "0";
 
             return "Have I got the time? Sure, it's " + string.Concat((int)fullTime, divider, minutes, " ", twelveHr) + ".";
+        }
+        private static string GetTheMap()
+        {
+            int completion = 0;
+            int revealed = 0;
+            int maxCounted = 0;
+            string comment = ". Keep exploring!";
+            
+            int tileLeft = (int)Main.leftWorld / 16;
+            int tileRight = (int)Main.rightWorld / 16;
+            int tileTop = (int)Main.topWorld / 16;
+            int tileBottom = (int)Main.bottomWorld / 16;
+            // Minsize is 800x600
+            int checkStepX = (int)(Main.rightWorld - Main.leftWorld) / 800;
+            int checkStepY = (int)(Main.bottomWorld - Main.topWorld) / 600;
+            for(int y = 1; y < checkStepY; y++)
+            {
+                for(int x = 1; x < checkStepX; x++)
+                {
+                    maxCounted++;
+                    if(Main.Map.IsRevealed(
+                        tileLeft + tileRight / checkStepX * x,
+                        tileTop + tileBottom / checkStepY * y))
+                    {
+                        revealed++;
+                    }
+                }
+            }
+            completion = (int)((float)revealed / maxCounted);
+
+            comment = "Your map is " + completion + "% complete. ";
+            if (completion == 100)
+            { comment = "Wow! You've fully mapped out " + Main.worldName + ". You have my upmost respect. "; }
+            else if (completion >= 90)
+            { comment += "So close! Just those nooks and crannies now. "; }
+            else if (completion >= 80)
+            { comment += "You're not far off now... "; }
+            else if (completion >= 70)
+            { comment += "Your efforts are greatly appreciated! "; }
+            else if (completion >= 60)
+            { comment += "Keep going!"; }
+            else if (completion >= 50)
+            { comment += "You're over halfway there. "; }
+            else if (completion >= 40)
+            { comment += "Neato! "; }
+            else if (completion >= 30)
+            { comment += "You've been around a bit then. Found anything interesting? "; }
+            else if (completion >= 20)
+            { comment += "You've cleared the first hurdle, but there's still ways to go. "; }
+            else if (completion >= 15)
+            { comment += Main.worldName + " still has more to offer. "; }
+            else if (completion >= 10)
+            { comment += "Keep exploring!"; }
+            else if (completion >= 5)
+            { comment += "There's still plenty left to explore. "; }
+            else
+            { comment = "You've mapped out " + completion + "% of " + Main.worldName + ". Well, everyone has to start somewhere right? "; }
+
+            return comment;
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
