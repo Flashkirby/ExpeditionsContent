@@ -13,6 +13,7 @@ namespace ExpeditionsContent
     public class PlayerExplorer : ModPlayer
     {
         public bool accHeartCompass;
+        public bool accFruitCompass;
         public bool familiarMinion;
 
         public static PlayerExplorer Get(Player player, Mod mod)
@@ -23,12 +24,14 @@ namespace ExpeditionsContent
         public override void Initialize()
         {
             accHeartCompass = false;
+            accFruitCompass = false;
             familiarMinion = false;
         }
 
         public override void ResetEffects()
         {
             accHeartCompass = false;
+            accFruitCompass = false;
             familiarMinion = false;
         }
 
@@ -53,6 +56,10 @@ namespace ExpeditionsContent
                             if (Get(player, mod).accHeartCompass)
                             {
                                 accHeartCompass = true;
+                            }
+                            if (Get(player, mod).accFruitCompass)
+                            {
+                                accFruitCompass = true;
                             }
                         }
                     }

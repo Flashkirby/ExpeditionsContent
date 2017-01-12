@@ -40,16 +40,18 @@ namespace ExpeditionsContent {
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
             Player player = Main.player[Main.myPlayer];
-            if (PlayerExplorer.Get(player, this).accHeartCompass)
+            PlayerExplorer px = PlayerExplorer.Get(player, this);
+            if (px.accHeartCompass ||
+                px.accFruitCompass)
             {
-                UpdateMapLocations(player);
+                UpdateMapLocations(player, px);
                 DrawIcons();
             }
         }
 
         #region Mapping
 
-        private static void UpdateMapLocations(Player player)
+        private static void UpdateMapLocations(Player player, PlayerExplorer px)
         {
             if ((int)Main.time % 30 == 0)
             {
@@ -82,8 +84,8 @@ namespace ExpeditionsContent {
                             Tile t = Main.tile[x, y];
                             if (t == null) continue;
 
-                            AddHeart(y, x, t);
-                            AddFruit(y, x, t);
+                            if (px.accHeartCompass) AddHeart(y, x, t);
+                            if (px.accFruitCompass) AddFruit(y, x, t);
                         }
                         catch (Exception e)
                         {
