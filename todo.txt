@@ -12,7 +12,7 @@
     Actually get around to writing that guide on making mod extensions for this.
     I probably missed a few things.
 
-
+https://github.com/Flashkirby/ExpeditionsContent/wiki
 
 For the future: Filter by tracking
 
