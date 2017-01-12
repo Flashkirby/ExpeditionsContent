@@ -42,7 +42,7 @@ namespace ExpeditionsContent.Quests.Tier0
 ** Not guaranteed to be all/any of your problems. ";
         }
 
-        public override bool CheckPrerequisites(Player player)
+        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             // LIMITED TIME OFFER™
             return !Main.expertMode && !Main.hardMode && !NPC.downedBoss2 && player.statLifeMax >= 200;
