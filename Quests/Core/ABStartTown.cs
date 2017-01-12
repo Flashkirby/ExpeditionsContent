@@ -10,6 +10,7 @@ namespace ExpeditionsContent.Quests.Core
         public override void SetDefaults()
         {
             expedition.name = "Starting A Town";
+            SetNPCHead(NPCID.Guide);
             expedition.difficulty = 0;
             expedition.ctgExplore = true;
 
