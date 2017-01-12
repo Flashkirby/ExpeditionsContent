@@ -29,9 +29,7 @@ namespace ExpeditionsContent.Quests.Tier0
         {
             if (!cond1)
             {
-                API.TileCheckList.Add(TileID.LivingWood);
-                int treeCount = API.CountTilesInCheckedOnScreen(TileID.LivingWood);
-                if (treeCount > 64) cond1 = true;
+                cond1 = (Main.screenTileCounts[TileID.LivingWood] > 128);
             }
             return cond1;
         }
