@@ -14,10 +14,9 @@ namespace ExpeditionsContent.Items
             item.toolTip = "Reveals life crystals on the Full Map";
             item.width = 28;
             item.height = 30;
-            item.consumable = true;
-            item.rare = 1;
+            item.rare = 2;
             item.accessory = true;
-            item.value = Item.sellPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 2, 0, 0);
         }
 
         public override void UpdateAccessory(Player player, bool hideVisual)
@@ -27,6 +26,10 @@ namespace ExpeditionsContent.Items
 
         public override void UpdateInventory(Player player)
         {
+            if(Main.hardMode && NPC.downedMechBossAny)
+            { item.toolTip2 = "Also reveals life fruit"; }
+            else
+            { item.toolTip2 = ""; }
             PlayerExplorer.Get(player, mod).accHeartCompass = true;
         }
 

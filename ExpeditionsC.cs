@@ -29,28 +29,33 @@ namespace ExpeditionsContent {
             _npcClerk = NPCType("Clerk");
 
             heartTiles = new List<Point>();
+            fruitTiles = new List<Point>();
 
             API.AddExpedition(this, new Quests.Tier0.MakingBase());
             API.AddExpedition(this, new Quests.Tier0.BeaconOfPurity());
         }
 
         public static List<Point> heartTiles;
+        public static List<Point> fruitTiles;
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
             Player player = Main.player[Main.myPlayer];
             if (PlayerExplorer.Get(player, this).accHeartCompass)
             {
-                UpdateHeartLocations(player);
-                DrawHeartIcons();
+                UpdateMapLocations(player);
+                DrawIcons();
             }
         }
 
         #region Mapping
 
-        private static void UpdateHeartLocations(Player player)
+        private static void UpdateMapLocations(Player player)
         {
             if ((int)Main.time % 30 == 0)
-            { heartTiles.Clear(); }
+            {
+                heartTiles.Clear();
+                fruitTiles.Clear();
+            }
             else { return; }
 
             // 800 is 100ft
@@ -77,24 +82,8 @@ namespace ExpeditionsContent {
                             Tile t = Main.tile[x, y];
                             if (t == null) continue;
 
-                            if (t.type == TileID.Heart)
-                            {
-                                // Top Left Corner
-                                if (t.frameX == 0 && t.frameY == 0)
-                                { heartTiles.Add(new Point(x, y)); }
-                                else
-                                // Top Right Corner
-                                if (t.frameX == 18 && t.frameY == 0)
-                                { heartTiles.Add(new Point(x - 1, y)); }
-                                else
-                                // Bot Left Corner
-                                if (t.frameX == 0 && t.frameY == 18)
-                                { heartTiles.Add(new Point(x, y - 1)); }
-                                else
-                                // Bot Right Corner
-                                if (t.frameX == 18 && t.frameY == 18)
-                                { heartTiles.Add(new Point(x - 1, y - 1)); }
-                            }
+                            AddHeart(y, x, t);
+                            AddFruit(y, x, t);
                         }
                         catch (Exception e)
                         {
@@ -109,36 +98,96 @@ namespace ExpeditionsContent {
             }
         }
 
-        private static void DrawHeartIcons()
+        private static void AddHeart(int y, int x, Tile t)
+        {
+            if (t.type == TileID.Heart)
+            {
+                // Top Left Corner
+                if (t.frameX == 0 && t.frameY == 0)
+                { heartTiles.Add(new Point(x, y)); }
+                else
+                // Top Right Corner
+                if (t.frameX == 18 && t.frameY == 0)
+                { heartTiles.Add(new Point(x - 1, y)); }
+                else
+                // Bot Left Corner
+                if (t.frameX == 0 && t.frameY == 18)
+                { heartTiles.Add(new Point(x, y - 1)); }
+                else
+                // Bot Right Corner
+                if (t.frameX == 18 && t.frameY == 18)
+                { heartTiles.Add(new Point(x - 1, y - 1)); }
+            }
+        }
+
+        private static void AddFruit(int y, int x, Tile t)
+        {
+            if (t.type == TileID.LifeFruit)
+            {
+                bool left = ((t.frameX / 18) % 2 == 0);
+                bool top = ((t.frameY / 18) % 2 == 0);
+                // Top Left Corner
+                if (left && top)
+                { fruitTiles.Add(new Point(x, y)); }
+                else
+                // Top Right Corner
+                if (!left && top)
+                { fruitTiles.Add(new Point(x - 1, y)); }
+                else
+                // Bot Left Corner
+                if (left && !top)
+                { fruitTiles.Add(new Point(x, y - 1)); }
+                else
+                // Bot Right Corner
+                if (!left && !top)
+                { fruitTiles.Add(new Point(x - 1, y - 1)); }
+            }
+        }
+
+        private static void DrawIcons()
         {
             Texture2D heart = Main.itemTexture[ItemID.LifeCrystal];
+            Texture2D fruit = Main.itemTexture[ItemID.LifeFruit];
             Point drawPosition = new Point();
 
             foreach (Point heartTile in heartTiles)
             {
-                Vector2 tilePos = new Vector2(heartTile.X + 1f, heartTile.Y + 1f);
-                Vector2 halfScreen = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
-
-                Vector2 relativePos = tilePos - Main.mapFullscreenPos;
-                relativePos *= Main.mapFullscreenScale / 16;
-                relativePos = relativePos * 16 + halfScreen;
-
-                drawPosition = new Point(
-                    (int)relativePos.X,
-                    (int)relativePos.Y);
-
-                Rectangle drawPos = new Rectangle(drawPosition.X, drawPosition.Y, heart.Width, heart.Height);
-                Main.spriteBatch.Draw(
-                    heart,
-                    drawPos,
-                    null,
-                    Color.White,
-                    0f,
-                    new Vector2(heart.Width / 2, heart.Height / 2),
-                    SpriteEffects.None,
-                    0f
-                    );
+                drawPosition = CalculateDrawPos(new Vector2(heartTile.X + 1f, heartTile.Y + 1f));
+                DrawTextureOnMap(heart, drawPosition);
             }
+            foreach (Point fruitTile in fruitTiles)
+            {
+                drawPosition = CalculateDrawPos(new Vector2(fruitTile.X + 1f, fruitTile.Y + 1f));
+                DrawTextureOnMap(fruit, drawPosition);
+            }
+        }
+
+        private static Point CalculateDrawPos(Vector2 tilePos)
+        {
+            Vector2 halfScreen = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
+            Vector2 relativePos = tilePos - Main.mapFullscreenPos;
+            relativePos *= Main.mapFullscreenScale / 16;
+            relativePos = relativePos * 16 + halfScreen;
+
+            Point drawPosition = new Point(
+                (int)relativePos.X,
+                (int)relativePos.Y);
+            return drawPosition;
+        }
+
+        private static void DrawTextureOnMap(Texture2D texture, Point drawPosition)
+        {
+            Rectangle drawPos = new Rectangle(drawPosition.X, drawPosition.Y, texture.Width, texture.Height);
+            Main.spriteBatch.Draw(
+                texture,
+                drawPos,
+                null,
+                Color.White,
+                0f,
+                new Vector2(texture.Width / 2, texture.Height / 2),
+                SpriteEffects.None,
+                0f
+                );
         }
 
         #endregion
