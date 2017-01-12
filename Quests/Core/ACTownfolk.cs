@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsContent.Quests
+namespace ExpeditionsContent.Quests.Core
 {
-    class T0Townfolk : ModExpedition
+    class ACTownfolk : ModExpedition
     {
         public override void SetDefaults()
         {
@@ -27,7 +27,7 @@ namespace ExpeditionsContent.Quests
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return API.FindExpedition(mod, "T0StartTown").completed;
+            return API.FindExpedition<ABStartTown>(mod).completed;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

@@ -3,9 +3,9 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsContent.Quests
+namespace ExpeditionsContent.Quests.Core
 {
-    class T0StartTown : ModExpedition
+    class ABStartTown : ModExpedition
     {
         public override void SetDefaults()
         {
@@ -21,6 +21,11 @@ namespace ExpeditionsContent.Quests
         public override string Description(bool complete)
         {
             return "For people to move into our town, they will of course need a home. A room needs walls, a door, chair, table, and a light source. You can craft all of these at a workbench. ";
+        }
+
+        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+            return API.FindExpedition<AAWelcomeQuest>(mod).completed;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
