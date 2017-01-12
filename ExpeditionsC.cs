@@ -37,20 +37,21 @@ namespace ExpeditionsContent {
         public static List<Point> heartTiles;
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
-            UpdateHeartLocations();
-
-            DrawHeartIcons();
+            Player player = Main.player[Main.myPlayer];
+            if (PlayerExplorer.Get(player, this).accHeartCompass)
+            {
+                UpdateHeartLocations(player);
+                DrawHeartIcons();
+            }
         }
 
-        private static void UpdateHeartLocations()
+        #region Mapping
+
+        private static void UpdateHeartLocations(Player player)
         {
             if ((int)Main.time % 30 == 0)
             { heartTiles.Clear(); }
             else { return; }
-
-
-
-            Player player = Main.player[Main.myPlayer];
 
             // 800 is 100ft
             int searchRadius = 3200;
@@ -139,5 +140,7 @@ namespace ExpeditionsContent {
                     );
             }
         }
+
+        #endregion
     }
 }
