@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.name = "Gift from the Stars";
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 0;
-            expedition.ctgExplore = true;
+            expedition.ctgCollect = true;
 
             expedition.conditionDescription1 = "Reach 40 maximum mana";
         }
