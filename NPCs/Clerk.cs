@@ -94,10 +94,17 @@ namespace ExpeditionsContent.NPCs
             }
         }
 
+        #region Spawning
+
         public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             return WorldExplorer.savedClerk;
         }
+        public override bool CheckConditions(int left, int right, int top, int bottom)
+        {
+            return true;
+        }
+
         public override string TownNPCName()
         {
             switch (WorldGen.genRand.Next(9))
@@ -122,6 +129,8 @@ namespace ExpeditionsContent.NPCs
                     return "Isabelle"; //Animal Crossing
             }
         }
+
+        #endregion
 
         #region AI Behaviours
 

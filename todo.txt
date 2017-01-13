@@ -1,3 +1,7 @@
+Board don't work (UI)? randomly
+
+Add rewards
+
 	
 	The only items included will be the expedition board/log (sold by merchant/skele merch), and possibly the quest boxes.This also means no need for config files, and also leads into:
 	
