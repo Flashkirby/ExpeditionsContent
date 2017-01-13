@@ -38,7 +38,8 @@ namespace ExpeditionsContent
         public override void PostUpdateEquips()
         {
             // Basically if allied player is in "info" range of 100ft
-            ShareTeamInfo();
+            // NOTE: Disabled because I haven't set up any net sync for the bools
+            // ShareTeamInfo();
         }
 
         private void ShareTeamInfo()
