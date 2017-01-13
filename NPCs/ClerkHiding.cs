@@ -1,9 +1,13 @@
 ﻿using System;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+
+using Expeditions;
 
 namespace ExpeditionsContent.NPCs
 {
@@ -32,6 +36,18 @@ namespace ExpeditionsContent.NPCs
             // Skip if 'rescued' clerk already (no more natural spawn)
             if (WorldExplorer.savedClerk) return 0f;
 
+            // Will only spawn once a player has armour, and has powered up at least once
+            bool spawnCondition = false;
+            foreach(Player p in Main.player)
+            {
+                if(p.statDefense >= 6 && p.statLifeMax > 100 && p.statManaMax > 20)
+                {
+                    spawnCondition = true;
+                    break;
+                }
+            }
+            if (!spawnCondition) return 0f;
+
             try
             {
                 int third = Main.maxTilesX / 3;
@@ -55,7 +71,7 @@ namespace ExpeditionsContent.NPCs
                     // Not near bad biomes
                     !spawnInfo.player.ZoneCorrupt &&
                     !spawnInfo.player.ZoneCrimson &&
-                    // Can only spawn on grass with no natural dirt background or liquid (so in open air)
+                    // Can only spawn on grass with no natural dirt background or liquid (so in open air or grass tunnel)
                     (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type == TileID.Grass &&
                     (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe &&
                     (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe1 &&
