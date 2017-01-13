@@ -18,14 +18,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
-            if (WorldGen.CopperTierOre == TileID.Copper)
-            {
-                AddRewardItem(ItemID.CopperHammer, 5);
-            }
-            else
-            {
-                AddRewardItem(ItemID.TinHammer, 5);
-            }
+            AddRewardItem(ItemID.CopperHammer, 5);
         }
         public override string Description(bool complete)
         {

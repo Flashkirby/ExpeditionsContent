@@ -38,16 +38,22 @@ namespace ExpeditionsContent.Quests.Core
             if (!(cond1 && cond2 && cond3) // only satisfied if all 3 conditions are met at the same time
                 && Main.time % 60 == 0)
             {
+				bool guide = false;
+				bool nurse = false;
+				bool merch = false;
                 for (int i = 0; i < 200; i++)
                 {
                     if (!Main.npc[i].active || Main.npc[i].type == NPCID.OldMan) continue;
                     if (Main.npc[i].townNPC && !Main.npc[i].homeless)
                     {
-                        cond1 = (Main.npc[i].type == NPCID.Guide);
-                        cond2 = (Main.npc[i].type == NPCID.Nurse) ;
-                        cond3 = (Main.npc[i].type == NPCID.Merchant);
+						if (Main.npc[i].type == NPCID.Guide) guide = true;
+                        if (Main.npc[i].type == NPCID.Nurse) nurse = true;
+                        if (Main.npc[i].type == NPCID.Merchant) merch = true;
                     }
                 }
+                cond1 = guide;
+                cond2 = nurse;
+                cond3 = merch;
             }
             return cond1 && cond2 && cond3;
         }
