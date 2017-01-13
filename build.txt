@@ -1,6 +1,6 @@
 author = Flashkirby99
 version = 1.0
-displayName = Expeditions Content
+displayName = Expeditions Content Pack
 homepage = http://forums.terraria.org/index.php?threads/expeditions-mod-modular-quest-system.52517/
 
 modReferences = Expeditions
