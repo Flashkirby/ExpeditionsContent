@@ -34,7 +34,7 @@ namespace ExpeditionsContent.Quests.Core
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             // Check if an NPC has a house every second
-            if (!(cond1 && cond2 && cond3)
+            if (!(cond1 && cond2 && cond3) // only satisfied if all 3 conditions are met at the same time
                 && Main.time % 60 == 0)
             {
                 for (int i = 0; i < 200; i++)
@@ -42,13 +42,13 @@ namespace ExpeditionsContent.Quests.Core
                     if (!Main.npc[i].active || Main.npc[i].type == NPCID.OldMan) continue;
                     if (Main.npc[i].townNPC && !Main.npc[i].homeless)
                     {
-                        if (Main.npc[i].type == NPCID.Guide) cond1 = true;
-                        if (Main.npc[i].type == NPCID.Nurse) cond2 = true;
-                        if (Main.npc[i].type == NPCID.Merchant) cond3 = true;
+                        cond1 = (Main.npc[i].type == NPCID.Guide);
+                        cond2 = (Main.npc[i].type == NPCID.Nurse) ;
+                        cond3 = (Main.npc[i].type == NPCID.Merchant);
                     }
                 }
             }
-            return cond1;
+            return cond1 && cond2 && cond3;
         }
     }
 }
