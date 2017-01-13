@@ -31,7 +31,9 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1) cond1 = player.miscEquips[4] != null;
+            try
+            { cond1 = player.miscEquips[4].type > 0; }
+            catch { cond1 = false; }
             return cond1;
         }
     }
