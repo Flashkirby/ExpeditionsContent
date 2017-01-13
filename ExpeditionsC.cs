@@ -30,6 +30,8 @@ namespace ExpeditionsContent {
 
             heartTiles = new List<Point>();
             fruitTiles = new List<Point>();
+            
+            API.AddExpedition(this, new Quests.MiscPre.MakingBase());
 
             API.AddExpedition(this, new Quests.Core.AAWelcomeQuest());
             API.AddExpedition(this, new Quests.Core.ABSmeltOres());
@@ -41,6 +43,8 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.ADHooks());
             API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
             API.AddExpedition(this, new Quests.Core.BAEvilEye());
+
+            API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
         }
 
         public static List<Point> heartTiles;

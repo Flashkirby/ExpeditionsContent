@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsContent.Quests.Tier0
+namespace ExpeditionsContent.Quests.MiscPre
 {
     class MakingBase : ModExpedition
     {
@@ -37,7 +37,7 @@ namespace ExpeditionsContent.Quests.Tier0
         }
         public override string Description(bool complete)
         {
-            return @"TO WHOEVER READS THIS: Rich? Impatient? Strangers asking you for residency? Well look no further, do we have a once in a lifetime limited time offer deal for you! For one time only*, all your problems** can be solved right now!
+            return @"Rich? Impatient? Strangers asking you for residency? Well look no further, do we have a once in a lifetime limited time offer deal for you! For one time only*, all your problems** can be solved right now!
 *Valid only in " + Main.worldName + @". 
 ** Not guaranteed to be all/any of your problems. ";
         }

@@ -577,6 +577,17 @@ namespace ExpeditionsContent.NPCs
             // Sell book
             shop.item[nextSlot].SetDefaults(API.ItemIDExpeditionBook); nextSlot++;
 
+            if (API.FindExpedition<Quests.Clerk.CrystalHeart>(mod).completed)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.HeartCompass>(), 2);
+            }
+
+            if(NPC.downedMechBossAny)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 2);
+            }
+
+            /*
             // After EoC
             if (NPC.downedBoss1)
             {
@@ -617,6 +628,7 @@ namespace ExpeditionsContent.NPCs
                     shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerSummon")); nextSlot++;
                 }
             }
+            */
         }
 
         #endregion

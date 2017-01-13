@@ -3,13 +3,14 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsContent.Quests.Tier0
+namespace ExpeditionsContent.Quests.Clerk
 {
     class BeaconOfPurity : ModExpedition
     {
         public override void SetDefaults()
         {
             expedition.name = "Beacon of Purity";
+            SetNPCHead(ExpeditionC.npcClerk);
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
 
@@ -22,7 +23,7 @@ namespace ExpeditionsContent.Quests.Tier0
         }
         public override string Description(bool complete)
         {
-            return "You found a living tree. ";
+            return "You found a what? A giant tree? That's awesome! I can tell you know I didn't expect something like that when I came no siree. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
