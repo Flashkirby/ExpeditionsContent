@@ -31,8 +31,16 @@ namespace ExpeditionsContent {
             heartTiles = new List<Point>();
             fruitTiles = new List<Point>();
 
-            API.AddExpedition(this, new Quests.Tier0.MakingBase());
-            API.AddExpedition(this, new Quests.Tier0.BeaconOfPurity());
+            API.AddExpedition(this, new Quests.Core.AAWelcomeQuest());
+            API.AddExpedition(this, new Quests.Core.ABSmeltOres());
+            API.AddExpedition(this, new Quests.Core.ABStartTown());
+            API.AddExpedition(this, new Quests.Core.ABMapping());
+            API.AddExpedition(this, new Quests.Core.ACMakeMagic());
+            API.AddExpedition(this, new Quests.Core.ACUnderground());
+            API.AddExpedition(this, new Quests.Core.ACTownfolk());
+            API.AddExpedition(this, new Quests.Core.ADHooks());
+            API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
+            API.AddExpedition(this, new Quests.Core.BAEvilEye());
         }
 
         public static List<Point> heartTiles;
