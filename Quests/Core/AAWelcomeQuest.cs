@@ -22,7 +22,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "Need some direction? The first thing you'll need to do is start collecting wood, and building yourself som shelter. Slimes drop gel when killed, which can be combined with wood to make torches. ";
+            return "Need some direction? The first thing you'll need to do is start collecting wood, and building yourself some shelter. Slimes drop gel when killed, which can be combined with wood to make torches. ";
         }
 
 
