@@ -45,6 +45,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.BAEvilEye());
 
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
+            API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
         }
 
         public static List<Point> heartTiles;
