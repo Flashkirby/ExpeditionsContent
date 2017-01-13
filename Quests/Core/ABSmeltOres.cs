@@ -13,19 +13,11 @@ namespace ExpeditionsContent.Quests.Core
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
+
+            expedition.conditionDescription1 = "Craft a bar";
         }
         public override void AddItemsOnLoad()
         {
-            AddDeliverableAnyOf(new int[] {
-                ItemID.CopperBar,
-                ItemID.TinBar,
-                ItemID.IronBar,
-                ItemID.LeadBar,
-                ItemID.SilverBar,
-                ItemID.TungstenBar,
-                ItemID.GoldBar,
-                ItemID.PlatinumBar
-            });
         }
         public override string Description(bool complete)
         {
@@ -35,6 +27,29 @@ namespace ExpeditionsContent.Quests.Core
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             return API.FindExpedition<AAWelcomeQuest>(mod).completed;
+        }
+
+        public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+            if(!cond1)
+            {
+                int type = player.inventory[player.selectedItem].type;
+                if (type == ItemID.CopperBar ||
+                    type == ItemID.TinBar ||
+                    type == ItemID.IronBar ||
+                    type == ItemID.LeadBar ||
+                    type == ItemID.SilverBar ||
+                    type == ItemID.TungstenBar ||
+                    type == ItemID.GoldBar ||
+                    type == ItemID.PlatinumBar ||
+                    type == ItemID.DemoniteBar ||
+                    type == ItemID.CrimtaneBar ||
+                    type == ItemID.MeteoriteBar )
+                {
+                    cond1 = true;
+                }
+            }
+            return cond1;
         }
     }
 }
