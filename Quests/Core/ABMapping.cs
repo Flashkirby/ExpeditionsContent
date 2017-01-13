@@ -14,7 +14,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.difficulty = 0;
             expedition.ctgExplore = true;
 
-            expedition.conditionDescriptionCountable = "Map out an area around spawn";
+            expedition.conditionDescriptionCountable = "Map out the spawn area";
             expedition.conditionCountedMax = 100;
             expedition.conditionCountedTrackHalfCompleted = true;
         }
