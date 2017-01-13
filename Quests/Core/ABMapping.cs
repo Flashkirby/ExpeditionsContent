@@ -20,6 +20,8 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
+            AddRewardMoney(Item.buyPrice(0, 0, 5, 0));
+            AddRewardItem(ItemID.Wood, 50);
         }
         public override string Description(bool complete)
         {

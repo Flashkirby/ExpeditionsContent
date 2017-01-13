@@ -18,6 +18,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
+            AddRewardItem(ItemID.FallenStar);
         }
         public override string Description(bool complete)
         {

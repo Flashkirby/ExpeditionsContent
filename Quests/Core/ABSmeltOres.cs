@@ -18,6 +18,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
+            AddRewardItem(ItemID.Chest);
         }
         public override string Description(bool complete)
         {
