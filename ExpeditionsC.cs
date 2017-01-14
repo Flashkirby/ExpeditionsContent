@@ -55,6 +55,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
             API.AddExpedition(this, new Quests.Clerk.SOSAngler());
             API.AddExpedition(this, new Quests.Clerk.SOSStylist());
+            API.AddExpedition(this, new Quests.MiscPre.DryadDD2());
         }
 
         public static List<Point> heartTiles;
