@@ -53,7 +53,7 @@ namespace ExpeditionsContent {
 
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
-            API.AddExpedition(this, new Quests.Clerk.SOSAngler())
+            API.AddExpedition(this, new Quests.Clerk.SOSAngler());
             API.AddExpedition(this, new Quests.Clerk.SOSStylist());
         }
 
