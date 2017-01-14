@@ -47,17 +47,18 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1) cond1 = API.LastHitNPC.type == NPCID.EyeofCthulhu;
+            if (!cond1)
+            {
+                expedition.conditionDescription2 = "";
+                cond1 = API.LastHitNPC.type == NPCID.EyeofCthulhu;
+            }
+            else
+            { expedition.conditionDescription2 = "Defeat the Eye of Cthulu"; }
             return player.statLifeMax >= 200 || cond1;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
-            { expedition.conditionDescription2 = ""; }
-            else
-            { expedition.conditionDescription2 = "Defeat the Eye of Cthulu"; }
-
             if (!cond2) cond2 = NPC.downedBoss1;
             return cond1 && cond2;
         }

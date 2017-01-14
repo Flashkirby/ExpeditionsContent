@@ -60,6 +60,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             if (!cond1) 
             {
+                expedition.conditionDescription2 = "";
                 if (WorldGen.crimson)
                 { cond1 = API.LastHitNPC.type == NPCID.BrainofCthulhu; }
                 else
@@ -70,6 +71,14 @@ namespace ExpeditionsContent.Quests.Core
                         API.LastHitNPC.type == NPCID.EaterofWorldsTail);
                 }
             }
+            else
+            {
+                if (WorldGen.crimson)
+                { expedition.conditionDescription2 = "Defeat the Eater of Worlds"; }
+                else
+                { expedition.conditionDescription2 = "Defeat the Brain of Cthulu"; }
+            }
+
             return cond1 || NPC.downedBoss1 || API.FindExpedition<BBHarbinger>(mod).completed;
         }
 
@@ -84,16 +93,6 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
-            { expedition.conditionDescription2 = ""; }
-            else
-            {
-                if(WorldGen.crimson)
-                { expedition.conditionDescription2 = "Defeat the Eater of Worlds"; }
-                else
-                { expedition.conditionDescription2 = "Defeat the Brain of Cthulu"; }
-            }
-
             if (!cond2) cond2 = NPC.downedBoss1;
             return cond1 && cond2;
         }
