@@ -36,8 +36,13 @@ namespace ExpeditionsContent.Quests.Clerk
                 expedition.conditionDescription2 = "Wake up the sleeping angler";
             }
 
+            if (!cond3)
+            {
+                cond3 = player.ZoneBeach;
+            }
+
             // Only active whilst stylist isn't saved yet, or the stylist has been saved (not just here)
-            return !NPC.savedAngler || cond1;
+            return (!NPC.savedAngler || cond1) && cond3;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -61,7 +66,7 @@ namespace ExpeditionsContent.Quests.Clerk
             {
                 cond2 = NPC.savedAngler;
             }
-            return base.CheckConditions(player, ref cond1, ref cond2, ref cond3, condCount);
+            return cond1 && cond2;
         }
     }
 }
