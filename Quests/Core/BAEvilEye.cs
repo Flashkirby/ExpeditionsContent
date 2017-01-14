@@ -59,7 +59,7 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond2) cond2 = NPC.downedBoss1;
+            if (cond1 && !cond2) cond2 = NPC.downedBoss1;
             return cond1 && cond2;
         }
     }

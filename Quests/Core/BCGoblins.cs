@@ -46,7 +46,7 @@ namespace ExpeditionsContent.Quests.Core
                     type == NPCID.GoblinSorcerer
                     );
             }
-            if(!cond2)
+            if(cond1 && !cond2)
             {
                 cond2 = NPC.downedGoblins;
             }
