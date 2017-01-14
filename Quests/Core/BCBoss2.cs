@@ -74,9 +74,9 @@ namespace ExpeditionsContent.Quests.Core
             else
             {
                 if (WorldGen.crimson)
-                { expedition.conditionDescription2 = "Defeat the Eater of Worlds"; }
-                else
                 { expedition.conditionDescription2 = "Defeat the Brain of Cthulu"; }
+                else
+                { expedition.conditionDescription2 = "Defeat the Eater of Worlds"; }
             }
 
             return cond1 || NPC.downedBoss1 || API.FindExpedition<BBHarbinger>(mod).completed;
