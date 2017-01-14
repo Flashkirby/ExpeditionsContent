@@ -20,6 +20,7 @@ namespace ExpeditionsContent.NPCs
             npc.height = 22;
             npc.friendly = true;
             npc.dontTakeDamage = true; //hide the health bar
+            Main.npcFrameCount[npc.type] = 5;
 
             npc.aiStyle = -1;
             npc.damage = 10;
@@ -73,8 +74,7 @@ namespace ExpeditionsContent.NPCs
                     // Not near bad biomes
                     !spawnInfo.player.ZoneCorrupt &&
                     !spawnInfo.player.ZoneCrimson &&
-                    // Can only spawn on grass with no natural dirt background or liquid (so in open air or grass tunnel)
-                    (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type == TileID.Grass &&
+                    // Can only spawn with no natural dirt background or liquid (so in open air or grass tunnel)
                     (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe &&
                     (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe1 &&
                     (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe2 &&
@@ -112,6 +112,24 @@ namespace ExpeditionsContent.NPCs
 
             //always invincible (to enemy npcs)
             npc.immune[255] = 30;
+            
+            // Set groud ID
+            Point pos = (npc.Bottom + new Vector2(0, 8)).ToTileCoordinates();
+            Tile t = Main.tile[pos.X, pos.Y];
+            ushort type = t.type;
+            if (t == null)
+            { type = 0; }
+            else { type = t.type; }
+
+            npc.ai[3] = 0f;
+            if (type == TileID.Grass)
+                npc.ai[3] = 1f;
+            if (type == TileID.SnowBlock || type == TileID.IceBlock)
+                npc.ai[3] = 2f;
+            if (type == TileID.JungleGrass)
+                npc.ai[3] = 3f;
+            if (type == TileID.Sand || type == TileID.HardenedSand)
+                npc.ai[3] = 4f;
 
             //transform if someone be chatting me up
             foreach (Player p in Main.player)
@@ -125,7 +143,7 @@ namespace ExpeditionsContent.NPCs
             // Also wake up if falling
             if(npc.velocity.Y != 0f)
             {
-                WakeUp();
+                //WakeUp();
             }
 
             // Floor friction
@@ -137,16 +155,35 @@ namespace ExpeditionsContent.NPCs
         }
         private void WakeUp()
         {
-            //appear out of the grass
-            for (int i = 0; i < 40; i++)
+            //Spawn grass
+            if (npc.ai[3] > 0f)
             {
-                Dust.NewDust(npc.position, npc.width, npc.height,
-                    DustID.GrassBlades, (i - 20) * 0.1f, -1.5f);
+                int dust = DustID.GrassBlades;
+                if (npc.ai[3] == 2f) dust = 51; // Snow
+                if (npc.ai[3] == 3f) dust = 85; // Sand
+                if (npc.ai[3] == 4f) dust = 40; // Jungle
+                for (int i = 0; i < 40; i++)
+                {
+                    Dust.NewDust(npc.position, npc.width, npc.height,
+                        dust, (i - 20) * 0.1f, -1.5f);
+                }
+                if (npc.ai[3] == 2f)
+                {
+                    Main.PlaySound(2, npc.Center, 51);
+                }
+                else
+                {
+                    Main.PlaySound(6, npc.Center);
+                }
             }
-            Main.PlaySound(6, npc.Center);
 
             npc.dontTakeDamage = false;
             npc.Transform(mod.NPCType("Clerk"));
+        }
+
+        public override void FindFrame(int frameHeight)
+        {
+            npc.frame.Y = frameHeight * (int)npc.ai[3];
         }
 
         public override string GetChat()
