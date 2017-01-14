@@ -28,6 +28,9 @@ namespace ExpeditionsContent.Quests.Clerk
             return "I want to experiment with these crystal hearts, apparently they do something that toughens your endurance? Maybe even make you look younger! Just think of the possibilities! ";
         }
 
-
+        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+            return WorldExplorer.savedClerk;
+        }
     }
 }

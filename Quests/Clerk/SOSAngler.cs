@@ -29,6 +29,8 @@ namespace ExpeditionsContent.Quests
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
+            if (!WorldExplorer.savedClerk) return false;
+
             if(cond1)
             {
                 expedition.conditionDescription2 = "Wake up the angler";
