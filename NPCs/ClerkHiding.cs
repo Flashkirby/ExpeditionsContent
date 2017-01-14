@@ -29,6 +29,8 @@ namespace ExpeditionsContent.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
             npc.rarity = 1;
+
+            NPCID.Sets.TownCritter[npc.type] = true;
         }
 
         public override float CanSpawn(NPCSpawnInfo spawnInfo)
