@@ -6,11 +6,11 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests
 {
-    class SOSStylist : ModExpedition
+    class SOSAngler : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Missing Persons: Stylist";
+            expedition.name = "Missing Persons: Angler";
             SetNPCHead(ExpeditionC.npcClerk);
             expedition.difficulty = 2;
             expedition.ctgExplore = true;
@@ -24,18 +24,18 @@ namespace ExpeditionsContent.Quests
         }
         public override string Description(bool complete)
         {
-            return "Hope you're not too busy: I've received word from a concerned individual that an explorer hasn't been heard from in quite a while. Her last known location is an unfortunately vague 'somewhere underground', but reports seem to suggest her route involved passing through a spider-infested tunnel. Assuming the worst, would you please investigate any web-laden caves you find. ";
+            return "Oh it's terrible! A kid was sighted in the waters off the coast... a survivor of a shipwreck perhaps? If you can, could you please head to the coast and see if you can find them? I do hope they're alright. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if(cond1)
             {
-                expedition.conditionDescription2 = "Free the stylist from the spider web";
+                expedition.conditionDescription2 = "Wake up the angler";
             }
 
             // Only active whilst stylist isn't saved yet, or the stylist has been saved (not just here)
-            return !NPC.savedStylist || cond2;
+            return !NPC.savedAngler || cond2;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -46,7 +46,7 @@ namespace ExpeditionsContent.Quests
                 Rectangle viewRect = Utils.CenteredRectangle(player.Center, new Vector2(400f, 400f));
                 for (int i = 0; i < 200; i++)
                 {
-                    if (Main.npc[i].type != NPCID.WebbedStylist) continue;
+                    if (Main.npc[i].type != NPCID.SleepingAngler) continue;
                     if(viewRect.Intersects(Main.npc[i].getRect()))
                     {
                         cond1 = true;
@@ -57,7 +57,7 @@ namespace ExpeditionsContent.Quests
             // Ensure it is only fulfilled when player is nearby when NPC is saved
             if(cond1 && !cond2)
             {
-                cond2 = NPC.savedStylist;
+                cond2 = NPC.savedAngler;
             }
             return base.CheckConditions(player, ref cond1, ref cond2, ref cond3, condCount);
         }
