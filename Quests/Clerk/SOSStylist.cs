@@ -24,7 +24,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "Hope you're not too busy: I've received word from a concerned individual that an explorer hasn't been heard from in quite a while. Her last known location is an unfortunately vague 'somewhere underground', but reports seem to suggest her route involved passing through a spider-infested tunnel. Assuming the worst, would you please investigate any web-laden caves you find. ";
+            return "Hope you're not too busy: I've received word from a concerned individual that an explorer hasn't been heard from in quite a while. Reports seem to suggest her route involved passing through a spider-infested tunnel. Assuming the worst, would you please investigate any web-laden caves you find. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
