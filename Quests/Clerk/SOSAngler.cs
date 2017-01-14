@@ -37,7 +37,7 @@ namespace ExpeditionsContent.Quests.Clerk
             }
 
             // Only active whilst stylist isn't saved yet, or the stylist has been saved (not just here)
-            return !NPC.savedAngler || cond2;
+            return !NPC.savedAngler || cond1;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
