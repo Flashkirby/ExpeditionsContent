@@ -42,7 +42,14 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.ACTownfolk());
             API.AddExpedition(this, new Quests.Core.ADHooks());
             API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
+            API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
+            API.AddExpedition(this, new Quests.Core.ADKingSlime());
+
             API.AddExpedition(this, new Quests.Core.BAEvilEye());
+            API.AddExpedition(this, new Quests.Core.BBHarbinger());
+            API.AddExpedition(this, new Quests.Core.BCBoss2());
+            API.AddExpedition(this, new Quests.Core.BCGoblins());
+            API.AddExpedition(this, new Quests.Core.BCMeteorite());
 
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
