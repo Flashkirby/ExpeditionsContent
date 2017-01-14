@@ -33,7 +33,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
             if (cond1)
             {
-                expedition.conditionDescription2 = "Free the stylist from the spider web";
+                expedition.conditionDescription2 = "Free the webbed stylist";
             }
 
             // Only active whilst stylist isn't saved yet, or the stylist has been saved (not just here)
