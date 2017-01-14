@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests
     {
         public override void SetDefaults()
         {
-            expedition.name = "Missing Persons: Angler";
+            expedition.name = "Missing Persons: Child";
             SetNPCHead(ExpeditionC.npcClerk);
             expedition.difficulty = 2;
             expedition.ctgExplore = true;
