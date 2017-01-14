@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsContent.Quests
+namespace ExpeditionsContent.Quests.Clerk
 {
     class SOSStylist : ModExpedition
     {
