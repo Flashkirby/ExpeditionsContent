@@ -9,9 +9,9 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "A Hearty Quest";
+            expedition.name = "Item: A Hearty Quest";
             SetNPCHead(ExpeditionC.npcClerk);
-            expedition.difficulty = 0;
+            expedition.difficulty = 2;
             expedition.ctgExplore = true;
             expedition.partyShare = true;
         }
@@ -24,7 +24,8 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "I want to experiment with these crystal hearts, apparently they do something that toughens your endurance? Maybe even make you look younger! Just think of the possibilities! And if this experiment works, I might have even have something in store for your troubles! ";
+            if (complete) return "So I was messing with those crystal hearts, and I seem to have made some kind of... compass? Either way it looks it responds to nearby hearts, so if you're still looking for more of those crystals, be sure to check in out in the store!";
+            return "I want to experiment with these crystal hearts, apparently they do something that toughens your endurance? Maybe even make you look younger! Just think of the possibilities! ";
         }
 
 
