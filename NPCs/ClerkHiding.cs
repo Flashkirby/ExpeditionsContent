@@ -54,18 +54,6 @@ namespace ExpeditionsContent.NPCs
             try
             {
                 int third = Main.maxTilesX / 3;
-                /*
-                if (ExpeditionsContent.DEBUG && !WorldExplore.savedClerk)
-                {
-                    Main.NewTextMultiline(
-                        (spawnInfo.spawnTileX > third && spawnInfo.spawnTileX < Main.maxTilesX - third) + ": In middle third\n" +
-                        (spawnInfo.player.ZoneOverworldHeight) + ": In the overworld\n" +
-                        ((int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type == TileID.Grass) + ": spawn tile is grass? : " + (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].type + "|" + (int)TileID.Grass + "\n" +
-                        ((int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe) + ": spawn tile is not dirt? : " + (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall + "|" + (int)WallID.DirtUnsafe + " or 196-199 \n" +
-                        ((int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY - 1].liquid == 0) + ": spawn tile is not submerged? : " + (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY - 1].liquid
-                        );
-                }
-                */
                 if (
                     // Within centre third of world
                     spawnInfo.spawnTileX > third && spawnInfo.spawnTileX < Main.maxTilesX - third &&
@@ -74,12 +62,7 @@ namespace ExpeditionsContent.NPCs
                     // Not near bad biomes
                     !spawnInfo.player.ZoneCorrupt &&
                     !spawnInfo.player.ZoneCrimson &&
-                    // Can only spawn with no natural dirt background or liquid (so in open air or grass tunnel)
-                    (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe &&
-                    (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe1 &&
-                    (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe2 &&
-                    (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe3 &&
-                    (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY].wall != WallID.DirtUnsafe4 &&
+                    // Can only spawn with no liquid (so in open air or grass tunnel)
                     (int)Main.tile[spawnInfo.spawnTileX, spawnInfo.spawnTileY - 1].liquid == 0 &&
                     // Not 'saved' yet
                     !WorldExplorer.savedClerk &&
@@ -89,6 +72,7 @@ namespace ExpeditionsContent.NPCs
                     )
                 {
                     // if (ExpeditionsContent.DEBUG) Main.NewText("Spawned succesfully!", 50, 255, 100);
+                    Main.NewText("Clerk can spawn");
                     return 1f; //guaranteed to spawn on next call (because we want to be found)
                 }
             }
@@ -106,10 +90,8 @@ namespace ExpeditionsContent.NPCs
                 npc.TargetClosest();
                 npc.direction = npc.direction * -1;
                 npc.spriteDirection = npc.direction;
-
-                npc.townNPC = true; //not a townNPC by default but this means you can talk to them
             }
-
+            
             //always invincible (to enemy npcs)
             npc.immune[255] = 30;
             
@@ -131,10 +113,21 @@ namespace ExpeditionsContent.NPCs
             if (type == TileID.Sand || type == TileID.HardenedSand)
                 npc.ai[3] = 4f;
 
+
+            npc.townNPC = false; //not a townNPC by default but this bool allows getChat
             //transform if someone be chatting me up
             foreach (Player p in Main.player)
             {
-                if(p.active && p.talkNPC == npc.whoAmI)
+                if (!p.active) continue;
+
+                if (!npc.townNPC)
+                {
+                    npc.townNPC = (Utils.CenteredRectangle(p.Center, 
+                        new Vector2(NPC.sWidth, NPC.sHeight)
+                        ).Intersects(npc.getRect()));
+                }
+
+                if (p.talkNPC == npc.whoAmI)
                 {
                     WakeUp();
                 }
