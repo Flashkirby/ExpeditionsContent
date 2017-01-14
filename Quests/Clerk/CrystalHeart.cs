@@ -18,6 +18,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void AddItemsOnLoad()
         {
             AddDeliverable(ItemID.LifeCrystal, 2);
+
             AddRewardItem(API.ItemIDExpeditionCoupon, 2);
             AddRewardMoney(Item.buyPrice(0, 0, 10, 0));
         }
