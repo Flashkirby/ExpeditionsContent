@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "Missing Persons: Redhead";
+            expedition.name = "Search and Rescue: Spiders";
             SetNPCHead(ExpeditionC.npcClerk);
             expedition.difficulty = 2;
             expedition.ctgExplore = true;
