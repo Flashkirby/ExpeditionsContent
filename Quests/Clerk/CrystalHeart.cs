@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return WorldExplorer.savedClerk;
+            return WorldExplorer.savedClerk && API.FindExpedition<Core.ACUnderground>(mod).completed;
         }
     }
 }
