@@ -17,7 +17,8 @@ namespace ExpeditionsContent {
         {
             Properties = new ModProperties()
             {
-                Autoload = true
+                Autoload = true,
+                AutoloadGores = true
             };
         }
 
