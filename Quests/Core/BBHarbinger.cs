@@ -76,6 +76,10 @@ namespace ExpeditionsContent.Quests.Core
                 else
                 { cond1 = player.ZoneCorrupt; }
             }
+
+            // Only appears until hardmode, or is done already
+            if (!expedition.completed && Main.hardMode) return false;
+
             // Appears once entering the biome or defeating the eye
             return cond1 || NPC.downedBoss1;
         }

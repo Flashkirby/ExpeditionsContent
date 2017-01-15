@@ -79,6 +79,9 @@ namespace ExpeditionsContent.Quests.Core
                 { expedition.conditionDescription2 = "Defeat the Eater of Worlds"; }
             }
 
+            // Only appears until hardmode, or is done already
+            if (!expedition.completed && Main.hardMode) return false;
+
             return cond1 || NPC.downedBoss1 || API.FindExpedition<BBHarbinger>(mod).completed;
         }
 

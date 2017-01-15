@@ -25,6 +25,10 @@ namespace ExpeditionsContent.Quests.Core
             return "Need some direction? The first thing you'll need to do is start collecting wood, and building yourself some shelter. Slimes drop gel when killed, which can be combined with wood to make torches. ";
         }
 
-
+        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+            // Only appears until first boss is beaten, or is done already
+            return expedition.completed || !NPC.downedBoss1;
+        }
     }
 }

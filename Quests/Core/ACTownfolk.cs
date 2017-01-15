@@ -29,6 +29,9 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
+            // Only appears until first boss is beaten, or is done already
+            if (!expedition.completed && !NPC.downedBoss1) return false;
+
             return API.FindExpedition<ABStartTown>(mod).completed;
         }
 

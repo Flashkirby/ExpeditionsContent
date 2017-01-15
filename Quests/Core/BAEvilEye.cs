@@ -54,6 +54,10 @@ namespace ExpeditionsContent.Quests.Core
             }
             else
             { expedition.conditionDescription2 = "Defeat the Eye of Cthulu"; }
+
+            // Only appears until hardmode, or is done already
+            if (!expedition.completed && Main.hardMode) return false;
+
             return player.statLifeMax >= 200 || cond1;
         }
 
