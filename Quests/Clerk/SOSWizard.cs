@@ -38,11 +38,11 @@ namespace ExpeditionsContent.Quests.Clerk
 
             if(!cond3)
             {
-                cond3 = NPC.FindFirstNPC(NPCID.Guide) != -1 && NPC.downedGoblins;
+                cond3 = Main.hardMode;
             }
 
             // Only active whilst npc isn't saved yet, or the npc has been saved (not just here)
-            return (!NPC.savedGoblin || cond1) && cond3;
+            return (!NPC.savedWizard || cond1) && cond3;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -53,7 +53,7 @@ namespace ExpeditionsContent.Quests.Clerk
                 Rectangle viewRect = Utils.CenteredRectangle(player.Center, new Vector2(400f, 400f));
                 for (int i = 0; i < 200; i++)
                 {
-                    if (Main.npc[i].type != NPCID.BoundGoblin) continue;
+                    if (Main.npc[i].type != NPCID.BoundWizard) continue;
                     if(viewRect.Intersects(Main.npc[i].getRect()))
                     {
                         cond1 = true;
@@ -64,7 +64,7 @@ namespace ExpeditionsContent.Quests.Clerk
             // Ensure it is only fulfilled when player is nearby when NPC is saved
             if(cond1 && !cond2)
             {
-                cond2 = NPC.savedGoblin;
+                cond2 = NPC.savedWizard;
             }
             return cond1 && cond2;
         }
