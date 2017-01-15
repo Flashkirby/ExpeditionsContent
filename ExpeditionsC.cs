@@ -53,12 +53,16 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.BCMeteorite());
 
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
-            API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
             API.AddExpedition(this, new Quests.Clerk.SOSAngler());
             API.AddExpedition(this, new Quests.Clerk.SOSStylist());
+            API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
             API.AddExpedition(this, new Quests.Clerk.SOSTinkerer());
             API.AddExpedition(this, new Quests.Clerk.SOSMechanic());
             API.AddExpedition(this, new Quests.MiscPre.DryadDD2());
+
+            // Hard Mode
+
+            API.AddExpedition(this, new Quests.Clerk.SOSWizard());
         }
 
         public static List<Point> heartTiles;
