@@ -60,6 +60,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.BDQBee());
             API.AddExpedition(this, new Quests.Core.BDDungeonSkell());
             API.AddExpedition(this, new Quests.Core.BDHellArmour());
+            API.AddExpedition(this, new Quests.Core.BETheWall());
 
             #endregion
 
