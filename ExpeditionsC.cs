@@ -74,6 +74,10 @@ namespace ExpeditionsContent {
 
             // Hard Mode
 
+            API.AddExpedition(this, new Quests.Core.CAHardMode());
+            API.AddExpedition(this, new Quests.Core.CBAltarBlessing());
+            API.AddExpedition(this, new Quests.Core.CCTracingSteps());
+
             API.AddExpedition(this, new Quests.Clerk.SOSWizard());
         }
 

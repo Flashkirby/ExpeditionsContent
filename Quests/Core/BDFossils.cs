@@ -41,8 +41,8 @@ namespace ExpeditionsContent.Quests.Core
             if (!cond2)
             {
                 if (player.armor[0].type == ItemID.FossilHelm &&
-                    player.armor[0].type == ItemID.FossilShirt &&
-                    player.armor[0].type == ItemID.FossilPants)
+                    player.armor[1].type == ItemID.FossilShirt &&
+                    player.armor[2].type == ItemID.FossilPants)
                 { cond2 = true; }
             }
             return cond1 && cond2;

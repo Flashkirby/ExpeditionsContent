@@ -43,8 +43,8 @@ namespace ExpeditionsContent.Quests.Core
             if (!cond3)
             {
                 if (player.armor[0].rare >= 4 &&
-                    player.armor[0].rare >= 4 &&
-                    player.armor[0].rare >= 4)
+                    player.armor[1].rare >= 4 &&
+                    player.armor[2].rare >= 4)
                 { cond3 = true; }
             }
             return cond1 && cond2 && cond3;
