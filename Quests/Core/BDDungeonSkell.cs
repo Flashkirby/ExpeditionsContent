@@ -22,8 +22,8 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            string message = "A good place to head to next would be the dungeon, where the restless skeletons protect powerful treasures. ";
-            if (complete) message += "The bones dropped by skeletons can also be used to craft a set of armor for ranged weapons. ";
+            string message = "A good place to head to next would be the dungeon, where restless skeletons protect powerful treasures. ";
+            if (complete) message += "The bones dropped by skeletons can also be used to craft a set of armor that excels when paired with ranged weapons. ";
             return message + "There is an old man there who should be able to help you gain entry. ";
         }
 
