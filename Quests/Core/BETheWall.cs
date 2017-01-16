@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             expedition.name = "The Final Test";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 3;
+            expedition.difficulty = 4;
             expedition.ctgSlay = true;
             expedition.ctgImportant = true;
 
