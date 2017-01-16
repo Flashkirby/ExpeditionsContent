@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.Core
     {
         public override void SetDefaults()
         {
-            expedition.name = "Royal Beatdown";
+            expedition.name = "Slimy Monarch";
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 0;
             expedition.ctgSlay = true;

@@ -32,7 +32,10 @@ namespace ExpeditionsContent {
             heartTiles = new List<Point>();
             fruitTiles = new List<Point>();
             
+
             API.AddExpedition(this, new Quests.MiscPre.MakingBase());
+
+            #region Core Quests
 
             API.AddExpedition(this, new Quests.Core.AAWelcomeQuest());
             API.AddExpedition(this, new Quests.Core.ABSmeltOres());
@@ -51,6 +54,14 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.BCBoss2());
             API.AddExpedition(this, new Quests.Core.BCGoblins());
             API.AddExpedition(this, new Quests.Core.BCMeteorite());
+
+            API.AddExpedition(this, new Quests.Core.BDJungles());
+            API.AddExpedition(this, new Quests.Core.BDFossils());
+            API.AddExpedition(this, new Quests.Core.BDQBee());
+            API.AddExpedition(this, new Quests.Core.BDDungeonSkell());
+            API.AddExpedition(this, new Quests.Core.BDHellArmour());
+
+            #endregion
 
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
             API.AddExpedition(this, new Quests.Clerk.SOSAngler());

@@ -16,7 +16,6 @@ namespace ExpeditionsContent.Quests.Core
             expedition.ctgImportant = true;
 
             expedition.conditionDescription1 = "Face the goblin army";
-            expedition.conditionDescription2 = "Defeat the goblin army";
         }
         public override void AddItemsOnLoad()
         {
@@ -29,7 +28,12 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            bool tatteredCloth = false;
+            if (cond1)
+            { expedition.conditionDescription2 = "Defeat the goblin army"; }
+            else
+            { expedition.conditionDescription2 = ""; }
+
+                bool tatteredCloth = false;
             foreach (Item i in player.inventory) if (i.type == ItemID.TatteredCloth) tatteredCloth = true;
             return WorldGen.shadowOrbSmashed && (cond1 || tatteredCloth || Main.invasionType == 1);
         }

@@ -14,7 +14,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
 
-            expedition.conditionDescription1 = "Reach 40 maximum mana";
+            expedition.conditionDescription1 = "Reach 40 maximum base mana";
         }
         public override void AddItemsOnLoad()
         {
