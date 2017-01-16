@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             expedition.name = "The Strongest Muscle";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 0;
+            expedition.difficulty = 1;
             expedition.ctgCollect = true;
             expedition.ctgImportant = true;
 

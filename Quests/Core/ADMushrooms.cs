@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             expedition.name = "Mushroom Trip";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 0;
+            expedition.difficulty = 1;
             expedition.ctgExplore = true;
 
             expedition.conditionDescription1 = "Find a mushroom biome";

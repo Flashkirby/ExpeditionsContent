@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             expedition.name = "Evil Boss Round 2";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 1;
+            expedition.difficulty = 2;
             expedition.ctgSlay = true;
             expedition.ctgImportant = true;
 

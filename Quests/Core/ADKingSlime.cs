@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             expedition.name = "Slimy Monarch";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 0;
+            expedition.difficulty = 1;
             expedition.ctgSlay = true;
 
             expedition.conditionDescription1 = "Face the crowned slime";

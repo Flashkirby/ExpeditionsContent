@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             expedition.name = "Magic Space Rock";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 1;
+            expedition.difficulty = 2;
             expedition.ctgExplore = true;
 
             expedition.conditionDescription1 = "Craft a meteorite bar";

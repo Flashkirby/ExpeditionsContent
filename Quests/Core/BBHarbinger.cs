@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             expedition.name = "Harbinger of Doom";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 1;
+            expedition.difficulty = 2;
             expedition.ctgExplore = true;
             expedition.ctgImportant = true;
 

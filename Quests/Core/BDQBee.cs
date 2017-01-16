@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.Core
     {
         public override void SetDefaults()
         {
-            expedition.name = "Royal Beetdown";
+            expedition.name = "Royal Beeatdown";
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 3;
             expedition.ctgSlay = true;
