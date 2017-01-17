@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Items
         /// </summary>
         public override void SetDefaults()
         {
-            item.name = "Mystic Eyepiece";
+            item.name = "Enchanted Lens";
             item.toolTip = "Reveals nearby life fruit on the Full Map";
             item.width = 28;
             item.height = 30;
