@@ -13,6 +13,7 @@ namespace ExpeditionsContent.Quests.Core
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 4;
             expedition.ctgExplore = true;
+            expedition.ctgImportant = true;
 
             expedition.conditionDescription1 = "Install an advanced anvil";
             expedition.conditionDescription2 = "Install a stronger forge";

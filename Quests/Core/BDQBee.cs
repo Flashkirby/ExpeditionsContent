@@ -13,6 +13,7 @@ namespace ExpeditionsContent.Quests.Core
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 3;
             expedition.ctgSlay = true;
+            expedition.ctgImportant = true;
 
             expedition.conditionDescription1 = "Face the hive guardian";
         }
