@@ -37,6 +37,7 @@ namespace ExpeditionsContent {
 
             #region Core Quests
 
+            //Block 1
             API.AddExpedition(this, new Quests.Core.AAWelcomeQuest());
             API.AddExpedition(this, new Quests.Core.ABSmeltOres());
             API.AddExpedition(this, new Quests.Core.ABStartTown());
@@ -48,13 +49,13 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
             API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
             API.AddExpedition(this, new Quests.Core.ADKingSlime());
-
+            //Block 2
             API.AddExpedition(this, new Quests.Core.BAEvilEye());
             API.AddExpedition(this, new Quests.Core.BBHarbinger());
             API.AddExpedition(this, new Quests.Core.BCBoss2());
             API.AddExpedition(this, new Quests.Core.BCGoblins());
             API.AddExpedition(this, new Quests.Core.BCMeteorite());
-
+            //Block 3
             API.AddExpedition(this, new Quests.Core.BDJungles());
             API.AddExpedition(this, new Quests.Core.BDFossils());
             API.AddExpedition(this, new Quests.Core.BDQBee());
@@ -74,8 +75,12 @@ namespace ExpeditionsContent {
 
             // Hard Mode
 
+            #region Core Quests Hard
+
+            //Block 4
             API.AddExpedition(this, new Quests.Core.CAHardMode());
             API.AddExpedition(this, new Quests.Core.CBAltarBlessing());
+            API.AddExpedition(this, new Quests.Core.CBSoaringSkies());
             API.AddExpedition(this, new Quests.Core.CCTracingSteps());
             API.AddExpedition(this, new Quests.Core.CCLivingLoot());
             API.AddExpedition(this, new Quests.Core.CCGreenFlames());
@@ -83,6 +88,9 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.CCBloodOfGods());
             API.AddExpedition(this, new Quests.Core.CCAvatarOfFrost());
             API.AddExpedition(this, new Quests.Core.CCForbiddenSun());
+            //Block 5
+
+            #endregion
 
             API.AddExpedition(this, new Quests.Clerk.SOSWizard());
         }

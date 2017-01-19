@@ -9,10 +9,44 @@ namespace ExpeditionsContent.Quests.Core
     {
         public override void SetDefaults()
         {
-            expedition.name = "Metal Worm";
+            expedition.name = "Mechanical Mayhem";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 5;
+            expedition.difficulty = 6;
             expedition.ctgSlay = true;
+            expedition.ctgImportant = true;
+
+            expedition.conditionDescription1 = "Face the burrowing war machine";
+        }
+        public override void AddItemsOnLoad()
+        {
+            AddRewardMoney(Item.buyPrice(0, 3, 0, 0));
+        }
+        public override string Description(bool complete)
+        {
+            return "Deep beneath the earth lies a humongous war machine that draws closer every night. Despite its size it's a quite slow, and you may find piercing weapons advantageous in combat. ";
+        }
+
+        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+            if (!cond1)
+            {
+                expedition.conditionDescription2 = "";
+                cond1 = API.LastHitNPC.type == NPCID.TheDestroyer
+                    || API.LastHitNPC.type == NPCID.TheDestroyerBody
+                    || API.LastHitNPC.type == NPCID.TheDestroyerTail
+                    || API.LastHitNPC.type == NPCID.Probe;
+            }
+            else
+            { expedition.conditionDescription2 = "Defeat The Destroyer"; }
+
+            return API.FindExpedition<CCTracingSteps>(mod).completed || cond1 || cond3;
+        }
+
+        public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+
+            if (cond1 && !cond2) cond2 = NPC.downedMechBoss1;
+            return cond1 && cond2;
         }
     }
 }
