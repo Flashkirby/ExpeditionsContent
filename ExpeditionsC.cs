@@ -25,6 +25,11 @@ namespace ExpeditionsContent {
         private static int _npcClerk;
         public static int npcClerk { get { return _npcClerk; } }
 
+        public const int InvasionIDGoblins = 1;
+        public const int InvasionIDFrostLegion = 2;
+        public const int InvasionIDPirates = 3;
+        public const int InvasionIDMartians = 4;
+
         public override void Load()
         {
             _npcClerk = NPCType("Clerk");

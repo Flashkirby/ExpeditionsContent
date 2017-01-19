@@ -5,60 +5,60 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.Core
 {
-    class BCGoblins : ModExpedition
+    class CASnowArmy : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "The Goblin Hoard";
+            expedition.name = "Winter Hostilities";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 2;
-            expedition.ctgSlay = true;
-            expedition.ctgImportant = true;
+            expedition.difficulty = 4;
+            expedition.ctgExplore = true;
 
-            expedition.conditionDescription1 = "Face the goblin army";
+            expedition.conditionDescription1 = "Face the army of snowmen";
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
+            AddRewardMoney(Item.buyPrice(0, 4, 0, 0));
+            AddRewardItem(ItemID.PeaceCandle, 1);
+            AddRewardItem(ItemID.WaterCandle, 1);
         }
         public override string Description(bool complete)
         {
-            return "Tattered cloths are carried by goblin scouts, wandering not too far from the coastlines. With enough cloth and wood at a loom, you can craft an item to prematurely declare war with the goblins before they invade of their own accord. Surely there must be peacful goblins somewhere. ";
+            return "If you're lucky, a present might contain a Snow Globe - using one will summon the Frost Legion. They say those who prove their might against the legion may soon be visited by a... jovial fellow. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (cond1)
-            { expedition.conditionDescription2 = "Defeat the goblin army"; }
+            { expedition.conditionDescription2 = "Defeat the Frost Legion"; }
             else
             { expedition.conditionDescription2 = ""; }
 
-            if (!cond3)
-            {
-                foreach (Item i in player.inventory) if (i.type == ItemID.TatteredCloth) cond3 = true;
-            }
-            return WorldGen.shadowOrbSmashed || (cond1 || cond3 || Main.invasionType == ExpeditionC.InvasionIDGoblins);
+            // Only appears during christmas
+            if (!expedition.completed && !Main.xMas) return false;
+
+            // Appears only in a hardmode world
+            return Main.hardMode;
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
         {
-            if(!expedition.condition1Met)
+            if (!expedition.condition1Met)
             {
                 expedition.condition1Met =
-                    npc.type == NPCID.GoblinPeon ||
-                    npc.type == NPCID.GoblinThief ||
-                    npc.type == NPCID.GoblinWarrior ||
-                    npc.type == NPCID.GoblinSorcerer;
+                    npc.type == NPCID.SnowBalla ||
+                    npc.type == NPCID.SnowmanGangsta ||
+                    npc.type == NPCID.MisterStabby;
             }
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
-            if (Main.invasionType == ExpeditionC.InvasionIDGoblins)
+            if (Main.invasionType == ExpeditionC.InvasionIDFrostLegion)
             {
                 expedition.conditionCounted = Main.invasionProgress;
                 expedition.conditionCountedMax = Main.invasionProgressMax;
-                expedition.conditionDescriptionCountable = "Slay goblins";
+                expedition.conditionDescriptionCountable = "Slay snowmen";
             }
             else
             {
@@ -70,9 +70,9 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if(cond1 && !cond2)
+            if (cond1 && !cond2)
             {
-                cond2 = NPC.downedGoblins;
+                cond2 = NPC.downedFrost;
             }
             return cond1 && cond2;
         }
