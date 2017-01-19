@@ -42,10 +42,11 @@ namespace ExpeditionsContent.Quests.Core
         {
             if (!expedition.condition1Met)
             {
-                expedition.condition1Met = npc.type == NPCID.TheDestroyer
-                    || npc.type == NPCID.TheDestroyerBody
-                    || npc.type == NPCID.TheDestroyerTail
-                    || npc.type == NPCID.Probe;
+                expedition.condition1Met =
+                    npc.type == NPCID.TheDestroyer ||
+                    npc.type == NPCID.TheDestroyerBody ||
+                    npc.type == NPCID.TheDestroyerTail ||
+                    npc.type == NPCID.Probe;
             }
         }
 

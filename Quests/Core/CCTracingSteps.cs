@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.Core
     {
         public override void SetDefaults()
         {
-            expedition.name = "New and Improved";
+            expedition.name = "Back to Basics";
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 4;
             expedition.ctgExplore = true;
@@ -25,7 +25,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "Breaking altars blesses the world with powerful materials, but also further spreads the spirits of light and dark. Terraria won't be holding back anymore, so my best advice is to begin upgrading your equipment by mining the new ores. ";
+            return "Breaking altars blesses the world with powerful materials, but also further spreads the spirits of light and dark. Terraria won't be holding back anymore, so my best advice is to begin upgrading your equipment by mining new ores. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
