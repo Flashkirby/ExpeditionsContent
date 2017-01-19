@@ -23,7 +23,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "Deep beneath the earth lies a humongous war machine that draws closer every night. Despite its size it's a quite slow, and you may find piercing weapons advantageous in combat. ";
+            return "Deep beneath the earth lies a humongous war machine that draws closer every night. Despite its size it is quite lumbersome, you may find piercing weapons advantageous against it. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -35,7 +35,8 @@ namespace ExpeditionsContent.Quests.Core
             else
             { expedition.conditionDescription2 = "Defeat The Destroyer"; }
 
-            return API.FindExpedition<CCTracingSteps>(mod).completed || cond1 || cond3;
+            // When tracing steps is cleared, or fighting the boss
+            return API.FindExpedition<CBTracingSteps>(mod).completed || cond1;
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit)

@@ -27,6 +27,8 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
+            if (Main.hardMode) return false;
+
             // Only appears until first boss is beaten, or is done already
             return expedition.completed || !NPC.downedBoss1;
         }

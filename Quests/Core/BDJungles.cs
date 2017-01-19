@@ -23,7 +23,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "The materials found in the underground jungle can be used to craft armor that will improve your magic weapons. Should you find yourself using hefty amounts of magic, this would be a good set of armor to pick up. ";
+            return "The materials found in the underground jungle can be used to craft armor that will improve your magic capability. Should you find yourself using hefty amounts of mana, this would be a good set of armor to pick up. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

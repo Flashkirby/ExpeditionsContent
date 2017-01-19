@@ -24,7 +24,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "Well done! You've got your first townsfolk. If you want to expand, be sure to build more homes; people will not share rooms with each other. Keep in mind, townsfolk will usually look for something before moving in. ";
+            return "Well done! Your town has its first citizen. If you want to expand, be sure to build more homes; people will not share rooms with each other. Keep in mind, townsfolk will usually look for something before moving in. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

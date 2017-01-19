@@ -31,15 +31,15 @@ namespace ExpeditionsContent.Quests.Core
             // Only appears until plantera is defeated, or is done already
             if (!expedition.completed && NPC.downedPlantBoss) return false;
 
-            if (!expedition.condition3Met)
+            if (!cond3)
             {
-                expedition.condition3Met =
-                    player.inventory[player.selectedItem].type == ItemID.AdamantiteBar ||
-                    player.inventory[player.selectedItem].type == ItemID.TitaniumBar;
+                cond3 =
+                    API.InInventory[ItemID.AdamantiteBar] ||
+                    API.InInventory[ItemID.TitaniumBar];
             }
 
-            // Appears once adamantite reached and altar smashing turned in chain starts
-            return expedition.condition3Met && API.FindExpedition<CBAltarBlessing>(mod).completed;
+            // Appears once adamantite reached or hit elemental
+            return cond3 || cond1;
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit)

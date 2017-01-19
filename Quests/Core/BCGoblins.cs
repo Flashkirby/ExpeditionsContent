@@ -37,7 +37,7 @@ namespace ExpeditionsContent.Quests.Core
             {
                 foreach (Item i in player.inventory) if (i.type == ItemID.TatteredCloth) cond3 = true;
             }
-            return WorldGen.shadowOrbSmashed && (cond1 || cond3 || Main.invasionType == 1);
+            return WorldGen.shadowOrbSmashed || (cond1 || cond3 || Main.invasionType == 1);
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
@@ -48,7 +48,23 @@ namespace ExpeditionsContent.Quests.Core
                     npc.type == NPCID.GoblinPeon ||
                     npc.type == NPCID.GoblinThief ||
                     npc.type == NPCID.GoblinWarrior ||
-                    npc.type == NPCID.GoblinSorcerer
+                    npc.type == NPCID.GoblinSorcerer;
+            }
+        }
+
+        public override void CheckConditionCountable(Player player, ref int count, int max)
+        {
+            if (Main.invasionType == 1)
+            {
+                expedition.conditionCounted = Main.invasionProgress;
+                expedition.conditionCountedMax = Main.invasionProgressMax;
+                expedition.conditionDescriptionCountable = "Slay goblins";
+            }
+            else
+            {
+                expedition.conditionCounted = 0;
+                expedition.conditionCountedMax = 0;
+                expedition.conditionDescriptionCountable = "";
             }
         }
 

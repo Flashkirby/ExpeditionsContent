@@ -33,11 +33,11 @@ namespace ExpeditionsContent.Quests.Core
 
             if (!expedition.condition1Met)
             {
-                expedition.condition1Met = player.ZoneHoly && player.ZoneRockLayerHeight;
+                expedition.condition1Met = player.ZoneHoly && (player.ZoneDirtLayerHeight || player.ZoneRockLayerHeight);
             }
 
             // Appears once altar smashing turned in chain starts and in the hallow
-            return API.FindExpedition<CBAltarBlessing>(mod).completed && expedition.condition1Met;
+            return Main.hardMode && expedition.condition1Met;
         }
     }
 }

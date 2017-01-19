@@ -5,7 +5,7 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.Core
 {
-    class CCTracingSteps : ModExpedition
+    class CBTracingSteps : ModExpedition
     {
         public override void SetDefaults()
         {
@@ -25,7 +25,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "Breaking altars blesses the world with powerful materials, but also further spreads the spirits of light and dark. Terraria won't be holding back anymore, so my best advice is to begin upgrading your equipment by mining new ores. ";
+            return "Terraria won't be holding back anymore, so my best advice is to begin upgrading your equipment. Breaking altars would be a good idea, as would opening any crates you may have lying around. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -33,8 +33,8 @@ namespace ExpeditionsContent.Quests.Core
             // Only appears until all mech boss defeated (hence hallowed), or is done already
             if (!expedition.completed && NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3) return false;
 
-            // Appears once altar smashing turned in chain starts
-            return API.FindExpedition<CBAltarBlessing>(mod).completed;
+            // Appears once hardmode quest chain starts
+            return API.FindExpedition<CAHardMode>(mod).completed;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

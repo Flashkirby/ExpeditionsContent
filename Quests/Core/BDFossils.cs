@@ -37,7 +37,12 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1) cond1 = Main.screenTileCounts[TileID.Extractinator] > 0;
+            if (!cond1)
+            {
+                cond1 = 
+                    Main.screenTileCounts[TileID.Extractinator] > 0 ||
+                    API.InInventory[ItemID.Extractinator];
+            }
             if (!cond2)
             {
                 if (player.armor[0].type == ItemID.FossilHelm &&

@@ -31,8 +31,13 @@ namespace ExpeditionsContent.Quests.Core
             // Only appears until plantera is defeated, or is done already
             if (!expedition.completed && NPC.downedPlantBoss) return false;
 
+            if(!cond1 && !WorldGen.crimson)
+            {
+                cond1 = player.ZoneCrimson;
+            }
+
             // Appears once altar smashing turned in chain starts and corruption world
-            return API.FindExpedition<CBAltarBlessing>(mod).completed && !WorldGen.crimson;
+            return API.FindExpedition<CBTracingSteps>(mod).completed && (!WorldGen.crimson || cond1);
         }
     }
 }

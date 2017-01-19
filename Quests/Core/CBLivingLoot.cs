@@ -5,7 +5,7 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.Core
 {
-    class CCLivingLoot : ModExpedition
+    class CBLivingLoot : ModExpedition
     {
         public override void SetDefaults()
         {
@@ -32,8 +32,8 @@ namespace ExpeditionsContent.Quests.Core
             // Only appears until plantera is defeated, or is done already
             if (!expedition.completed && NPC.downedPlantBoss) return false;
 
-            // Appears once altar smashing turned in chain starts
-            return API.FindExpedition<CBAltarBlessing>(mod).completed;
+            // Appears once hardmode quest chain starts
+            return API.FindExpedition<CAHardMode>(mod).completed;
         }
 
         public override void OnKillNPC(NPC npc)

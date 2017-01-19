@@ -79,15 +79,6 @@ namespace ExpeditionsContent {
 
             //Block 4
             API.AddExpedition(this, new Quests.Core.CAHardMode());
-            API.AddExpedition(this, new Quests.Core.CBAltarBlessing());
-            API.AddExpedition(this, new Quests.Core.CBSoaringSkies());
-            API.AddExpedition(this, new Quests.Core.CCTracingSteps());
-            API.AddExpedition(this, new Quests.Core.CCLivingLoot());
-            API.AddExpedition(this, new Quests.Core.CCGreenFlames());
-            API.AddExpedition(this, new Quests.Core.CCCrystalShards());
-            API.AddExpedition(this, new Quests.Core.CCBloodOfGods());
-            API.AddExpedition(this, new Quests.Core.CCAvatarOfFrost());
-            API.AddExpedition(this, new Quests.Core.CCForbiddenSun());
             //Block 5
 
             #endregion

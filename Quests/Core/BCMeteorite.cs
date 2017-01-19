@@ -22,7 +22,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "Destroying the " + (WorldGen.crimson ? "crimson hearts" : "shadow orbs") + " sometimes brings meteors to align, crashing into " + Main.worldName + ". You will need a pickaxe of at least 50% power to mine it. Be careful though as the meteorite will be extremely hot, and without the correct protection it can cause serious injury. ";
+            return "Destroying the " + (WorldGen.crimson ? "crimson hearts" : "shadow orbs") + " sometimes causes meteors to fall out of the sky. You will need a pickaxe of at least 50% power to mine it. Be careful though as the meteorite will be extremely hot, and without the correct protection it can cause serious injury. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -31,15 +31,16 @@ namespace ExpeditionsContent.Quests.Core
             return expedition.completed || (WorldGen.shadowOrbSmashed && !Main.hardMode);
         }
 
+        public override void OnCraftItem(Item item, Recipe recipe)
+        {
+            if(!expedition.condition1Met)
+            {
+                expedition.condition1Met = API.InInventory[ItemID.MeteoriteBar];
+            }
+        }
+
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
-            {
-                if (player.inventory[player.selectedItem].type == ItemID.MeteoriteBar)
-                {
-                    cond1 = true;
-                }
-            }
             return cond1;
         }
     }

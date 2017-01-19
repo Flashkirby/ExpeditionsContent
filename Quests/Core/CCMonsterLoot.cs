@@ -5,7 +5,7 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.Core
 {
-    class CDMonsterLoot : ModExpedition
+    class CCMonsterLoot : ModExpedition
     {
         public override void SetDefaults()
         {
@@ -38,7 +38,7 @@ namespace ExpeditionsContent.Quests.Core
             { expedition.conditionDescription2 = ""; }
 
             // Appears once altar smashing turned in chain starts
-            return API.FindExpedition<CCLivingLoot>(mod).completed || cond1;
+            return API.FindExpedition<CBLivingLoot>(mod).completed || cond1;
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
@@ -50,7 +50,7 @@ namespace ExpeditionsContent.Quests.Core
                     npc.type == NPCID.BigMimicJungle;
         }
 
-        public override void OnKillNPC(NPC npc)
+        public override void OnAnyNPCDeath(NPC npc)
         {
             if (!expedition.condition2Met) expedition.condition2Met =
                     npc.type == NPCID.BigMimicHallow ||
