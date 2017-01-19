@@ -36,9 +36,13 @@ namespace ExpeditionsContent.Quests.Core
             return API.FindExpedition<CBAltarBlessing>(mod).completed;
         }
 
+        public override void OnKillNPC(NPC npc)
+        {
+            if (!expedition.condition1Met) expedition.condition1Met = npc.type == NPCID.Mimic;
+        }
+        
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1) cond1 = API.LastKilledNPC.type == NPCID.Mimic;
             return cond1;
         }
     }
