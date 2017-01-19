@@ -29,18 +29,23 @@ namespace ExpeditionsContent.Quests.Core
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!cond1)
-            {
-                expedition.conditionDescription2 = "";
-                cond1 = API.LastHitNPC.type == NPCID.SkeletronPrime
-                    || API.LastHitNPC.type == NPCID.PrimeCannon
-                    || API.LastHitNPC.type == NPCID.PrimeLaser
-                    || API.LastHitNPC.type == NPCID.PrimeSaw
-                    || API.LastHitNPC.type == NPCID.PrimeVice;
-            }
+            { expedition.conditionDescription2 = ""; }
             else
             { expedition.conditionDescription2 = "Defeat Skeletron Prime"; }
 
             return API.FindExpedition<CCTracingSteps>(mod).completed || cond1 || cond3;
+        }
+
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            if (!expedition.condition1Met)
+            {
+                expedition.condition1Met = npc.type == NPCID.SkeletronPrime
+                    || npc.type == NPCID.PrimeCannon
+                    || npc.type == NPCID.PrimeLaser
+                    || npc.type == NPCID.PrimeSaw
+                    || npc.type == NPCID.PrimeVice;
+            }
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

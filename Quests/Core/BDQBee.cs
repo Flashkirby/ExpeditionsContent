@@ -40,13 +40,14 @@ namespace ExpeditionsContent.Quests.Core
             return API.FindExpedition<BCBoss2>(mod).completed;
         }
 
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            if (!expedition.condition1Met)
+                expedition.condition1Met = npc.type == NPCID.QueenBee;
+        }
+
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
-            {
-                int type = API.LastHitNPC.type;
-                cond1 = (type == NPCID.QueenBee);
-            }
             if (cond1 && !cond2)
             {
                 cond2 = NPC.downedQueenBee;

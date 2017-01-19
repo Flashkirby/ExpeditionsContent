@@ -31,15 +31,22 @@ namespace ExpeditionsContent.Quests.Core
             if (!cond1)
             {
                 expedition.conditionDescription2 = "";
-                cond1 = API.LastHitNPC.type == NPCID.TheDestroyer
-                    || API.LastHitNPC.type == NPCID.TheDestroyerBody
-                    || API.LastHitNPC.type == NPCID.TheDestroyerTail
-                    || API.LastHitNPC.type == NPCID.Probe;
             }
             else
             { expedition.conditionDescription2 = "Defeat The Destroyer"; }
 
             return API.FindExpedition<CCTracingSteps>(mod).completed || cond1 || cond3;
+        }
+
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            if (!expedition.condition1Met)
+            {
+                expedition.condition1Met = npc.type == NPCID.TheDestroyer
+                    || npc.type == NPCID.TheDestroyerBody
+                    || npc.type == NPCID.TheDestroyerTail
+                    || npc.type == NPCID.Probe;
+            }
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

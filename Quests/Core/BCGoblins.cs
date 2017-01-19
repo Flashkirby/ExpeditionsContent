@@ -33,23 +33,27 @@ namespace ExpeditionsContent.Quests.Core
             else
             { expedition.conditionDescription2 = ""; }
 
-                bool tatteredCloth = false;
-            foreach (Item i in player.inventory) if (i.type == ItemID.TatteredCloth) tatteredCloth = true;
-            return WorldGen.shadowOrbSmashed && (cond1 || tatteredCloth || Main.invasionType == 1);
+            if (!cond3)
+            {
+                foreach (Item i in player.inventory) if (i.type == ItemID.TatteredCloth) cond3 = true;
+            }
+            return WorldGen.shadowOrbSmashed && (cond1 || cond3 || Main.invasionType == 1);
+        }
+
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            if(!expedition.condition1Met)
+            {
+                expedition.condition1Met =
+                    npc.type == NPCID.GoblinPeon ||
+                    npc.type == NPCID.GoblinThief ||
+                    npc.type == NPCID.GoblinWarrior ||
+                    npc.type == NPCID.GoblinSorcerer
+            }
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
-            {
-                int type = API.LastHitNPC.type;
-                cond1 = (
-                    type == NPCID.GoblinPeon ||
-                    type == NPCID.GoblinThief ||
-                    type == NPCID.GoblinWarrior ||
-                    type == NPCID.GoblinSorcerer
-                    );
-            }
             if(cond1 && !cond2)
             {
                 cond2 = NPC.downedGoblins;

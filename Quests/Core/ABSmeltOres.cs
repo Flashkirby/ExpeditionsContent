@@ -33,11 +33,11 @@ namespace ExpeditionsContent.Quests.Core
             return API.FindExpedition<AAWelcomeQuest>(mod).completed;
         }
 
-        public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        public override void OnCraftItem(Item item, Recipe recipe)
         {
-            if(!cond1)
+            if (!expedition.condition1Met)
             {
-                int type = player.inventory[player.selectedItem].type;
+                int type = item.type;
                 if (type == ItemID.CopperBar ||
                     type == ItemID.TinBar ||
                     type == ItemID.IronBar ||
@@ -48,11 +48,15 @@ namespace ExpeditionsContent.Quests.Core
                     type == ItemID.PlatinumBar ||
                     type == ItemID.DemoniteBar ||
                     type == ItemID.CrimtaneBar ||
-                    type == ItemID.MeteoriteBar )
+                    type == ItemID.MeteoriteBar)
                 {
-                    cond1 = true;
+                    expedition.condition1Met = true;
                 }
             }
+        }
+
+        public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
             return cond1;
         }
     }

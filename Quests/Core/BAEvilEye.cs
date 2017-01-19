@@ -50,7 +50,6 @@ namespace ExpeditionsContent.Quests.Core
             if (!cond1)
             {
                 expedition.conditionDescription2 = "";
-                cond1 = API.LastHitNPC.type == NPCID.EyeofCthulhu;
             }
             else
             { expedition.conditionDescription2 = "Defeat the Eye of Cthulu"; }
@@ -59,6 +58,12 @@ namespace ExpeditionsContent.Quests.Core
             if (!expedition.completed && Main.hardMode) return false;
 
             return player.statLifeMax >= 200 || cond1;
+        }
+
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            if (!expedition.condition1Met)
+                expedition.condition1Met = npc.type == NPCID.EyeofCthulhu;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

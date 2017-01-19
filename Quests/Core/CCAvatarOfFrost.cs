@@ -42,9 +42,14 @@ namespace ExpeditionsContent.Quests.Core
             return expedition.condition3Met && API.FindExpedition<CBAltarBlessing>(mod).completed;
         }
 
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            if (!expedition.condition1Met)
+                expedition.condition1Met = npc.type == NPCID.IceGolem;
+        }
+
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1) cond1 = API.LastHitNPC.type == NPCID.IceGolem;
             if (!cond2)
             {
                 if (player.armor[0].type == ItemID.FrostHelmet &&

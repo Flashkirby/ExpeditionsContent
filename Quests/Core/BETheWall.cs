@@ -48,13 +48,14 @@ namespace ExpeditionsContent.Quests.Core
             // Only appears until an altar is smashed, or is done already
             if (!expedition.completed && WorldGen.altarCount > 0) return false;
 
-            // Appears once any late prehard quest is complete
+            // Appears once any late prehard quest is complete or wall prematurely faced
             return 
                 API.FindExpedition<BDJungles>(mod).completed ||
                 API.FindExpedition<BDFossils>(mod).completed ||
                 API.FindExpedition<BDQBee>(mod).completed ||
                 API.FindExpedition<BDDungeonSkell>(mod).completed ||
-                API.FindExpedition<BDHellArmour>(mod).completed
+                API.FindExpedition<BDHellArmour>(mod).completed || 
+                cond1
                 ;
         }
 

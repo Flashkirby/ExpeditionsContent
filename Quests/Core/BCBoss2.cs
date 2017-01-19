@@ -61,15 +61,6 @@ namespace ExpeditionsContent.Quests.Core
             if (!cond1) 
             {
                 expedition.conditionDescription2 = "";
-                if (WorldGen.crimson)
-                { cond1 = API.LastHitNPC.type == NPCID.BrainofCthulhu; }
-                else
-                {
-                    cond1 = (
-                        API.LastHitNPC.type == NPCID.EaterofWorldsHead ||
-                        API.LastHitNPC.type == NPCID.EaterofWorldsBody ||
-                        API.LastHitNPC.type == NPCID.EaterofWorldsTail);
-                }
             }
             else
             {
@@ -83,6 +74,24 @@ namespace ExpeditionsContent.Quests.Core
             if (!expedition.completed && Main.hardMode) return false;
 
             return cond1 || NPC.downedBoss1 || API.FindExpedition<BBHarbinger>(mod).completed;
+        }
+
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            if (WorldGen.crimson)
+            {
+                if (!expedition.condition1Met)
+                    expedition.condition1Met =
+                            npc.type == NPCID.BrainofCthulhu;
+            }
+            else
+            {
+                if (!expedition.condition1Met)
+                    expedition.condition1Met =
+                            npc.type == NPCID.EaterofWorldsHead ||
+                            npc.type == NPCID.EaterofWorldsBody ||
+                            npc.type == NPCID.EaterofWorldsTail;
+            }
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)

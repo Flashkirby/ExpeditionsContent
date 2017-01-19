@@ -36,13 +36,18 @@ namespace ExpeditionsContent.Quests.Core
             if (!cond1)
             {
                 expedition.conditionDescription2 = "";
-                cond1 = API.LastHitNPC.type == NPCID.KingSlime;
             }
             else
             { expedition.conditionDescription2 = "Defeat the King Slime"; }
 
             if (!cond3) cond3 = Main.slimeRain;
             return API.FindExpedition<ACUnderground>(mod).completed || cond1 || cond3;
+        }
+
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            if (!expedition.condition1Met)
+                expedition.condition1Met = npc.type == NPCID.KingSlime;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

@@ -42,18 +42,23 @@ namespace ExpeditionsContent.Quests.Core
             return API.FindExpedition<CAHardMode>(mod).completed;
         }
 
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        {
+            
+            if (!expedition.condition1Met)
+            {
+                expedition.condition1Met =
+                  npc.type == NPCID.WyvernHead ||
+                  npc.type == NPCID.WyvernBody ||
+                  npc.type == NPCID.WyvernBody2 ||
+                  npc.type == NPCID.WyvernBody3 ||
+                  npc.type == NPCID.WyvernLegs ||
+                  npc.type == NPCID.WyvernTail;
+            }
+        }
+
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
-            {
-                cond1 =
-                  API.LastHitNPC.type == NPCID.WyvernHead ||
-                  API.LastHitNPC.type == NPCID.WyvernBody ||
-                  API.LastHitNPC.type == NPCID.WyvernBody2 ||
-                  API.LastHitNPC.type == NPCID.WyvernBody3 ||
-                  API.LastHitNPC.type == NPCID.WyvernLegs ||
-                  API.LastHitNPC.type == NPCID.WyvernTail;
-            }
             if(!cond2)
             {
                 cond2 = (player.wingTimeMax > 0);
