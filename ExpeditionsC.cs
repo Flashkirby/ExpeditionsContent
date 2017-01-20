@@ -76,7 +76,15 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
             API.AddExpedition(this, new Quests.Clerk.SOSTinkerer());
             API.AddExpedition(this, new Quests.Clerk.SOSMechanic());
+
             API.AddExpedition(this, new Quests.MiscPre.DryadDD2());
+
+            API.AddExpedition(this, new Quests.TravMerch.Compass());
+            API.AddExpedition(this, new Quests.TravMerch.Blowpipe());
+            API.AddExpedition(this, new Quests.TravMerch.BandOfStarpower());
+            API.AddExpedition(this, new Quests.TravMerch.WormScarf());
+            API.AddExpedition(this, new Quests.TravMerch.CrimsonRod());
+            API.AddExpedition(this, new Quests.TravMerch.PanicNecklace());
 
             // Hard Mode
 
