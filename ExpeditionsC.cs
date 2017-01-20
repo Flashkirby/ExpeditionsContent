@@ -52,7 +52,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.ACTownfolk());
             API.AddExpedition(this, new Quests.Core.ADHooks());
             API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
-            API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
+            API.AddExpedition(this, new Quests.Core.ADMushrooms());
             API.AddExpedition(this, new Quests.Core.ADKingSlime());
             //Block 2
             API.AddExpedition(this, new Quests.Core.BAEvilEye());
@@ -84,7 +84,27 @@ namespace ExpeditionsContent {
 
             //Block 4
             API.AddExpedition(this, new Quests.Core.CAHardMode());
+            API.AddExpedition(this, new Quests.Core.CASnowArmy());
+            API.AddExpedition(this, new Quests.Core.CBAltarBlessing());
+            API.AddExpedition(this, new Quests.Core.CBTracingSteps());
+            API.AddExpedition(this, new Quests.Core.CBLivingLoot());
+            API.AddExpedition(this, new Quests.Core.CBSoaringSkies());
+            API.AddExpedition(this, new Quests.Core.CCCrystalShards());
+            API.AddExpedition(this, new Quests.Core.CCGreenFlames());
+            API.AddExpedition(this, new Quests.Core.CCBloodOfGods());
+            API.AddExpedition(this, new Quests.Core.CCPirates());
+            API.AddExpedition(this, new Quests.Core.CCMonsterLoot());
+            API.AddExpedition(this, new Quests.Core.CCAvatarOfFrost());
+            API.AddExpedition(this, new Quests.Core.CCForbiddenSun());
             //Block 5
+            API.AddExpedition(this, new Quests.Core.DAMechaWorm());
+            API.AddExpedition(this, new Quests.Core.DAMechaEyes());
+            API.AddExpedition(this, new Quests.Core.DAMechaPrime());
+            API.AddExpedition(this, new Quests.Core.DBFruitsOfLabour());
+            API.AddExpedition(this, new Quests.Core.DBHallowed());
+            API.AddExpedition(this, new Quests.Core.DBFungalFunk());
+            //Block 6
+            API.AddExpedition(this, new Quests.Core.DCPlanterror());
 
             #endregion
 
