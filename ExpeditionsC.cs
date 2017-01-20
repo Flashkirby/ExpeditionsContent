@@ -105,6 +105,8 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.DBFungalFunk());
             //Block 6
             API.AddExpedition(this, new Quests.Core.DCPlanterror());
+            API.AddExpedition(this, new Quests.Core.EASolarEclipse());
+            API.AddExpedition(this, new Quests.Core.EAGhostBusters());
 
             #endregion
 
