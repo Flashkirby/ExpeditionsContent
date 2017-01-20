@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "A Hearty Quest";
+            expedition.name = "Hearty Quest";
             SetNPCHead(ExpeditionC.npcClerk);
             expedition.difficulty = 2;
             expedition.ctgExplore = true;
@@ -19,7 +19,7 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             AddDeliverable(ItemID.LifeCrystal, 2);
 
-            AddRewardItem(API.ItemIDExpeditionCoupon, 2);
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1);
             AddRewardMoney(Item.buyPrice(0, 0, 10, 0));
         }
         public override string Description(bool complete)

@@ -593,7 +593,7 @@ namespace ExpeditionsContent.NPCs
 
             if(NPC.downedMechBossAny)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 2);
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 3);
             }
 
             /*
