@@ -5,16 +5,16 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.Core
 {
-    class BCMeteorite : ModExpedition
+    class EAGhostBusters : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Magic Space Metal";
+            expedition.name = "Restless Warriors";
             SetNPCHead(NPCID.Guide);
-            expedition.difficulty = 2;
+            expedition.difficulty = 8;
             expedition.ctgCollect = true;
 
-            expedition.conditionDescription1 = "Craft a meteorite bar";
+            expedition.conditionDescription1 = "Craft a spectre bar";
         }
         public override void AddItemsOnLoad()
         {
@@ -22,20 +22,24 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "Destroying the " + (WorldGen.crimson ? "crimson hearts" : "shadow orbs") + " sometimes causes meteors to fall out of the sky. You will need a pickaxe of at least 50% power to mine it. Be careful though as the meteorite will be extremely hot, and without the correct protection it can cause serious injury. ";
+            return "With Plantera's curse lifted, the dungeon's original inhabitants have been let loose. The spirits can be vanquished for their ectoplasm, which can be crafted with chlorophyte bars to make a truly magical metal. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            // Only appears after orb smashed until hardmode, or is done already
-            return expedition.completed || (WorldGen.shadowOrbSmashed && !Main.hardMode);
+
+            // Only appears until moonlord, or is done already
+            if (!expedition.completed && NPC.downedMoonlord) return false;
+
+            // Appears once plantera's curse is lifted
+            return API.FindExpedition<DCPlanterror>(mod).completed;
         }
 
         public override void OnCraftItem(Item item, Recipe recipe)
         {
-            if(!expedition.condition1Met)
+            if (!expedition.condition1Met)
             {
-                expedition.condition1Met = API.InInventory[ItemID.MeteoriteBar];
+                expedition.condition1Met = API.InInventory[ItemID.SpectreBar];
             }
         }
 

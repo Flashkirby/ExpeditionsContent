@@ -13,6 +13,7 @@ namespace ExpeditionsContent.Quests.Core
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 5;
             expedition.ctgSlay = true;
+            expedition.ctgCollect = true;
 
             expedition.conditionDescription1 = "Encounter an Ice Golem";
             expedition.conditionDescription2 = "Craft a set of frost armor";

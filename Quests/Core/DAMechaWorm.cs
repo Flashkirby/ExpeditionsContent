@@ -29,9 +29,7 @@ namespace ExpeditionsContent.Quests.Core
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!cond1)
-            {
-                expedition.conditionDescription2 = "";
-            }
+            { expedition.conditionDescription2 = ""; }
             else
             { expedition.conditionDescription2 = "Defeat The Destroyer"; }
 

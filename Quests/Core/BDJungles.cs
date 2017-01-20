@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.name = "Jungle Mystics";
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 3;
-            expedition.ctgExplore = true;
+            expedition.ctgCollect = true;
 
             expedition.conditionDescription1 = "Reach 200 maximum base mana";
             expedition.conditionDescription2 = "Equip a set of jungle armor";

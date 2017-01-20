@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.name = "Desert Palaeontology";
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 3;
-            expedition.ctgExplore = true;
+            expedition.ctgCollect = true;
 
             expedition.conditionDescription1 = "Find an extractinator";
             expedition.conditionDescription2 = "Equip a set of fossil armor";

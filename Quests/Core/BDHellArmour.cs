@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.name = "Bat out of the Underworld";
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 3;
-            expedition.ctgSlay = true;
+            expedition.ctgCollect = true;
             
             expedition.conditionDescription1 = "Enter the Underworld";
             expedition.conditionDescription2 = "Find a Hellforge";

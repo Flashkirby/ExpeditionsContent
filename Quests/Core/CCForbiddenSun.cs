@@ -13,6 +13,7 @@ namespace ExpeditionsContent.Quests.Core
             SetNPCHead(NPCID.Guide);
             expedition.difficulty = 5;
             expedition.ctgSlay = true;
+            expedition.ctgCollect = true;
 
             expedition.conditionDescription1 = "Encounter a Sand Elemental";
             expedition.conditionDescription2 = "Craft a set of forbidden armor";
