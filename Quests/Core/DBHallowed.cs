@@ -14,7 +14,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.difficulty = 6;
             expedition.ctgCollect = true;
 
-            expedition.conditionDescription1 = "Equip a set of hallowed armor";
+            expedition.conditionDescription1 = "Equip a full set of hallowed armor";
         }
         public override void AddItemsOnLoad()
         {

@@ -15,7 +15,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.ctgCollect = true;
 
             expedition.conditionDescription1 = "Find an extractinator";
-            expedition.conditionDescription2 = "Equip a set of fossil armor";
+            expedition.conditionDescription2 = "Equip a full set of fossil armor";
         }
         public override void AddItemsOnLoad()
         {

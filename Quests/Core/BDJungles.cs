@@ -15,7 +15,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.ctgCollect = true;
 
             expedition.conditionDescription1 = "Reach 200 maximum base mana";
-            expedition.conditionDescription2 = "Equip a set of jungle armor";
+            expedition.conditionDescription2 = "Equip a full set of jungle armor";
         }
         public override void AddItemsOnLoad()
         {

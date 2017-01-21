@@ -16,7 +16,7 @@ namespace ExpeditionsContent.Quests.Core
             
             expedition.conditionDescription1 = "Enter the Underworld";
             expedition.conditionDescription2 = "Find a Hellforge";
-            expedition.conditionDescription3 = "Equip a set of molten armor";
+            expedition.conditionDescription3 = "Equip a full set of molten armor";
         }
         public override void AddItemsOnLoad()
         {

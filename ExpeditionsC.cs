@@ -121,6 +121,7 @@ namespace ExpeditionsContent {
 
             API.AddExpedition(this, new Quests.Clerk.SOSWizard());
             API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT2());
+            API.AddExpedition(this, new Quests.MiscPre.DD2BigFan());
             API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT3());
         }
 

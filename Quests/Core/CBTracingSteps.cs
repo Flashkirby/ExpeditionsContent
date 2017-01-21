@@ -17,7 +17,7 @@ namespace ExpeditionsContent.Quests.Core
 
             expedition.conditionDescription1 = "Install an advanced anvil";
             expedition.conditionDescription2 = "Install a stronger forge";
-            expedition.conditionDescription3 = "Equip a set of new armor";
+            expedition.conditionDescription3 = "Equip a full set of new armor";
         }
         public override void AddItemsOnLoad()
         {
