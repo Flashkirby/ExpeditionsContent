@@ -16,8 +16,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.ctgImportant = true;
 
             expedition.conditionDescription1 = "Face the evil creature";
-            expedition.conditionDescriptionCountable = "Smash 3 evil objects";
-            expedition.conditionCountedMax = 3;
+            expedition.conditionDescriptionCountable = "[Optional] Smash 3 evil objects";
             expedition.conditionCountedTrackHalfCompleted = true;
         }
         public override void AddItemsOnLoad()
@@ -26,13 +25,13 @@ namespace ExpeditionsContent.Quests.Core
             {
                 expedition.name = "Crimson Heart and Mind";
                 expedition.conditionDescription1 = "Face the crimson maw";
-                expedition.conditionDescriptionCountable = "Smash 3 crimson hearts";
+                expedition.conditionDescriptionCountable = "[Optional] Smash 3 crimson hearts";
             }
             else
             {
                 expedition.name = "The Worm that Turned";
                 expedition.conditionDescription1 = "Face the world eater";
-                expedition.conditionDescriptionCountable = "Smash 3 shadow orbs";
+                expedition.conditionDescriptionCountable = "(Optional) Smash 3 shadow orbs";
             }
 
             AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
@@ -69,6 +68,10 @@ namespace ExpeditionsContent.Quests.Core
                 else
                 { expedition.conditionDescription2 = "Defeat the Eater of Worlds"; }
             }
+            if (cond2)
+            { expedition.conditionCountedMax = 0; }
+            else
+            { expedition.conditionCountedMax = 3; }
 
             // Only appears until hardmode, or is done already
             if (!expedition.completed && Main.hardMode) return false;
@@ -96,10 +99,10 @@ namespace ExpeditionsContent.Quests.Core
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
-            if (count < max) count = WorldGen.shadowOrbCount;
-            if(WorldGen.shadowOrbCount == 0 && WorldGen.shadowOrbSmashed)
+            if (count < 3) count = WorldGen.shadowOrbCount;
+            if(WorldGen.shadowOrbSmashed && WorldGen.shadowOrbCount == 0)
             {
-                count = max;
+                count = 3;
             }
         }
 
