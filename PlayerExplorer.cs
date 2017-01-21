@@ -14,6 +14,7 @@ namespace ExpeditionsContent
     {
         public bool accHeartCompass;
         public bool accFruitCompass;
+        public bool telescope;
         public bool familiarMinion;
 
         public static PlayerExplorer Get(Player player, Mod mod)
@@ -25,6 +26,7 @@ namespace ExpeditionsContent
         {
             accHeartCompass = false;
             accFruitCompass = false;
+            telescope = false;
             familiarMinion = false;
         }
 
@@ -32,9 +34,11 @@ namespace ExpeditionsContent
         {
             accHeartCompass = false;
             accFruitCompass = false;
+            telescope = false;
             familiarMinion = false;
+            TryTelescope();
         }
-
+        
         public override void PostUpdateEquips()
         {
             // Basically if allied player is in "info" range of 100ft
@@ -68,5 +72,30 @@ namespace ExpeditionsContent
             }
         }
 
+        private const int telescopeRange = 2;
+        private void TryTelescope()
+        {
+            Point p = player.Top.ToTileCoordinates();
+            int tele = mod.TileType<Tiles.Telescope>();
+            if (Main.screenTileCounts[tele] == 0) return;
+
+            try
+            {
+                for (int y = -telescopeRange; y < telescopeRange + 1; y++)
+                {
+                    for (int x = -telescopeRange; x < telescopeRange + 1; x++)
+                    {
+                        Tile t = Main.tile[p.X + x, p.Y + y];
+                        if (t.type == tele)
+                        {
+                            player.scope = true;
+                            telescope = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            catch { }
+        }
     }
 }

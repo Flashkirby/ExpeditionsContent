@@ -22,8 +22,8 @@ namespace ExpeditionsContent {
             };
         }
 
-        private static int _npcClerk;
-        public static int npcClerk { get { return _npcClerk; } }
+        private static int NPCIDClerk;
+        public static int npcClerk { get { return NPCIDClerk; } }
 
         public const int InvasionIDGoblins = 1;
         public const int InvasionIDFrostLegion = 2;
@@ -32,11 +32,8 @@ namespace ExpeditionsContent {
 
         public override void Load()
         {
-            _npcClerk = NPCType("Clerk");
-
-            heartTiles = new List<Point>();
-            fruitTiles = new List<Point>();
-            
+            NPCIDClerk = NPCType("Clerk");
+            FullMapInitialise();
 
             API.AddExpedition(this, new Quests.MiscPre.MakingBase());
 
@@ -127,12 +124,20 @@ namespace ExpeditionsContent {
 
         public static List<Point> heartTiles;
         public static List<Point> fruitTiles;
+        public static List<Vector2> fallenStarPos;
+        private void FullMapInitialise()
+        {
+            heartTiles = new List<Point>();
+            fruitTiles = new List<Point>();
+            fallenStarPos = new List<Vector2>();
+        }
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
             Player player = Main.player[Main.myPlayer];
             PlayerExplorer px = PlayerExplorer.Get(player, this);
             if (px.accHeartCompass ||
-                px.accFruitCompass)
+                px.accFruitCompass ||
+                px.telescope)
             {
                 UpdateMapLocations(player, px);
                 DrawIcons();
@@ -143,6 +148,21 @@ namespace ExpeditionsContent {
 
         private static void UpdateMapLocations(Player player, PlayerExplorer px)
         {
+            fallenStarPos.Clear();
+            if (px.telescope)
+            {
+                for (int i = 0; i < 200; i++)
+                {
+                    if (!Main.projectile[i].active) continue;
+                    if (Main.projectile[i].type == ProjectileID.FallingStar
+                        && Main.projectile[i].velocity.Y > 0
+                        && Main.projectile[i].damage >= 1000)
+                    {
+                        fallenStarPos.Add(Main.projectile[i].Center);
+                    }
+                }
+            }
+
             if ((int)Main.time % 30 == 0)
             {
                 heartTiles.Clear();
@@ -150,21 +170,21 @@ namespace ExpeditionsContent {
             }
             else { return; }
 
-            // 800 is 100ft
-            int searchRadius = 3200;
-
-            int leftTiles = ((int)player.Center.X - searchRadius + 8) / 16;
-            int rightTiles = ((int)player.Center.X + searchRadius + 8) / 16;
-            leftTiles = Math.Max(leftTiles, (int)Main.leftWorld / 16);
-            rightTiles = Math.Min(rightTiles, (int)Main.rightWorld / 16);
-
-            int topTiles = ((int)player.Center.Y - searchRadius + 8) / 16;
-            int bottomTiles = ((int)player.Center.Y + searchRadius + 8) / 16;
-            topTiles = Math.Max(topTiles, (int)Main.topWorld / 16);
-            bottomTiles = Math.Min(bottomTiles, (int)Main.bottomWorld / 16);
-
             try
             {
+                // 800 is 100ft
+                int searchRadius = 3200;
+
+                int leftTiles = ((int)player.Center.X - searchRadius + 8) / 16;
+                int rightTiles = ((int)player.Center.X + searchRadius + 8) / 16;
+                leftTiles = Math.Max(leftTiles, (int)Main.leftWorld / 16);
+                rightTiles = Math.Min(rightTiles, (int)Main.rightWorld / 16);
+
+                int topTiles = ((int)player.Center.Y - searchRadius + 8) / 16;
+                int bottomTiles = ((int)player.Center.Y + searchRadius + 8) / 16;
+                topTiles = Math.Max(topTiles, (int)Main.topWorld / 16);
+                bottomTiles = Math.Min(bottomTiles, (int)Main.bottomWorld / 16);
+
                 for (int y = topTiles + 1; y < bottomTiles; y += 2)
                 {
                     for (int x = leftTiles + 1; x < rightTiles; x += 2)
@@ -179,14 +199,14 @@ namespace ExpeditionsContent {
                         }
                         catch (Exception e)
                         {
-                            Main.NewTextMultiline(e.ToString());
+                            Main.NewTextMultiline("Tile OOB: " + e.ToString());
                         }
                     }
                 }
             }
             catch (Exception e)
             {
-                Main.NewTextMultiline(e.ToString());
+                Main.NewTextMultiline("Everythings going wrong:" + e.ToString());
             }
         }
 
@@ -238,38 +258,56 @@ namespace ExpeditionsContent {
 
         private static void DrawIcons()
         {
-            Texture2D heart = Main.itemTexture[ItemID.LifeCrystal];
-            Texture2D fruit = Main.itemTexture[ItemID.LifeFruit];
-            Point drawPosition = new Point();
+            Texture2D heart = null;
+            Texture2D fruit = null;
+            Texture2D star = null;
+            Vector2 drawPosition = new Vector2(); ;
+            try
+            {
+                heart = Main.itemTexture[ItemID.LifeCrystal];
+                fruit = Main.itemTexture[ItemID.LifeFruit];
+                star = Main.itemTexture[ItemID.FallenStar];
+                drawPosition = new Vector2();
+            }
+            catch(Exception e) { Main.NewTextMultiline("Texture array: " + e.ToString()); }
 
-            foreach (Point heartTile in heartTiles)
+            try
             {
-                drawPosition = CalculateDrawPos(new Vector2(heartTile.X + 1f, heartTile.Y + 1f));
-                DrawTextureOnMap(heart, drawPosition);
+                foreach (Point heartTile in heartTiles)
+                {
+                    drawPosition = CalculateDrawPos(new Vector2(heartTile.X + 1f, heartTile.Y + 1f));
+                    DrawTextureOnMap(heart, drawPosition);
+                }
+                foreach (Point fruitTile in fruitTiles)
+                {
+                    drawPosition = CalculateDrawPos(new Vector2(fruitTile.X + 1f, fruitTile.Y + 1f));
+                    DrawTextureOnMap(fruit, drawPosition);
+                }
+                foreach (Vector2 fallenStar in fallenStarPos)
+                {
+                    drawPosition = CalculateDrawPos(new Vector2(fallenStar.X / 16, fallenStar.Y / 16));
+                    DrawTextureOnMap(star, drawPosition);
+                }
             }
-            foreach (Point fruitTile in fruitTiles)
-            {
-                drawPosition = CalculateDrawPos(new Vector2(fruitTile.X + 1f, fruitTile.Y + 1f));
-                DrawTextureOnMap(fruit, drawPosition);
-            }
+            catch (Exception e) { Main.NewTextMultiline("Adding icons : " + e.ToString()); }
         }
 
-        private static Point CalculateDrawPos(Vector2 tilePos)
+        private static Vector2 CalculateDrawPos(Vector2 tilePos)
         {
             Vector2 halfScreen = new Vector2(Main.screenWidth / 2, Main.screenHeight / 2);
             Vector2 relativePos = tilePos - Main.mapFullscreenPos;
             relativePos *= Main.mapFullscreenScale / 16;
             relativePos = relativePos * 16 + halfScreen;
 
-            Point drawPosition = new Point(
+            Vector2 drawPosition = new Vector2(
                 (int)relativePos.X,
                 (int)relativePos.Y);
             return drawPosition;
         }
 
-        private static void DrawTextureOnMap(Texture2D texture, Point drawPosition)
+        private static void DrawTextureOnMap(Texture2D texture, Vector2 drawPosition)
         {
-            Rectangle drawPos = new Rectangle(drawPosition.X, drawPosition.Y, texture.Width, texture.Height);
+            Rectangle drawPos = new Rectangle((int)drawPosition.X, (int)drawPosition.Y, texture.Width, texture.Height);
             Main.spriteBatch.Draw(
                 texture,
                 drawPos,
@@ -283,5 +321,6 @@ namespace ExpeditionsContent {
         }
 
         #endregion
+
     }
 }
