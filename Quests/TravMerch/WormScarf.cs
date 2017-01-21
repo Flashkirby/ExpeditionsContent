@@ -17,11 +17,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         public override void AddItemsOnLoad()
         {
             AddDeliverable(ItemID.GoldCoin);
-            AddDeliverableAnyOf(new int[]{
-                ItemID.PanicNecklace,
-                ItemID.CrimsonHeart,
-                ItemID.TheUndertaker,
-            }, 1);
+            AddDeliverable(ItemID.BrainOfConfusion, 1);
 
             AddRewardItem(ItemID.WormScarf);
         }
@@ -34,7 +30,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
-            return NPC.downedBoss1;
+            return NPC.downedBoss2 && Main.expertMode;
         }
     }
 }
