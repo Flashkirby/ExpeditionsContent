@@ -555,7 +555,7 @@ namespace ExpeditionsContent.NPCs
             else if (completion >= 15)
             { comment += Main.worldName + " still has more to offer. "; }
             else if (completion >= 10)
-            { comment += "Keep exploring!"; }
+            { comment += "Keep exploring! "; }
             else if (completion >= 5)
             { comment += "There's still plenty left to explore. "; }
             else
@@ -585,15 +585,21 @@ namespace ExpeditionsContent.NPCs
         {
             // Sell book
             shop.item[nextSlot].SetDefaults(API.ItemIDExpeditionBook); nextSlot++;
+            // Sell telescope
+            API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.Telescope>(), 1);
+            // Sell boxes
+            API.AddShopItemVoucher(shop, ref nextSlot, API.ItemIDRustedBox, 1);
+            if (Main.hardMode)
+            { API.AddShopItemVoucher(shop, ref nextSlot, API.ItemIDRelicBox, 2); }
 
             if (API.FindExpedition<Quests.Clerk.CrystalHeart>(mod).completed)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.HeartCompass>(), 2);
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.HeartCompass>(), 1);
             }
 
             if(NPC.downedMechBossAny)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 3);
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 2);
             }
 
             /*
