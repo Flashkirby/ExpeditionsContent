@@ -137,7 +137,7 @@ namespace ExpeditionsContent {
             PlayerExplorer px = PlayerExplorer.Get(player, this);
             if (px.accHeartCompass ||
                 px.accFruitCompass ||
-                px.telescope)
+                px.stargazer)
             {
                 UpdateMapLocations(player, px);
                 DrawIcons();
@@ -149,7 +149,7 @@ namespace ExpeditionsContent {
         private static void UpdateMapLocations(Player player, PlayerExplorer px)
         {
             fallenStarPos.Clear();
-            if (px.telescope)
+            if (px.stargazer)
             {
                 for (int i = 0; i < 200; i++)
                 {

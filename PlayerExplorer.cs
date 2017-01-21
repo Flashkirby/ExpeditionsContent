@@ -14,7 +14,7 @@ namespace ExpeditionsContent
     {
         public bool accHeartCompass;
         public bool accFruitCompass;
-        public bool telescope;
+        public bool stargazer;
         public bool familiarMinion;
 
         public static PlayerExplorer Get(Player player, Mod mod)
@@ -26,7 +26,7 @@ namespace ExpeditionsContent
         {
             accHeartCompass = false;
             accFruitCompass = false;
-            telescope = false;
+            stargazer = false;
             familiarMinion = false;
         }
 
@@ -34,7 +34,7 @@ namespace ExpeditionsContent
         {
             accHeartCompass = false;
             accFruitCompass = false;
-            telescope = false;
+            stargazer = false;
             familiarMinion = false;
             TryTelescope();
         }
@@ -89,7 +89,10 @@ namespace ExpeditionsContent
                         if (t.type == tele)
                         {
                             player.scope = true;
-                            telescope = true;
+                            if (player.ZoneOverworldHeight || player.ZoneSkyHeight)
+                            {
+                                stargazer = true;
+                            }
                             break;
                         }
                     }
