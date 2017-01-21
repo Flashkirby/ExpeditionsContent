@@ -489,7 +489,7 @@ namespace ExpeditionsContent.NPCs
             return speech[Main.rand.Next(speech.Count)];
         }
 
-        private static string GetTheTime()
+        public static string GetTheTime()
         {
             double fullTime = Main.time;
             string twelveHr = "AM";
@@ -504,7 +504,7 @@ namespace ExpeditionsContent.NPCs
 
             return "Have I got the time? Sure, it's " + string.Concat((int)fullTime, divider, minutes, " ", twelveHr) + ".";
         }
-        private static string GetTheMap()
+        public static string GetTheMap()
         {
             int completion = 0;
             int revealed = 0;
@@ -518,20 +518,25 @@ namespace ExpeditionsContent.NPCs
             // Minsize is 800x600
             int checkStepX = (int)(Main.rightWorld - Main.leftWorld) / 800;
             int checkStepY = (int)(Main.bottomWorld - Main.topWorld) / 600;
-            for(int y = 1; y < checkStepY; y++)
+            Main.NewText(string.Concat(
+                    tileLeft,":",tileRight,"=",tileTop,":",tileBottom," ",checkStepX,"-",checkStepY
+                ));
+            for (int y = 1; y < checkStepY; y++)
             {
-                for(int x = 1; x < checkStepX; x++)
+                int yTile = tileTop + tileBottom / checkStepY * y;
+                for (int x = 1; x < checkStepX; x++)
                 {
                     maxCounted++;
-                    if(Main.Map.IsRevealed(
-                        tileLeft + tileRight / checkStepX * x,
-                        tileTop + tileBottom / checkStepY * y))
+                    int xTile = tileLeft + tileRight / checkStepX * x;
+                    if (Main.Map.IsRevealed(
+                        xTile,
+                        yTile))
                     {
                         revealed++;
                     }
                 }
             }
-            completion = (int)((float)revealed / maxCounted);
+            completion = (int)((100f * revealed) / maxCounted);
 
             comment = "Your map is " + completion + "% complete. ";
             if (completion == 100)
@@ -548,16 +553,18 @@ namespace ExpeditionsContent.NPCs
             { comment += "You're over halfway there. "; }
             else if (completion >= 40)
             { comment += "Neato! "; }
-            else if (completion >= 30)
+            else if (completion >= 33) // A well-explored normal map (full surface, dungeon etc.)
             { comment += "You've been around a bit then. Found anything interesting? "; }
-            else if (completion >= 20)
+            else if (completion >= 25)
             { comment += "You've cleared the first hurdle, but there's still ways to go. "; }
-            else if (completion >= 15)
+            else if (completion >= 18)
             { comment += Main.worldName + " still has more to offer. "; }
-            else if (completion >= 10)
+            else if (completion >= 11)
             { comment += "Keep exploring! "; }
             else if (completion >= 5)
             { comment += "There's still plenty left to explore. "; }
+            else if (completion >= 1)
+            { comment += "You should try mapping out the surface of " + Main.worldName; }
             else
             { comment = "You've mapped out " + completion + "% of " + Main.worldName + ". Well, everyone has to start somewhere right? "; }
 
