@@ -21,6 +21,7 @@ namespace ExpeditionsContent.Items
             item.consumable = true;
             item.createTile = mod.TileType("Telescope");
 
+            item.rare = 1;
             item.useStyle = 1;
             item.useTurn = true;
             item.useAnimation = 15;
