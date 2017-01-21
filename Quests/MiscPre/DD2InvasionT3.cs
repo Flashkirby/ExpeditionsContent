@@ -6,26 +6,28 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.MiscPre
 {
-    class DD2Wave1 : ModExpedition
+    class DD2InvasionT3 : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Defender Initiate";
+            expedition.name = "Monster Hunter";
             SetNPCHead(NPCID.DD2Bartender);
-            expedition.difficulty = 3;
+            expedition.difficulty = 8;
             expedition.ctgExplore = true;
 
-            expedition.conditionDescription1 = "Challenge the etherian invaders and its dark magicians";
-            expedition.conditionCountedMax = 5; //First invasion is 5 waves
+            expedition.conditionDescription1 = "Challenge the etherian invaders and its ever-watchful wyvern";
+            expedition.conditionCountedMax = 7; //Second & Third invasion is 7 waves
         }
         public override void AddItemsOnLoad()
         {
             AddRewardItem(ItemID.DD2ElderCrystal);
+            AddRewardItem(ItemID.DefenderMedal, 25);
+            AddRewardPrefix(ItemID.AleThrowingGlove, 82); //http://terraria.gamepedia.com/Prefix_IDs
             AddRewardItem(ItemID.Ale);
         }
         public override string Description(bool complete)
         {
-            return "The Old One's army are looking to take over " + Main.worldName + ", though their current forces are nothing the Talonguard couldn't handle. To challenge them, you'll have to bait them out by placing an Eternia Crystal on a stand. ";
+            return "You'd better watch out, it seems as though the Old One has recruited even the queen of wyverns into the invasion force. This must be the full force of their army - show me how powerful a Terrarian champion can be! ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -37,10 +39,8 @@ namespace ExpeditionsContent.Quests.MiscPre
 
             // Must have bartender around
             if (NPC.FindFirstNPC(NPCID.DD2Bartender) == -1) return false;
-            // Doesn't appear after first mech
-            if (!expedition.completed && NPC.downedMechBossAny) return false;
 
-            return true;
+            return NPC.downedGolemBoss;
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
@@ -49,7 +49,7 @@ namespace ExpeditionsContent.Quests.MiscPre
             {
                 count = Main.invasionProgressWave - 1;
             }
-            if (DD2Event.DownedInvasionT1) count = max;
+            if (DD2Event.DownedInvasionT3) count = max;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

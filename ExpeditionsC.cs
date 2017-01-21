@@ -78,7 +78,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.SOSMechanic());
 
             API.AddExpedition(this, new Quests.MiscPre.DryadDD2());
-            API.AddExpedition(this, new Quests.MiscPre.DD2Wave1());
+            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT1());
 
             API.AddExpedition(this, new Quests.TravMerch.Compass());
             API.AddExpedition(this, new Quests.TravMerch.Blowpipe());
@@ -120,6 +120,8 @@ namespace ExpeditionsContent {
             #endregion
 
             API.AddExpedition(this, new Quests.Clerk.SOSWizard());
+            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT2());
+            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT3());
         }
 
         public static List<Point> heartTiles;
