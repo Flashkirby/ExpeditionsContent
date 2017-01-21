@@ -71,8 +71,7 @@ namespace ExpeditionsContent.NPCs
                     !NPC.AnyNPCs(ExpeditionC.npcClerk)
                     )
                 {
-                    // if (ExpeditionsContent.DEBUG) Main.NewText("Spawned succesfully!", 50, 255, 100);
-                    Main.NewText("Clerk can spawn");
+                    //if (ExpeditionsContent.DEBUG) Main.NewText("Spawned succesfully!", 50, 255, 100);
                     return 1f; //guaranteed to spawn on next call (because we want to be found)
                 }
             }
