@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.MiscPre
     {
         public override void SetDefaults()
         {
-            expedition.name = "Monster Hunter";
+            expedition.name = "Siege of Terraria";
             SetNPCHead(NPCID.DD2Bartender);
             expedition.difficulty = 8;
             expedition.ctgExplore = true;

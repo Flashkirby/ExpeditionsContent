@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.MiscPre
     {
         public override void SetDefaults()
         {
-            expedition.name = "Layered Assault";
+            expedition.name = "The Old One's Assault";
             SetNPCHead(NPCID.DD2Bartender);
             expedition.difficulty = 5;
             expedition.ctgExplore = true;
