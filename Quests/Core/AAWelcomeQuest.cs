@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Core
         public override void SetDefaults()
         {
             expedition.name = "Welcome To Terraria";
-            SetNPCHead(NPCID.Guide);
+            SetNPCHead(NPCID.Guide, false);
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
         }

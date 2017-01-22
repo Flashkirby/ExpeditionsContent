@@ -26,7 +26,7 @@ namespace ExpeditionsContent.Quests.Core
             if (complete) return "Thanks for setting up some shelter. I get tonnes of random shipments from my employer to help discover land and collect samples, but I'm no good at adventuring. Would you be interested in helping? In exchange, I'm sure you could use the stuff I have lying around somewhere... ";
             if (WorldExplorer.savedClerk)
             {
-                if(expedition.npcHead == 0) SetNPCHead(NPCID.Guide);
+                if(expedition.npcHead == 0) SetNPCHead(NPCID.Guide, false);
                 return "Hey, you new here as well? I recently got assigned to " + Main.worldName + ", but this wasn't the cushy desk job I was expecting... You any good at house building? I can't focus at all with all these " + (Main.dayTime ? "slimes" : "zombies") + " around. ";
             }
             return "To whoever reads this,\nI'm out right now, but if you could find some housing I'll be super thankful when I get back! ";

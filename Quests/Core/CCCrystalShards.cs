@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Core
         public override void SetDefaults()
         {
             expedition.name = "Great Crystal Maze";
-            SetNPCHead(NPCID.Guide);
+            SetNPCHead(NPCID.Guide, false);
             expedition.difficulty = 4;
             expedition.ctgCollect = true;
         }

@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests
         public override void SetDefaults()
         {
             expedition.name = "NAME";
-            SetNPCHead(NPCID.Guide);
+            SetNPCHead(NPCID.Guide, false);
             expedition.difficulty = 0;
             expedition.ctgExplore = true;
         }
