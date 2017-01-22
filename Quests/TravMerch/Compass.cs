@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.TravMerch
     {
         public override void SetDefaults()
         {
-            expedition.name = "(Trade) Compass";
+            expedition.name = "Trading Compass";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 1;
             expedition.ctgCollect = true;

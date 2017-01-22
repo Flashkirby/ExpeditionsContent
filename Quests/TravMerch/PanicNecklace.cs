@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.TravMerch
     {
         public override void SetDefaults()
         {
-            expedition.name = "(Trade) Panic Necklace";
+            expedition.name = "Trading Panic Necklace";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 1;
             expedition.ctgCollect = true;

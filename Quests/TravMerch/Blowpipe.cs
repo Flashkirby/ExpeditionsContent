@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.TravMerch
     {
         public override void SetDefaults()
         {
-            expedition.name = "(Trade) Blowpipe";
+            expedition.name = "Trading Blowpipe";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
