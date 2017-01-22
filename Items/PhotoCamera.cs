@@ -13,6 +13,7 @@ namespace ExpeditionsContent.Items
     {
         public const int frameWidth = 180;
         public const int frameHeight = 120;
+        public const float maxFreeCapture = 350; // Max capture distance not relying on light
         public override void SetDefaults()
         {
             item.name = "PhotoTron";
@@ -52,7 +53,11 @@ namespace ExpeditionsContent.Items
 
         public override bool UseItem(Player player)
         {
-            return PhotoCamera.TakePhoto(player, item, frameWidth, frameHeight);
+            Lighting.AddLight(player.Top,
+                1f,
+                0.9f,
+                0.8f);
+            return PhotoCamera.TakePhoto(player, item, frameWidth, frameHeight, maxFreeCapture);
         }
 
         #region Static Methods
@@ -83,11 +88,11 @@ namespace ExpeditionsContent.Items
             }
         }
 
-        public static bool TakePhoto(Player player, Item item, int width, int height)
+        public static bool TakePhoto(Player player, Item item, int width, int height, float range)
         {
-            return TakePhoto(player, item, GetCameraFrame(width, height));
+            return TakePhoto(player, item, GetCameraFrame(width, height), range);
         }
-        public static bool TakePhoto(Player player, Item item, Rectangle cameraFrame)
+        public static bool TakePhoto(Player player, Item item, Rectangle cameraFrame, float range)
         {
             if (player.whoAmI != Main.myPlayer) return true;
 
@@ -103,7 +108,16 @@ namespace ExpeditionsContent.Items
                     // Can't take pictures if too dark
                     Point centre = n.Center.ToTileCoordinates();
                     int darkness = Lighting.GetBlackness(centre.X, centre.Y).A;
-                    if (darkness > 240) continue;
+                    if (darkness > 240)
+                    {
+                        // too dark, if player can see below that range
+                        if (npc.Distance(player.Center) > range ||
+                            !Collision.CanHit(npc.position, npc.width, npc.height,
+                            player.position, player.width, player.height))
+                        {
+                            continue;
+                        }
+                    }
 
                     // Get the closest
                     float dist = n.Distance(cameraFrame.Center.ToVector2());

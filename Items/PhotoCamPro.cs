@@ -13,6 +13,7 @@ namespace ExpeditionsContent.Items
     {
         public const int frameWidth = 180;
         public const int frameHeight = 120;
+        public const float maxFreeCapture = 450; // Max capture distance not relying on light
         public override void SetDefaults()
         {
             item.name = "Hislops-3000";
@@ -54,7 +55,7 @@ namespace ExpeditionsContent.Items
 
         public override bool UseItem(Player player)
         {
-            return PhotoCamera.TakePhoto(player, item, frameWidth, frameHeight);
+            return PhotoCamera.TakePhoto(player, item, frameWidth, frameHeight, maxFreeCapture);
         }
     }
 }
