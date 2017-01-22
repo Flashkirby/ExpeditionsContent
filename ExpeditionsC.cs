@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 
 using Expeditions;
+using System.IO;
 
 namespace ExpeditionsContent {
     public class ExpeditionC : Mod
@@ -25,6 +26,8 @@ namespace ExpeditionsContent {
         private static int NPCIDClerk;
         public static int npcClerk { get { return NPCIDClerk; } }
 
+        public static Texture2D CameraFrameTexture;
+
         public const int InvasionIDGoblins = 1;
         public const int InvasionIDFrostLegion = 2;
         public const int InvasionIDPirates = 3;
@@ -33,6 +36,11 @@ namespace ExpeditionsContent {
         public override void Load()
         {
             NPCIDClerk = NPCType("Clerk");
+            if(Main.netMode != 2)
+            {
+                CameraFrameTexture = GetTexture("Gores/CameraFrame");
+            }
+
             FullMapInitialise();
 
             API.AddExpedition(this, new Quests.MiscPre.MakingBase());
@@ -143,7 +151,7 @@ namespace ExpeditionsContent {
                 DrawIcons();
             }
         }
-
+        
         #region Mapping
 
         private static void UpdateMapLocations(Player player, PlayerExplorer px)

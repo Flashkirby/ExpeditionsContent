@@ -540,21 +540,23 @@ namespace ExpeditionsContent.NPCs
 
             comment = "Your map is " + completion + "% complete. ";
             if (completion == 100)
-            { comment = "Wow! You've fully mapped out " + Main.worldName + ". You have my upmost respect. "; }
+            { comment = "Wow! You've fully mapped out " + Main.worldName + ". You have my upmost respect! "; }
+            else if (completion >= 95)
+            { comment += "Nearly! "; }
             else if (completion >= 90)
-            { comment += "So close! Just those nooks and crannies now. "; }
+            { comment += "So close! It's almost a perfect map... "; }
             else if (completion >= 80)
             { comment += "You're not far off now... "; }
             else if (completion >= 70)
             { comment += "Your efforts are greatly appreciated! "; }
             else if (completion >= 60)
-            { comment += "Keep going!"; }
+            { comment += "Keep going! You've got this! "; }
             else if (completion >= 50)
             { comment += "You're over halfway there. "; }
             else if (completion >= 40)
-            { comment += "Neato! "; }
+            { comment += "Neat! From this point onwards it might get more difficult. "; }
             else if (completion >= 33) // A well-explored normal map (full surface, dungeon etc.)
-            { comment += "You've been around a bit then. Found anything interesting? "; }
+            { comment += "Well done! You must know this place pretty well now"; }
             else if (completion >= 25)
             { comment += "You've cleared the first hurdle, but there's still ways to go. "; }
             else if (completion >= 18)
@@ -592,6 +594,9 @@ namespace ExpeditionsContent.NPCs
         {
             // Sell book
             shop.item[nextSlot].SetDefaults(API.ItemIDExpeditionBook); nextSlot++;
+            // Sell Camera and ammo
+            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.PhotoCamera>()); nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.PhotoBlank>()); nextSlot++;
             // Sell telescope
             API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.Telescope>(), 1);
             // Sell boxes
