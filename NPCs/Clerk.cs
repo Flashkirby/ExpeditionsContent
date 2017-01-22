@@ -141,7 +141,7 @@ namespace ExpeditionsContent.NPCs
             Player player = Main.player[Main.myPlayer];
             // You 'saved' me!
             WorldExplorer.savedClerk = true;
-            
+
             danger = CheckDangered();
 
             // Overwrite getting off chair due to type != 15
@@ -255,14 +255,14 @@ namespace ExpeditionsContent.NPCs
         {
             npc.ai[0] = 5f;
             bool flag = true;
-            foreach(Player p in Main.player)
+            foreach (Player p in Main.player)
             {
-                if(p.talkNPC == npc.whoAmI)
+                if (p.talkNPC == npc.whoAmI)
                 {
                     flag = false;
                 }
             }
-            if(flag) npc.direction = ((tile2.frameY <= 52) ? -1 : 1);
+            if (flag) npc.direction = ((tile2.frameY <= 52) ? -1 : 1);
             npc.Bottom = new Vector2((float)(point2.X * 16 + 8 + 2 * npc.direction), (float)(point2.Y * 16 + 32));
             npc.velocity = Vector2.Zero;
             npc.localAI[3] = 0f;
@@ -375,7 +375,7 @@ namespace ExpeditionsContent.NPCs
             Expeditions.Expeditions.CloseExpeditionMenu(true); // Stop conflict caused by Bounty Book
             if (npc.homeless)
             {
-                if(Main.bloodMoon)
+                if (Main.bloodMoon)
                 {
                     switch (Main.rand.Next(3))
                     {
@@ -484,7 +484,7 @@ namespace ExpeditionsContent.NPCs
             if (name != null) speech.Add(name + " has been showing me some cool tricks, wanna to see? No? Ok. ");
 
             name = NPC.GetFirstNPCNameOrNull(NPCID.TaxCollector);
-            if (name != null) speech.Add("I keep telling " +name + " that I don't handle finances, so he'll just have to settle for stationary. ");
+            if (name != null) speech.Add("I keep telling " + name + " that I don't handle finances, so he'll just have to settle for stationary. ");
 
             return speech[Main.rand.Next(speech.Count)];
         }
@@ -510,7 +510,7 @@ namespace ExpeditionsContent.NPCs
             int revealed = 0;
             int maxCounted = 0;
             string comment = ". Keep exploring!";
-            
+
             int tileLeft = (int)Main.leftWorld / 16;
             int tileRight = (int)Main.rightWorld / 16;
             int tileTop = (int)Main.topWorld / 16;
@@ -558,7 +558,7 @@ namespace ExpeditionsContent.NPCs
             else if (completion >= 40)
             { comment += "Neat! From this point onwards it might get more difficult. "; }
             else if (completion >= 33) // A well-explored normal map (full surface, dungeon etc.)
-            { comment += "Well done! You must know this place pretty well now"; }
+            { comment += "Well done! You must know this place pretty well by now. "; }
             else if (completion >= 25)
             { comment += "You've cleared the first hurdle, but there's still ways to go. "; }
             else if (completion >= 18)
@@ -568,7 +568,7 @@ namespace ExpeditionsContent.NPCs
             else if (completion >= 5)
             { comment += "There's still plenty left to explore. "; }
             else if (completion >= 1)
-            { comment += "You should try mapping out the surface of " + Main.worldName; }
+            { comment += "You should try mapping out the surface of " + Main.worldName + ". "; }
             else
             { comment = "You've mapped out " + completion + "% of " + Main.worldName + ". Well, everyone has to start somewhere right? "; }
 
@@ -611,7 +611,7 @@ namespace ExpeditionsContent.NPCs
                 API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.HeartCompass>(), 1);
             }
 
-            if(NPC.downedMechBossAny)
+            if (NPC.downedMechBossAny)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 2);
             }
