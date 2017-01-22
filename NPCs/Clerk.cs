@@ -518,9 +518,11 @@ namespace ExpeditionsContent.NPCs
             // Minsize is 800x600
             int checkStepX = (int)(Main.rightWorld - Main.leftWorld) / 800;
             int checkStepY = (int)(Main.bottomWorld - Main.topWorld) / 600;
+            /*
             Main.NewText(string.Concat(
                     tileLeft,":",tileRight,"=",tileTop,":",tileBottom," ",checkStepX,"-",checkStepY
                 ));
+                */
             for (int y = 1; y < checkStepY; y++)
             {
                 int yTile = tileTop + tileBottom / checkStepY * y;
