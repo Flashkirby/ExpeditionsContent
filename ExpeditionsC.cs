@@ -93,10 +93,10 @@ namespace ExpeditionsContent {
 
             API.AddExpedition(this, new Quests.TravMerch.Compass());
             API.AddExpedition(this, new Quests.TravMerch.Blowpipe());
-            API.AddExpedition(this, new Quests.TravMerch.BandOfStarpower());
-            API.AddExpedition(this, new Quests.TravMerch.WormScarf());
-            API.AddExpedition(this, new Quests.TravMerch.CrimsonRod());
-            API.AddExpedition(this, new Quests.TravMerch.PanicNecklace());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair1BandOfStarpower());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair4WormScarf());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair2CrimsonRod());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair1PanicNecklace());
 
             // Hard Mode
 

@@ -5,11 +5,11 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.TravMerch
 {
-    class WormScarf : ModExpedition
+    class PrePair4BrainOfConfusion : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Trading Worm Scarf";
+            expedition.name = "Trading Brain of Confusion";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 1;
             expedition.ctgCollect = true;
@@ -17,13 +17,13 @@ namespace ExpeditionsContent.Quests.TravMerch
         public override void AddItemsOnLoad()
         {
             AddDeliverable(ItemID.GoldCoin);
-            AddDeliverable(ItemID.BrainOfConfusion, 1);
+            AddDeliverable(ItemID.WormScarf);
 
-            AddRewardItem(ItemID.WormScarf);
+            AddRewardItem(ItemID.BrainOfConfusion);
         }
         public override string Description(bool complete)
         {
-            return "Having a tough time dealing with big hitters? This comfy scarf softens any and all blows, keeping you that much further from deaths clutches. ";
+            return "Getting mobbed? Well you need this confusing item! Send your enemies running about any time they lay a scratch on you. Honestly even I don't know how this thing works! ";
         }
 
         public override void OnNewDay()
@@ -36,7 +36,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
-            return NPC.downedBoss2 && Main.expertMode;
+            return NPC.downedBoss2 && Main.expertMode && !WorldGen.crimson;
         }
     }
 }

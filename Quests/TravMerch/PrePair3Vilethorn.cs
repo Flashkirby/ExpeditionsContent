@@ -5,11 +5,11 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.TravMerch
 {
-    class BandOfStarpower : ModExpedition
+    class PrePair3Vilethorn : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Trading Band of Starpower";
+            expedition.name = "Trading Vilethorn";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 1;
             expedition.ctgCollect = true;
@@ -18,16 +18,16 @@ namespace ExpeditionsContent.Quests.TravMerch
         {
             AddDeliverable(ItemID.GoldCoin);
             AddDeliverableAnyOf(new int[]{
+                ItemID.CrimsonRod,
                 ItemID.TheRottedFork,
-                ItemID.CrimsonHeart,
                 ItemID.PanicNecklace,
             }, 1);
 
-            AddRewardItem(ItemID.BandofStarpower);
+            AddRewardItem(ItemID.Vilethorn);
         }
         public override string Description(bool complete)
         {
-            return "For aspiring mages, this item is probably a must have. Practical, and stylish. Become the star of the show! ";
+            return "For when you can't afford to take on your enemies directly, these nefarious plants creep even through walls! Take back control and fight your foes safely. ";
         }
 
         public override void OnNewDay()
@@ -40,7 +40,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
-            return NPC.downedBoss1;
+            return NPC.downedBoss1 && WorldGen.crimson;
         }
     }
 }

@@ -5,7 +5,7 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.TravMerch
 {
-    class PanicNecklace : ModExpedition
+    class PrePair1PanicNecklace : ModExpedition
     {
         public override void SetDefaults()
         {
@@ -18,9 +18,9 @@ namespace ExpeditionsContent.Quests.TravMerch
         {
             AddDeliverable(ItemID.GoldCoin);
             AddDeliverableAnyOf(new int[]{
-                ItemID.WormScarf,
-                ItemID.ShadowOrb,
-                ItemID.Musket,
+                ItemID.BandofStarpower,
+                ItemID.BallOHurt,
+                ItemID.Vilethorn,
             }, 1);
 
             AddRewardItem(ItemID.PanicNecklace);
@@ -40,7 +40,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
-            return NPC.downedBoss1;
+            return NPC.downedBoss1 && !WorldGen.crimson;
         }
     }
 }

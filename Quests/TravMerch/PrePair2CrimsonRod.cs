@@ -5,7 +5,7 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.TravMerch
 {
-    class CrimsonRod : ModExpedition
+    class PrePair2CrimsonRod : ModExpedition
     {
         public override void SetDefaults()
         {
@@ -19,15 +19,15 @@ namespace ExpeditionsContent.Quests.TravMerch
             AddDeliverable(ItemID.GoldCoin);
             AddDeliverableAnyOf(new int[]{
                 ItemID.Vilethorn,
-                ItemID.Musket,
-                ItemID.ShadowOrb,
+                ItemID.BallOHurt,
+                ItemID.BandofStarpower,
             }, 1);
 
             AddRewardItem(ItemID.CrimsonRod);
         }
         public override string Description(bool complete)
         {
-            return "A quality item for watching your own back - enemies beware. You'll be seeing silver linings in any fight with this magical rod. ";
+            return "A quality item for watching your own back - enemies beware. You'll be seeing silver linings in any fight with this magical rod, or your money back! You won't get your money back. ";
         }
 
         public override void OnNewDay()
@@ -40,7 +40,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
-            return NPC.downedBoss1;
+            return NPC.downedBoss1 && !WorldGen.crimson;
         }
     }
 }
