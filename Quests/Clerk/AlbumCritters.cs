@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Expeditions;
+using System.Collections.Generic;
 
 namespace ExpeditionsContent.Quests.Clerk
 {
@@ -14,6 +15,8 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
 
+            expedition.repeatable = true;
+
             expedition.conditionDescriptionCountable = "Collect photos";
             expedition.conditionCountedMax = 2;
         }
@@ -25,21 +28,18 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             return "I need pictures. Pictures of: Bunny, Bird";
         }
+        public static readonly int[] photosToMatch = {
+            NPCID.Bunny,
+            NPCID.Bird
+        };
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
-            count = 0;
-            if (API.InInventory[mod.ItemType<Items.Photo>()])
-            {
-                foreach(Item i in player.inventory)
-                {
-                    if(i.type == ExpeditionC.ItemIDPhoto)
-                    {
-                        if (i.stack == NPCID.Bunny) count++;
-                        if (i.stack == NPCID.Bird) count++;
-                    }
-                }
-            }
+            count =  PhotoManager.CountUniquePhotosInInventory(photosToMatch);
+        }
+        public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
+        {
+            PhotoManager.ConsumePhotos(photosToMatch);
         }
     }
 }

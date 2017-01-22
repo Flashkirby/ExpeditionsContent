@@ -136,6 +136,11 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT3());
         }
 
+        public override void PostDrawInterface(SpriteBatch spriteBatch)
+        {
+            PhotoManager.ResetFrame();
+        }
+
         public static List<Point> heartTiles;
         public static List<Point> fruitTiles;
         public static List<Vector2> fallenStarPos;
