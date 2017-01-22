@@ -65,7 +65,13 @@ namespace ExpeditionsContent
             return count;
         }
 
-        public static bool ConsumePhotos(int[] NPCIDsToMatch)
+        /// <summary>
+        /// Removes photos form the player's inventory
+        /// </summary>
+        /// <param name="NPCIDsToMatch">Array of NPC IDs to remove</param>
+        /// <param name="matchAll">Will not run unless all photos are found</param>
+        /// <returns></returns>
+        public static bool ConsumePhotos(int[] NPCIDsToMatch, bool matchAll = false)
         {
             List<int> photosToConsume = new List<int>();
             foreach (int i in NPCIDsToMatch)
@@ -75,7 +81,8 @@ namespace ExpeditionsContent
                     // Player has no photo of npc?
                     if (!PhotoOfNPC[i])
                     {
-                        return false;
+                        //Main.NewText("Player has no photo of " + i);
+                        if (matchAll) return false;
                     }
                     else
                     {
@@ -86,7 +93,7 @@ namespace ExpeditionsContent
                 catch
                 {
                     // Is unloaded npc/faded photo
-                    // Main.NewText("Unloaded Photo " + i + "Could not be found");
+                    //Main.NewText("Unloaded Photo " + i + "Could not be found");
                     return false;
                 }
             }
@@ -100,6 +107,7 @@ namespace ExpeditionsContent
                     {
                         photosToConsume.Remove(i.stack);
                         // Remove item
+                        //Main.NewText("remove this " + i.stack);
                         i.SetDefaults();
                         i.stack = 0;
                     }
