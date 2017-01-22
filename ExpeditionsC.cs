@@ -49,10 +49,8 @@ namespace ExpeditionsContent {
             FullMapInitialise();
 
             API.AddExpedition(this, new Quests.MiscPre.MakingBase());
-            API.AddExpedition(this, new Quests.Clerk.AlbumCritters());
 
             #region Core Quests
-
             //Block 1
             API.AddExpedition(this, new Quests.Core.AAWelcomeQuest());
             API.AddExpedition(this, new Quests.Core.ABSmeltOres());
@@ -78,32 +76,9 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.BDDungeonSkell());
             API.AddExpedition(this, new Quests.Core.BDHellArmour());
             API.AddExpedition(this, new Quests.Core.BETheWall());
-
             #endregion
 
-            API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
-            API.AddExpedition(this, new Quests.Clerk.SOSAngler());
-            API.AddExpedition(this, new Quests.Clerk.SOSStylist());
-            API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
-            API.AddExpedition(this, new Quests.Clerk.SOSTinkerer());
-            API.AddExpedition(this, new Quests.Clerk.SOSMechanic());
-
-            API.AddExpedition(this, new Quests.MiscPre.DryadDD2());
-            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT1());
-
-            API.AddExpedition(this, new Quests.TravMerch.Compass());
-            API.AddExpedition(this, new Quests.TravMerch.Blowpipe());
-            API.AddExpedition(this, new Quests.TravMerch.PrePair1BandOfStarpower());
-            API.AddExpedition(this, new Quests.TravMerch.PrePair1PanicNecklace());
-            API.AddExpedition(this, new Quests.TravMerch.PrePair2BallOHurt());
-            API.AddExpedition(this, new Quests.TravMerch.PrePair2TheRottedFork());
-            API.AddExpedition(this, new Quests.TravMerch.PrePair3Vilethorn());
-            API.AddExpedition(this, new Quests.TravMerch.PrePair3CrimsonRod());
-
-            // Hard Mode
-
             #region Core Quests Hard
-
             //Block 4
             API.AddExpedition(this, new Quests.Core.CAHardMode());
             API.AddExpedition(this, new Quests.Core.CASnowArmy());
@@ -129,20 +104,51 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.DCPlanterror());
             API.AddExpedition(this, new Quests.Core.EASolarEclipse());
             API.AddExpedition(this, new Quests.Core.EAGhostBusters());
-
             #endregion
 
-            API.AddExpedition(this, new Quests.Clerk.SOSWizard());
-            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT2());
-            API.AddExpedition(this, new Quests.MiscPre.DD2BigFan());
-            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT3());
+            #region Clerk
+            // Clerk Sidequests
+            API.AddExpedition(this, new Quests.Clerk.ShopInventory());
+            API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
+            API.AddExpedition(this, new Quests.Clerk.SunkenTreasure());
+            API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
+            API.AddExpedition(this, new Quests.Clerk.DarkBlade());
 
+            // Clerk SOS
+            API.AddExpedition(this, new Quests.Clerk.SOSAngler());
+            API.AddExpedition(this, new Quests.Clerk.SOSStylist());
+            API.AddExpedition(this, new Quests.Clerk.SOSTinkerer());
+            API.AddExpedition(this, new Quests.Clerk.SOSMechanic());
+            API.AddExpedition(this, new Quests.Clerk.SOSWizard());
+
+            // Album Builders
+            API.AddExpedition(this, new Quests.Clerk.AlbumCritters());
+            #endregion
+
+            // DD2
+            API.AddExpedition(this, new Quests.MiscPre.DryadDD2());
+            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT1());
+            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT2());
+            API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT3());
+            API.AddExpedition(this, new Quests.MiscPre.DD2BigFan());
+
+
+            #region Travelling Merchant Trades
+            API.AddExpedition(this, new Quests.TravMerch.Compass());
+            API.AddExpedition(this, new Quests.TravMerch.Blowpipe());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair1BandOfStarpower());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair1PanicNecklace());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair2BallOHurt());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair2TheRottedFork());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair3Vilethorn());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair3CrimsonRod());
             API.AddExpedition(this, new Quests.TravMerch.PostPair1ClingerStaff());
             API.AddExpedition(this, new Quests.TravMerch.PostPair1LifeDrain());
             API.AddExpedition(this, new Quests.TravMerch.PostPair2PutridScent());
             API.AddExpedition(this, new Quests.TravMerch.PostPair2FleshKnuckles());
             API.AddExpedition(this, new Quests.TravMerch.PostPair3ChainGuillotines());
             API.AddExpedition(this, new Quests.TravMerch.PostPair3FetidBaghnaks());
+            #endregion
         }
 
         public override void PostDrawInterface(SpriteBatch spriteBatch)

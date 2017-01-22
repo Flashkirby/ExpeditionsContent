@@ -23,7 +23,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "You found a what? A giant tree? That's awesome! I can tell you know I didn't expect something like that when I came no siree. ";
+            return "You found a what? A giant tree? That's awesome! I can tell you know I didn't expect something like that when I came here, no siree. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
