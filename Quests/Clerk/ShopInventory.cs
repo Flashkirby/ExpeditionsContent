@@ -12,12 +12,12 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.name = "The Expeditions Shop";
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 0;
-            expedition.ctgCollect = true;
+            expedition.ctgExplore = true;
             expedition.ctgImportant = true;
         }
         public override void AddItemsOnLoad()
         {
-            AddDeliverable(API.CustomCurrencyIDExpeditionCoupon, 1);
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1);
         }
         public override string Description(bool complete)
         {
