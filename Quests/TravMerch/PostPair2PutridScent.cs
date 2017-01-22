@@ -5,29 +5,28 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.TravMerch
 {
-    class PrePair2CrimsonRod : ModExpedition
+    class PostPair2PutridScent : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Trading Crimson Rod";
+            expedition.name = "Putrid Scent";
             SetNPCHead(NPCID.TravellingMerchant);
-            expedition.difficulty = 1;
+            expedition.difficulty = 5;
             expedition.ctgCollect = true;
         }
         public override void AddItemsOnLoad()
         {
             AddDeliverable(ItemID.GoldCoin);
             AddDeliverableAnyOf(new int[]{
-                ItemID.Vilethorn,
-                ItemID.BallOHurt,
-                ItemID.BandofStarpower,
+                ItemID.FleshKnuckles,
+                ItemID.TendonHook,
             }, 1);
 
-            AddRewardItem(ItemID.CrimsonRod);
+            AddRewardItem(ItemID.PutridScent);
         }
         public override string Description(bool complete)
         {
-            return "A quality item for watching your own back - enemies beware. You'll be seeing silver linings in any fight with this magical rod, or your money back! You won't get your money back. ";
+            return ". ";
         }
 
         public override void OnNewDay()
@@ -40,7 +39,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
-            return NPC.downedBoss1 && !WorldGen.crimson;
+            return NPC.downedMechBossAny && WorldGen.crimson;
         }
     }
 }

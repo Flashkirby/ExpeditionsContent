@@ -94,9 +94,11 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.TravMerch.Compass());
             API.AddExpedition(this, new Quests.TravMerch.Blowpipe());
             API.AddExpedition(this, new Quests.TravMerch.PrePair1BandOfStarpower());
-            API.AddExpedition(this, new Quests.TravMerch.PrePair4WormScarf());
-            API.AddExpedition(this, new Quests.TravMerch.PrePair2CrimsonRod());
             API.AddExpedition(this, new Quests.TravMerch.PrePair1PanicNecklace());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair2BallOHurt());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair2TheRottedFork());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair3Vilethorn());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair3CrimsonRod());
 
             // Hard Mode
 
@@ -134,6 +136,13 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT2());
             API.AddExpedition(this, new Quests.MiscPre.DD2BigFan());
             API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT3());
+
+            API.AddExpedition(this, new Quests.TravMerch.PostPair1ClingerStaff());
+            API.AddExpedition(this, new Quests.TravMerch.PostPair1LifeDrain());
+            API.AddExpedition(this, new Quests.TravMerch.PostPair2PutridScent());
+            API.AddExpedition(this, new Quests.TravMerch.PostPair2FleshKnuckles());
+            API.AddExpedition(this, new Quests.TravMerch.PostPair3ChainGuillotines());
+            API.AddExpedition(this, new Quests.TravMerch.PostPair3FetidBaghnaks());
         }
 
         public override void PostDrawInterface(SpriteBatch spriteBatch)
