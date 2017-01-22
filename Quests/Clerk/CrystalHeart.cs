@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void SetDefaults()
         {
             expedition.name = "Hearty Quest";
-            SetNPCHead(ExpeditionC.npcClerk);
+            SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 2;
             expedition.ctgExplore = true;
             expedition.partyShare = true;

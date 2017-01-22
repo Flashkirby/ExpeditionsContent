@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void SetDefaults()
         {
             expedition.name = "Beacon of Purity";
-            SetNPCHead(ExpeditionC.npcClerk);
+            SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
 

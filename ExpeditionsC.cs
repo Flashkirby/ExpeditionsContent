@@ -23,8 +23,11 @@ namespace ExpeditionsContent {
             };
         }
 
-        private static int NPCIDClerk;
-        public static int npcClerk { get { return NPCIDClerk; } }
+        private static int npcidclerk;
+        public static int NPCIDClerk { get { return npcidclerk; } }
+        private static int itemidphoto;
+        public static int ItemIDPhoto { get { return itemidphoto; } }
+
 
         public static Texture2D CameraFrameTexture;
 
@@ -35,8 +38,10 @@ namespace ExpeditionsContent {
 
         public override void Load()
         {
-            NPCIDClerk = NPCType("Clerk");
-            if(Main.netMode != 2)
+            npcidclerk = NPCType("Clerk");
+            itemidphoto = ItemType<Items.Photo>();
+
+            if (Main.netMode != 2)
             {
                 CameraFrameTexture = GetTexture("Gores/CameraFrame");
             }
@@ -44,6 +49,7 @@ namespace ExpeditionsContent {
             FullMapInitialise();
 
             API.AddExpedition(this, new Quests.MiscPre.MakingBase());
+            API.AddExpedition(this, new Quests.Clerk.AlbumCritters());
 
             #region Core Quests
 

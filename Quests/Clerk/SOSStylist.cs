@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void SetDefaults()
         {
             expedition.name = "Search and Rescue: Spiders";
-            SetNPCHead(ExpeditionC.npcClerk);
+            SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 2;
             expedition.ctgExplore = true;
 

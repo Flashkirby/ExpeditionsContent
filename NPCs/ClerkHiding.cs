@@ -68,7 +68,7 @@ namespace ExpeditionsContent.NPCs
                     !WorldExplorer.savedClerk &&
                     // None of me exists
                     !NPC.AnyNPCs(npc.type) &&
-                    !NPC.AnyNPCs(ExpeditionC.npcClerk)
+                    !NPC.AnyNPCs(ExpeditionC.NPCIDClerk)
                     )
                 {
                     //if (ExpeditionsContent.DEBUG) Main.NewText("Spawned succesfully!", 50, 255, 100);
