@@ -22,6 +22,15 @@ namespace ExpeditionsContent.Items
             get
             {
                 if (npcTexture == null) SetValues();
+                if(npcTexture == Main.npcTexture[1] && item.stack > 1)
+                {
+                    // Image still not loaded properly? (from previous save?)
+                    try
+                    {
+                        if (Main.netMode != 2) npcTexture = Main.npcTexture[item.stack]; //try again
+                    }
+                    catch { }
+                }
                 return npcTexture;
             }
         }
