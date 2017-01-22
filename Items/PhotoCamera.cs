@@ -11,11 +11,13 @@ namespace ExpeditionsContent.Items
 {
     public class PhotoCamera : ModItem
     {
+        public const int frameWidth = 180;
+        public const int frameHeight = 120;
         public override void SetDefaults()
         {
-            item.name = "Photocam";
+            item.name = "PhotoTron";
             item.toolTip = "Takes photos of creatures";
-            item.toolTip = "'Say cheese!'";
+            item.toolTip2 = "'Say cheese!'";
             item.width = 34;
             item.height = 26;
             item.useAmmo = mod.ItemType<PhotoBlank>();
@@ -24,12 +26,12 @@ namespace ExpeditionsContent.Items
             item.useStyle = 4;
             item.useAnimation = 40;
             item.useTime = 40;
-            item.useTurn = true;
 
             item.rare = 2;
             item.value = Item.buyPrice(0, 3, 0, 0);
         }
 
+        // Flashing effect
         public override void HoldItem(Player player)
         {
             if (player.itemAnimation > 0)
@@ -45,20 +47,17 @@ namespace ExpeditionsContent.Items
         // This works because UI layer;
         public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            if (Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem] == item)
-            {
-                Rectangle r = GetCameraFrame();
-
-                // Draw camera frame
-                    spriteBatch.Draw(
-                    ExpeditionC.CameraFrameTexture,
-                    r.Location.ToVector2() - Main.screenPosition,
-                    Color.White
-                    );
-            }
+            PhotoCamera.DrawCameraFrame(spriteBatch, item, frameWidth, frameHeight);
         }
 
-        public Rectangle GetCameraFrame()
+        public override bool UseItem(Player player)
+        {
+            return PhotoCamera.TakePhoto(player, item, frameWidth, frameHeight);
+        }
+
+        #region Static Methods
+
+        public static Rectangle GetCameraFrame(int width, int height)
         {
             return new Rectangle(
                 Main.mouseX + (int)Main.screenPosition.X - frameWidth / 2,
@@ -67,15 +66,32 @@ namespace ExpeditionsContent.Items
                 frameHeight);
         }
 
-        public const int frameWidth = 180;
-        public const int frameHeight = 120;
-        public override bool UseItem(Player player)
+        public static void DrawCameraFrame(SpriteBatch spriteBatch, Item item, int width, int height)
+        {
+            DrawCameraFrame(spriteBatch, item, GetCameraFrame(width, height));
+        }
+        public static void DrawCameraFrame(SpriteBatch spriteBatch, Item item, Rectangle r)
+        {
+            if (Main.player[Main.myPlayer].inventory[Main.player[Main.myPlayer].selectedItem] == item)
+            {
+                // Draw camera frame
+                spriteBatch.Draw(
+                ExpeditionC.CameraFrameTexture,
+                r.Location.ToVector2() - Main.screenPosition,
+                Color.White
+                );
+            }
+        }
+
+        public static bool TakePhoto(Player player, Item item, int width, int height)
+        {
+            return TakePhoto(player, item, GetCameraFrame(width, height));
+        }
+        public static bool TakePhoto(Player player, Item item, Rectangle cameraFrame)
         {
             if (player.whoAmI != Main.myPlayer) return true;
 
             bool canTakePicture = false;
-            
-            Rectangle cameraFrame = GetCameraFrame();
 
             NPC npc = Main.npc[0];
             float distance = 1000f;
@@ -84,6 +100,12 @@ namespace ExpeditionsContent.Items
                 if (!n.active) continue;
                 if (cameraFrame.Intersects(n.getRect()))
                 {
+                    // Can't take pictures if too dark
+                    Point centre = n.Center.ToTileCoordinates();
+                    int darkness = Lighting.GetBlackness(centre.X, centre.Y).A;
+                    if (darkness > 240) continue;
+
+                    // Get the closest
                     float dist = n.Distance(cameraFrame.Center.ToVector2());
                     if (dist < distance)
                     {
@@ -97,9 +119,9 @@ namespace ExpeditionsContent.Items
             if (!canTakePicture) return true;
 
             // Check for camera roll
-            foreach(Item i in player.inventory)
+            foreach (Item i in player.inventory)
             {
-                if(i.ammo == item.useAmmo)
+                if (i.ammo == item.useAmmo)
                 {
                     i.stack--;
                     canTakePicture = true;
@@ -108,7 +130,7 @@ namespace ExpeditionsContent.Items
             if (!canTakePicture) return true;
 
             // Spawn the item
-            int number = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, mod.ItemType<Photo>(), npc.type, false, -1, false, false);
+            int number = Item.NewItem((int)player.position.X, (int)player.position.Y, player.width, player.height, ExpeditionC.ItemIDPhoto, npc.type, false, -1, false, false);
 
             // Send the item
             if (Main.netMode == 1)
@@ -117,5 +139,7 @@ namespace ExpeditionsContent.Items
             }
             return true;
         }
+
+        #endregion
     }
 }

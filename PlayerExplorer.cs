@@ -8,6 +8,8 @@ using Terraria.Map;
 using Terraria.ID;
 using Terraria.ModLoader;
 
+using Expeditions;
+
 namespace ExpeditionsContent
 {
     public class PlayerExplorer : ModPlayer
@@ -16,6 +18,13 @@ namespace ExpeditionsContent
         public bool accFruitCompass;
         public bool stargazer;
         public bool familiarMinion;
+
+        public static bool HoldingCamera(Mod mod)
+        {
+            return
+                API.InInventory[mod.ItemType<Items.PhotoCamera>()] ||
+                API.InInventory[mod.ItemType<Items.PhotoCamPro>()];
+        }
 
         public static PlayerExplorer Get(Player player, Mod mod)
         {
