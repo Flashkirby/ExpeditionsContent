@@ -15,7 +15,7 @@ namespace ExpeditionsContent.Items
         public const int frameHeight = 120;
         public override void SetDefaults()
         {
-            item.name = "Cannon-3000";
+            item.name = "Hislops-3000";
             item.toolTip = "Takes photos of creatures";
             item.toolTip2 = "Right click to zoom out";
             item.width = 34;
@@ -28,8 +28,8 @@ namespace ExpeditionsContent.Items
             item.useTime = 25;
             item.autoReuse = true;
 
-            item.rare = 2;
-            item.value = Item.buyPrice(0, 3, 0, 0);
+            item.rare = 5;
+            item.value = Item.buyPrice(0, 15, 0, 0);
         }
 
         // Flashing effect
@@ -40,9 +40,9 @@ namespace ExpeditionsContent.Items
             {
                 float brightness = (float)player.itemAnimation / player.itemAnimationMax;
                 Lighting.AddLight(player.Top + new Vector2(32 * player.direction, 0),
-                    brightness * 1.5f,
+                    brightness * 1.2f,
                     brightness * 1.35f,
-                    brightness * 1.2f);
+                    brightness * 1.5f);
             }
         }
 
