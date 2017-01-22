@@ -187,6 +187,7 @@ Do not store in chests, use a safe/piggybank";
         {
             try
             {
+                NPC n = GenerateNPC();
                 if (npcMod != "")
                 {
                     // Try setting to the current index of this creature
@@ -194,20 +195,29 @@ Do not store in chests, use a safe/piggybank";
                 }
                 else
                 {
-                    item.stack = GenerateNPC().type;
+                    item.stack = n.type;
                 }
 
                 if(Main.netMode != 2)  npcTexture = Main.npcTexture[item.stack]; //catch if out of bounds
 
                 if (npcDisplayName != "")
                 {
-                    item.name = "Photo (" + npcDisplayName + ")";
+                    item.name = "Photo of " + npcDisplayName + ", no.";
                     item.toolTip2 = "'Also known as " + npcName + "'";
                 }
                 else
                 {
-                    item.name = "Photo (" + npcName + ")";
+                    item.name = "Photo of " + npcName + ", no.";
                     item.toolTip2 = "";
+                }
+
+                if(n.boss || n.townNPC)
+                {
+                    item.rare = 1;
+                }
+                else
+                {
+                    item.rare = 0;
                 }
             }
             catch
