@@ -25,6 +25,12 @@ namespace ExpeditionsContent.Quests.TravMerch
         {
             return "Having a tough time dealing with big hitters? This comfy scarf softens any and all blows, keeping you that much further from deaths clutches. ";
         }
+
+        public override void OnNewDay()
+        {
+            expedition.ResetProgress(true); //Reset after trade use
+        }
+
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             // Must have travelling merchant present
