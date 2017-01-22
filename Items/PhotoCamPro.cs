@@ -18,8 +18,8 @@ namespace ExpeditionsContent.Items
             item.name = "Hislops-3000";
             item.toolTip = "Takes photos of creatures";
             item.toolTip2 = "Right click to zoom out";
-            item.width = 34;
-            item.height = 26;
+            item.width = 32;
+            item.height = 24;
             item.useAmmo = mod.ItemType<PhotoBlank>();
             item.UseSound = new LegacySoundStyle(SoundID.Camera, 0);
 

@@ -125,6 +125,7 @@ namespace ExpeditionsContent.Items
                 {
                     i.stack--;
                     canTakePicture = true;
+                    break;
                 }
             }
             if (!canTakePicture) return true;
