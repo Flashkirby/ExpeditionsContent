@@ -14,11 +14,11 @@ namespace ExpeditionsContent.Items
             item.width = 36;
             item.height = 18;
 
-            item.damage = 16;
-            item.useAnimation = 24;
-            item.useTime = 24;
-            item.knockBack = 2f;
-            item.shootSpeed = 7f;
+            item.damage += 1;
+            item.useAnimation += 2;
+            item.useTime += 2;
+            item.knockBack += 1f;
+            item.shootSpeed += 1.5f;
 
             item.value = Item.buyPrice(0, 3, 0, 0);
         }

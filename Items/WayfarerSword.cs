@@ -12,11 +12,12 @@ namespace ExpeditionsContent.Items
             item.name = "Wayfarer's Sword";
             item.width = 32;
             item.height = 36;
-            item.scale = 0.95f;
-            
-            item.damage = 16;
-            item.useAnimation = 21;
+            item.scale = 1.1f;
+
+            item.damage += 4;
+            item.useAnimation += 2;
             item.knockBack = 6f;
+            item.autoReuse = true;
             
             item.value = Item.buyPrice(0, 0, 50, 0);
         }

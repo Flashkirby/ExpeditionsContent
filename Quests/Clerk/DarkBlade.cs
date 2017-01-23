@@ -18,7 +18,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 1, 0, 0));
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1);
         }
         public override string Description(bool complete)
         {

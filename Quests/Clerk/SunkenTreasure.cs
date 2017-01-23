@@ -17,6 +17,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void AddItemsOnLoad()
         {
             AddDeliverable(ItemID.IronCrate);
+
             AddRewardItem(API.ItemIDRustedBox);
         }
         public override string Description(bool complete)

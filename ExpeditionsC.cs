@@ -109,12 +109,14 @@ namespace ExpeditionsContent {
             #region Clerk
             // Clerk Sidequests
             API.AddExpedition(this, new Quests.Clerk.ShopInventory());
+            API.AddExpedition(this, new Quests.Clerk.WayfarerWeapons());
+            API.AddExpedition(this, new Quests.Clerk.WayfererGuns());
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
             API.AddExpedition(this, new Quests.Clerk.SunkenTreasure());
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
             API.AddExpedition(this, new Quests.Clerk.BloodMoonDefence());
             API.AddExpedition(this, new Quests.Clerk.DarkBlade());
-
+            
             // Clerk SOS
             API.AddExpedition(this, new Quests.Clerk.SOSAngler());
             API.AddExpedition(this, new Quests.Clerk.SOSStylist());

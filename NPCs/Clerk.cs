@@ -610,54 +610,37 @@ namespace ExpeditionsContent.NPCs
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.HeartCompass>(), 1);
             }
-
+            /*
             if (NPC.downedMechBossAny)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 2);
             }
+            */
 
-            /*
-            // After EoC
-            if (NPC.downedBoss1)
+            if (API.FindExpedition<Quests.Clerk.WayfarerWeapons>(mod).completed)
             {
-                if (WorldGen.GoldTierOre == TileID.Gold)
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerSword>(), 1);
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerPike>(), 1);
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerBow>(), 1);
+            }
+
+            if (API.FindExpedition<Quests.Clerk.WayfererGuns>(mod).completed)
+            {
+                if (!WorldGen.crimson)
                 {
-                    shop.item[nextSlot].SetDefaults(ItemID.GoldPickaxe); nextSlot++;
-                    shop.item[nextSlot].SetDefaults(ItemID.GoldAxe); nextSlot++;
+                    API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerCarbine>(), 1);
                 }
                 else
                 {
-                    shop.item[nextSlot].SetDefaults(ItemID.PlatinumPickaxe); nextSlot++;
-                    shop.item[nextSlot].SetDefaults(ItemID.PlatinumAxe); nextSlot++;
+                    API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerRepeater>(), 1);
                 }
-
-                // Gold tier weapons after beating the eye
-                shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerSword")); nextSlot++;
-                shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerPike")); nextSlot++;
-                shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerBow")); nextSlot++;
-
-                // Rare1 after beating corruption/crimson
-                if (NPC.downedBoss2)
-                {
-                    if (!WorldGen.crimson)
-                    {
-                        shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerCarbine")); nextSlot++;
-                    }
-                    else
-                    {
-                        shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerRepeater")); nextSlot++;
-                    }
-                }
-
-                // Give some rare2 after opening the dungeon or defeating the bee
-                if (NPC.downedBoss3 || NPC.downedQueenBee)
-                {
-                    shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerBook")); nextSlot++;
-                    shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerStaff")); nextSlot++;
-                    shop.item[nextSlot].SetDefaults(mod.ItemType("WayfarerSummon")); nextSlot++;
-                }
+                shop.item[nextSlot].SetDefaults(ItemID.MusketBall); nextSlot++;
             }
-            */
+
+
+            // Sky Quest for WayfarerBook
+            // Jungle Quest for WayfarerStaff
+            // Collect Quest for WayfarerSummon
         }
 
         #endregion

@@ -12,10 +12,8 @@ namespace ExpeditionsContent.Items
             item.CloneDefaults(ItemID.GoldBow);
             item.name = "Wayfarer's Bow";
 
-            item.damage = 10;
-            item.useAnimation = 25;
-            item.knockBack = 2f;
-            item.shootSpeed = 6.6f;
+            item.knockBack += 2f;
+            item.shootSpeed += 5.5f;
 
             item.value = Item.buyPrice(0, 0, 50, 0);
         }
