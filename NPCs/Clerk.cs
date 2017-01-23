@@ -624,6 +624,7 @@ namespace ExpeditionsContent.NPCs
                 API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerBow>(), 1);
             }
 
+            // Alternate method of aquiring guns
             if (API.FindExpedition<Quests.Clerk.WayfererGuns>(mod).completed)
             {
                 if (!WorldGen.crimson)
@@ -637,11 +638,15 @@ namespace ExpeditionsContent.NPCs
                 shop.item[nextSlot].SetDefaults(ItemID.MusketBall); nextSlot++;
             }
 
-
-            // Sky Quest for WayfarerBook
-            // Jungle Quest for WayfarerStaff
-            // Collect Quest for WayfarerSummon
-        }
+            if (API.FindExpedition<Quests.Clerk.SkysTheLimit>(mod).completed)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerBook
+                    >(), 1);
+            }
+            
+                // Jungle Quest for WayfarerStaff
+                // Collect Quest for WayfarerSummon
+            }
 
         #endregion
 

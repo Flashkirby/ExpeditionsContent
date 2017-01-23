@@ -12,12 +12,13 @@ namespace ExpeditionsContent.Items
             item.CloneDefaults(ItemID.WaterBolt);
             item.name = "Wayfarer's Wind";
             item.toolTip = "Casts a mighty gust of wind";
+            item.toolTip2 = "'It werfs nebels'";
             item.UseSound = SoundID.Item34;
 
-            item.mana = 18;
+            item.mana = 12;
             item.damage = 6;
-            item.useAnimation = 40;
-            item.useTime = 40;
+            item.useAnimation = 45;
+            item.useTime = 45;
             item.knockBack = 7f;
             item.shoot = mod.ProjectileType("Gust");
             item.shootSpeed = 7f;

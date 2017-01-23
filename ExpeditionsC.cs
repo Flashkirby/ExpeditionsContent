@@ -114,6 +114,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
             API.AddExpedition(this, new Quests.Clerk.SunkenTreasure());
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
+            API.AddExpedition(this, new Quests.Clerk.SkysTheLimit());
             API.AddExpedition(this, new Quests.Clerk.BloodMoonDefence());
             API.AddExpedition(this, new Quests.Clerk.DarkBlade());
             
