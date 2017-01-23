@@ -13,8 +13,9 @@ namespace ExpeditionsContent.Quests.Clerk
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 1;
             expedition.ctgSlay = true;
+            expedition.ctgImportant = true; // Challenger indeed
             
-            expedition.conditionDescription1 = "Survive a Blood Moon without any town deaths";
+            expedition.conditionDescription1 = "Survive a Blood Moon without losing anyone";
             expedition.conditionDescription2 = "Prevent any town deaths";
         }
         public override void AddItemsOnLoad()
@@ -24,7 +25,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "Just out of curiosity, how secure is this town against a blood moon? I mean if we can all survive an entire night, during a blood moon, I can definitely reward you for your preparation. ";
+            return "Just out of curiosity, how secure is this town against a blood moon? I mean if we can all survive an entire night, during a blood moon, I can definitely reward you for your preparation! ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -34,7 +35,8 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override void OnNewDay()
         {
-            if(!expedition.condition1Met && expedition.condition2Met)
+            // If player prevented any town deaths, huzzah!
+            if (!expedition.condition1Met && expedition.condition2Met)
             {
                 expedition.condition1Met = true;
             }
@@ -42,14 +44,25 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override void OnNewNight()
         {
+            // On a blood moon, when you have 6 ore more NPCs, being quest
             if (Main.bloodMoon && !expedition.condition1Met)
             {
-                expedition.condition2Met = true;
+                int townieCount = 0;
+                for (int i = 0; i < 200; i++)
+                {
+                    if (!Main.npc[i].active || Main.npc[i].type == NPCID.OldMan) continue;
+                    if (Main.npc[i].townNPC && !Main.npc[i].homeless) townieCount++;
+                }
+                if (townieCount > 5) // 5 NPCs + Clerk. Not too hard to get.
+                {
+                    expedition.condition2Met = true;
+                }
             }
         }
 
         public override void OnAnyNPCDeath(NPC npc)
         {
+            // Oh no, a friend died. Oh well, better luck next time.
             if(npc.townNPC && npc.friendly)
             {
                 expedition.condition2Met = false;
