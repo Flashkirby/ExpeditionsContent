@@ -5,7 +5,7 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.Core
 {
-    class DBFruitsOfLabour : ModExpedition
+    class DBLifeFruit : ModExpedition
     {
         public override void SetDefaults()
         {

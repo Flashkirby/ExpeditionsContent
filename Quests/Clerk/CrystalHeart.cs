@@ -29,7 +29,9 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return WorldExplorer.savedClerk && API.FindExpedition<Core.ACUnderground>(mod).completed;
+            // Only until player has max health
+            if (!expedition.completed && player.statLifeMax >= 400) return false;
+            return API.FindExpedition<Core.ACUnderground>(mod).completed;
         }
     }
 }

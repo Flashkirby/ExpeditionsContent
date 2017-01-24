@@ -608,20 +608,22 @@ namespace ExpeditionsContent.NPCs
 
             if (API.FindExpedition<Quests.Clerk.CrystalHeart>(mod).completed)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.HeartCompass>(), 1);
+                API.AddShopItemVoucher(shop, ref nextSlot, 
+                    mod.ItemType<Items.HeartCompass>(), 1);
             }
-            /*
-            if (NPC.downedMechBossAny)
+            if (API.FindExpedition<Quests.Clerk.FruitsOfLabour>(mod).completed)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 2);
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 1);
             }
-            */
 
             if (API.FindExpedition<Quests.Clerk.WayfarerWeapons>(mod).completed)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerSword>(), 1);
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerPike>(), 1);
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerBow>(), 1);
+                API.AddShopItemVoucher(shop, ref nextSlot, 
+                    mod.ItemType<Items.WayfarerSword>(), 1);
+                API.AddShopItemVoucher(shop, ref nextSlot, 
+                    mod.ItemType<Items.WayfarerPike>(), 1);
+                API.AddShopItemVoucher(shop, ref nextSlot, 
+                    mod.ItemType<Items.WayfarerBow>(), 1);
             }
 
             // Alternate method of aquiring guns
@@ -629,24 +631,36 @@ namespace ExpeditionsContent.NPCs
             {
                 if (!WorldGen.crimson)
                 {
-                    API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerCarbine>(), 1);
+                    API.AddShopItemVoucher(shop, ref nextSlot, 
+                        mod.ItemType<Items.WayfarerCarbine>(), 1);
                 }
                 else
                 {
-                    API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerRepeater>(), 1);
+                    API.AddShopItemVoucher(shop, ref nextSlot, 
+                        mod.ItemType<Items.WayfarerRepeater>(), 1);
                 }
                 shop.item[nextSlot].SetDefaults(ItemID.MusketBall); nextSlot++;
             }
 
             if (API.FindExpedition<Quests.Clerk.SkysTheLimit>(mod).completed)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.WayfarerBook
-                    >(), 1);
+                API.AddShopItemVoucher(shop, ref nextSlot, 
+                    mod.ItemType<Items.WayfarerBook>(), 1);
             }
-            
-                // Jungle Quest for WayfarerStaff
-                // Collect Quest for WayfarerSummon
+
+            if (API.FindExpedition<Quests.Clerk.RoseByAnyName>(mod).completed)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot, 
+                    mod.ItemType<Items.WayfarerStaff>(), 1);
             }
+            /*
+            if (API.FindExpedition<Quests.Clerk.RoseByAnyName>(mod).completed)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot,
+                    mod.ItemType<Items.WayfarerSummon>(), 1);
+            }
+            */
+        }
 
         #endregion
 

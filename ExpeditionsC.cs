@@ -97,7 +97,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.DAMechaWorm());
             API.AddExpedition(this, new Quests.Core.DAMechaEyes());
             API.AddExpedition(this, new Quests.Core.DAMechaPrime());
-            API.AddExpedition(this, new Quests.Core.DBFruitsOfLabour());
+            API.AddExpedition(this, new Quests.Core.DBLifeFruit());
             API.AddExpedition(this, new Quests.Core.DBHallowed());
             API.AddExpedition(this, new Quests.Core.DBFungalFunk());
             //Block 6
@@ -116,8 +116,10 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
             API.AddExpedition(this, new Quests.Clerk.SkysTheLimit());
             API.AddExpedition(this, new Quests.Clerk.BloodMoonDefence());
+            API.AddExpedition(this, new Quests.Clerk.RoseByAnyName());
             API.AddExpedition(this, new Quests.Clerk.DarkBlade());
-            
+            API.AddExpedition(this, new Quests.Clerk.FruitsOfLabour());
+
             // Clerk SOS
             API.AddExpedition(this, new Quests.Clerk.SOSAngler());
             API.AddExpedition(this, new Quests.Clerk.SOSStylist());
