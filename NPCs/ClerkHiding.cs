@@ -135,7 +135,7 @@ namespace ExpeditionsContent.NPCs
             // Also wake up if falling
             if(npc.velocity.Y != 0f)
             {
-                //WakeUp();
+                WakeUp();
             }
 
             // Floor friction
