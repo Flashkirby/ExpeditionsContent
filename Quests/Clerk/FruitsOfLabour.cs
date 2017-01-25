@@ -27,7 +27,15 @@ namespace ExpeditionsContent.Quests.Clerk
             if (guide != null) guide = "the guide";
             string doctor = NPC.GetFirstNPCNameOrNull(NPCID.WitchDoctor);
             if (doctor != null) doctor = "that weird lihzahrd";
-            return "I've been chatting with " + guide + ", and we think that with the help of " + doctor + "'s mysterious dark arts, it's possible to make some kind of item that senses the strange fruit growing in the jungle as of late - much like that heart compass from before! We'll need some samples though. That's your job! ";
+
+            if(API.FindExpedition<CrystalHeart>(mod).completed)
+            {
+                return "I've been chatting with " + guide + ", and we think that with the help of " + doctor + "'s mysterious dark arts, it's possible to make some kind of item that senses the strange fruit growing in the jungle as of late - much like that heart compass from before! We'll need some samples though. That's your job! ";
+            }
+            else
+            {
+                return "I've been chatting with " + guide + ", and we think that with the help of " + doctor + "'s mysterious dark arts, it's possible to make some kind of item that senses the strange fruit growing in the jungle as of late. It's just an idea though, and we'll need some samples to see if it works. That's your job! ";
+            }
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -35,8 +43,7 @@ namespace ExpeditionsContent.Quests.Clerk
             // Needs to have completed the previus quest,
             // Have all these NPCs present, and be in hardmode after defeating a mech
             return expedition.completed
-                || (API.FindExpedition<CrystalHeart>(mod).completed
-                && NPC.FindFirstNPC(NPCID.WitchDoctor) >= 0
+                || (NPC.FindFirstNPC(NPCID.WitchDoctor) >= 0
                 && NPC.FindFirstNPC(NPCID.Guide) >= 0
                 && Main.hardMode
                 && NPC.downedMechBossAny);
