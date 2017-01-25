@@ -28,7 +28,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!expedition.completed && NPC.downedBoss1) return false;
+            if (!expedition.completed && player.statLifeMax >= 200) return false;
             if (!cond1)
             {
                 cond1 = NPC.FindFirstNPC(NPCID.TravellingMerchant) >= 0
