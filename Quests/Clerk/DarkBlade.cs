@@ -45,7 +45,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
             if(!cond1)
             {
-                if (API.TimeAfternoon && NPC.downedBoss3)
+                if (API.TimeDusk && NPC.downedBoss3)
                 {
                     cond1 = true;
                 }

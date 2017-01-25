@@ -615,6 +615,11 @@ namespace ExpeditionsContent.NPCs
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 1);
             }
+            if (API.FindExpedition<Quests.Clerk.SecretSummon>(mod).completed)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot,
+                    mod.ItemType<Items.LoyaltyBadge>(), 1);
+            }
 
             if (API.FindExpedition<Quests.Clerk.WayfarerWeapons>(mod).completed)
             {
@@ -653,13 +658,12 @@ namespace ExpeditionsContent.NPCs
                 API.AddShopItemVoucher(shop, ref nextSlot, 
                     mod.ItemType<Items.WayfarerStaff>(), 1);
             }
-            /*
-            if (API.FindExpedition<Quests.Clerk.RoseByAnyName>(mod).completed)
+
+            if (API.FindExpedition<Quests.Clerk.SecretSummon2>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot,
-                    mod.ItemType<Items.WayfarerSummon>(), 1);
+                    mod.ItemType<Items.WayfarerSummon>(), 2);
             }
-            */
         }
 
         #endregion

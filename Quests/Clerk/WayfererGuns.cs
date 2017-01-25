@@ -29,7 +29,7 @@ namespace ExpeditionsContent.Quests.Clerk
             // Disappear after WoF
             if (!expedition.completed && Main.hardMode) return false;
 
-            if (!cond1) cond1 = NPC.FindFirstNPC(NPCID.ArmsDealer) >= 0 && API.TimeAfternoon;
+            if (!cond1) cond1 = NPC.FindFirstNPC(NPCID.ArmsDealer) >= 0 && API.TimeMorning;
             return cond1;
         }
 
