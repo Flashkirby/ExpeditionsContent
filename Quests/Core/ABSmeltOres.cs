@@ -27,8 +27,8 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            // Only appears until first boss is beaten, or is done already
-            if (!expedition.completed && !NPC.downedBoss1) return false;
+            // Kinda mandatory, only hide if already hardmode
+            if (!expedition.completed && Main.hardMode) return false;
 
             return API.FindExpedition<AAWelcomeQuest>(mod).completed;
         }
@@ -48,7 +48,8 @@ namespace ExpeditionsContent.Quests.Core
                     type == ItemID.PlatinumBar ||
                     type == ItemID.DemoniteBar ||
                     type == ItemID.CrimtaneBar ||
-                    type == ItemID.MeteoriteBar)
+                    type == ItemID.MeteoriteBar ||
+                    type == ItemID.HellstoneBar)
                 {
                     expedition.condition1Met = true;
                 }
