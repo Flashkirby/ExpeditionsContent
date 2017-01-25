@@ -22,7 +22,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            return "When you have a base, it's important to make sure that you can always return there if you run into trouble. To move your spawn point, you will need a bed. Beds are crafted out of wood and silk at a sawmill, and the silk itself is crafted at a loom. Both require wood, and the sawmill also requires iron and chains. ";
+            return "Did you know you can move your spawn point using a bed? Beds are crafted out of wood and silk at a sawmill, and the silk itself is crafted at a loom. Both require wood, and the sawmill also requires iron and chains. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
