@@ -16,7 +16,7 @@ namespace ExpeditionsContent.Quests.Core
             expedition.ctgImportant = true;
 
             expedition.conditionDescription1 = "Encounter a Wyvern";
-            expedition.conditionDescription1 = "Gain the ability to fly";
+            expedition.conditionDescription2 = "Gain the ability to fly";
         }
         public override void AddItemsOnLoad()
         {

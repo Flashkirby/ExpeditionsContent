@@ -40,7 +40,6 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            // Needs to have completed the previus quest,
             // Have all these NPCs present, and be in hardmode after defeating a mech
             return expedition.completed
                 || (NPC.FindFirstNPC(NPCID.WitchDoctor) >= 0

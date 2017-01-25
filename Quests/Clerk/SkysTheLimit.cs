@@ -37,7 +37,7 @@ namespace ExpeditionsContent.Quests.Clerk
                 cond1 = (Main.screenTileCounts[TileID.Cloud] + Main.screenTileCounts[TileID.RainCloud]) > 800
                     && player.ZoneSkyHeight;
             }
-            return false;
+            return cond1;
         }
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
