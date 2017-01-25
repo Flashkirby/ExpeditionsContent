@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Items
         public override void SetDefaults()
         {
             item.name = "Photo Film";
-            item.toolTip = "'Contains enchanted paper, capable of holding images'";
+            item.toolTip = "'Contains enchanted paper, capable of preserving images'";
             item.width = 30;
             item.height = 36;
             item.ammo = item.type;
