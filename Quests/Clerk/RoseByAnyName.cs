@@ -10,9 +10,9 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "Rose-tinted Rare";
+            expedition.name = "Rose-tinted Rarity";
             SetNPCHead(ExpeditionC.NPCIDClerk);
-            expedition.difficulty = 2;
+            expedition.difficulty = 3;
             expedition.ctgCollect = true;
         }
         public override void AddItemsOnLoad()
@@ -38,7 +38,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override void PostCompleteExpedition()
         {
-            WayfarerWeapons.ShowItemUnlock("Wayfarer's Bolt", expedition.difficulty);
+            WayfarerWeapons.ShowItemUnlock("Wayfarer's Cane", expedition.difficulty);
         }
     }
 }

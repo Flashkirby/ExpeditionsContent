@@ -18,13 +18,13 @@ namespace ExpeditionsContent.Items
             Item.staff[item.type] = true;
 
             item.mana = 12;
-            item.damage = 20;
+            item.damage = 24;
             item.useAnimation = 33;
             item.useTime = 33;
             item.knockBack = 3.5f;
             item.shoot = mod.ProjectileType("VacuumOrb");
             item.shootSpeed = 7f;
-
+            
             item.value = Item.buyPrice(0, 5, 0, 0);
         }
         public override Vector2? HoldoutOffset()
