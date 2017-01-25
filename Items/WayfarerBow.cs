@@ -13,8 +13,9 @@ namespace ExpeditionsContent.Items
             item.name = "Wayfarer's Bow";
 
             item.knockBack += 2f;
-            item.shootSpeed += 5.5f;
+            item.shootSpeed += 3.5f;
 
+            item.rare = 1;
             item.value = Item.buyPrice(0, 0, 50, 0);
         }
     }

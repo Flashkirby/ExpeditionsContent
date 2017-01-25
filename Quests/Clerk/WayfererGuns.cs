@@ -32,5 +32,17 @@ namespace ExpeditionsContent.Quests.Clerk
             if (!cond1) cond1 = NPC.FindFirstNPC(NPCID.ArmsDealer) >= 0 && API.TimeAfternoon;
             return cond1;
         }
+
+        public override void PostCompleteExpedition()
+        {
+            if (!WorldGen.crimson)
+            {
+                WayfarerWeapons.ShowItemUnlock("Wayfarer's Carbine", expedition.difficulty);
+            }
+            else
+            {
+                WayfarerWeapons.ShowItemUnlock("Wayfarer's Repeater", expedition.difficulty);
+            }
+        }
     }
 }

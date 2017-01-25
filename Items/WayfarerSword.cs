@@ -18,7 +18,8 @@ namespace ExpeditionsContent.Items
             item.useAnimation += 2;
             item.knockBack = 6f;
             item.autoReuse = true;
-            
+
+            item.rare = 1; // So you don't lose it in lava
             item.value = Item.buyPrice(0, 0, 50, 0);
         }
     }

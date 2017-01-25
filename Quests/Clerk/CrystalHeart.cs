@@ -32,5 +32,10 @@ namespace ExpeditionsContent.Quests.Clerk
             // Only until player has max health
             return API.FindExpedition<Core.ACUnderground>(mod).completed;
         }
+
+        public override void PostCompleteExpedition()
+        {
+            WayfarerWeapons.ShowItemUnlock("Heart Compass", expedition.difficulty);
+        }
     }
 }

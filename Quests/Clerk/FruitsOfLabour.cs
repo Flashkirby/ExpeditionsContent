@@ -47,5 +47,10 @@ namespace ExpeditionsContent.Quests.Clerk
                 && Main.hardMode
                 && NPC.downedMechBossAny);
         }
+
+        public override void PostCompleteExpedition()
+        {
+            WayfarerWeapons.ShowItemUnlock("Enchanted Lens", expedition.difficulty);
+        }
     }
 }

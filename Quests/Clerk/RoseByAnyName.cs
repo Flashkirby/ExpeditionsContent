@@ -35,5 +35,10 @@ namespace ExpeditionsContent.Quests.Clerk
             if (!cond1) cond1 = NPC.FindFirstNPC(NPCID.Demolitionist) >= 0 && API.TimeWitchingHour;
             return cond1;
         }
+
+        public override void PostCompleteExpedition()
+        {
+            WayfarerWeapons.ShowItemUnlock("Wayfarer's Bolt", expedition.difficulty);
+        }
     }
 }

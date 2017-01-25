@@ -43,5 +43,10 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             return cond1;
         }
+
+        public override void PostCompleteExpedition()
+        {
+            WayfarerWeapons.ShowItemUnlock("Wayfarer's Wind", expedition.difficulty);
+        }
     }
 }

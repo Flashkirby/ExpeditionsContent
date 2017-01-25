@@ -37,5 +37,20 @@ namespace ExpeditionsContent.Quests.Clerk
 
             return true;
         }
+
+        public override void PostCompleteExpedition()
+        {
+            WayfarerWeapons.ShowItemUnlock("Wayfarer Weapons", expedition.difficulty);
+        }
+
+        public static void ShowItemUnlock(string itemName, int difficulty)
+        {
+            Expedition itemUnlock = new Expedition();
+            itemUnlock.name = itemName;
+            itemUnlock.difficulty = difficulty;
+            Expeditions.Expeditions.DisplayUnlockedExpedition(
+                itemUnlock, "Shop Unlock: "
+                );
+        }
     }
 }
