@@ -162,6 +162,8 @@ namespace ExpeditionsContent {
 
             #region Daily
             API.AddExpedition(this, new Quests.Daily.BossEoC());
+            API.AddExpedition(this, new Quests.Daily.BossEoW());
+            API.AddExpedition(this, new Quests.Daily.BossBoC());
             #endregion
         }
 
