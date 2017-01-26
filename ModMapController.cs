@@ -25,10 +25,10 @@ namespace ExpeditionsContent
             fallenStarPos = new List<Vector2>();
         }
 
-        public static void DrawFullscreenMap()
+        public static void DrawFullscreenMap(Mod mod, ref string mouseText)
         {
             Player player = Main.player[Main.myPlayer];
-            PlayerExplorer px = PlayerExplorer.Get(player, this);
+            PlayerExplorer px = PlayerExplorer.Get(player, mod);
             if (px.accHeartCompass ||
                 px.accFruitCompass ||
                 px.stargazer)

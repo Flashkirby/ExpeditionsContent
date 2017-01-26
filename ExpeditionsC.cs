@@ -134,13 +134,14 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters());
             #endregion
 
+            #region DD2
             // DD2
             API.AddExpedition(this, new Quests.MiscPre.DryadDD2());
             API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT1());
             API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT2());
             API.AddExpedition(this, new Quests.MiscPre.DD2InvasionT3());
             API.AddExpedition(this, new Quests.MiscPre.DD2BigFan());
-
+            #endregion
 
             #region Travelling Merchant Trades
             API.AddExpedition(this, new Quests.TravMerch.Compass());
@@ -158,6 +159,10 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.TravMerch.PostPair3ChainGuillotines());
             API.AddExpedition(this, new Quests.TravMerch.PostPair3FetidBaghnaks());
             #endregion
+
+            #region Daily
+            API.AddExpedition(this, new Quests.Daily.BossEoC());
+            #endregion
         }
 
         public override void PostDrawInterface(SpriteBatch spriteBatch)
@@ -167,7 +172,7 @@ namespace ExpeditionsContent {
 
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
-            ModMapController.DrawFullscreenMap();
+            ModMapController.DrawFullscreenMap(this, ref mouseText);
         }
     }
 }
