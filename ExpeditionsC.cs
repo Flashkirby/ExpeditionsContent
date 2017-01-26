@@ -167,7 +167,7 @@ namespace ExpeditionsContent {
 
         public override void PostDrawFullscreenMap(ref string mouseText)
         {
-            ModMapController.DrawMap();
+            ModMapController.DrawFullscreenMap();
         }
     }
 }

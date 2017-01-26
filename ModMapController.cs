@@ -25,7 +25,7 @@ namespace ExpeditionsContent
             fallenStarPos = new List<Vector2>();
         }
 
-        public static void DrawMap()
+        public static void DrawFullscreenMap()
         {
             Player player = Main.player[Main.myPlayer];
             PlayerExplorer px = PlayerExplorer.Get(player, this);
