@@ -35,7 +35,7 @@ namespace ExpeditionsContent.Quests.Core
             return API.FindExpedition<DCPlanterror>(mod).completed;
         }
 
-        public override void OnCraftItem(Item item, Recipe recipe)
+        public override void OnCraftItem(Item item, Recipe recipe, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!expedition.condition1Met)
             {

@@ -52,7 +52,7 @@ namespace ExpeditionsContent.Quests.Core
             return cond1 || NPC.downedPlantBoss;
         }
 
-        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if(expedition.condition1Met)
             {
@@ -63,7 +63,7 @@ namespace ExpeditionsContent.Quests.Core
             }
         }
 
-        public override void OnAnyNPCDeath(NPC npc)
+        public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (expedition.condition2Met)
             {

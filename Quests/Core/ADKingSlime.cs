@@ -44,7 +44,7 @@ namespace ExpeditionsContent.Quests.Core
             return API.FindExpedition<ACUnderground>(mod).completed || cond1 || cond3;
         }
 
-        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!expedition.condition1Met)
                 expedition.condition1Met = npc.type == NPCID.KingSlime;

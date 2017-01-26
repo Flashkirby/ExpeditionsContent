@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "For aspiring mages, this item is probably a must have. Practical, and stylish. Become the star of the show! ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

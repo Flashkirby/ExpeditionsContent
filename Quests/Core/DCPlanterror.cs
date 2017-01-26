@@ -50,7 +50,7 @@ namespace ExpeditionsContent.Quests.Core
             return NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3;
         }
 
-        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!expedition.condition1Met)
                 expedition.condition1Met =

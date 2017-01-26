@@ -39,7 +39,7 @@ namespace ExpeditionsContent.Quests.Core
             return WorldGen.altarCount > 0 || (cond1 || cond3 || Main.invasionType == ExpeditionC.InvasionIDPirates);
         }
 
-        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!expedition.condition1Met)
             {

@@ -36,7 +36,7 @@ namespace ExpeditionsContent.Quests.Core
             return API.FindExpedition<CAHardMode>(mod).completed;
         }
 
-        public override void OnKillNPC(NPC npc)
+        public override void OnKillNPC(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!expedition.condition1Met) expedition.condition1Met = npc.type == NPCID.Mimic;
         }

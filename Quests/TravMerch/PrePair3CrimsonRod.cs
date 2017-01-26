@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "A quality item for watching your own back - enemies beware. You'll be seeing silver linings in any fight with this magical rod, or your money back! You won't get your money back. ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

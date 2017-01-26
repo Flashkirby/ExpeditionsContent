@@ -68,10 +68,6 @@ namespace ExpeditionsContent.Quests.Core
                 else
                 { expedition.conditionDescription2 = "Defeat the Eater of Worlds"; }
             }
-            if (cond2)
-            { expedition.conditionCountedMax = 0; }
-            else
-            { expedition.conditionCountedMax = 3; }
 
             // Only appears until hardmode, or is done already
             if (!expedition.completed && Main.hardMode) return false;
@@ -79,7 +75,7 @@ namespace ExpeditionsContent.Quests.Core
             return cond1 || NPC.downedBoss1 || API.FindExpedition<BBHarbinger>(mod).completed;
         }
 
-        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (WorldGen.crimson)
             {

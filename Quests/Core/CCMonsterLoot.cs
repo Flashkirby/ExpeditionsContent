@@ -41,7 +41,7 @@ namespace ExpeditionsContent.Quests.Core
             return API.FindExpedition<CBLivingLoot>(mod).completed || cond1;
         }
 
-        public override void OnCombatWithNPC(NPC npc, bool playerGotHit)
+        public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!expedition.condition1Met) expedition.condition1Met =
                     npc.type == NPCID.BigMimicHallow ||
@@ -50,7 +50,7 @@ namespace ExpeditionsContent.Quests.Core
                     npc.type == NPCID.BigMimicJungle;
         }
 
-        public override void OnAnyNPCDeath(NPC npc)
+        public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if (!expedition.condition2Met) expedition.condition2Met =
                     npc.type == NPCID.BigMimicHallow ||

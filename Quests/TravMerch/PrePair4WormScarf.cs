@@ -26,7 +26,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "Having a tough time dealing with big hitters? This comfy scarf softens any and all blows, keeping you that much further from deaths clutches. ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

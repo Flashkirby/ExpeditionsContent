@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "For anyone that prefers precision pointed piercing pikes - this is your calling! Safely poke your foes from a distance, and push back even the largest crowd of unruly zombies. ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

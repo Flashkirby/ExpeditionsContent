@@ -26,7 +26,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "Getting mobbed? Well you need this confusing item! Send your enemies running about any time they lay a scratch on you. Honestly even I don't know how this thing works! ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

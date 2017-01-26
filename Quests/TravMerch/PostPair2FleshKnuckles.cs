@@ -29,7 +29,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return ". ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

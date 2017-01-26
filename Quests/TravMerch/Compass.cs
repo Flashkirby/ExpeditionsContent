@@ -25,7 +25,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "For all you precision fanatics, do I have a deal for you! Unlike a measly old map this tool will give you HARD NUMBERS and RELIABLE FACTS to tell you exactly where you are. ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

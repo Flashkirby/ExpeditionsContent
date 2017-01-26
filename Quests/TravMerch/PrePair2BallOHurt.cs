@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "The ultimate man-handled wrecking ball! Smash your way through every obstacle, or wall off your foes from even touching you. Give it a whirl! ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

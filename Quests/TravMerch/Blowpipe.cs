@@ -25,7 +25,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "Searched as hard as you can, but can't find seeds anywhere? Maybe because you need a blowpipe! Simply having this wondrous item will make you gawp at all the details you've been missing. ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

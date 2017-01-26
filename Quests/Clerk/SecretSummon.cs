@@ -37,7 +37,7 @@ namespace ExpeditionsContent.Quests.Clerk
             return cond1;
         }
 
-        public override void OnPickupItem(Item item)
+        public override void OnPickupItem(Item item, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             if(expedition.condition1Met)
             {

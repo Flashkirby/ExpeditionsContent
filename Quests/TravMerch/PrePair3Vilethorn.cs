@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "For when you can't afford to take on your enemies directly, these nefarious plants creep even through walls! Take back control and fight your foes safely. ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

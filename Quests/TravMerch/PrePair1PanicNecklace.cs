@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.TravMerch
             return "Having issues with fast foes? Or just finding yourself in harm's way. Fret not, this necklace is sure to get you out of a tight spot in a jiffy. ";
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             expedition.ResetProgress(true); //Reset after trade use
         }

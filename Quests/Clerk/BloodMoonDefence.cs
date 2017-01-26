@@ -33,7 +33,7 @@ namespace ExpeditionsContent.Quests.Clerk
             return Main.bloodMoon || expedition.completed || cond1;
         }
 
-        public override void OnNewDay()
+        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             // If player prevented any town deaths, huzzah!
             if (!expedition.condition1Met && expedition.condition2Met)
@@ -42,7 +42,7 @@ namespace ExpeditionsContent.Quests.Clerk
             }
         }
 
-        public override void OnNewNight()
+        public override void OnNewNight(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             // On a blood moon, when you have 6 ore more NPCs, being quest
             if (Main.bloodMoon && !expedition.condition1Met)
@@ -59,8 +59,8 @@ namespace ExpeditionsContent.Quests.Clerk
                 }
             }
         }
-
-        public override void OnAnyNPCDeath(NPC npc)
+        
+        public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             // Oh no, a friend died. Oh well, better luck next time.
             if(npc.townNPC && npc.friendly)
