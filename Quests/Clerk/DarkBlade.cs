@@ -26,11 +26,11 @@ namespace ExpeditionsContent.Quests.Clerk
             {
                 if (Main.hardMode)
                 {
-                    return "Ooh, now that looks fancy! With a weapon like that you could take on anything! ";
+                    return "Ooh, now that looks fancy! Well done for going through the hoops to make it - with a weapon like that you could take on anything! ";
                 }
                 else
                 {
-                    return "Ooh, now that looks fancy! With a weapon like that you could take on... almost anything? ";
+                    return "Ooh, now that looks fancy! Well done for going through the hoops to make it - with a weapon like that you could take on... almost anything? ";
                 }
             }
             string name = NPC.GetFirstNPCNameOrNull(NPCID.Guide);
