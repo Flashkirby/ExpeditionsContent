@@ -44,7 +44,8 @@ namespace ExpeditionsContent.Quests.Daily
             { contestRewards.Add(rewards[4]); }
 
             // Replace Item Pool
-            rewards = contestRewards;
+            rewards.Clear();
+            rewards.AddRange(contestRewards);
         }
         public override string Description(bool complete)
         {
