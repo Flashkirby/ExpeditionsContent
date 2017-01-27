@@ -9,20 +9,20 @@ namespace ExpeditionsContent.Quests.Core
     {
         public override void SetDefaults()
         {
-            expedition.name = "Making a House a Home";
+            expedition.name = "A Place To Call Home";
             SetNPCHead(NPCID.Guide, false);
             expedition.difficulty = 0;
             expedition.ctgExplore = true;
 
-            expedition.conditionDescription1 = "Use a bed to set a spawn point";
+            expedition.conditionDescription1 = "Use a bed to set your spawn point";
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 0, 15, 0));
+            AddRewardItem(ItemID.RecallPotion, 3);
         }
         public override string Description(bool complete)
         {
-            return "Did you know you can move your spawn point using a bed? Beds are crafted out of wood and silk at a sawmill, and the silk itself is crafted at a loom. Both require wood, and the sawmill also requires iron and chains. ";
+            return "Did you know you can change your spawn point using a bed? You can craft them out of wood and silk at a sawmill, the silk itself crafted from cobwebs at a loom. Both require wood, and the sawmill also requires iron and chains. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

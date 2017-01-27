@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "Rose-tinted Rarity";
+            expedition.name = "A Rose by Any Other Name";
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 3;
             expedition.ctgCollect = true;

@@ -19,7 +19,8 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 0, 10, 0));
+            AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
+            AddRewardItem(ItemID.GreaterHealingPotion, 2);
         }
         public override string Description(bool complete)
         {

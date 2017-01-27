@@ -18,7 +18,8 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
+            AddRewardMoney(Item.buyPrice(0, 3, 0, 0));
+            AddRewardItem(ItemID.BoneChest);
         }
         public override string Description(bool complete)
         {

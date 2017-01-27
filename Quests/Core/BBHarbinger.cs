@@ -33,7 +33,8 @@ namespace ExpeditionsContent.Quests.Core
                 expedition.conditionDescription2 = "Smash a shadow orb";
             }
 
-            AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
+            AddRewardMoney(Item.buyPrice(0, 0, 50, 0));
+            AddRewardItem(ItemID.HeartLantern, 1);
         }
         public override string Description(bool complete)
         {

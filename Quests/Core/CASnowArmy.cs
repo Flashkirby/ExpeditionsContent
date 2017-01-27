@@ -18,9 +18,8 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 4, 0, 0));
-            AddRewardItem(ItemID.PeaceCandle, 1);
-            AddRewardItem(ItemID.WaterCandle, 1);
+            AddRewardMoney(Item.buyPrice(0, 5, 0, 0));
+            AddRewardItem(ItemID.IceChest, 1);
         }
         public override string Description(bool complete)
         {

@@ -21,7 +21,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
+            AddRewardMoney(Item.buyPrice(0, 2, 50, 0));
         }
         public override string Description(bool complete)
         {

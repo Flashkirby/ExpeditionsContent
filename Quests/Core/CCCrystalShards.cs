@@ -18,7 +18,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             AddDeliverable(ItemID.CrystalShard);
 
-            AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
+            AddRewardMoney(Item.buyPrice(0, 3, 0, 0));
             AddRewardItem(ItemID.SoulofLight, 3);
         }
         public override string Description(bool complete)

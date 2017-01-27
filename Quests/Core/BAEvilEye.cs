@@ -19,7 +19,8 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 1, 0, 0));
+            AddRewardMoney(Item.buyPrice(0, 1, 50, 0));
+            AddRewardItem(ItemID.GoldChest);
         }
         public override string Description(bool complete)
         {

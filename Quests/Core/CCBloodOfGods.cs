@@ -18,12 +18,12 @@ namespace ExpeditionsContent.Quests.Core
         {
             AddDeliverable(ItemID.Ichor);
 
-            AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
+            AddRewardMoney(Item.buyPrice(0, 3, 0, 0));
             AddRewardItem(ItemID.SoulofNight, 3);
         }
         public override string Description(bool complete)
         {
-            return "The sickly stickers of the crimson carry within them pools of ichor. This powerful liquid greatly lowers the defense of enemies it is inflicted upon as well as glowing, making it a valuable asset in any fight. ";
+            return "The sickly stickers of the crimson carry within them pools of ichor. This powerful liquid greatly lowers the defense of enemies it is inflicted upon, as well as glowing, making it a valuable asset in any fight. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

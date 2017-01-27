@@ -21,6 +21,7 @@ namespace ExpeditionsContent.Quests.Core
         public override void AddItemsOnLoad()
         {
             AddRewardMoney(Item.buyPrice(0, 2, 0, 0));
+            AddRewardItem(ItemID.ObsidianChest);
         }
         public override string Description(bool complete)
         {

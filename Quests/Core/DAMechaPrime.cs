@@ -15,11 +15,11 @@ namespace ExpeditionsContent.Quests.Core
             expedition.ctgSlay = true;
             expedition.ctgImportant = true;
 
-            expedition.conditionDescription1 = "Face the hallowed defilers";
+            expedition.conditionDescription1 = "Face the frightful construct";
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardMoney(Item.buyPrice(0, 3, 0, 0));
+            AddRewardMoney(Item.buyPrice(0, 8, 0, 0));
         }
         public override string Description(bool complete)
         {

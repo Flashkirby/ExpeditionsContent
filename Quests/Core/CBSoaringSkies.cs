@@ -27,7 +27,7 @@ namespace ExpeditionsContent.Quests.Core
             string message = "The flying wyverns soaring above can be defeated to harvest their souls. These souls in particular contain power capable of granting flight. ";
             if (!API.FindExpedition<CBTracingSteps>(mod).condition1Met)
             {
-                message += "However, you currently don't have the facilities to craft this kind of equipment yet. Try exploring some more first. ";
+                message += "However, you might not have the facilities to craft this kind of equipment yet. Try exploring some more first. ";
             }
             else
             {
