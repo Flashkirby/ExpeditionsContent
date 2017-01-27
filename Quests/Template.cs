@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Expeditions;
 
-namespace ExpeditionsContent.Quests
+namespace ExpeditionsContent.Quests.Daily
 {
     class Template : ModExpedition
     {
