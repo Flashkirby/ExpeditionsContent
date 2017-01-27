@@ -58,11 +58,11 @@ namespace ExpeditionsContent.Quests.Daily
                 }
                 else if (timeTaken <= 3.0f)
                 {
-                    return showTime + " seconds? That's real impressive! Let's drink to celebrate again sometime! But for now, take this stikcy dynamite, I trust you know how to use it! ";
+                    return showTime + " seconds? That's real impressive! Let's drink to celebrate again sometime! But for now, take this sticky dynamite, I trust you know how to use it! ";
                 }
                 else if (timeTaken <= 3.2f)
                 {
-                    return "You took " + showTime + " seconds for 10 mugs? Not bad, not bad! I might even call ya an honourary dwarf! Hahaha, just kiddin' but here, take this stick o' dynamite, for impressing me so! ";
+                    return "You took " + showTime + " seconds for 10 mugs? Not bad, not bad! I might even call ya an honorary dwarf! Hahaha, just kiddin' but here, take this stick o' dynamite, for impressing me so! ";
                 }
                 else if (timeTaken <= 4f)
                 {
