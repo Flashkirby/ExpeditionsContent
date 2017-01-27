@@ -16,6 +16,7 @@ namespace ExpeditionsContent.Items
         {
             item.name = "Heart Locket";
             item.toolTip = "Temporarily increases maximum life by 20";
+            item.toolTip2 = "'Fashionable, and stylish'";
             item.width = 22;
             item.height = 30;
             item.accessory = true;
