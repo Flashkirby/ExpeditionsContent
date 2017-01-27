@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.TravMerch
     {
         public override void SetDefaults()
         {
-            expedition.name = "Flesh Knuckles";
+            expedition.name = "Fetid Baghnaks";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 5;
             expedition.ctgCollect = true;
@@ -18,7 +18,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         {
             AddDeliverable(ItemID.GoldCoin);
             AddDeliverableAnyOf(new int[]{
-                ItemID.PutridScent,
+                ItemID.ChainGuillotines,
                 ItemID.DartRifle,
             }, 1);
 

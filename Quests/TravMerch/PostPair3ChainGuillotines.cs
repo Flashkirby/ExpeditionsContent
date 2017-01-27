@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.TravMerch
     {
         public override void SetDefaults()
         {
-            expedition.name = "Putrid Scent";
+            expedition.name = "Chain Guillotines";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 5;
             expedition.ctgCollect = true;
@@ -18,7 +18,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         {
             AddDeliverable(ItemID.GoldCoin);
             AddDeliverableAnyOf(new int[]{
-                ItemID.FleshKnuckles,
+                ItemID.FetidBaghnakhs,
                 ItemID.DartPistol,
             }, 1);
 
