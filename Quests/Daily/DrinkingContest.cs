@@ -2,6 +2,7 @@
 using Terraria;
 using Terraria.ID;
 using Expeditions;
+using System.Collections.Generic;
 
 namespace ExpeditionsContent.Quests.Daily
 {
@@ -27,30 +28,49 @@ namespace ExpeditionsContent.Quests.Daily
             AddRewardItem(ItemID.Dynamite, 1, "< 3.2 Seconds");
             AddRewardItem(ItemID.Bomb, 1, "Consolation");
         }
+        public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
+        {
+            float timeTaken = expedition.conditionCounted / 60f;
+            List<Item> contestRewards = new List<Item>();
+
+            contestRewards.Add(rewards[0]);
+            if (timeTaken <= 2.8f)
+            { contestRewards.Add(rewards[1]); }
+            else if (timeTaken <= 3.0f)
+            { contestRewards.Add(rewards[2]); }
+            else if (timeTaken <= 3.2f)
+            { contestRewards.Add(rewards[3]); }
+            else
+            { contestRewards.Add(rewards[4]); }
+
+            // Replace Item Pool
+            rewards = contestRewards;
+        }
         public override string Description(bool complete)
         {
             if(expedition.condition3Met)
             {
-                float timeTaken = (expedition.conditionCounted * 10f) / 600;
+                float timeTaken = expedition.conditionCounted / 60f;
+                float showTime = (int)(timeTaken * 100f) / 100f;
                 if (timeTaken <= 2.8f)
                 {
-                    return "Wow, you really blew me away with that performance - "+ timeTaken + " seconds! Come on, we'll do this again some time, huh? Take this, as a token of our friendship! ";
+                    return "Wow, you really blew me away with that performance - "+ showTime + " seconds! Come on, we'll do this again some time, huh? Take this, as a token of our friendship! ";
                 }
                 else if (timeTaken <= 3.0f)
                 {
-                    return timeTaken + " seconds? That's real impressive! Let's drink to celebrate again sometime! But for now, take this stikcy dynamite, I trust you know how to use it! ";
+                    return showTime + " seconds? That's real impressive! Let's drink to celebrate again sometime! But for now, take this stikcy dynamite, I trust you know how to use it! ";
                 }
                 else if (timeTaken <= 3.2f)
                 {
-                    return "You took " + timeTaken + " seconds for 10 mugs? Not bad, not bad! I might even call ya an honourary dwarf! Hahaha, just kiddin' but here, take this stick o' dynamite, for impressing me so! ";
+                    return "You took " + showTime + " seconds for 10 mugs? Not bad, not bad! I might even call ya an honourary dwarf! Hahaha, just kiddin' but here, take this stick o' dynamite, for impressing me so! ";
                 }
                 else if (timeTaken <= 4f)
                 {
-                    return "Hmm. You took " + timeTaken + " seconds to down all 10 mugs. Eh, well it's alright, if a little slow. Here, a consolation bomb, may it lighten your day! ";
+                    return "Hmm. You took " + showTime + " seconds to down all 10 mugs. Eh, well it's alright, if a little slow. Here, a consolation bomb, may it lighten your day! ";
                 }
                 else
                 {
-                    return "It took you " + timeTaken + " seconds to down a measly 10 mugs? You're slower than a wet fuse! Well, I appreciate ya efforts, so take this as consolation prize. ";
+                    return "It took you " + showTime + " seconds to down a measly 10 mugs? You're slower than a wet fuse! Well, I appreciate ya efforts, so take this as consolation prize. ";
                 }
             }
             return Main.player[Main.myPlayer].name + "! I challenge you to the drink! Down 10 mugs of ale as fast as you can! Think you have the stomach for it? Come and talk to me directly when you're ready, drinks are on the house! ";
@@ -76,6 +96,7 @@ namespace ExpeditionsContent.Quests.Daily
             {
                 cond1 = true;
                 aleCount = 0;
+                expedition.trackingActive = true;
                 player.QuickSpawnItem(ItemID.Ale, 10);
             }
 
