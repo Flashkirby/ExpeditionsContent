@@ -26,7 +26,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         }
         public override string Description(bool complete)
         {
-            return ". ";
+            return "Finding yourself at the center of unwanted attention? Keep unwanted suitors away with this... 'unique' aroma. Its scent is guranteed to sharpern your senses, and your weapons! ";
         }
 
         public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

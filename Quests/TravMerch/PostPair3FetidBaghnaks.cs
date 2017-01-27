@@ -26,7 +26,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         }
         public override string Description(bool complete)
         {
-            return ". ";
+            return "Who needs range? Not you! For what these claws lack in range, they make up for with sheer power. Rip and tear! ";
         }
 
         public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

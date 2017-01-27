@@ -26,7 +26,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         }
         public override string Description(bool complete)
         {
-            return ". ";
+            return "Whether you run headfirst into danger or sit back and do things from afar, I guarantee you will always want to keep your health in tip top shape! Here's the solution - with this wand you can harm your foes from afar AND heal yourself in the process! ";
         }
 
         public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

@@ -26,7 +26,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         }
         public override string Description(bool complete)
         {
-            return ". ";
+            return "Wow your enemies with this amazing collection of blades. Give them a toss, give them a whirl, and your foes will drop like flies! ";
         }
 
         public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

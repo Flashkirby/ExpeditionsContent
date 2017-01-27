@@ -26,7 +26,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         }
         public override string Description(bool complete)
         {
-            return ". ";
+            return "For wizards and witches everywhere, this is a weapon for you! Zoning out your enemies and watching your own back is as easy as ever with this staff, owing to its ability to create walls cursed flames! ";
         }
 
         public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
