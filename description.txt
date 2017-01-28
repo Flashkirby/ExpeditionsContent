@@ -1,9 +1,14 @@
 The main content addon for the Expeditions Base mod.
 
-* Various quests.
+* 45 Main Quests provided by the Guide, up to Plantera.
+* 46 Cycling daily quests.
+* 43 Sidequests, up to Mechanical Bosses.
 * Clerk NPC that sells expedition-unlockable items.
+* Special expedition items that display extra Full Map information.
+* Quest-unlocked early game weapon for Melee, Ranged, Magic and Summon.
 
 Credits:
 Flashkirby99 - I am making this mod.
 Supeh Mario - Original sprite for fox familiar.
-Eli10293 - Resprite of Wayfarer's Staff.
+Eli10293 - Resprite of Wayfarer's Cane.
+Threadgoers - Suggestions, feedback and awesome support.
