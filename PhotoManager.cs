@@ -115,5 +115,16 @@ namespace ExpeditionsContent
             }
             return true;
         }
+
+        /// <summary>
+        /// Removes a single photo from the player's inventory
+        /// </summary>
+        /// <param name="NPCIDsToMatch">Array of NPC IDs to remove</param>
+        /// <param name="matchAll">Will not run unless all photos are found</param>
+        /// <returns></returns>
+        public static bool ConsumePhoto(int NPCID)
+        {
+            return ConsumePhotos(new int[] { NPCID }, true);
+        }
     }
 }

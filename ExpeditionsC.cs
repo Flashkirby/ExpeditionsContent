@@ -144,7 +144,7 @@ namespace ExpeditionsContent {
             #endregion
 
             #region Travelling Merchant Trades
-            API.AddExpedition(this, new Quests.TravMerch.Compass());
+            API.AddExpedition(this, new Quests.TravMerch.Compass()); // INFACC: Compass
             API.AddExpedition(this, new Quests.TravMerch.Blowpipe());
             API.AddExpedition(this, new Quests.TravMerch.PrePair1BandOfStarpower());
             API.AddExpedition(this, new Quests.TravMerch.PrePair1PanicNecklace());
@@ -161,10 +161,30 @@ namespace ExpeditionsContent {
             #endregion
 
             #region Daily
-            API.AddExpedition(this, new Quests.Daily.DrinkingContest());
+            API.AddExpedition(this, new Quests.Daily.DrinkingContest()); // INFACC: Depth Meter
+
             API.AddExpedition(this, new Quests.Daily.BossEoC());
             API.AddExpedition(this, new Quests.Daily.BossEoW());
             API.AddExpedition(this, new Quests.Daily.BossBoC());
+
+            API.AddExpedition(this, new Quests.Daily.SnapPreBee());
+            API.AddExpedition(this, new Quests.Daily.SnapPreBoneSerpent());
+            API.AddExpedition(this, new Quests.Daily.SnapPreGoblin());
+            API.AddExpedition(this, new Quests.Daily.SnapPreLacBeetle());
+            API.AddExpedition(this, new Quests.Daily.SnapPreShark());
+            API.AddExpedition(this, new Quests.Daily.SnapPreSnowFlinx());
+            API.AddExpedition(this, new Quests.Daily.SnapPreSporeZombie());
+            API.AddExpedition(this, new Quests.Daily.SnapPreUndeadMiner());
+            API.AddExpedition(this, new Quests.Daily.SnapSpider());
+            API.AddExpedition(this, new Quests.Daily.SnapHardBloodJelly());
+            API.AddExpedition(this, new Quests.Daily.SnapHardChaosElemental());
+            API.AddExpedition(this, new Quests.Daily.SnapHardCorruptSlime());
+            API.AddExpedition(this, new Quests.Daily.SnapHardDesertSpirit());
+            API.AddExpedition(this, new Quests.Daily.SnapHardMedusa());
+            API.AddExpedition(this, new Quests.Daily.SnapHardSnapHardPigron());
+            API.AddExpedition(this, new Quests.Daily.SnapHardWolf());
+            API.AddExpedition(this, new Quests.Daily.SnapHardWyvern());
+
             #endregion
         }
 
