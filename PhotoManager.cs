@@ -76,6 +76,12 @@ namespace ExpeditionsContent
             List<int> photosToConsume = new List<int>();
             foreach (int i in NPCIDsToMatch)
             {
+                if (i < 0)
+                {
+                    //Main.NewText("Warning: Check ID " + i + " is a netID, and should not be used.");
+                    continue;
+                }
+
                 try
                 {
                     // Player has no photo of npc?

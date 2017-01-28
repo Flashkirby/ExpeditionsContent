@@ -598,6 +598,11 @@ namespace ExpeditionsContent.NPCs
             shop.item[nextSlot].SetDefaults(API.ItemIDExpeditionBook); nextSlot++;
             // Sell Camera and ammo
             shop.item[nextSlot].SetDefaults(mod.ItemType<Items.PhotoCamera>()); nextSlot++;
+            if (API.FindExpedition<Quests.Clerk.ProCamSkill>(mod).completed)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot,
+                    mod.ItemType<Items.PhotoCamPro>(), 2);
+            }
             shop.item[nextSlot].SetDefaults(mod.ItemType<Items.PhotoBlank>()); nextSlot++;
             // Sell telescope
             API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.Telescope>(), 1);

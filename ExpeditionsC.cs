@@ -131,6 +131,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.SOSWizard());
 
             // Album Builders
+            API.AddExpedition(this, new Quests.Clerk.ProCamSkill());
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters());
             #endregion
 
