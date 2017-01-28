@@ -1,4 +1,4 @@
-The main content addon for the Expeditions Base mod.
+The main content addon for the Expeditions Base mod. A work in progress.
 
 * 45 Main Quests provided by the Guide, up to Plantera.
 * 46 Cycling daily quests.
