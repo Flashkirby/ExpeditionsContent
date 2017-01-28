@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.TravMerch
     {
         public override void SetDefaults()
         {
-            expedition.name = "Chain Guillotines";
+            expedition.name = "Trading Chain Guillotines";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 5;
             expedition.ctgCollect = true;
@@ -22,7 +22,7 @@ namespace ExpeditionsContent.Quests.TravMerch
                 ItemID.DartPistol,
             }, 1);
 
-            AddRewardItem(ItemID.PutridScent);
+            AddRewardItem(ItemID.ChainGuillotines);
         }
         public override string Description(bool complete)
         {

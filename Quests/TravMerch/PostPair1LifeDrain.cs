@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.TravMerch
     {
         public override void SetDefaults()
         {
-            expedition.name = "Life Drain";
+            expedition.name = "Trading Life Drain";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 5;
             expedition.ctgCollect = true;

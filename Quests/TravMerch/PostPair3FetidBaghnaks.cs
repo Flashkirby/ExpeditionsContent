@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.TravMerch
     {
         public override void SetDefaults()
         {
-            expedition.name = "Fetid Baghnaks";
+            expedition.name = "Trading  Baghnaks";
             SetNPCHead(NPCID.TravellingMerchant);
             expedition.difficulty = 5;
             expedition.ctgCollect = true;
@@ -22,7 +22,7 @@ namespace ExpeditionsContent.Quests.TravMerch
                 ItemID.DartRifle,
             }, 1);
 
-            AddRewardItem(ItemID.FleshKnuckles);
+            AddRewardItem(ItemID.FetidBaghnakhs);
         }
         public override string Description(bool complete)
         {
