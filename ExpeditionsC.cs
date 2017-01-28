@@ -146,6 +146,7 @@ namespace ExpeditionsContent {
             #region Travelling Merchant Trades
             API.AddExpedition(this, new Quests.TravMerch.Compass()); // INFACC: Compass
             API.AddExpedition(this, new Quests.TravMerch.Blowpipe());
+            API.AddExpedition(this, new Quests.TravMerch.PinkGel());
             API.AddExpedition(this, new Quests.TravMerch.PrePair1BandOfStarpower());
             API.AddExpedition(this, new Quests.TravMerch.PrePair1PanicNecklace());
             API.AddExpedition(this, new Quests.TravMerch.PrePair2BallOHurt());
