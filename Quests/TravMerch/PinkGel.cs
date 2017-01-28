@@ -17,7 +17,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         }
         public override void AddItemsOnLoad()
         {
-            AddDeliverable(ItemID.Gel, 100);
+            AddDeliverable(ItemID.Gel, 111);
             AddDeliverable(ItemID.FallenStar, 5);
             AddDeliverable(ItemID.MushroomGrassSeeds, 3);
 
