@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace ExpeditionsContent.Quests.Daily
 {
-    class SnapPreBee : ModExpedition
+    class SnapHardFlyingSerpent : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Super Snap! Bee";
+            expedition.name = "Super Snap! Flying Snake";
             SetNPCHead(ExpeditionC.NPCIDClerk);
-            expedition.difficulty = 3;
+            expedition.difficulty = 8;
             expedition.ctgExplore = true;
             expedition.ctgCollect = true;
             expedition.ctgImportant = true;
@@ -25,37 +25,28 @@ namespace ExpeditionsContent.Quests.Daily
         }
         public override string Description(bool complete)
         {
-            return "There's a mail-in photo challenge happening on right now! Want to enter? Today's target is a Bee which can be found deep in the jungle, and you have until tomorrow to submit. Good luck!";
+            return "There's a mail-in photo challenge happening on right now! Want to enter? Today's target is a Flying Serpent which can be found in the jungle temple, and you have until tomorrow to submit. Good luck!";
         }
 
         public override bool IncludeAsDaily()
         {
-            return NPC.FindFirstNPC(ExpeditionC.NPCIDClerk) >= 0;
+            return NPC.FindFirstNPC(ExpeditionC.NPCIDClerk) >= 0 && Main.hardMode && NPC.downedPlantBoss;
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return API.IsDaily(expedition) && (NPC.downedBoss1 || NPC.downedBoss2);
+            return API.IsDaily(expedition);
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = 
-                PhotoManager.PhotoOfNPC[NPCID.Bee] ||
-                PhotoManager.PhotoOfNPC[NPCID.BeeSmall] ||
-                PhotoManager.PhotoOfNPC[NPCID.QueenBee];
+            cond1 = PhotoManager.PhotoOfNPC[NPCID.FlyingSnake];
             return cond1;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            if (!PhotoManager.ConsumePhoto(NPCID.Bee))
-            {
-                if (!PhotoManager.ConsumePhoto(NPCID.BeeSmall))
-                {
-                    PhotoManager.ConsumePhoto(NPCID.QueenBee);
-                }
-            }
+            PhotoManager.ConsumePhoto(NPCID.FlyingSnake);
         }
     }
 }

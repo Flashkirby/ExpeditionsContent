@@ -166,7 +166,8 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Daily.BossEoC());
             API.AddExpedition(this, new Quests.Daily.BossEoW());
             API.AddExpedition(this, new Quests.Daily.BossBoC());
-
+            #endregion
+            #region Daily - Super Snap
             API.AddExpedition(this, new Quests.Daily.SnapPreBee());
             API.AddExpedition(this, new Quests.Daily.SnapPreBoneSerpent());
             API.AddExpedition(this, new Quests.Daily.SnapPreGoblin());
@@ -176,6 +177,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Daily.SnapPreSporeZombie());
             API.AddExpedition(this, new Quests.Daily.SnapPreUndeadMiner());
             API.AddExpedition(this, new Quests.Daily.SnapSpider());
+
             API.AddExpedition(this, new Quests.Daily.SnapHardBloodJelly());
             API.AddExpedition(this, new Quests.Daily.SnapHardChaosElemental());
             API.AddExpedition(this, new Quests.Daily.SnapHardCorruptSlime());
@@ -185,6 +187,34 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Daily.SnapHardWolf());
             API.AddExpedition(this, new Quests.Daily.SnapHardWyvern());
 
+            API.AddExpedition(this, new Quests.Daily.SnapHardFlyingSerpent());
+            API.AddExpedition(this, new Quests.Daily.SnapHardDungeonSpirit());
+            #endregion
+            #region Daily - Merchant Moneygrabs
+            API.AddExpedition(this, new Quests.Daily.MerchGel());
+            API.AddExpedition(this, new Quests.Daily.MerchFishbowl());
+            API.AddExpedition(this, new Quests.Daily.MerchPinkGel());
+            API.AddExpedition(this, new Quests.Daily.MerchTopWatch());
+            API.AddExpedition(this, new Quests.Daily.MerchStucco());
+            API.AddExpedition(this, new Quests.Daily.MerchFadBoreal());
+            API.AddExpedition(this, new Quests.Daily.MerchFadCactus());
+            API.AddExpedition(this, new Quests.Daily.MerchFadEbonwood());
+            API.AddExpedition(this, new Quests.Daily.MerchFadGranite());
+            API.AddExpedition(this, new Quests.Daily.MerchFadMarble());
+            API.AddExpedition(this, new Quests.Daily.MerchFadMahogany());
+            API.AddExpedition(this, new Quests.Daily.MerchFadPalm());
+            API.AddExpedition(this, new Quests.Daily.MerchFadShadewood());
+            API.AddExpedition(this, new Quests.Daily.MerchFadFrozen());
+            API.AddExpedition(this, new Quests.Daily.MerchFadGlass());
+            API.AddExpedition(this, new Quests.Daily.MerchFadLivingWood());
+            API.AddExpedition(this, new Quests.Daily.MerchFadMeteor());
+            API.AddExpedition(this, new Quests.Daily.MerchFadSkyware());
+            API.AddExpedition(this, new Quests.Daily.MerchFadSlime());
+
+            API.AddExpedition(this, new Quests.Daily.MerchCrystals());
+            API.AddExpedition(this, new Quests.Daily.MerchFadPearlwood());
+            API.AddExpedition(this, new Quests.Daily.MerchFadSpookyWood());
+            API.AddExpedition(this, new Quests.Daily.MerchFadMartian());
             #endregion
         }
 
