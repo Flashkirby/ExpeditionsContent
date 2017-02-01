@@ -1,7 +1,7 @@
 
-add tracking on hook based quest checks
 
 =========== Fixed Bugs ====================
+new character carries old data due to not resetting
 Board don't work (UI)? multiplayer only uses player 0
 coupon only gives 1
 clerk don't respawn

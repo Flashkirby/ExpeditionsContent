@@ -36,7 +36,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             if(!expedition.condition1Met)
             {
-                expedition.condition1Met = API.InInventory[ItemID.MeteoriteBar];
+                expedition.condition1Met = item.type == ItemID.MeteoriteBar;
             }
         }
 
