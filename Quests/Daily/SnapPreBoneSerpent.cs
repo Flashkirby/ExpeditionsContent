@@ -38,7 +38,7 @@ namespace ExpeditionsContent.Quests.Daily
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return API.IsDaily(expedition) && NPC.downedBoss1 || NPC.downedBoss2;
+            return API.IsDaily(expedition) && (NPC.downedBoss1 || NPC.downedBoss2);
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
