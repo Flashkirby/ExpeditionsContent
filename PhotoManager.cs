@@ -41,7 +41,12 @@ namespace ExpeditionsContent
             {
                 if (i.type == ExpeditionC.ItemIDPhoto)
                 {
-                    npcPhotos[i.stack] = true;
+                    // Only add photos within of NPCs that exist and not 'unloaded'
+                    if (i.stack < npcPhotos.Length &&
+                        i.name != "Faded Photo") 
+                    {
+                        npcPhotos[i.stack] = true;
+                    }
                 }
             }
         }
