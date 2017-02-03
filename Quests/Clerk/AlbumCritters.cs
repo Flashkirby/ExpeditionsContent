@@ -15,6 +15,7 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
+            expedition.repeatable = true;
 
             expedition.conditionDescription1 = "Bunny, Mouse, Squirrel, Red Squirrel";
             expedition.conditionDescription2 = "Bird, Cardinal, Blue Jay, Duck, Mallard";
