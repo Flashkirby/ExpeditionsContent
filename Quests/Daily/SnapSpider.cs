@@ -51,15 +51,23 @@ namespace ExpeditionsContent.Quests.Daily
         {
             cond1 =
                 PhotoManager.PhotoOfNPC[NPCID.WallCreeper] ||
-                PhotoManager.PhotoOfNPC[NPCID.BlackRecluse];
+                PhotoManager.PhotoOfNPC[NPCID.WallCreeperWall] ||
+                PhotoManager.PhotoOfNPC[NPCID.BlackRecluse] ||
+                PhotoManager.PhotoOfNPC[NPCID.BlackRecluseWall];
             return cond1;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            if (!PhotoManager.ConsumePhoto(NPCID.BlackRecluse)) 
+            if (!PhotoManager.ConsumePhoto(NPCID.BlackRecluseWall))
             {
-                PhotoManager.ConsumePhoto(NPCID.WallCreeper);
+                if (!PhotoManager.ConsumePhoto(NPCID.BlackRecluse))
+                {
+                    if (!PhotoManager.ConsumePhoto(NPCID.WallCreeperWall))
+                    {
+                        PhotoManager.ConsumePhoto(NPCID.WallCreeper);
+                    }
+                }
             }
         }
     }
