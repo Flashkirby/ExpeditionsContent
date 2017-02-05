@@ -3,19 +3,19 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.Albums
 {
-    public class AlbumAnimals : ModItem
+    public class AlbumFlora : ModItem
     {
         public override void SetDefaults()
         {
-            item.name = "Terrarian Critters, 1st ed.";
+            item.name = "Hazardous Flora, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It's full of cute animal pictures'";
+            item.toolTip2 = "'It contains warning about dangerous plants'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;
 
-            item.rare = 1;
-            item.value = Item.sellPrice(0, 5, 0, 0);
+            item.rare = 2;
+            item.value = Item.sellPrice(0, 10, 0, 0);
         }
     }
 }

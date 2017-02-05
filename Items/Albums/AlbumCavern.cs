@@ -3,13 +3,13 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.Albums
 {
-    public class AlbumAnimals : ModItem
+    public class AlbumCavern : ModItem
     {
         public override void SetDefaults()
         {
-            item.name = "Terrarian Critters, 1st ed.";
+            item.name = "Cavern Predators, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It's full of cute animal pictures'";
+            item.toolTip2 = "'It contains photos of cavernous beasts'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;
