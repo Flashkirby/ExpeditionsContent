@@ -29,13 +29,8 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            // Only appears until an altar is smashed, or is done already
-            if (!expedition.completed && WorldGen.altarCount > 0) return false;
-
-            if (!cond1) cond1 = Main.hardMode;
-
-            // Appears once any late prehard quest is complete
-            return cond1;
+            // Only appears in hardmode
+            return Main.hardMode;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
