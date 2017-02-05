@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Items.Albums
         public override void SetDefaults()
         {
             item.name = "Enemy Almanac, 1st ed.";
-            item.toolTip = "Increased damage and defense from certaub enemies";
+            item.toolTip = "Increased damage and defense from certain enemies";
             item.toolTip2 = "'Full of information about surface assailants'";
             item.width = 22;
             item.height = 30;
