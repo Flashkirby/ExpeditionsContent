@@ -34,7 +34,7 @@ namespace ExpeditionsContent.Quests.Clerk
             // Sky Lakes have 400-900
             if(!cond1)
             {
-                cond1 = (Main.screenTileCounts[TileID.Cloud] + Main.screenTileCounts[TileID.RainCloud]) > 800
+                cond1 = (Main.screenTileCounts[TileID.Cloud] + Main.screenTileCounts[TileID.RainCloud]) > 400
                     && player.ZoneSkyHeight;
             }
             return cond1;
