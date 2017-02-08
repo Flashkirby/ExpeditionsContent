@@ -6,41 +6,50 @@ using System.Collections.Generic;
 
 namespace ExpeditionsContent.Quests.Clerk
 {
-    class AlbumCritters : ModExpedition
+    class AlbumCritters2 : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Snap! Animal Album";
+            expedition.name = "Snap! Birds and Beasts";
             SetNPCHead(ExpeditionC.NPCIDClerk);
-            expedition.difficulty = 0;
+            expedition.difficulty = 1;
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
             expedition.repeatable = true;
 
-            expedition.conditionDescription1 = "Bunny";
-            expedition.conditionDescription2 = "Bird";
-            expedition.conditionDescription3 = "Goldfish";
+            expedition.conditionDescription1 = "Mouse, Squirrel, Red Squirrel";
+            expedition.conditionDescription2 = "Penguin, Cardinal, Blue Jay";
+            expedition.conditionDescription3 = "Frog, Duck, Mallard Duck";
         }
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Albums.AlbumAnimalFirst>());
+            AddRewardItem(mod.ItemType<Items.Albums.AlbumAnimals>());
         }
         public override string Description(bool complete)
         {
-            return "Carrying around pictures is tough; they take up a lot of space and are fragile at best... that's why we compile them into albums! For a start, why not gather photos of different critters? These ones should be quite simple. ";
+            return "Interested in compiling more albums? Well if you are looking for more critters, here's a list for you. Most of these are creatures are pretty common, but mice, penguins, and frogs live in certain biomes. ";
         }
         public static readonly int[] photos1 = {
-            NPCID.Bunny ,
-            NPCID.GoldBunny ,
+            NPCID.Squirrel ,
+            NPCID.SquirrelRed ,
+            NPCID.SquirrelGold ,
+            NPCID.Mouse ,
+            NPCID.GoldMouse ,
         };
         public static readonly int[] photos2 = {
-            NPCID.Bird ,
-            NPCID.GoldBird ,
+            NPCID.Penguin ,
+            NPCID.PenguinBlack ,
+            NPCID.BirdBlue ,
+            NPCID.BirdRed ,
         };
         public static readonly int[] photos3 = {
-            NPCID.Goldfish ,
-            NPCID.GoldfishWalker ,
+            NPCID.Frog ,
+            NPCID.GoldFrog ,
+            NPCID.Duck2 ,
+            NPCID.DuckWhite2 ,
+            NPCID.Duck ,
+            NPCID.DuckWhite ,
         };
         public static int[] photosToMatch
         {
@@ -66,9 +75,9 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = PhotoManager.CountUniquePhotosInInventory(photos1) >= 1;
-            cond2 = PhotoManager.CountUniquePhotosInInventory(photos2) >= 1;
-            cond3 = PhotoManager.CountUniquePhotosInInventory(photos3) >= 1;
+            cond1 = PhotoManager.CountUniquePhotosInInventory(photos1) >= 4;
+            cond2 = PhotoManager.CountUniquePhotosInInventory(photos2) >= 5;
+            cond3 = PhotoManager.CountUniquePhotosInInventory(photos3) >= 3;
             return cond1 && cond2 && cond3;
         }
 
