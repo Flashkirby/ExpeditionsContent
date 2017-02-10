@@ -20,6 +20,8 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.conditionDescription1 = "Bunny";
             expedition.conditionDescription2 = "Bird";
             expedition.conditionDescription3 = "Goldfish";
+            expedition.conditionCountedMax = 3;
+            expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
         {
@@ -30,29 +32,14 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             return "Carrying around pictures is tough; they take up a lot of space and are fragile at best... that's why we compile them into albums! For a start, why not gather photos of different critters? These ones should be quite simple. ";
         }
-        public static readonly int[] photos1 = {
-            NPCID.Bunny ,
-            NPCID.GoldBunny ,
-        };
-        public static readonly int[] photos2 = {
-            NPCID.Bird ,
-            NPCID.GoldBird ,
-        };
-        public static readonly int[] photos3 = {
-            NPCID.Goldfish ,
-            NPCID.GoldfishWalker ,
-        };
-        public static int[] photosToMatch
-        {
-            get
-            {
-                int[] photosToMatch = new int[photos1.Length + photos2.Length + photos3.Length];
-                photos1.CopyTo(photosToMatch, 0);
-                photos2.CopyTo(photosToMatch, photos1.Length);
-                photos3.CopyTo(photosToMatch, photos1.Length + photos2.Length);
-                return photosToMatch;
-            }
-        }
+        #region Photo Bools
+        public static bool Bunny
+        { get { return PhotoManager.PhotoOfNPC[NPCID.Bunny] || PhotoManager.PhotoOfNPC[NPCID.GoldBunny]; } }
+        public static bool Bird
+        { get { return PhotoManager.PhotoOfNPC[NPCID.Bird] || PhotoManager.PhotoOfNPC[NPCID.GoldBird]; } }
+        public static bool Goldfish
+        { get { return PhotoManager.PhotoOfNPC[NPCID.Goldfish] || PhotoManager.PhotoOfNPC[NPCID.GoldfishWalker]; } }
+        #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
@@ -61,20 +48,31 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
-            count = PhotoManager.CountUniquePhotosInInventory(photosToMatch);
+            count = 0;
+            if (Bunny) count++;
+            if (Bird) count++;
+            if (Goldfish) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = PhotoManager.CountUniquePhotosInInventory(photos1) >= 1;
-            cond2 = PhotoManager.CountUniquePhotosInInventory(photos2) >= 1;
-            cond3 = PhotoManager.CountUniquePhotosInInventory(photos3) >= 1;
+            cond1 = Bunny;
+            cond2 = Bird;
+            cond3 = Goldfish;
             return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhotos(photosToMatch);
+
+            if (!PhotoManager.ConsumePhoto(NPCID.Bunny))
+            { PhotoManager.ConsumePhoto(NPCID.GoldBunny); }
+
+            if (!PhotoManager.ConsumePhoto(NPCID.Bird))
+            { PhotoManager.ConsumePhoto(NPCID.GoldBird); }
+
+            if (!PhotoManager.ConsumePhoto(NPCID.Goldfish))
+            { PhotoManager.ConsumePhoto(NPCID.GoldfishWalker); }
         }
     }
 }

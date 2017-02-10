@@ -133,6 +133,8 @@ namespace ExpeditionsContent {
             // Album Builders
             API.AddExpedition(this, new Quests.Clerk.ProCamSkill());
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters());
+            API.AddExpedition(this, new Quests.Clerk.AlbumCritters2());
+            API.AddExpedition(this, new Quests.Clerk.AlbumCritters3());
             #endregion
 
             #region DD2
