@@ -43,9 +43,9 @@ namespace ExpeditionsContent.Quests.Core
             if (!cond2) cond2 = Main.screenTileCounts[TileID.Hellforge] > 0;
             if (!cond3)
             {
-                if (player.armor[0].type == ItemID.JungleHat &&
-                    player.armor[1].type == ItemID.JungleShirt &&
-                    player.armor[2].type == ItemID.JunglePants)
+                if (player.armor[0].type == ItemID.MoltenHelmet &&
+                    player.armor[1].type == ItemID.MoltenBreastplate &&
+                    player.armor[2].type == ItemID.MoltenGreaves)
                 { cond3 = true; }
             }
             return cond1 && cond2 && cond3;
