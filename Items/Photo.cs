@@ -14,6 +14,7 @@ namespace ExpeditionsContent.Items
     public class Photo : ModItem
     {
         public const int brokenPrefix = 40;
+        public const int ignorantPrefix = 30;
         public string npcName = "";
         public string npcMod = "";
         private Texture2D npcTexture = null;
@@ -23,8 +24,8 @@ namespace ExpeditionsContent.Items
             {
                 if (npcTexture == null)
                 {
-                    // Don't try setting up if the photo is damaged
-                    if (item.prefix != brokenPrefix)
+                    // Don't try setting up if the photo is not normal
+                    if (item.prefix == 0)
                     {
                         try
                         {
@@ -42,6 +43,10 @@ namespace ExpeditionsContent.Items
                     // Set photo info
                     SetNameAndMod();
                 }
+
+                // Give a magic pixel until mod photo can be resolved
+                if (item.prefix == ignorantPrefix) return Main.magicPixel;
+
                 return npcTexture;
             }
         }
@@ -49,8 +54,8 @@ namespace ExpeditionsContent.Items
         public override void SetDefaults()
         {
             item.name = "Photo Film";
-            item.toolTip2 = "Used in conjuction with a Photocam";
-            item.toolTip = "Right click to clear the image";
+            item.toolTip = "Used in conjuction with a Photocam";
+            item.toolTip2 = "Right click to clear the image";
             item.width = 28;
             item.height = 28;
             item.rare = 0;
@@ -79,12 +84,23 @@ namespace ExpeditionsContent.Items
             Mod loadMod = ModLoader.GetMod(npcMod);
             if (loadMod != null)
             {
-                item.stack = loadMod.NPCType(npcName);
-                item.prefix = 0;
+                // Mod found!
+                item.prefix = ignorantPrefix; 
+                //ignorant lmao, just so the other method can assign it
             }
             else
             {
-                item.prefix = brokenPrefix;
+                if (npcMod.Equals("VANILLA"))
+                {
+                    // Vanilla NPC so yeah
+                    NPC npc = GenerateNPC();
+                    item.stack = npc.type;
+                }
+                // NPC is unloaded
+                else
+                {
+                    item.prefix = brokenPrefix;
+                }
             }
         }
 
@@ -122,6 +138,15 @@ namespace ExpeditionsContent.Items
         /// </summary>
         public void SetNameAndMod()
         {
+            if(item.prefix == ignorantPrefix)
+            {
+                // This is a 1 stack item that got loaded via a mod
+                // So we have to find where it is and re-set it.
+                item.prefix = 0;
+                Mod loadMod = ModLoader.GetMod(npcMod);
+                item.stack = loadMod.NPCType(npcName);
+            }
+
             // Get NPC from the stack
             NPC npc = GenerateNPC();
 
@@ -129,11 +154,13 @@ namespace ExpeditionsContent.Items
             if (npc == null || item.prefix == brokenPrefix)
             {
                 item.name = "Photo"; //With 'Damaged' prefix
+                item.stack = 1;
                 item.prefix = brokenPrefix;
-                Mod loadMod = ModLoader.GetMod(npcMod);
-                if (loadMod != null)
+                ;
+                if (npcMod != "")
                 {
-                    item.toolTip = "Unloaded NPC: '" + npcName + "' from '" + npcMod + "'";
+                    item.toolTip = "The image is clouded beyond recognition";
+                    item.toolTip2 = "Mod: " + npcMod;
                 }
                 else
                 {
@@ -144,6 +171,7 @@ namespace ExpeditionsContent.Items
 
             // Save the name of the NPC
             npcName = npc.name;
+            npcMod = "VANILLA";
             if (npc.modNPC != null) // Non-vanilla
             {
                 npcName = npc.modNPC.GetType().Name; // Use mods
@@ -151,8 +179,12 @@ namespace ExpeditionsContent.Items
             }
 
             // Set photo info
-            item.name = "Photo of " + npc.displayName + ", no.";
-            item.toolTip = "";
+            if (npc.townNPC)
+            { item.name = "Photo of " + npc.displayName + ", no."; }
+            else
+            { item.name = "Photo of " + npc.name + ", no."; }
+            item.toolTip = item.toolTip;
+            item.toolTip2 = "";
 
             // Set stack
             item.maxStack = item.stack;
@@ -192,6 +224,18 @@ namespace ExpeditionsContent.Items
             return rect;
         }
 
+        // Photo Clearing, actually to prevent stack fiddling
+        public override bool CanRightClick()
+        {
+            return true;
+        }
+        public override void RightClick(Player player)
+        {
+            item.SetDefaults();
+            player.QuickSpawnItem(mod.ItemType<PhotoBlank>());
+        }
+
+        // Draw
         public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
             if (NpcTexture == null) return;
