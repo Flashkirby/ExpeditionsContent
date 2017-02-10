@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
@@ -156,7 +157,6 @@ namespace ExpeditionsContent.Items
                 item.name = "Photo"; //With 'Damaged' prefix
                 item.stack = 1;
                 item.prefix = brokenPrefix;
-                ;
                 if (npcMod != "")
                 {
                     item.toolTip = "The image is clouded beyond recognition";
@@ -182,8 +182,25 @@ namespace ExpeditionsContent.Items
             if (npc.townNPC)
             { item.name = "Photo of " + npc.displayName + ", no."; }
             else
-            { item.name = "Photo of " + npc.name + ", no."; }
-            item.toolTip = item.toolTip;
+            {
+                if (npc.type == 1)
+                {
+                    // Slimes are just slimes
+                    item.name = "Photo of " + Lang.npcName(NPCID.SlimeRibbonWhite) + ", no. (1)";
+                }
+                else
+                {
+                    item.name = "Photo of " + npc.name + ", no.";
+                    // If a more specialised name exists, use that instead.
+                    if(npc.displayName.Length >= npc.name.Length)
+                    {
+                        item.name = "Photo of " + npc.displayName + ", no.";
+                    }
+                }
+            }
+
+            // Add set tooltip
+            item.toolTip = "Right click to clear the image";
             item.toolTip2 = "";
 
             // Set stack
@@ -272,178 +289,3 @@ namespace ExpeditionsContent.Items
         #endregion
     }
 }
-
-/*
-/// <summary>
-/// Checks if the photo is ok, or does it need setting
-/// </summary>
-private void CheckPhoto()
-{
-    // Convert the item stack to the NPC
-    if (npcTexture == null && item.name != "Faded Photo")
-    {
-        //Main.NewText("set photo");
-        SetPhotoFromStack();
-    }
-}
-
-public override void UpdateInventory(Player player)
-{
-    if (Main.netMode == 0)
-    {
-        item.toolTip = "Right click to clear the image";
-    }
-    else
-    {
-        item.toolTip = @"Right click to clear the image
-Do not store in chests, use a safe/piggybank";
-    }
-}
-
-/// <summary>
-/// Generate a default npc object
-/// </summary>
-/// <returns></returns>
-private NPC GenerateNPC()
-{
-    try
-    {
-        NPC n = new NPC();
-        n.SetDefaults(item.stack);
-        if (n.modNPC != null) n.modNPC.SetDefaults();
-        if (n.townNPC)
-        {
-            int whoAmI = NPC.FindFirstNPC(n.type);
-            if(whoAmI >= 0)
-            {
-                return Main.npc[whoAmI];
-            }
-        }
-
-        return n;
-    }
-    catch (Exception e)
-    {
-        // Main.NewText("Gen " + item.stack + ": " + e.ToString());
-    }
-    return null;
-}
-
-/// <summary>
-/// Generate the photo from the item.stack (aka npcType)
-/// </summary>
-private void SetPhotoFromStack()
-{
-    // Assign NPC to photo
-    try
-    {
-        NPC n = GenerateNPC();
-
-        SetPhoto(n);
-    }
-    catch (Exception e) { Main.NewText("Ex: " + e.ToString()); }
-}
-
-// Photo Clearing, actually to prevent stack fiddling
-public override bool CanRightClick()
-{
-    return true;
-}
-public override void RightClick(Player player)
-{
-    item.SetDefaults(mod.ItemType<PhotoBlank>());
-    item.stack = 2;
-}
-
-/// <summary>
-/// Set the photo based on the NPC given
-/// </summary>
-/// <param name="npc"></param>
-public void SetPhoto(NPC npc)
-{
-    npcName = npc.name; // Here's hoping these remain static... and indicative
-    npcDisplayName = "";
-    npcMod = "";
-    npcTexture = null;
-    if (npc.modNPC != null)
-    {
-        npcName = npc.modNPC.GetType().Name;
-        npcMod = npc.modNPC.mod.Name;
-    }
-    if (!npcName.Equals(npc.displayName))
-    {
-        npcDisplayName = npc.displayName;
-    }
-    //Main.NewText("NPC " + npc.type + " captured: " + npcName + "(" + npcDisplayName + ") from " + npcMod);
-    SetValues();
-}
-/// <summary>
-///  Set up the values for the item
-/// </summary>
-private void SetValues()
-{
-    try
-    {
-        NPC n = GenerateNPC();
-        if (npcMod != "")
-        {
-            // Try setting to the current index of this creature
-            item.stack = ModLoader.GetMod(npcMod).NPCType(npcName); // catch if null
-        }
-        else
-        {
-            item.stack = n.type;
-        }
-
-        if(Main.netMode != 2)  npcTexture = Main.npcTexture[item.stack]; //catch if out of bounds
-
-        if (npcDisplayName != "")
-        {
-            item.name = "Photo of " + npcDisplayName + ", no.";
-            item.toolTip2 = "'Also known as " + npcName + "'";
-        }
-        else
-        {
-            item.name = "Photo of " + npcName + ", no.";
-            item.toolTip2 = "";
-        }
-
-        if(n.boss || n.townNPC)
-        {
-            item.rare = 1;
-        }
-        else
-        {
-            item.rare = 0;
-        }
-    }
-    catch
-    {
-        item.name = "Faded Photo";
-        item.toolTip2 = "'Almost looks like... " + npcName + ", from " + npcMod + "'";
-    }
-    item.maxStack = item.stack;
-
-    if (npcName == "")
-    {
-        item.stack = 1;
-        item.SetDefaults(mod.ItemType<PhotoBlank>());
-    }
-}
-
-//public override bool CanRightClick() { return true; item.maxStack = 2; }
-//public override void RightClick(Player player)
-//{
-//    foreach(NPC n in Main.npc)
-//    {
-//        if (!n.active) continue;
-//        if(!n.friendly)
-//        {
-//            SetPhoto(n);
-//            break;
-//        }
-//    }
-//}
-//public override bool ConsumeItem(Player player)  {return false; }
-
-*/
