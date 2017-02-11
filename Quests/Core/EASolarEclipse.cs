@@ -25,9 +25,9 @@ namespace ExpeditionsContent.Quests.Core
         {
             string message = "";
             if (NPC.downedMechBoss1 && NPC.downedMechBoss2 && NPC.downedMechBoss3)
-            { message = "A peculiar moth only comes out during the eclipse, and if you're lucky it may even have a sword, left by an old hero who attempted to sly one. "; }
+            { message = "A peculiar moth only comes out during the eclipse, and if you're lucky it may even carry on it a sword from a hero who once tried to slay it. "; }
             else
-            { message = "The presence of the mechanical bosses appears to be surpressing some creatures from emerging though. "; }
+            { message = "Perhaps if you best the mechanical bosses, a powerful foe may emerge to challenge you during this eclipse. "; }
             return "Very rarely, the moon might end up in front of the sun, blocking out daylight. During this period, strange creatures come out to hunt. " + message;
         }
 
@@ -48,17 +48,17 @@ namespace ExpeditionsContent.Quests.Core
 
             if (!cond1) cond1 = Main.eclipse;
 
-            // Appears once any mech boss defeated (when fruit spawns)
+            // Appears during an eclipse, or just generally after plantera
             return cond1 || NPC.downedPlantBoss;
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if(expedition.condition1Met)
+            if(cond1)
             {
-                if(!expedition.condition2Met)
+                if(!cond2)
                 {
-                    expedition.condition2Met = npc.type == NPCID.Mothron;
+                    cond2 = npc.type == NPCID.Mothron;
                 }
             }
         }
