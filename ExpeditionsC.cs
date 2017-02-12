@@ -139,6 +139,8 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters3());
             #endregion
 
+            API.AddExpedition(this, new Quests.MiscPre.DryadHerbs());
+
             #region DD2
             // DD2
             API.AddExpedition(this, new Quests.MiscPre.DryadDD2());
