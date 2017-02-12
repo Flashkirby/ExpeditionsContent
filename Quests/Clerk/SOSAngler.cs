@@ -45,12 +45,14 @@ namespace ExpeditionsContent.Quests.Clerk
             return (!NPC.savedAngler || cond1) && cond3;
         }
 
+        private const float viewRangeX = 1984f;
+        private const float viewRangeY = 1120f;
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             // Cannot "save" unless player has seen the bound first - only spawns when not saved
             if (!cond1)
             {
-                Rectangle viewRect = Utils.CenteredRectangle(player.Center, new Vector2(400f, 400f));
+                Rectangle viewRect = Utils.CenteredRectangle(player.Center, new Vector2(viewRangeX, viewRangeY));
                 for (int i = 0; i < 200; i++)
                 {
                     if (Main.npc[i].type != NPCID.SleepingAngler) continue;
