@@ -35,7 +35,7 @@ namespace ExpeditionsContent.Quests.Daily
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return API.IsDaily(expedition) || true;
+            return API.IsDaily(expedition);
         }
 
         public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
