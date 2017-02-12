@@ -30,12 +30,11 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             return "As you may already know, the underground is littered with traps! This is of peak interest to me - I really want to know how they work, and who originally put them there. If you can find a few for me, I'd be way more than happy to order in some new items for the shop! ";
         }
+
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            // Disappear after skeletron, queen bee or WoF
-            if (!expedition.completed && (NPC.downedBoss3 || NPC.downedQueenBee || Main.hardMode)) return false;
-
-            return true;
+            if (!cond1) cond1 = NPC.FindFirstNPC(NPCID.Merchant) >= 0 && API.TimeMorning;
+            return cond1;
         }
 
         public override void PostCompleteExpedition()

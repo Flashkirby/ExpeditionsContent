@@ -592,6 +592,7 @@ namespace ExpeditionsContent.NPCs
             }
         }
 
+        private const bool ShowAll = true;
         public override void SetupShop(Chest shop, ref int nextSlot)
         {
             // Sell book
@@ -620,7 +621,8 @@ namespace ExpeditionsContent.NPCs
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 1);
             }
-            if (API.FindExpedition<Quests.Clerk.SecretSummon>(mod).completed)
+            if (API.FindExpedition<Quests.Clerk.SecretSummon>(mod).completed ||
+                API.FindExpedition<Quests.Clerk.SecretSummon2>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot,
                     mod.ItemType<Items.LoyaltyBadge>(), 1);

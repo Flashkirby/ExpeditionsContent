@@ -26,9 +26,6 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            // Disappear after WoF
-            if (!expedition.completed && Main.hardMode) return false;
-
             if (!cond1) cond1 = NPC.FindFirstNPC(NPCID.ArmsDealer) >= 0 && API.TimeMorning;
             return cond1;
         }

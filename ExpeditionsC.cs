@@ -114,19 +114,19 @@ namespace ExpeditionsContent {
             #region Clerk
             // Clerk Sidequests
             API.AddExpedition(this, new Quests.Clerk.ShopInventory());
-            API.AddExpedition(this, new Quests.Clerk.WayfarerWeapons());
-            API.AddExpedition(this, new Quests.Clerk.WayfererGuns());
+            API.AddExpedition(this, new Quests.Clerk.WayfarerWeapons()); // Unlock basic
+            API.AddExpedition(this, new Quests.Clerk.WayfererGuns()); // Unlock guns
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
             API.AddExpedition(this, new Quests.Clerk.SunkenTreasure());
             API.AddExpedition(this, new Quests.Clerk.FragileIceCave());
-            API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
-            API.AddExpedition(this, new Quests.Clerk.SecretSummon());
-            API.AddExpedition(this, new Quests.Clerk.SkysTheLimit());
+            API.AddExpedition(this, new Quests.Clerk.CrystalHeart()); // Unlock heart finder
+            API.AddExpedition(this, new Quests.Clerk.SecretSummon()); // Unlock loyalty badge
+            API.AddExpedition(this, new Quests.Clerk.SkysTheLimit()); // Unlock book gust
             API.AddExpedition(this, new Quests.Clerk.BloodMoonDefence());
-            API.AddExpedition(this, new Quests.Clerk.SecretSummon2());
-            API.AddExpedition(this, new Quests.Clerk.RoseByAnyName());
+            API.AddExpedition(this, new Quests.Clerk.SecretSummon2()); // Unlock summon weapon
+            API.AddExpedition(this, new Quests.Clerk.RoseByAnyName()); // Unlock staff
             API.AddExpedition(this, new Quests.Clerk.DarkBlade());
-            API.AddExpedition(this, new Quests.Clerk.FruitsOfLabour());
+            API.AddExpedition(this, new Quests.Clerk.FruitsOfLabour()); // Unlock fruit lens
 
             // Clerk SOS
             API.AddExpedition(this, new Quests.Clerk.SOSAngler());
