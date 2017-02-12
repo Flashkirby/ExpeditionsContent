@@ -24,7 +24,7 @@ namespace ExpeditionsContent.Quests.Daily
         {
             string clerk = NPC.GetFirstNPCNameOrNull(ExpeditionC.NPCIDClerk);
             if (clerk == "") clerk = "the clerk";
-            return "Hey, you know what sells really well right now? Pet goldfish. Overseas that is, I'm not paying you any extra to get it for me. But I'll put in a word with " + clerk + ", how's that? Now get me a 3.";
+            return "Hey, you know what sells really well right now? Pet goldfish. Overseas that is, I'm not paying you any extra to get it for me. But I'll put in a word with " + clerk + ", how's that? Now get me some goldfish.";
         }
 
         public override bool IncludeAsDaily()
