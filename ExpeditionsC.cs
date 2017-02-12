@@ -164,7 +164,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.TravMerch.PostPair3FetidBaghnaks());
             #endregion
 
-            #region Daily
+            #region Daily - Misc
             API.AddExpedition(this, new Quests.Daily.DrinkingContest()); // INFACC: Depth Meter
 
             API.AddExpedition(this, new Quests.Daily.BossEoC());
@@ -219,6 +219,14 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Daily.MerchFadPearlwood());
             API.AddExpedition(this, new Quests.Daily.MerchFadSpookyWood());
             API.AddExpedition(this, new Quests.Daily.MerchFadMartian());
+            #endregion
+            #region Daily - Dye Trading
+            API.AddExpedition(this, new Quests.Daily.DyeForRed());
+            API.AddExpedition(this, new Quests.Daily.DyeForGreen());
+            API.AddExpedition(this, new Quests.Daily.DyeForBlue());
+            API.AddExpedition(this, new Quests.Daily.DyeForCyan());
+            API.AddExpedition(this, new Quests.Daily.DyeForViolet());
+            API.AddExpedition(this, new Quests.Daily.DyeForYellow());
             #endregion
         }
 
