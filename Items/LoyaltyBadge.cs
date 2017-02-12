@@ -12,8 +12,8 @@ namespace ExpeditionsContent.Items
             item.toolTip = "Increases the damage of your minions by 7%"; 
             // Round off that 23% by bee armour, hence making the slime staff deal a whole
             // 10 instead of 9 damage. WOW!
-            item.width = 22;
-            item.height = 30;
+            item.width = 24;
+            item.height = 24;
             item.accessory = true;
             item.rare = 2;
             item.value = Item.buyPrice(0, 1, 0, 0);

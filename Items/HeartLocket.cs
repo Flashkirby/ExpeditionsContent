@@ -18,7 +18,7 @@ namespace ExpeditionsContent.Items
             item.toolTip = "Temporarily increases maximum life by 20";
             item.toolTip2 = "'Practical and stylish'";
             item.width = 22;
-            item.height = 30;
+            item.height = 22;
             item.accessory = true;
             item.rare = 1;
             item.value = Item.buyPrice(0, 1, 0, 0);
