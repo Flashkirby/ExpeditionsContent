@@ -86,6 +86,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.CBAltarBlessing());
             API.AddExpedition(this, new Quests.Core.CBTracingSteps());
             API.AddExpedition(this, new Quests.Core.CBLivingLoot());
+            API.AddExpedition(this, new Quests.Core.CBSavingGrace());
             API.AddExpedition(this, new Quests.Core.CBSoaringSkies());
             API.AddExpedition(this, new Quests.Core.CCCrystalShards());
             API.AddExpedition(this, new Quests.Core.CCGreenFlames());
