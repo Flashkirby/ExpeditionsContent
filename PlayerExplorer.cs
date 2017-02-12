@@ -16,6 +16,7 @@ namespace ExpeditionsContent
     {
         public bool accHeartCompass;
         public bool accFruitCompass;
+        public bool accShrineMap;
         public bool stargazer;
         public bool familiarMinion;
 
@@ -35,6 +36,7 @@ namespace ExpeditionsContent
         {
             accHeartCompass = false;
             accFruitCompass = false;
+            accShrineMap = false;
             stargazer = false;
             familiarMinion = false;
         }
@@ -43,16 +45,32 @@ namespace ExpeditionsContent
         {
             accHeartCompass = false;
             accFruitCompass = false;
+            accShrineMap = false;
             stargazer = false;
             familiarMinion = false;
             TryTelescope();
         }
-        
+
+        public override void OnEnterWorld(Player player)
+        {
+            ModMapController.FullMapInitialise();
+        }
+
         public override void PostUpdateEquips()
         {
             // Basically if allied player is in "info" range of 100ft
             // NOTE: Disabled because I haven't set up any net sync for the bools
             // ShareTeamInfo();
+
+            /*
+            if (player.controlHook && player.releaseHook)
+            {
+                Tile t = Main.tile[
+                    (int)(Main.mouseX + Main.screenPosition.X) / 16,
+                    (int)(Main.mouseY + Main.screenPosition.Y) / 16];
+                Main.NewText("Tile @ Mouse = " + t.type + " with frame: " + t.frameX + "|" + t.frameY);
+            }
+            */
         }
 
         private void ShareTeamInfo()

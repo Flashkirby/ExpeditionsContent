@@ -17,11 +17,13 @@ namespace ExpeditionsContent
     {
         public static List<Point> heartTiles;
         public static List<Point> fruitTiles;
+        public static List<Point> shrineTiles;
         public static List<Vector2> fallenStarPos;
         internal static void FullMapInitialise()
         {
             heartTiles = new List<Point>();
             fruitTiles = new List<Point>();
+            shrineTiles = new List<Point>();
             fallenStarPos = new List<Vector2>();
         }
 
@@ -95,10 +97,29 @@ namespace ExpeditionsContent
                         }
                     }
                 }
+
+                // Search the map for these tiles, only update once in a while
+                if ((int)Main.time % 60 == 0)
+                {
+                    shrineTiles.Clear();
+                    for (int y = 1 + (int)Main.topWorld / 16; y < Main.bottomWorld / 16; y += 2)
+                    {
+                        for (int x = 1 + (int)Main.leftWorld / 16; x < Main.rightWorld / 16; x += 3)
+                        {
+                            Tile t = Main.tile[x, y];
+                            if (t == null) continue;
+
+                            if (y < Main.bottomWorld / 32) // Only above halfway
+                            {
+                                if (px.accShrineMap) AddShrine(y, x, t);
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception e)
             {
-                Main.NewTextMultiline("Everythings going wrong:" + e.ToString());
+                Main.NewTextMultiline("Everything's going wrong:" + e.ToString());
             }
         }
 
@@ -148,16 +169,50 @@ namespace ExpeditionsContent
             }
         }
 
+        const int frameTile = 18;
+        private static void AddShrine(int y, int x, Tile t)
+        {
+            // Fake/real sword embedded
+            if (t.type == 186 || t.type == 187)
+            {
+                const int realOffsetX = 918;
+                const int realOffsetY = 0;
+                const int fakeOffsetX = 810;
+                const int fakeOffsetY = 0;
+                for (int height = 0; height < 2; height++)
+                {
+                    for (int width = 0; width < 3; width++)
+                    {
+                        int offsetX = fakeOffsetX;
+                        int offsetY = fakeOffsetY;
+                        if(t.type == 187)
+                        {
+                            offsetX = realOffsetX;
+                            offsetY = realOffsetY;
+                        }
+                        if (t.frameX == offsetX + width * frameTile &&
+                            t.frameY == offsetY + height * frameTile)
+                        {
+                            //Main.NewText("Add " + t.type + " at a shrine? " + t.frameX + " & " + t.frameY);
+                            shrineTiles.Add(new Point(x - width, y - height));
+                        }
+                    }
+                }
+            }
+        }
+
         private static void DrawIcons()
         {
             Texture2D heart = null;
             Texture2D fruit = null;
+            Texture2D shrine = null;
             Texture2D star = null;
             Vector2 drawPosition = new Vector2(); ;
             try
             {
                 heart = Main.itemTexture[ItemID.LifeCrystal];
                 fruit = Main.itemTexture[ItemID.LifeFruit];
+                shrine = Main.itemTexture[ItemID.PlatinumShortsword];
                 star = Main.itemTexture[ItemID.FallenStar];
                 drawPosition = new Vector2();
             }
@@ -174,6 +229,11 @@ namespace ExpeditionsContent
                 {
                     drawPosition = CalculateDrawPos(new Vector2(fruitTile.X + 1f, fruitTile.Y + 1f));
                     DrawTextureOnMap(fruit, drawPosition);
+                }
+                foreach (Point shrineTile in shrineTiles)
+                {
+                    drawPosition = CalculateDrawPos(new Vector2(shrineTile.X + 1.5f, shrineTile.Y + 1f));
+                    DrawTextureOnMap(shrine, drawPosition);
                 }
                 foreach (Vector2 fallenStar in fallenStarPos)
                 {
