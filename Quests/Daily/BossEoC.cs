@@ -138,12 +138,12 @@ namespace ExpeditionsContent.Quests.Daily
 
 
                         if (Main.time == (int)(TimeChecker.RawMidnightTime * 0.5f))
-                        {
+                        { // 9:45
                             Main.NewText(
                                 String.Concat("<", name, "> You're half way to midnight. "));
                         }
                         else if (Main.time == (int)(TimeChecker.RawMidnightTime * 0.75f))
-                        {
+                        { // 10:52
                             Main.NewText(
                                 String.Concat("<", name, "> You must defeat the Eye of Cthulu soon to complete the challenge! "));
                         }
