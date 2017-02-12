@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.name = "Beacon of Purity";
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 0;
-            expedition.ctgCollect = true;
+            expedition.ctgExplore = true;
 
             expedition.conditionDescription1 = "Discover a Living Tree";
         }
