@@ -43,7 +43,8 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return PlayerExplorer.HoldingCamera(mod);
+            return PlayerExplorer.HoldingCamera(mod)
+                || expedition.conditionCounted > 0;
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
