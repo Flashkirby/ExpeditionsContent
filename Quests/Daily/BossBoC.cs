@@ -152,7 +152,7 @@ namespace ExpeditionsContent.Quests.Daily
                 #endregion
             }
 
-            return base.CheckConditions(player, ref cond1, ref cond2, ref cond3, condCount);
+            return cond1 && cond2 && cond3;
         }
     }
 }
