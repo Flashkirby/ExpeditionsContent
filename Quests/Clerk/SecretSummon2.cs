@@ -16,17 +16,10 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override void AddItemsOnLoad()
         {
-            AddDeliverableAnyOf(new int[] { ItemID.RubyStaff, ItemID.DiamondStaff }, 1);
             AddDeliverable(ItemID.Terrarium, 3);
-            //Fox
             AddDeliverable(ItemID.BlueBerries, 1);
-            AddDeliverable(ItemID.Bunny, 1);
-            //Chicken
-            AddDeliverable(ItemID.GrassSeeds, 2);
-            AddDeliverable(ItemID.Worm, 2);
-            //Cat
-            AddDeliverable(ItemID.Mouse, 1);
-            AddDeliverableAnyOf(new int[] { ItemID.Tuna, ItemID.Trout }, 1);
+            AddDeliverable(ItemID.GrassSeeds, 1);
+            AddDeliverable(ItemID.Goldfish, 1);
 
             AddRewardItem(API.ItemIDExpeditionCoupon, 1);
         }
@@ -35,11 +28,11 @@ namespace ExpeditionsContent.Quests.Clerk
             if (complete) return "Haha! Thanks to our combined effort, I have made a summon... thing? Well, I think, anyway. Check it out in my shop! It probably works! ";
             if (API.FindExpedition<SecretSummon>(mod).completed)
             {
-                return "You remember that summoning thing you showed me? Well I've just had the craziest idea, but I'll need a few things. Don't ask, it'll make sense. Trust me! ";
+                return "You remember that summoning thing you showed me? Well I've just had the craziest idea, but I'll need a few things. Don't ask, it'll make sense. Trust me! It'll be in my shop once it's done. ";
             }
             else
             {
-                return "No luck finding a summon weapon, huh? Man, I'd really like to see one though. Hey, I've got a great idea, but I'll need a few things. Don't ask, it'll make sense. Trust me! ";
+                return "No luck finding a summon weapon, huh? Man, I'd really like to see one though. Hey, I've got a great idea, but I'll need a few things. Don't ask, it'll make sense. Trust me! It'll be in my shop once it's done. ";
             }
         }
 
@@ -49,8 +42,7 @@ namespace ExpeditionsContent.Quests.Clerk
             // Appear after EoC, in evening
             if (!cond1)
             {
-                cond1 = NPC.downedBoss1
-                    && API.TimeEvening;
+                cond1 = API.TimeDusk;
             }
             return cond1;
         }
