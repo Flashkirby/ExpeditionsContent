@@ -118,6 +118,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.WayfererGuns());
             API.AddExpedition(this, new Quests.Clerk.BeaconOfPurity());
             API.AddExpedition(this, new Quests.Clerk.SunkenTreasure());
+            API.AddExpedition(this, new Quests.Clerk.FragileIceCave());
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart());
             API.AddExpedition(this, new Quests.Clerk.SecretSummon());
             API.AddExpedition(this, new Quests.Clerk.SkysTheLimit());
