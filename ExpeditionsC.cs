@@ -62,6 +62,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.ACHouseHome());
             API.AddExpedition(this, new Quests.Core.ADHooks());
             API.AddExpedition(this, new Quests.Core.ADLifeCrystals());
+            API.AddExpedition(this, new Quests.Core.ADWizardHat());
             API.AddExpedition(this, new Quests.Core.ADMushrooms());
             API.AddExpedition(this, new Quests.Core.ADKingSlime());
             //Block 2
