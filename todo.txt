@@ -1,14 +1,21 @@
 
 
+work out better way to do eater quest
+
+mothron quest (ASK KIEDEV, no problem for me)
+
 =========== Fixed Bugs ====================
+quests that overflow the screen size (eg. brainpower), can drag now
+Bat out of the underworld doesn't work? (extracinator)
 new character carries old data due to not resetting
 Board don't work (UI)? multiplayer only uses player 0
 coupon only gives 1
 clerk don't respawn
+Filter by tracking
+Fix tracking counting
+partisan quest disappears (doesn't for me)
 
 https://github.com/Flashkirby/ExpeditionsContent/wiki
-
-For the future: Filter by tracking
 
 alias yolo="git add . && git commit -m \"$(curl -s whatthecommit.com/index.txt)\" && git push"
 

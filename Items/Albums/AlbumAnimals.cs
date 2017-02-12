@@ -7,9 +7,9 @@ namespace ExpeditionsContent.Items.Albums
     {
         public override void SetDefaults()
         {
-            item.name = "Terrarian Critters, 2st ed.";
+            item.name = "Terrarian Critters, 2nd ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It's full of cute animal pictures'";
+            item.toolTip2 = "'It's full of cute animal photos!'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;
