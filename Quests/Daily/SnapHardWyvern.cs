@@ -58,9 +58,12 @@ namespace ExpeditionsContent.Quests.Daily
             PhotoManager.ConsumePhoto(NPCID.WyvernHead);
             if (!PhotoManager.ConsumePhoto(NPCID.WyvernBody))
             {
-                if (!PhotoManager.ConsumePhoto(NPCID.WyvernBody3))
+                if (!PhotoManager.ConsumePhoto(NPCID.WyvernBody2))
                 {
-                    PhotoManager.ConsumePhoto(NPCID.WyvernLegs);
+                    if (!PhotoManager.ConsumePhoto(NPCID.WyvernBody3))
+                    {
+                        PhotoManager.ConsumePhoto(NPCID.WyvernLegs);
+                    }
                 }
             }
             PhotoManager.ConsumePhoto(NPCID.WyvernTail);

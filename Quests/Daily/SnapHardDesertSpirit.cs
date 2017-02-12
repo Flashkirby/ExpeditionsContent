@@ -46,7 +46,7 @@ namespace ExpeditionsContent.Quests.Daily
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.DesertDjinn);
+            PhotoManager.ConsumePhoto(NPCID.Medusa);
         }
     }
 }

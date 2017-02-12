@@ -43,7 +43,7 @@ namespace ExpeditionsContent.Quests.Daily
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             cond1 =
-                PhotoManager.PhotoOfNPC[NPCID.DesertDjinn];
+                PhotoManager.PhotoOfNPC[NPCID.Medusa];
             return cond1;
         }
 
