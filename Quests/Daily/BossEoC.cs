@@ -35,7 +35,7 @@ namespace ExpeditionsContent.Quests.Daily
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return API.IsDaily(expedition);
+            return API.IsDaily(expedition) || true;
         }
 
         public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -49,26 +49,38 @@ namespace ExpeditionsContent.Quests.Daily
             }
         }
 
+        public override void OnNewNight(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+            if (!cond3)
+            {
+                cond1 = false;
+                cond2 = false;
+            }
+        }
+
         int prevCount = 0;
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
+            // Boss summoned
+            if (NPC.FindFirstNPC(NPCID.EyeofCthulhu) >= 0)
             {
-                #region Summon Boss
-                // Boss summoned
-                if(NPC.FindFirstNPC(NPCID.EyeofCthulhu) >= 0)
+                if (!cond1)
                 {
                     cond1 = true;
                     cond2 = true;
                 }
-                else
-                {
-                    cond1 = false;
-                    cond2 = false;
-                }
-                #endregion
             }
             else
+            {
+                if (cond3 && !cond2) // Finsihed boss but failed the challenge?
+                {
+                    bool saveTracked = expedition.trackingActive;
+                    expedition.ResetProgress();
+                    expedition.trackingActive = saveTracked;
+                }
+            }
+
+            if (cond1)
             {
                 #region Servant Counting
                 // Servant of Cthulu spawn counting
@@ -81,10 +93,19 @@ namespace ExpeditionsContent.Quests.Daily
                         if (Main.npc[i].type == NPCID.ServantofCthulhu) count++;
                     }
                     // FAIL!
-                    if (count > 5) cond2 = false;
+                    if (count > 5)
+                    {
+                        cond2 = false;
+                    }
+
+                    // Ignore tracking after failure
+                    if (!cond2 && count > 6)
+                    {
+                        prevCount = count;
+                    }
 
                     // Tracking
-                    if(expedition.trackingActive)
+                    if (expedition.trackingActive)
                     {
                         if(prevCount != count && count >= 3)
                         {
@@ -94,9 +115,7 @@ namespace ExpeditionsContent.Quests.Daily
                             if (count == 5) lastText = "Slay them quickly! ";
                             if (!cond2) 
                             {
-                                lastText = "You can no longer complete this challenge. ";
-                                // Stop tracking
-                                expedition.trackingActive = false;
+                                lastText = "You will have to retry this challenge after defeating the boss. ";
                             }
                             Main.NewText(String.Concat(
                                 "<", name, "> There are ", count, " Servants of Cthulu. ", 
@@ -104,26 +123,40 @@ namespace ExpeditionsContent.Quests.Daily
                                 ));
                         }
                     }
+
                     prevCount = count;
                 }
                 #endregion
 
                 #region Midnight Check
-                if (!cond3 && API.TimeNightPostMid)
+                if (!cond3 && cond2)
                 {
                     if (expedition.trackingActive)
                     {
                         string name = NPC.GetFirstNPCNameOrNull(NPCID.Guide);
                         if (name == "") name = "Guide";
 
-                        Main.NewText(
-                            String.Concat("<", name, "> It's now past midnight. You can no longer complete this challenge. "));
-                        // Stop tracking
-                        expedition.trackingActive = false;
+
+                        if (Main.time == (int)(TimeChecker.RawMidnightTime * 0.5f))
+                        {
+                            Main.NewText(
+                                String.Concat("<", name, "> You're half way to midnight. "));
+                        }
+                        else if (Main.time == (int)(TimeChecker.RawMidnightTime * 0.75f))
+                        {
+                            Main.NewText(
+                                String.Concat("<", name, "> You must defeat the Eye of Cthulu soon to complete the challenge! "));
+                        }
+                        else if (Main.time == TimeChecker.RawMidnightTime)
+                        {
+                            Main.NewText(
+                                String.Concat("<", name, "> It's now past midnight. You can no longer complete this challenge. "));
+                        }
                     }
                 }
                 #endregion
             }
+
             return cond1 && cond2 && cond3;
         }
     }

@@ -35,7 +35,7 @@ namespace ExpeditionsContent.Quests.Daily
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return API.IsDaily(expedition);
+            return API.IsDaily(expedition) || true;
         }
 
         public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -50,25 +50,31 @@ namespace ExpeditionsContent.Quests.Daily
         }
 
         int prevCount = 0;
+        bool resetFrame = false; // Wait a frame when number changes, to give the game time to modify heads
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
+            // Boss summoned
+            if (NPC.FindFirstNPC(NPCID.EaterofWorldsHead) >= 0)
             {
-                #region Summon Boss
-                // Boss summoned
-                if (NPC.FindFirstNPC(NPCID.EaterofWorldsHead) >= 0)
+                if (!cond1)
                 {
                     cond1 = true;
                     cond2 = true;
                 }
-                else
-                {
-                    cond1 = false;
-                    cond2 = false;
-                }
-                #endregion
             }
             else
+            {
+                if (cond3 && !cond2) // Finsihed boss but failed the challenge?
+                {
+                    bool saveTracked = expedition.trackingActive;
+                    expedition.ResetProgress();
+                    expedition.trackingActive = saveTracked;
+                    resetFrame = false;
+                    prevCount = 0;
+                }
+            }
+
+            if (cond1)
             {
                 #region Head and Length Counting
                 // Head and length counting
@@ -85,11 +91,22 @@ namespace ExpeditionsContent.Quests.Daily
                     }
                     if (expedition.conditionCounted < headCount)
                     {
-                        expedition.conditionCounted = headCount;
+                        if (!resetFrame)
+                        {
+                            resetFrame = true;
+                        }
+                        else
+                        {
+                            resetFrame = false;
+                            expedition.conditionCounted = headCount;
+                        }
                     }
                     headCount = expedition.conditionCounted;
                     // FAIL!
-                    if (headCount > 3) cond2 = false;
+                    if (headCount > 3) 
+                    {
+                        cond2 = false;
+                    }
 
                     // Tracking
                     if (expedition.trackingActive)
@@ -102,9 +119,7 @@ namespace ExpeditionsContent.Quests.Daily
                             if (headCount == 3) lastText = "Any more and you will be unable to complete the challenge! ";
                             if (!cond2)
                             {
-                                lastText = "You can no longer complete this challenge. ";
-                                // Stop tracking
-                                expedition.trackingActive = false;
+                                lastText = "You will have to retry this challenge after defeating the boss. ";
                             }
                             Main.NewText(String.Concat(
                                 "<", name, "> The Eater of Worlds is now split into ", headCount, " individuals. ",
@@ -116,6 +131,7 @@ namespace ExpeditionsContent.Quests.Daily
                 }
                 #endregion
             }
+
             return cond1 && cond2 && cond3;
         }
     }

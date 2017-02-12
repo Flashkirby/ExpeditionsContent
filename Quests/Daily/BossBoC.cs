@@ -35,7 +35,7 @@ namespace ExpeditionsContent.Quests.Daily
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return API.IsDaily(expedition);
+            return API.IsDaily(expedition) || true;
         }
 
         public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -67,11 +67,22 @@ namespace ExpeditionsContent.Quests.Daily
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1)
+            // Boss summoned
+            if (NPC.FindFirstNPC(NPCID.BrainofCthulhu) >= 0)
             {
-                cond1 = NPC.FindFirstNPC(NPCID.BrainofCthulhu) >= 0;
+                cond1 = true;
             }
-            if (!cond2)
+            else
+            {
+                if (cond3 && !cond2) // Finsihed boss but failed the challenge?
+                {
+                    bool saveTracked = expedition.trackingActive;
+                    expedition.ResetProgress();
+                    expedition.trackingActive = saveTracked;
+                }
+            }
+
+            if (cond1 && !cond2)
             {
                 #region Creeper Counting
                 if (expedition.conditionCounted != 0) // Timer is set!
@@ -86,17 +97,43 @@ namespace ExpeditionsContent.Quests.Daily
                     {
                         if (count == 0 && NPC.FindFirstNPC(NPCID.BrainofCthulhu) >= 0)
                         {
-                            cond2 = true; 
+                            cond2 = true;
                             // Completed if all defeated AND boss still around 
                             // Prevent save/exit cheesing
                         }
-                        else if ((int)Main.time == expedition.conditionCounted + 3000)
+
+                        string name = NPC.GetFirstNPCNameOrNull(NPCID.Guide);
+                        if (name == "") name = "Guide";
+                        switch ((int)Main.time - expedition.conditionCounted)
                         {
-                            string name = NPC.GetFirstNPCNameOrNull(NPCID.Guide);
-                            if (name == "") name = "Guide";
-                            Main.NewText(String.Concat(
-                                "<", name, "> 10 seconds left to defeat the remaining Creepers! "
-                                ));
+                            case 60 * 30:
+                                Main.NewText(String.Concat(
+                                    "<", name, "> 30 seconds left to defeat the remaining Creepers! "));
+                                break;
+                            case 60 * 50:
+                                Main.NewText(String.Concat(
+                                    "<", name, "> 10 seconds left to defeat the remaining Creepers! "));
+                                break;
+                            case 60 * 55:
+                                Main.NewText(String.Concat(
+                                    "<", name, "> 5 seconds left to defeat the remaining Creepers! "));
+                                break;
+                            case 60 * 56:
+                                Main.NewText(String.Concat(
+                                    "<", name, "> 4 seconds left to defeat the remaining Creepers! "));
+                                break;
+                            case 60 * 57:
+                                Main.NewText(String.Concat(
+                                    "<", name, "> 3 seconds left to defeat the remaining Creepers! "));
+                                break;
+                            case 60 * 58:
+                                Main.NewText(String.Concat(
+                                    "<", name, "> 2 seconds left to defeat the remaining Creepers! "));
+                                break;
+                            case 60 * 59:
+                                Main.NewText(String.Concat(
+                                    "<", name, "> 1 second left to defeat the remaining Creepers! "));
+                                break;
                         }
                     }
                     else
@@ -107,9 +144,8 @@ namespace ExpeditionsContent.Quests.Daily
                             string name = NPC.GetFirstNPCNameOrNull(NPCID.Guide);
                             if (name == "") name = "Guide";
                             Main.NewText(String.Concat(
-                                "<", name, "> 60 seconds are up! You can no longer compelte this challenge. "
+                                "<", name, "> 60 seconds are up! You will have to retry this challenge after defeating the boss. "
                                 ));
-                            expedition.trackingActive = false;
                         }
                     }
                 }
