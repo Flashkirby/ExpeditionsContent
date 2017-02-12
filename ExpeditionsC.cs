@@ -143,6 +143,7 @@ namespace ExpeditionsContent {
             #endregion
 
             API.AddExpedition(this, new Quests.MiscPre.DryadHerbs());
+            API.AddExpedition(this, new Quests.MiscPre.NurseLocket());
 
             #region DD2
             // DD2

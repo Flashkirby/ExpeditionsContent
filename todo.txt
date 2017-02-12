@@ -1,10 +1,7 @@
-
-
-work out better way to do eater quest
-
-mothron quest (ASK KIEDEV, no problem for me)
-
+ 
 =========== Fixed Bugs ====================
+mothron quest (ASK KIEDEV, no problem for me)
+work out better way to do eater quest
 quests that overflow the screen size (eg. brainpower), can drag now
 Bat out of the underworld doesn't work? (extracinator)
 new character carries old data due to not resetting
@@ -14,6 +11,9 @@ clerk don't respawn
 Filter by tracking
 Fix tracking counting
 partisan quest disappears (doesn't for me)
+You can sell photos
+Wall creeper photo doesn't work
+fix wayfarer aquisition loss
 
 https://github.com/Flashkirby/ExpeditionsContent/wiki
 
