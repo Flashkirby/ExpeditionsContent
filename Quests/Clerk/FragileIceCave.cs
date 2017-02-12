@@ -30,7 +30,6 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             if (!cond1)
             {
-                Main.NewText("ice: " + Main.screenTileCounts[TileID.BreakableIce]);
                 cond1 = (Main.screenTileCounts[TileID.BreakableIce] > 500); // 500-1700+ is fragile ice cavern
             }
             return cond1;
