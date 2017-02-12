@@ -105,6 +105,8 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.DCPlanterror());
             API.AddExpedition(this, new Quests.Core.EASolarEclipse());
             API.AddExpedition(this, new Quests.Core.EAGhostBusters());
+            API.AddExpedition(this, new Quests.Core.EAFrostMoon());
+            API.AddExpedition(this, new Quests.Core.EAPumpkinMoon());
             #endregion
 
             #region Clerk
