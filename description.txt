@@ -1,10 +1,11 @@
 The main content addon for the Expeditions Base mod. A work in progress.
 
-* 45 Main Quests provided by the Guide, up to Plantera.
-* 46 Cycling daily quests.
-* 43 Sidequests, up to Mechanical Bosses.
+* 49 Main Quests provided by the Guide, up to Plantera.
+* 69 Cycling daily quests.
+* 48 Sidequests, up to Mechanical Bosses.
 * Clerk NPC that sells expedition-unlockable items.
-* Special expedition items that display extra Full Map information.
+* Take photos of enemies because you can!
+* Special expedition items that display extra map information.
 * Quest-unlocked early game weapon for Melee, Ranged, Magic and Summon.
 
 Credits:
@@ -21,4 +22,5 @@ LordReaper
 N1cknamed
 RexodinoLP
 Sapharan
+Kiedev
 And anyone else I can't remember aaahhhh
