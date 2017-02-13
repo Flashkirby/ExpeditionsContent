@@ -60,7 +60,7 @@ namespace ExpeditionsContent.Items
             item.width = 28;
             item.height = 28;
             item.rare = 0;
-            item.value = Item.buyPrice(0, 0, 3, 0);
+            item.value = Item.buyPrice(0, 0, 0, 0);
 
             npcName = "";
             npcMod = "";
