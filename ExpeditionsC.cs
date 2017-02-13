@@ -144,6 +144,7 @@ namespace ExpeditionsContent {
 
             API.AddExpedition(this, new Quests.MiscPre.DryadHerbs());
             API.AddExpedition(this, new Quests.MiscPre.NurseLocket());
+            API.AddExpedition(this, new Quests.MiscPre.WizardMap());
 
             #region DD2
             // DD2
