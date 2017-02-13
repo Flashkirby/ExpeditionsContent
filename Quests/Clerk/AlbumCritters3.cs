@@ -75,6 +75,10 @@ namespace ExpeditionsContent.Quests.Clerk
 
             if (!PhotoManager.ConsumePhoto(NPCID.Frog))
             { PhotoManager.ConsumePhoto(NPCID.GoldFrog); }
+
+            // Only reward the coupon once!
+            if (expedition.completed)
+            { rewards[0] = new Item(); }
         }
     }
 }

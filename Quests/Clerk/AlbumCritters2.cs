@@ -91,6 +91,10 @@ namespace ExpeditionsContent.Quests.Clerk
 
             if (!PhotoManager.ConsumePhoto(NPCID.DuckWhite))
             { PhotoManager.ConsumePhoto(NPCID.DuckWhite2); }
+
+            // Only reward the coupon once!
+            if (expedition.completed)
+            { rewards[0] = new Item(); }
         }
     }
 }

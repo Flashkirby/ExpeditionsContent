@@ -17,7 +17,7 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.ctgExplore = true;
             expedition.repeatable = true;
 
-            expedition.conditionDescription1 = "MotherSlime";
+            expedition.conditionDescription1 = "Mother Slime";
             expedition.conditionDescription2 = "Ice Slime";
             expedition.conditionDescription3 = "Sand Slime";
             expedition.conditionCountedMax = 3;

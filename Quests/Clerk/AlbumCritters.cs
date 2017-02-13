@@ -74,6 +74,10 @@ namespace ExpeditionsContent.Quests.Clerk
 
             if (!PhotoManager.ConsumePhoto(NPCID.Goldfish))
             { PhotoManager.ConsumePhoto(NPCID.GoldfishWalker); }
+
+            // Only reward the coupon once!
+            if (expedition.completed)
+            { rewards[0] = new Item(); }
         }
     }
 }
