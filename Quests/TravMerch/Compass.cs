@@ -16,7 +16,7 @@ namespace ExpeditionsContent.Quests.TravMerch
         }
         public override void AddItemsOnLoad()
         {
-            AddDeliverable(ItemID.PinkGel, 15);
+            AddDeliverable(ItemID.Hook, 1);
 
             AddRewardItem(ItemID.Compass);
         }
