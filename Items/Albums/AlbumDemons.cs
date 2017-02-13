@@ -7,7 +7,7 @@ namespace ExpeditionsContent.Items.Albums
     {
         public override void SetDefaults()
         {
-            item.name = "Demons from Beyond, 1st ed.";
+            item.name = "Spirits and Demons, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
             item.toolTip2 = "'It contains worrying photos of dark forces'";
             item.width = 22;

@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "Snap! Forces of Darkness";
+            expedition.name = "Snap! Watching Eyes";
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 0;
             expedition.ctgCollect = true;
