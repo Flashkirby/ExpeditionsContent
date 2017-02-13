@@ -24,7 +24,6 @@ namespace ExpeditionsContent.Quests.Clerk
             AddDeliverable(mod.ItemType<Items.Albums.AlbumSnow>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumAntlion>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumBee>());
-            AddDeliverable(mod.ItemType<Items.Albums.AlbumMushroom>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumFlora>());
 
             AddRewardItem(API.ItemIDExpeditionCoupon);

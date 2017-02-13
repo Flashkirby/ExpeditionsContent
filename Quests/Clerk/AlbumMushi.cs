@@ -19,7 +19,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
             expedition.conditionDescription1 = "Anomura Fungus";
             expedition.conditionDescription2 = "Mushroom Zombie";
-            expedition.conditionDescription3 = "Mushi Ladybug";
+            expedition.conditionDescription3 = "Glowing Snail";
             expedition.conditionCountedMax = 3;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
@@ -37,8 +37,8 @@ namespace ExpeditionsContent.Quests.Clerk
         { get { return PhotoManager.PhotoOfNPC[NPCID.AnomuraFungus]; } }
         public static bool Zombie
         { get { return PhotoManager.PhotoOfNPC[NPCID.ZombieMushroom] || PhotoManager.PhotoOfNPC[NPCID.ZombieMushroomHat]; } }
-        public static bool Ladybug
-        { get { return PhotoManager.PhotoOfNPC[NPCID.MushiLadybug]; } }
+        public static bool Snail
+        { get { return PhotoManager.PhotoOfNPC[NPCID.GlowingSnail]; } }
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -53,14 +53,14 @@ namespace ExpeditionsContent.Quests.Clerk
             count = 0;
             if (Anomura) count++;
             if (Zombie) count++;
-            if (Ladybug) count++;
+            if (Snail) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             cond1 = Anomura;
             cond2 = Zombie;
-            cond3 = Ladybug;
+            cond3 = Snail;
             return cond1 && cond2 && cond3;
         }
 
@@ -71,7 +71,7 @@ namespace ExpeditionsContent.Quests.Clerk
             {
                 PhotoManager.ConsumePhoto(NPCID.ZombieMushroomHat);
             }
-            PhotoManager.ConsumePhoto(NPCID.MushiLadybug);
+            PhotoManager.ConsumePhoto(NPCID.GlowingSnail);
 
             // Only reward the coupon once!
             if (expedition.completed)
