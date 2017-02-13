@@ -19,7 +19,6 @@ namespace ExpeditionsContent.Quests.Clerk
 
             expedition.conditionDescription1 = "Snatcher";
             expedition.conditionDescription2 = "Man Eater";
-            expedition.conditionDescription3 = "Fungi Bulb";
             expedition.conditionCountedMax = 3;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
@@ -30,15 +29,13 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "Here's another album theme for you. There are some hostile creatures in " + Main.worldName + " that are actuall plants! Crazy huh? Well anyway see what you can get, and don't get eaten. ";
+            return "Here's another album theme for you. There are some hostile creatures in " + Main.worldName + " that are actually plants! Crazy huh? Well anyway see what you can get, and don't get eaten. ";
         }
         #region Photo Bools
         public static bool Snatcher
         { get { return PhotoManager.PhotoOfNPC[NPCID.Snatcher]; } }
         public static bool ManEater
         { get { return PhotoManager.PhotoOfNPC[NPCID.ManEater]; } }
-        public static bool FungiB
-        { get { return PhotoManager.PhotoOfNPC[NPCID.FungiBulb]; } }
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -53,15 +50,13 @@ namespace ExpeditionsContent.Quests.Clerk
             count = 0;
             if (Snatcher) count++;
             if (ManEater) count++;
-            if (FungiB) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             cond1 = Snatcher;
             cond2 = ManEater;
-            cond3 = FungiB;
-            return cond1 && cond2 && cond3;
+            return cond1 && cond2;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
