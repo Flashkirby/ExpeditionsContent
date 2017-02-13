@@ -20,7 +20,7 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.conditionDescription1 = "Vulture";
             expedition.conditionDescription2 = "Jungle Bat";
             expedition.conditionDescription3 = "Harpy";
-            expedition.conditionCountedMax = 2;
+            expedition.conditionCountedMax = 3;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
@@ -49,8 +49,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             return (PlayerExplorer.HoldingCamera(mod)
-                && API.FindExpedition<AlbumSlimes>(mod).completed
-                && API.FindExpedition<AlbumWaters>(mod).completed)
+                && API.FindExpedition<AlbumSlimes>(mod).completed)
                 || expedition.conditionCounted > 0;
         }
 

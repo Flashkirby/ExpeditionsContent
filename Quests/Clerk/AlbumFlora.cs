@@ -19,7 +19,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
             expedition.conditionDescription1 = "Snatcher";
             expedition.conditionDescription2 = "Man Eater";
-            expedition.conditionCountedMax = 3;
+            expedition.conditionCountedMax = 2;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
