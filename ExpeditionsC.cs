@@ -111,7 +111,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.EAPumpkinMoon());
             #endregion
 
-            #region Clerk
+            #region Clerk - Misc
             // Clerk Sidequests
             API.AddExpedition(this, new Quests.Clerk.ShopInventory());
             API.AddExpedition(this, new Quests.Clerk.WayfarerWeapons()); // Unlock basic
@@ -134,29 +134,38 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.SOSTinkerer());
             API.AddExpedition(this, new Quests.Clerk.SOSMechanic());
             API.AddExpedition(this, new Quests.Clerk.SOSWizard());
-
+            #endregion
+            #region Clerk - Albums
             // Album Builders
             API.AddExpedition(this, new Quests.Clerk.ProCamSkill());
-            API.AddExpedition(this, new Quests.Clerk.AlbumCritters());
-            API.AddExpedition(this, new Quests.Clerk.AlbumSlimes());
+            API.AddExpedition(this, new Quests.Clerk.AlbumCritters()); // Tier 0
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters2());
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters3());
-            API.AddExpedition(this, new Quests.Clerk.AlbumCavern());
+            API.AddExpedition(this, new Quests.Clerk.AlbumSlimes());
             API.AddExpedition(this, new Quests.Clerk.AlbumWaters());
+            API.AddExpedition(this, new Quests.Clerk.AlbumUndead());
+            API.AddExpedition(this, new Quests.Clerk.AlbumDemons());
+
+            API.AddExpedition(this, new Quests.Clerk.AlbumOmnibus1()); // Tier 1
+            API.AddExpedition(this, new Quests.Clerk.AlbumCavern());
+            API.AddExpedition(this, new Quests.Clerk.AlbumUndead2());
             API.AddExpedition(this, new Quests.Clerk.AlbumSnow());
-            API.AddExpedition(this, new Quests.Clerk.AlbumMushi());
-            API.AddExpedition(this, new Quests.Clerk.AlbumFlora());
             API.AddExpedition(this, new Quests.Clerk.AlbumAntlions());
             API.AddExpedition(this, new Quests.Clerk.AlbumBEES());
+            API.AddExpedition(this, new Quests.Clerk.AlbumMushi());
+            API.AddExpedition(this, new Quests.Clerk.AlbumFlora());
+
+            API.AddExpedition(this, new Quests.Clerk.AlbumOmnibus2()); // Tier 2
             API.AddExpedition(this, new Quests.Clerk.AlbumSlimes2());
-            API.AddExpedition(this, new Quests.Clerk.AlbumOmnibus1());
             #endregion
 
+            #region Misc NPCs
             API.AddExpedition(this, new Quests.MiscPre.DryadHerbs());
             API.AddExpedition(this, new Quests.MiscPre.NurseLocket());
             API.AddExpedition(this, new Quests.MiscPre.ArmsDealerLocket()); // INFACC: DPS Metre
             API.AddExpedition(this, new Quests.MiscPre.TinkererLocket()); // INFACC: Lifeform Analyzer
             API.AddExpedition(this, new Quests.MiscPre.WizardMap());
+            #endregion
 
             #region DD2
             // DD2
