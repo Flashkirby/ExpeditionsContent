@@ -17,7 +17,7 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.ctgExplore = true;
             expedition.repeatable = true;
 
-            expedition.conditionDescription1 = "Mother Slime";
+            expedition.conditionDescription1 = "Umbrella Slime";
             expedition.conditionDescription2 = "Ice Slime";
             expedition.conditionDescription3 = "Sand Slime";
             expedition.conditionCountedMax = 3;
@@ -33,8 +33,8 @@ namespace ExpeditionsContent.Quests.Clerk
             return "For some reason, the camera can't seem to capture the color of normal slimes, so out next best bet is to capture special slimes found throughout " + Main.worldName + "! These ones should be simple enough, right? ";
         }
         #region Photo Bools
-        public static bool Mother
-        { get { return PhotoManager.PhotoOfNPC[NPCID.MotherSlime]; } }
+        public static bool Umbrella
+        { get { return PhotoManager.PhotoOfNPC[NPCID.UmbrellaSlime]; } }
         public static bool Ice
         { get { return PhotoManager.PhotoOfNPC[NPCID.IceSlime] || PhotoManager.PhotoOfNPC[NPCID.SpikedIceSlime]; } }
         public static bool Sand
@@ -50,14 +50,14 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
-            if (Mother) count++;
+            if (Umbrella) count++;
             if (Ice) count++;
             if (Sand) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = Mother;
+            cond1 = Umbrella;
             cond2 = Ice;
             cond3 = Sand;
             return cond1 && cond2 && cond3;
@@ -65,7 +65,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.MotherSlime);
+            PhotoManager.ConsumePhoto(NPCID.UmbrellaSlime);
 
             if (!PhotoManager.ConsumePhoto(NPCID.IceSlime))
             { PhotoManager.ConsumePhoto(NPCID.SpikedIceSlime); }

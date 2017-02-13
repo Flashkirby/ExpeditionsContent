@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "All kinds of monsters, from skeletons to golems and demons. However for this album we'll just concern ourselves with the frequent creatures that you may encounter on any caving expedition. ";
+            return "There are all kinds of monsters, from skeletons to golems and demons. However for this album we'll just concern ourselves with the frequent creatures that you may encounter on any caving expedition. ";
         }
         #region Photo Bools
         public static bool CBat
@@ -46,7 +46,8 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return PlayerExplorer.HoldingCamera(mod)
+            return (PlayerExplorer.HoldingCamera(mod)
+                && API.FindExpedition<AlbumOmnibus1>(mod).completed)
                 || expedition.conditionCounted > 0;
         }
 

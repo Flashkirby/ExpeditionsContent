@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "Snap! Mushi Mush";
+            expedition.name = "Snap! Weird Mushrooms";
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 1;
             expedition.ctgCollect = true;
@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "All kinds of monsters, from skeletons to golems and demons. However for this album we'll just concern ourselves with the frequent creatures that you may encounter on any caving expedition. ";
+            return "Have you seen any of the monsters found in mushroom biomes? I hear they look really weird, like they've been taken over by spores or something. Take some photos! ";
         }
         #region Photo Bools
         public static bool Anomura
@@ -43,7 +43,8 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return PlayerExplorer.HoldingCamera(mod)
+            return (PlayerExplorer.HoldingCamera(mod)
+                && API.FindExpedition<AlbumOmnibus1>(mod).completed)
                 || expedition.conditionCounted > 0;
         }
 

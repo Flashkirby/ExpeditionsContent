@@ -18,7 +18,7 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.repeatable = true;
 
             expedition.conditionDescription1 = "Snow Flinx";
-            expedition.conditionDescription2 = "Antlion Charger";
+            expedition.conditionDescription2 = "Ice Bat";
             expedition.conditionCountedMax = 2;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
@@ -40,7 +40,8 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return PlayerExplorer.HoldingCamera(mod)
+            return (PlayerExplorer.HoldingCamera(mod)
+                && API.FindExpedition<AlbumOmnibus1>(mod).completed)
                 || expedition.conditionCounted > 0;
         }
 

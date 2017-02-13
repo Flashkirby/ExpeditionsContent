@@ -18,19 +18,5 @@ namespace ExpeditionsContent.Items.Albums
             item.rare = 3;
             item.value = Item.sellPrice(0, 30, 0, 0);
         }
-
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<AlbumPredators>(), 1);
-            recipe.AddIngredient(mod.ItemType<AlbumCavern>(), 1);
-            recipe.AddIngredient(mod.ItemType<AlbumSnow>(), 1);
-            recipe.AddIngredient(mod.ItemType<AlbumAntlion>(), 1);
-            recipe.AddIngredient(mod.ItemType<AlbumBee>(), 1);
-            recipe.AddIngredient(mod.ItemType<AlbumMushroom>(), 1);
-            recipe.AddIngredient(mod.ItemType<AlbumFlora>(), 1);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
-        }
     }
 }

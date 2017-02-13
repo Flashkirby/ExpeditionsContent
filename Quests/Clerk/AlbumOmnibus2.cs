@@ -6,33 +6,32 @@ using System.Collections.Generic;
 
 namespace ExpeditionsContent.Quests.Clerk
 {
-    class AlbumOmnibus1 : ModExpedition
+    class AlbumOmnibus2 : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Snap! Surface Compilation";
+            expedition.name = "Snap! Cavern Compilation";
             SetNPCHead(ExpeditionC.NPCIDClerk);
-            expedition.difficulty = 1;
+            expedition.difficulty = 2;
             expedition.ctgCollect = true;
-            expedition.ctgExplore = true;
             expedition.repeatable = true;
-
-            expedition.conditionDescription1 = "Vulture";
-            expedition.conditionDescription2 = "Jungle Bat";
-            expedition.conditionCountedMax = 2;
-            expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
         {
-            AddDeliverable(mod.ItemType<Items.Albums.AlbumSlimes>());
-            AddDeliverable(mod.ItemType<Items.Albums.AlbumWater>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumPredators>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumCavern>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumSnow>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumAntlion>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumBee>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumMushroom>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumFlora>());
 
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Albums.AlbumPredators>());
+            AddRewardItem(mod.ItemType<Items.Albums.AlbumPredators2>());
         }
         public override string Description(bool complete)
         {
-            return "You have photos of quite a few creatures now, perhaps you should compile them together? I can help you build an almanac of sorts, but first you'll need a couple more photos to complete the set. ";
+            return "You've built up quite the selection, so let's keep going! For the next big one let's go for all of the cool stuff you can find underground. Now there's a ton of things to find out there so this one may take a little longer than the last - but that's part of the fun, right? ";
         }
         #region Photo Bools
         public static bool Vulture
@@ -65,9 +64,6 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.Vulture);
-            PhotoManager.ConsumePhoto(NPCID.JungleBat);
-
             // Only reward the coupon once!
             if (expedition.completed)
             { rewards[0] = new Item(); }
