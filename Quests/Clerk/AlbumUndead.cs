@@ -68,7 +68,7 @@ namespace ExpeditionsContent.Quests.Clerk
             if (Z4) count++;
             if (Z5) count++;
             if (Z6) count++;
-            if (Z6) count++;
+            if (Z7) count++;
             if (Raincoat) count++;
             if (Eskimo) count++;
         }
