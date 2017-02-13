@@ -15,7 +15,7 @@ namespace ExpeditionsContent.Items.Albums
             item.maxStack = 1;
 
             item.rare = 2;
-            item.value = Item.sellPrice(0, 15, 0, 0);
+            item.value = Item.sellPrice(0, 6, 0, 0);
         }
     }
 }
