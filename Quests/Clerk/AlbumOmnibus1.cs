@@ -19,6 +19,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
             expedition.conditionDescription1 = "Vulture";
             expedition.conditionDescription2 = "Jungle Bat";
+            expedition.conditionDescription3 = "Harpy";
             expedition.conditionCountedMax = 2;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
@@ -41,6 +42,8 @@ namespace ExpeditionsContent.Quests.Clerk
         { get { return PhotoManager.PhotoOfNPC[NPCID.Vulture]; } }
         public static bool JBat
         { get { return PhotoManager.PhotoOfNPC[NPCID.JungleBat]; } }
+        public static bool Harpy
+        { get { return PhotoManager.PhotoOfNPC[NPCID.Harpy]; } }
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -62,13 +65,15 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             cond1 = Vulture;
             cond2 = JBat;
-            return cond1 && cond2;
+            cond3 = Harpy;
+            return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
             PhotoManager.ConsumePhoto(NPCID.Vulture);
             PhotoManager.ConsumePhoto(NPCID.JungleBat);
+            PhotoManager.ConsumePhoto(NPCID.Harpy);
 
             // Only reward the coupon once!
             if (expedition.completed)
