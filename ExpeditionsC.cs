@@ -138,8 +138,10 @@ namespace ExpeditionsContent {
             // Album Builders
             API.AddExpedition(this, new Quests.Clerk.ProCamSkill());
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters());
+            API.AddExpedition(this, new Quests.Clerk.AlbumSlimes());
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters2());
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters3());
+            API.AddExpedition(this, new Quests.Clerk.AlbumSlimes2());
             #endregion
 
             API.AddExpedition(this, new Quests.MiscPre.DryadHerbs());
