@@ -41,7 +41,7 @@ namespace ExpeditionsContent.Quests.Clerk
                     PhotoManager.PhotoOfNPC[NPCID.GiantWormBody] ||
                     PhotoManager.PhotoOfNPC[NPCID.GiantWormTail]; } }
         public static bool WallCreeper
-        { get { return PhotoManager.PhotoOfNPC[NPCID.FlyingAntlion]; } }
+        { get { return PhotoManager.PhotoOfNPC[NPCID.WallCreeper] || PhotoManager.PhotoOfNPC[NPCID.WallCreeperWall]; } }
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -75,7 +75,8 @@ namespace ExpeditionsContent.Quests.Clerk
                 if (!PhotoManager.ConsumePhoto(NPCID.GiantWormBody))
                 { PhotoManager.ConsumePhoto(NPCID.GiantWormTail); }
             }
-            PhotoManager.ConsumePhoto(NPCID.FlyingAntlion);
+            if (!PhotoManager.ConsumePhoto(NPCID.WallCreeperWall))
+            { PhotoManager.ConsumePhoto(NPCID.WallCreeper); }
 
             // Only reward the coupon once!
             if (expedition.completed)
