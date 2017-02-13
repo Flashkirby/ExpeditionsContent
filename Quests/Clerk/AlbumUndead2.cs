@@ -26,6 +26,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
+            AddRewardItem(mod.ItemType<Items.Albums.AlbumUndead2>());
         }
         public override string Description(bool complete)
         {
