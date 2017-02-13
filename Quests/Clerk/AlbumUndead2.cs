@@ -18,15 +18,14 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.repeatable = true;
 
             expedition.conditionDescription1 = "Skeleton, Pantless Skeleton, Headache Skeleton";
-            expedition.conditionDescription2 = "Misassembled Skeleton, Undead Viking, Undead Miner";
-            expedition.conditionDescription3 = "Skeleton Merchant, Tim, Hoplite";
+            expedition.conditionDescription2 = "Misassembled Skeleton, Undead Viking, Hoplite";
+            expedition.conditionDescription3 = "Skeleton Merchant, Tim, Undead Miner";
             expedition.conditionCountedMax = 9;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Albums.AlbumUndead2>());
         }
         public override string Description(bool complete)
         {
@@ -77,8 +76,8 @@ namespace ExpeditionsContent.Quests.Clerk
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             cond1 = S1 && S2 && S3;
-            cond2 = S4 && Viking && Miner;
-            cond3 = Merch && Tim && Hoplite;
+            cond2 = S4 && Viking && Hoplite;
+            cond3 = Merch && Tim && Miner;
             return cond1 && cond2 && cond3;
         }
 

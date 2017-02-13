@@ -7,9 +7,9 @@ namespace ExpeditionsContent.Items.Albums
     {
         public override void SetDefaults()
         {
-            item.name = "Risen from the Grave, 1st ed.";
+            item.name = "No Bones About It, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It contains theories and studies about the undead'";
+            item.toolTip2 = "'The bone-rattling sequel to Risen from the Grave'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;
