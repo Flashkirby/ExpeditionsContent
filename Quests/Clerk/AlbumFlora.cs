@@ -6,39 +6,39 @@ using System.Collections.Generic;
 
 namespace ExpeditionsContent.Quests.Clerk
 {
-    class AlbumSlimes : ModExpedition
+    class AlbumFlora : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Snap! Slime Tour";
+            expedition.name = "Snap! Carnivorous Plants";
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 1;
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
             expedition.repeatable = true;
 
-            expedition.conditionDescription1 = "Mother Slime";
-            expedition.conditionDescription2 = "Ice Slime";
-            expedition.conditionDescription3 = "Sand Slime";
+            expedition.conditionDescription1 = "Snatcher";
+            expedition.conditionDescription2 = "Mane Eater";
+            expedition.conditionDescription3 = "Fungi Bulb";
             expedition.conditionCountedMax = 3;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Albums.AlbumSlimes>());
+            AddRewardItem(mod.ItemType<Items.Albums.AlbumFlora>());
         }
         public override string Description(bool complete)
         {
-            return "For some reason, the camera can't seem to capture the color of normal slimes, so out next best bet is to capture special slimes found throughout " + Main.worldName + "! These ones should be simple enough, right? ";
+            return "Here's another album theme for you. There are some hostile creatures in " + Main.worldName + " that are actuall plants! Crazy huh? Well anyway see what you can get, and don't get eaten. ";
         }
         #region Photo Bools
-        public static bool Mother
-        { get { return PhotoManager.PhotoOfNPC[NPCID.MotherSlime]; } }
-        public static bool Ice
-        { get { return PhotoManager.PhotoOfNPC[NPCID.IceSlime] || PhotoManager.PhotoOfNPC[NPCID.SpikedIceSlime]; } }
-        public static bool Sand
-        { get { return PhotoManager.PhotoOfNPC[NPCID.SandSlime]; } }
+        public static bool Snatcher
+        { get { return PhotoManager.PhotoOfNPC[NPCID.Snatcher]; } }
+        public static bool ManEater
+        { get { return PhotoManager.PhotoOfNPC[NPCID.ManEater]; } }
+        public static bool FungiB
+        { get { return PhotoManager.PhotoOfNPC[NPCID.FungiBulb]; } }
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -50,27 +50,24 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
-            if (Mother) count++;
-            if (Ice) count++;
-            if (Sand) count++;
+            if (Snatcher) count++;
+            if (ManEater) count++;
+            if (FungiB) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = Mother;
-            cond2 = Ice;
-            cond3 = Sand;
+            cond1 = Snatcher;
+            cond2 = ManEater;
+            cond3 = FungiB;
             return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.MotherSlime);
-
-            if (!PhotoManager.ConsumePhoto(NPCID.IceSlime))
-            { PhotoManager.ConsumePhoto(NPCID.SpikedIceSlime); }
-
-            PhotoManager.ConsumePhoto(NPCID.SandSlime);
+            PhotoManager.ConsumePhoto(NPCID.Snatcher);
+            PhotoManager.ConsumePhoto(NPCID.ManEater);
+            PhotoManager.ConsumePhoto(NPCID.FungiBulb);
 
             // Only reward the coupon once!
             if (expedition.completed)

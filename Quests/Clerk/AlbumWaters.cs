@@ -80,6 +80,10 @@ namespace ExpeditionsContent.Quests.Clerk
             PhotoManager.ConsumePhoto(NPCID.PinkJellyfish);
             PhotoManager.ConsumePhoto(NPCID.Crab);
             PhotoManager.ConsumePhoto(NPCID.SeaSnail);
+
+            // Only reward the coupon once!
+            if (expedition.completed)
+            { rewards[0] = new Item(); }
         }
     }
 }
