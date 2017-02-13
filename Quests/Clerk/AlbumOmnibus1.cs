@@ -26,6 +26,8 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             AddDeliverable(mod.ItemType<Items.Albums.AlbumSlimes>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumWater>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumUndead>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumDemons>());
 
             AddRewardItem(API.ItemIDExpeditionCoupon);
             AddRewardItem(mod.ItemType<Items.Albums.AlbumPredators>());

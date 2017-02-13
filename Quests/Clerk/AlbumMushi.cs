@@ -69,9 +69,9 @@ namespace ExpeditionsContent.Quests.Clerk
             PhotoManager.ConsumePhoto(NPCID.AnomuraFungus);
             if (!PhotoManager.ConsumePhoto(NPCID.ZombieMushroom))
             {
-                PhotoManager.ConsumePhoto(NPCID.ZombieMushroomHat))
+                PhotoManager.ConsumePhoto(NPCID.ZombieMushroomHat);
             }
-            PhotoManager.ConsumePhoto(NPCID.Ladybug);
+            PhotoManager.ConsumePhoto(NPCID.MushiLadybug);
 
             // Only reward the coupon once!
             if (expedition.completed)

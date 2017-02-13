@@ -20,6 +20,7 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             AddDeliverable(mod.ItemType<Items.Albums.AlbumPredators>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumCavern>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumUndead2>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumSnow>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumAntlion>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumBee>());
@@ -43,8 +44,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             return (PlayerExplorer.HoldingCamera(mod)
-                && API.FindExpedition<AlbumSlimes>(mod).completed
-                && API.FindExpedition<AlbumWaters>(mod).completed)
+                && API.FindExpedition<AlbumOmnibus1>(mod).completed)
                 || expedition.conditionCounted > 0;
         }
 
