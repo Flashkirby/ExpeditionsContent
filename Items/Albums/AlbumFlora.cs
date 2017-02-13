@@ -7,7 +7,7 @@ namespace ExpeditionsContent.Items.Albums
     {
         public override void SetDefaults()
         {
-            item.name = "Hazardous Flora, 1st ed.";
+            item.name = "How to Spot a Man-eating Plant, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
             item.toolTip2 = "'It contains pictures and notes on dangerous plants'";
             item.width = 22;
