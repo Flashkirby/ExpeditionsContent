@@ -28,6 +28,9 @@ namespace ExpeditionsContent.Quests.MiscPre
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
+            // Makes no sense to display this without the mechanic present now would it?
+            if (NPC.FindFirstNPC(NPCID.Mechanic) == -1) return false;
+
             return API.InInventory[mod.ItemType<Items.HeartLocket>()];
         }
     }
