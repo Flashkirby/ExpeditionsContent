@@ -7,7 +7,7 @@ namespace ExpeditionsContent.Items.Albums
     {
         public override void SetDefaults()
         {
-            item.name = "Ravenous Waters, 1st ed.";
+            item.name = "Aquatic Wildlife, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
             item.toolTip2 = "'It contains photos of dangerous aquatic creatures'";
             item.width = 22;
