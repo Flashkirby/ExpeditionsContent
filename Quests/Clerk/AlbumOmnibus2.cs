@@ -33,32 +33,12 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             return "You've built up quite the selection, so let's keep going! For the next big one let's go for all of the cool stuff you can find underground. Now there's a ton of things to find out there so this one may take a little longer than the last - but that's part of the fun, right? ";
         }
-        #region Photo Bools
-        public static bool Vulture
-        { get { return PhotoManager.PhotoOfNPC[NPCID.Vulture]; } }
-        public static bool JBat
-        { get { return PhotoManager.PhotoOfNPC[NPCID.JungleBat]; } }
-        #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             return (PlayerExplorer.HoldingCamera(mod)
                 && API.FindExpedition<AlbumOmnibus1>(mod).completed)
                 || expedition.conditionCounted > 0;
-        }
-
-        public override void CheckConditionCountable(Player player, ref int count, int max)
-        {
-            count = 0;
-            if (Vulture) count++;
-            if (JBat) count++;
-        }
-
-        public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
-        {
-            cond1 = Vulture;
-            cond2 = JBat;
-            return cond1 && cond2;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
