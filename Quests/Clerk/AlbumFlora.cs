@@ -18,7 +18,7 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.repeatable = true;
 
             expedition.conditionDescription1 = "Snatcher";
-            expedition.conditionDescription2 = "Mane Eater";
+            expedition.conditionDescription2 = "Man Eater";
             expedition.conditionDescription3 = "Fungi Bulb";
             expedition.conditionCountedMax = 3;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
