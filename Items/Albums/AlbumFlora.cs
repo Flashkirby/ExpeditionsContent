@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Items.Albums
         {
             item.name = "Hazardous Flora, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It contains warning about dangerous plants'";
+            item.toolTip2 = "'It contains pictures and notes on dangerous plants'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;

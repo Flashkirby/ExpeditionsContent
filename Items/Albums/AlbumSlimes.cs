@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Items.Albums
         {
             item.name = "Know Your Slimes, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It contains photos and pieces of slime trivia'";
+            item.toolTip2 = "'Contains photos of slimes and slime accessories'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;

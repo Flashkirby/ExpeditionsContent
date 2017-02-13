@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Items.Albums
         {
             item.name = "Aquatic Wildlife, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It contains photos of dangerous aquatic creatures'";
+            item.toolTip2 = "'It contains photos of colourful aquatic creatures'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;

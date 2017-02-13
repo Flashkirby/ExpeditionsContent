@@ -9,12 +9,12 @@ namespace ExpeditionsContent.Items.Albums
         {
             item.name = "Dangers of Spore Infestation, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It contains strange images of msuhroom-like foes'";
+            item.toolTip2 = "'It contains strange images of mushroom-like foes'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;
 
-            item.rare = 2;
+            item.rare = 1;
             item.value = Item.sellPrice(0, 6, 0, 0);
         }
     }

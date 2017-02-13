@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Items.Albums
         {
             item.name = "Terrarian Critters, 1st ed.";
             item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It's full of cute animal photos!'";
+            item.toolTip2 = "'It contains cute animal photos'";
             item.width = 22;
             item.height = 30;
             item.maxStack = 1;
