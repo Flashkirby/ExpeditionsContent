@@ -141,7 +141,15 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.AlbumSlimes());
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters2());
             API.AddExpedition(this, new Quests.Clerk.AlbumCritters3());
+            API.AddExpedition(this, new Quests.Clerk.AlbumCavern());
+            API.AddExpedition(this, new Quests.Clerk.AlbumWaters());
+            API.AddExpedition(this, new Quests.Clerk.AlbumSnow());
+            API.AddExpedition(this, new Quests.Clerk.AlbumMushi());
+            API.AddExpedition(this, new Quests.Clerk.AlbumFlora());
+            API.AddExpedition(this, new Quests.Clerk.AlbumAntlions());
+            API.AddExpedition(this, new Quests.Clerk.AlbumBEES());
             API.AddExpedition(this, new Quests.Clerk.AlbumSlimes2());
+            API.AddExpedition(this, new Quests.Clerk.AlbumOmnibus1());
             #endregion
 
             API.AddExpedition(this, new Quests.MiscPre.DryadHerbs());

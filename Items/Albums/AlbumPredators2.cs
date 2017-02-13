@@ -16,7 +16,7 @@ namespace ExpeditionsContent.Items.Albums
             item.maxStack = 1;
 
             item.rare = 3;
-            item.value = Item.sellPrice(0, 40, 0, 0);
+            item.value = Item.sellPrice(0, 30, 0, 0);
         }
 
         public override void AddRecipes()
