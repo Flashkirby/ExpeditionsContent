@@ -35,6 +35,7 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
+            cond1 = Main.hardMode;
             return cond1;
         }
     }

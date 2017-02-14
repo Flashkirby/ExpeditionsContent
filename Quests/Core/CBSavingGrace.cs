@@ -39,7 +39,7 @@ namespace ExpeditionsContent.Quests.Core
         private const float viewRangeY = 1120f;
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            // Cannot "save" unless player has seen the bound first - only spawns when not saved
+            // Cannot "save" unless player has seen the demon first - only spawns when not saved
             if (!cond1)
             {
                 Rectangle viewRect = Utils.CenteredRectangle(player.Center, new Vector2(viewRangeX, viewRangeY));
@@ -58,7 +58,7 @@ namespace ExpeditionsContent.Quests.Core
             {
                 cond2 = NPC.savedTaxCollector;
             }
-            return cond1;
+            return cond1 && cond2;
         }
     }
 }

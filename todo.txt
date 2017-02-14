@@ -1,4 +1,36 @@
- 
+Expeditions Base updated to 2.1
+* Add ability to drag the window.
+* Add new button to filter tracked only.
+* Modify logic to the Rusted/Relic Box reward pool code, rewards better items and less trash.
+* Fix expedition board not using anyWood for crafting.
+* Fix UI issue when clicking complete button under certain conditions.
+https://github.com/Flashkirby/Expeditions/compare/v2.0.4...v2.1.0
+
+Expeditions Content updated to 1.1
+* Add invasion moon quests.
+* Add new photo album quests which grant snazzy collectible vendor trash.
+* Add Dye Trader daily quests.
+* Add Dryad botany quest.
+* Add Wizard enchanted shrine quest.
+* Add Clerk quests.
+* Adjust album prices.
+* Modify photo code to be much more multiplayer friendly. Still super janky (see known issues). 
+* Modify cloud checking quest to be easier to trigger.
+* Modify several quests to prevent disappearing upon near completion.
+* Split critter photo quests into smaller segments.
+* Fix missing trade quests.
+* Fix meteorite quest not triggering correctly.
+* Fix quests involving spiders not including spiders on walls.
+* Fix various typos caused by writing half asleep.
+* Fix hellforge quest not using correct conditions.
+* Fix certain daily photo quests not checking for the right NPC.
+* Fix boss challenge quest checks being unreliable. 
+* Fix a hardmode quest not auto-completing.
+* Fix wording and typos caused by being half-asleep.
+* Known Issue: Photos can't be bought back from store properly. 
+* Known Issue: Photos don't display properly in chat. 
+https://github.com/Flashkirby/ExpeditionsContent/compare/v1.0.0...v1.1.0
+
 =========== Fixed Bugs ====================
 mothron quest (ASK KIEDEV, no problem for me)
 work out better way to do eater quest
