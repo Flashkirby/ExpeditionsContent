@@ -17,8 +17,8 @@ namespace ExpeditionsContent.Quests.Core
 
             expedition.partyShare = true;
 
-            expedition.conditionDescription2 = "Find the Tortured Soul";
-            expedition.conditionDescription1 = "Purify the Tortured Soul";
+            expedition.conditionDescription1 = "Find the Tortured Soul";
+            expedition.conditionDescription2 = "Purify the Tortured Soul";
         }
         public override void AddItemsOnLoad()
         {
