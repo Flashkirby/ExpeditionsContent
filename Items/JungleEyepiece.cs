@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Items
         public override void SetDefaults()
         {
             item.name = "Enchanted Lens";
-            item.toolTip = "Reveals nearby life fruit on the Full Map";
+            item.toolTip = "Reveals nearby life fruit on the world map";
             item.width = 28;
             item.height = 30;
             item.rare = 7;

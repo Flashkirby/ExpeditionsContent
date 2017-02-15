@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Items
         public override void SetDefaults()
         {
             item.name = "Heart Compass";
-            item.toolTip = "Reveals nearby life crystals on the Full Map";
+            item.toolTip = "Reveals nearby life crystals on the world map";
             item.width = 28;
             item.height = 30;
             item.rare = 2;

@@ -13,7 +13,7 @@ namespace ExpeditionsContent.Items
         {
             item.name = "Stargazing Telescope";
             item.toolTip = "Increases view range when at a telescope (Right click)";
-            item.toolTip2 = "Watch falling stars from the Full Map";
+            item.toolTip2 = "Watch falling stars from the world map";
             item.width = 10;
             item.height = 13;
             item.maxStack = 99;
