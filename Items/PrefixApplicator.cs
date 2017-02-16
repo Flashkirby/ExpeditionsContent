@@ -8,7 +8,7 @@ namespace ExpeditionsContent.Items
         public override void SetDefaults()
         {
             item.name = "Prefix Applicator";
-            item.toolTip = "Right click to use on next favourited accessory";
+            item.toolTip = "<right> to use on next favourited accessory";
             item.width = 32;
             item.height = 24;
             item.consumable = true;

@@ -56,7 +56,7 @@ namespace ExpeditionsContent.Items
         {
             item.name = "Photo Film";
             item.toolTip = "Used in conjuction with a Photocam";
-            item.toolTip2 = "Right click to clear the image";
+            item.toolTip2 = "<right> to clear the image";
             item.width = 28;
             item.height = 28;
             item.rare = 0;
@@ -200,7 +200,7 @@ namespace ExpeditionsContent.Items
             }
 
             // Add set tooltip
-            item.toolTip = "Right click to clear the image";
+            item.toolTip = "<right> to clear the image";
             item.toolTip2 = "";
 
             // Set stack

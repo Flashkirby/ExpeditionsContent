@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Items
         public override void SetDefaults()
         {
             item.name = "Stargazing Telescope";
-            item.toolTip = "Increases view range when at a telescope (Right click)";
+            item.toolTip = "<right> to zoom when at a telescope";
             item.toolTip2 = "Watch falling stars from the world map";
             item.width = 10;
             item.height = 13;
