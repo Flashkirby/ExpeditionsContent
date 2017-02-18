@@ -186,6 +186,8 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.TravMerch.PrePair2TheRottedFork());
             API.AddExpedition(this, new Quests.TravMerch.PrePair3Vilethorn());
             API.AddExpedition(this, new Quests.TravMerch.PrePair3CrimsonRod());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair4WormScarf());
+            API.AddExpedition(this, new Quests.TravMerch.PrePair4BrainOfConfusion());
             API.AddExpedition(this, new Quests.TravMerch.PostPair1ClingerStaff());
             API.AddExpedition(this, new Quests.TravMerch.PostPair1LifeDrain());
             API.AddExpedition(this, new Quests.TravMerch.PostPair2PutridScent());
