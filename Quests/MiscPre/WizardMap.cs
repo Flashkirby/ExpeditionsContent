@@ -34,7 +34,7 @@ namespace ExpeditionsContent.Quests.MiscPre
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return Main.hardMode = true;
+            return Main.hardMode && NPC.FindFirstNPC(NPCID.Wizard) >= 0;
         }
     }
 }
