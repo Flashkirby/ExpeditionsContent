@@ -39,6 +39,11 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
+            //Won't offer unless item is held
+            if (!API.InInventory[ItemID.ChainGuillotines] &&
+                !API.InInventory[ItemID.DartRifle]
+                ) return false;
+
             return NPC.downedMechBossAny && !WorldGen.crimson;
         }
     }

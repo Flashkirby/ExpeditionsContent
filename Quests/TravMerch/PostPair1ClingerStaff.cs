@@ -39,6 +39,11 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
+            //Won't offer unless item is held
+            if (!API.InInventory[ItemID.SoulDrain] &&
+                !API.InInventory[ItemID.FleshKnuckles]
+                ) return false;
+
             return NPC.downedMechBossAny && WorldGen.crimson;
         }
     }

@@ -40,6 +40,12 @@ namespace ExpeditionsContent.Quests.TravMerch
             // Must have travelling merchant present
             if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
+            //Won't offer unless item is held
+            if (!API.InInventory[ItemID.Vilethorn] &&
+                !API.InInventory[ItemID.BallOHurt] &&
+                !API.InInventory[ItemID.BandofStarpower]
+                ) return false;
+
             return NPC.downedBoss1 && !WorldGen.crimson;
         }
     }
