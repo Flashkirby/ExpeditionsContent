@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             expedition.name = "Search and Rescue: Wizard";
             SetNPCHead(ExpeditionC.NPCIDClerk);
-            expedition.difficulty = 2;
+            expedition.difficulty = 4;
             expedition.ctgExplore = true;
 
             expedition.conditionDescription1 = "Find the missing wizard";
