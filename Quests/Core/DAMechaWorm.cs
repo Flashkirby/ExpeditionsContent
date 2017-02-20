@@ -34,7 +34,10 @@ namespace ExpeditionsContent.Quests.Core
             { expedition.conditionDescription2 = "Defeat The Destroyer"; }
 
             // When tracing steps is cleared, or fighting the boss
-            return API.FindExpedition<CBTracingSteps>(mod).completed || cond1;
+            return API.FindExpedition<CBTracingSteps>(mod).completed || cond1 ||
+                NPC.FindFirstNPC(NPCID.TheDestroyer) >= 0 ||
+                NPC.FindFirstNPC(NPCID.TheDestroyerBody) >= 0 ||
+                NPC.FindFirstNPC(NPCID.TheDestroyerTail) >= 0;
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
