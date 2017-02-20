@@ -31,9 +31,9 @@ namespace ExpeditionsContent.Quests.Core
         {
             // Only appears until hardmode, or is done already
             if (!expedition.completed && Main.hardMode) return false;
-            
-            // Appears once the second main boss is defeated AND turned in
-            return API.FindExpedition<BCBoss2>(mod).completed;
+
+            // Appears once the second main boss is defeated or turned in
+            return API.FindExpedition<BCBoss2>(mod).completed || NPC.downedBoss2;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
