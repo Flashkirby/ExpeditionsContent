@@ -45,27 +45,27 @@ namespace ExpeditionsContent.Quests.Core
             else
             { expedition.conditionDescription2 = ""; }
 
-            // Only appears until an altar is smashed, or is done already
-            if (!expedition.completed && WorldGen.altarCount > 0) return false;
-
-            // Appears once any late prehard quest is complete or wall prematurely faced or skeletron
-            return 
-                NPC.downedBoss2 || 
-                API.FindExpedition<BDJungles>(mod).completed ||
-                API.FindExpedition<BDFossils>(mod).completed ||
-                API.FindExpedition<BDQBee>(mod).completed ||
-                API.FindExpedition<BDDungeonSkell>(mod).completed ||
-                API.FindExpedition<BDHellArmour>(mod).completed || 
-                cond1
-                ;
-        }
-
-        public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
-        {
             if (!cond1)
             {
                 if (player.FindBuffIndex(BuffID.Horrified) != -1) cond1 = true;
             }
+
+            // Only appears until an altar is smashed, or is done already
+            if (!expedition.completed && WorldGen.altarCount > 0) return false;
+
+            // Appears once any late prehard quest is complete or wall prematurely faced or skeletron
+            return
+                NPC.downedBoss2 ||
+                API.FindExpedition<BDJungles>(mod).completed ||
+                API.FindExpedition<BDFossils>(mod).completed ||
+                API.FindExpedition<BDQBee>(mod).completed ||
+                API.FindExpedition<BDDungeonSkell>(mod).completed ||
+                API.FindExpedition<BDHellArmour>(mod).completed ||
+                cond1;
+        }
+
+        public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
             if (cond1 && !cond2)
             {
                 cond2 = Main.hardMode && player.ZoneUnderworldHeight;
