@@ -13,6 +13,7 @@ namespace ExpeditionsContent.Quests.Core
             SetNPCHead(NPCID.Guide, false);
             expedition.difficulty = 1;
             expedition.ctgCollect = true;
+            expedition.partyShare = true;
 
             expedition.conditionDescription1 = "Obtain a Wizard Hat";
             expedition.conditionDescription2 = "Put on your robe and wizard hat";

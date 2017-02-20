@@ -14,6 +14,7 @@ namespace ExpeditionsContent.Quests.Clerk
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 2;
             expedition.ctgExplore = true;
+            expedition.partyShare = true;
 
             expedition.conditionDescription1 = "Find the missing goblin";
         }

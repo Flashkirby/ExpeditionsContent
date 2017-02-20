@@ -14,6 +14,7 @@ namespace ExpeditionsContent.Quests.Clerk
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 3;
             expedition.ctgCollect = true;
+            expedition.partyShare = true;
         }
         public override void AddItemsOnLoad()
         {

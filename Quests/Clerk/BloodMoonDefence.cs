@@ -14,7 +14,8 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.difficulty = 1;
             expedition.ctgSlay = true;
             expedition.ctgImportant = true; // Challenger indeed
-            
+            expedition.partyShare = true;
+
             expedition.conditionDescription1 = "Survive a Blood Moon without losing anyone";
             expedition.conditionDescription2 = "Prevent any town deaths";
         }
@@ -25,7 +26,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "Just out of curiosity, how secure is this town against a blood moon? I mean if we can all survive an entire night, during a blood moon, I can definitely reward you for your preparation! ";
+            return "Just out of curiosity, how secure is this town against a blood moon? I mean if we can all survive a blood moon, I can definitely reward you for your preparation! ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
