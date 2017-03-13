@@ -28,7 +28,7 @@ namespace ExpeditionsContent.Quests.Core
             {
                 return "An elusive wizard of times long past still wanders the caverns as a skeleton. Should you put it to rest, you may inherit some of its strength. Elusive that it may be, donning a magical robe may cause it to seek you out. ";
             }
-            return "The power of an ancient wizard flows through that hat, but its full potential only manifest itself if you wear the right cloth to match. Perhaps you should try making something at a loom - a fine silk robe would do nicely. ";
+            return "The power of an ancient wizard flows through that hat, but its full potential only manifest itself if you wear the right cloth to match. A loom can be used to create fine silk robes, and further infused with gems to grant it magical properties. ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
