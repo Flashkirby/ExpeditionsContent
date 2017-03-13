@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-
+//thx 2 zoomo for shiny new sprite
 namespace ExpeditionsContent.Items
 {
     public class Telescope : ModItem
@@ -14,8 +14,8 @@ namespace ExpeditionsContent.Items
             item.name = "Stargazing Telescope";
             item.toolTip = "<right> to zoom when at a telescope";
             item.toolTip2 = "Watch falling stars from the world map";
-            item.width = 10;
-            item.height = 13;
+            item.width = 14;
+            item.height = 16;
             item.maxStack = 99;
 
             item.consumable = true;
