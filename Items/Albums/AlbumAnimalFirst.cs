@@ -18,7 +18,7 @@ namespace ExpeditionsContent.Items.Albums
         {
             Item item = mi.item;
             item.name = name;
-            item.toolTip2 = "'It contains cute animal photos'";
+            item.toolTip2 = tooltip;
             item.width = 22;
             item.height = 30;
             item.maxStack = 99;

@@ -7,15 +7,11 @@ namespace ExpeditionsContent.Items.Albums
     {
         public override void SetDefaults()
         {
-            item.name = "No Bones About It, 1st ed.";
-            item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'The bone-rattling sequel to Risen from the Grave'";
-            item.width = 22;
-            item.height = 30;
-            item.maxStack = 1;
-
-            item.rare = 2;
-            item.value = Item.sellPrice(0, 6, 0, 0);
+            AlbumAnimalFirst.SetDefaultAlbum(this,
+                "No Bones About It, 1st ed.",
+                "'The spine-tingling sequel to Risen from the Grave'",
+                Item.sellPrice(0, 6, 0, 0), 2, 13
+                );
         }
     }
 }
