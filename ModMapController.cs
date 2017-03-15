@@ -33,6 +33,7 @@ namespace ExpeditionsContent
             PlayerExplorer px = PlayerExplorer.Get(player, mod);
             if (px.accHeartCompass ||
                 px.accFruitCompass ||
+                px.accShrineMap ||
                 px.stargazer)
             {
                 UpdateMapLocations(player, px);
