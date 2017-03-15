@@ -7,15 +7,11 @@ namespace ExpeditionsContent.Items.Albums
     {
         public override void SetDefaults()
         {
-            item.name = "Terrarian Critters, 2nd ed.";
-            item.toolTip = "Fetches a good price at shops";
-            item.toolTip2 = "'It contains plenty of cute animal photos'";
-            item.width = 22;
-            item.height = 30;
-            item.maxStack = 1;
-
-            item.rare = 2;
-            item.value = Item.sellPrice(0, 6, 0, 0);
+            AlbumAnimalFirst.SetDefaultAlbum(this,
+                "Terrarian Critters, 2nd ed.",
+                "'It contains plenty of cute animal photos'",
+                Item.sellPrice(0, 6, 0, 0), 2, 1
+                );
         }
     }
 }
