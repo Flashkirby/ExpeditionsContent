@@ -10,6 +10,8 @@ namespace ExpeditionsContent.Items
         {
             item.CloneDefaults(ItemID.BladeofGrass);
             item.name = "Wayfarer's Claymore";
+            item.toolTip = "";
+            item.toolTip2 = "";
             item.width = 32;
             item.height = 36;
             item.scale = 1.15f;
