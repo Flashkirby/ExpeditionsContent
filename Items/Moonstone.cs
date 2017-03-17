@@ -16,7 +16,7 @@ namespace ExpeditionsContent.Items
             item.height = 22;
             item.maxStack = 99;
             item.rare = 1;
-            item.value = Item.buyPrice(0, 1, 0, 0);
+            item.value = Item.sellPrice(0, 0, 30, 0);
         }
 
         public override void Update(ref float gravity, ref float maxFallSpeed)
