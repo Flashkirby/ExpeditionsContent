@@ -18,10 +18,17 @@ namespace ExpeditionsContent.Buffs
         {
             npc.lifeRegen += 4;
         }
+        private int lastLife = int.MaxValue;
         public override void Update(Player player, ref int buffIndex)
         {
             player.lifeRegen += 4;
             player.moveSpeed += 0.2f;
+
+            if(player.statLife > lastLife)
+            {
+                player.HealEffect(player.statLife - lastLife, false);
+            }
+            lastLife = player.statLife;
         }
     }
 }
