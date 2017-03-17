@@ -145,8 +145,6 @@ namespace ExpeditionsContent
         {
             if(moonlit)
             {
-                r = 1f; g = 1f; b = 1f;
-                fullBright = true;
                 Texture2D moonlight = Main.goreTexture[mod.GetGoreSlot("Gores/Moonlight")];
                 Main.spriteBatch.Draw(moonlight, player.Center - Main.screenPosition, null,
                     new Color(1f, 1f, 1f, 0.3f), 0, new Vector2(moonlight.Width, moonlight.Height) / 2, 1f,

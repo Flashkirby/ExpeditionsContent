@@ -37,13 +37,23 @@ namespace ExpeditionsContent.Projs
 
         private void AI_VisualFX()
         {
+            // Light up self
+            Dust d;
+            if (Main.time % 10 == 0)
+            {
+                d = Main.dust[Dust.NewDust(projectile.position, projectile.width, projectile.height, 
+                    20, 0, 0, 150, default(Color), 0.1f)];
+                d.fadeIn = 1.5f;
+                d.velocity *= 0.5f;
+            }
+
             // Create lighting
             float dx, dy;
             dx = projectile.Center.X + effectiveDistance * Main.rand.NextFloatDirection();
             dy = projectile.Center.Y + effectiveDistance * Main.rand.NextFloatDirection();
             if (InRange(new Rectangle((int)dx, (int)dy, 4, 4)))
             {
-                Dust d = Main.dust[Dust.NewDust(new Vector2(dx, dy) - Vector2.One * 2f, 0, 0, 20, 0, 0, 150, default(Color), 0.2f)];
+                d = Main.dust[Dust.NewDust(new Vector2(dx, dy) - Vector2.One * 2f, 0, 0, 20, 0, 0, 150, default(Color), 0.2f)];
                 d.fadeIn = 2f;
                 d.velocity *= 0.5f;
             }

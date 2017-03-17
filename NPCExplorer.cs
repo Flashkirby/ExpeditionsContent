@@ -52,15 +52,6 @@ namespace ExpeditionsContent
             return true;
         }
 
-        public override void DrawEffects(NPC npc, ref Color drawColor)
-        {
-            if (npc.GetModInfo<ModNPCInfo>(mod).moonlight)
-            {
-                drawColor.R = 255;
-                drawColor.G = 255;
-                drawColor.B = 255;
-            }
-        }
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Color drawColor)
         {
             if (npc.GetModInfo<ModNPCInfo>(mod).moonlight)
