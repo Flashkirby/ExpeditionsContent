@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
-using Terraria.Map;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -19,6 +20,8 @@ namespace ExpeditionsContent
         public bool accShrineMap;
         public bool stargazer;
         public bool familiarMinion;
+
+        public bool moonlit;
 
         public static bool HoldingCamera(Mod mod)
         {
@@ -48,6 +51,9 @@ namespace ExpeditionsContent
             accShrineMap = false;
             stargazer = false;
             familiarMinion = false;
+
+            moonlit = false;
+
             TryTelescope();
         }
 
@@ -126,6 +132,26 @@ namespace ExpeditionsContent
                 }
             }
             catch { }
+        }
+
+        public override void PostUpdateBuffs()
+        {
+            if (moonlit)
+            {
+                player.statDefense -= 10;
+            }
+        }
+        public override void DrawEffects(PlayerDrawInfo drawInfo, ref float r, ref float g, ref float b, ref float a, ref bool fullBright)
+        {
+            if(moonlit)
+            {
+                r = 1f; g = 1f; b = 1f;
+                fullBright = true;
+                Texture2D moonlight = Main.goreTexture[mod.GetGoreSlot("Gores/Moonlight")];
+                Main.spriteBatch.Draw(moonlight, player.Center - Main.screenPosition, null,
+                    new Color(1f, 1f, 1f, 0.3f), 0, new Vector2(moonlight.Width, moonlight.Height) / 2, 1f,
+                    SpriteEffects.None, 0f);
+            }
         }
     }
 }

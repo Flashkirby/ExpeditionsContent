@@ -119,6 +119,7 @@ namespace ExpeditionsContent.Projs
         {
             if ((rect.Center.ToVector2() - projectile.Center).Length() <= effectiveDistance)
             {
+                // Expensive Method
                 if (Collision.CanHit(
                     projectile.position, projectile.width, projectile.height, 
                     rect.Location.ToVector2(), rect.Width, rect.Height))
