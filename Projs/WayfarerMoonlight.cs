@@ -66,6 +66,7 @@ namespace ExpeditionsContent.Projs
             {
                 NPC npc = Main.npc[i];
                 if (!npc.active) continue;
+                if (npc.life <= 0) continue;
                 if (!InRange(npc.getRect())) continue;
                 if (npc.CanBeChasedBy(this, false))
                 {
@@ -81,10 +82,11 @@ namespace ExpeditionsContent.Projs
             foreach (Player player in Main.player)
             {
                 if (!player.active) continue;
+                if (player.dead) continue;
                 if (!InRange(player.getRect())) continue;
                 // PVP and enemy teams or no team
-                if ((player.team == 0 || pown.team != player.team) 
-                    && pown.hostile && player.hostile 
+                if ((player.team == 0 || pown.team != player.team)
+                    && pown.hostile && player.hostile
                     && pown.whoAmI != player.whoAmI)
                 {
                     player.AddBuff(debuff, 60);

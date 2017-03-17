@@ -24,11 +24,15 @@ namespace ExpeditionsContent.Buffs
             player.lifeRegen += 4;
             player.moveSpeed += 0.2f;
 
-            if(player.statLife > lastLife)
+            // Show every 0.25 seconds
+            if (Main.time % 15 == 0)
             {
-                player.HealEffect(player.statLife - lastLife, false);
+                if (player.statLife > lastLife)
+                {
+                    player.HealEffect(player.statLife - lastLife, false);
+                }
+                lastLife = player.statLife;
             }
-            lastLife = player.statLife;
         }
     }
 }
