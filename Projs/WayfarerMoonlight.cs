@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Projs
     {
         public override void SetDefaults()
         {
-            projectile.name = "Frost Hydra";
+            projectile.name = "Wayfarer's Moonlight";
             projectile.width = 40;
             projectile.height = 40;
             projectile.timeLeft = Projectile.SentryLifeTime;
