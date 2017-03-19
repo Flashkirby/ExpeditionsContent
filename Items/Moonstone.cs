@@ -10,8 +10,8 @@ namespace ExpeditionsContent.Items
     {
         public override void SetDefaults()
         {
-            item.name = "Moon Gem";
-            item.toolTip = "'Sparkles like the night sky'";
+            item.name = "Moonlit Gemstone";
+            item.toolTip = "'Touched by the night sky'";
             item.width = 22;
             item.height = 22;
             item.maxStack = 99;

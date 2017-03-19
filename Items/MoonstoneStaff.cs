@@ -5,12 +5,12 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items
 {
-    public class WayfarerMoonlight : ModItem
+    public class MoonstoneStaff : ModItem
     {
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.StaffoftheFrostHydra);
-            item.name = "Wayfarer's Moonlight";
+            item.name = "Yutu Staff";
             item.toolTip = "Summons an orb of moonlight to heal allies and damage enemies";
             item.width = 36;
             item.height = 20;
@@ -20,11 +20,15 @@ namespace ExpeditionsContent.Items
             item.shoot = mod.ProjectileType<Projs.WayfarerMoonlight>();
 
             item.rare = 3;
-            item.value = Item.buyPrice(0, 0, 40, 0);
+            item.value = Item.buyPrice(0, 1, 0, 0);
         }
         public override void AddRecipes()
         {
-            base.AddRecipes();
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mod.ItemType<Moonstone>(), 8);
+            recipe.AddTile(TileID.Anvils);
+            recipe.SetResult(this, 1);
+            recipe.AddRecipe();
         }
 
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
