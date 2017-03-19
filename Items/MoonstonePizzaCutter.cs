@@ -38,6 +38,7 @@ namespace ExpeditionsContent.Items
             item.damage = 35;
             item.useAnimation = 35;
             item.knockBack = 7f;
+            item.autoReuse = true;
 
             item.glowMask = customGlowMask; // See Autoload
             item.rare = 3;
