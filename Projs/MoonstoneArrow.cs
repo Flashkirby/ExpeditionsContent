@@ -35,11 +35,11 @@ namespace ExpeditionsContent.Projs
         public override bool OnTileCollide(Vector2 oldVelocity)
         {
             Collision.HitTiles(projectile.position, projectile.velocity, projectile.width, projectile.height);
-            Main.PlaySound(2, projectile.position, 27);
             return true;
         }
         public override void Kill(int timeLeft)
         {
+            Main.PlaySound(2, projectile.position, 27);
             Dust d;
             for(int i = 0; i < 10; i++)
             {
