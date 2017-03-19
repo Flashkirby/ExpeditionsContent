@@ -28,6 +28,8 @@ namespace ExpeditionsContent {
         private static int itemidphoto;
         public static int ItemIDPhoto { get { return itemidphoto; } }
 
+        public static int MoonDebuffTime = 300;
+
 
         public static Texture2D CameraFrameTexture;
 
