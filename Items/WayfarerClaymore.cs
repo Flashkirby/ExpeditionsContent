@@ -16,7 +16,7 @@ namespace ExpeditionsContent.Items
             item.height = 36;
             item.scale = 1.15f;
 
-            item.damage += 3; //poisoned is 2/s for 7s on 25% change so average 3.5
+            item.damage -= 3;
             item.useAnimation -= 8;
             item.knockBack = 7f;
             item.autoReuse = true;
