@@ -85,7 +85,7 @@ namespace ExpeditionsContent.Projs
                 spriteBatch.Draw(
                     texture, position, null,
                     colour * (i / length), projectile.rotation,
-                    new Vector2(projectile.width, projectile.height) / 2f,
+                    new Vector2(texture.Width, texture.Height) / 2f,
                     projectile.scale, SpriteEffects.None, 0f);
                 position -= savedVel;
             }
