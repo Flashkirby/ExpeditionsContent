@@ -13,7 +13,6 @@ namespace ExpeditionsContent.Buffs
             Main.buffName[Type] = "Piercing Moonlight";
             Main.buffTip[Type] = "Reduced defense and taking damage";
             Main.buffNoSave[Type] = true;
-            Main.buffNoTimeDisplay[Type] = true;
             Main.debuff[Type] = true;
         }
 

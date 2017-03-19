@@ -10,8 +10,6 @@ namespace ExpeditionsContent.Buffs
         {
             Main.buffName[Type] = "Guiding Moonlight";
             Main.buffTip[Type] = "Movement speed increased and provides life regeneration";
-            Main.buffNoSave[Type] = true;
-            Main.buffNoTimeDisplay[Type] = true;
         }
 
         public override void Update(NPC npc, ref int buffIndex)
