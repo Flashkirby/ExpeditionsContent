@@ -52,6 +52,15 @@ namespace ExpeditionsContent.Items
             recipe.AddRecipe();
         }
 
+        public override void OnHitNPC(Player player, NPC target, int damage, float knockBack, bool crit)
+        {
+            target.AddBuff(mod.BuffType<Buffs.MoonlightDeBuff>(), ExpeditionC.MoonDebuffTime);
+        }
+        public override void OnHitPvp(Player player, Player target, int damage, bool crit)
+        {
+            target.AddBuff(mod.BuffType<Buffs.MoonlightDeBuff>(), 10 * 60);
+        }
+
         public override void MeleeEffects(Player player, Rectangle hitbox)
         {
             float length = 20 + 24f * item.scale;
