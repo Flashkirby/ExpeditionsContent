@@ -57,7 +57,9 @@ namespace ExpeditionsContent
             if (npc.GetModInfo<ModNPCInfo>(mod).moonlight)
             {
                 Texture2D moonlight = Main.goreTexture[mod.GetGoreSlot("Gores/Moonlight")];
-                float scale = npc.scale * Math.Max(npc.width, npc.height) / 56f;
+                float scale = 0.8f * npc.scale * Math.Max(npc.width, npc.height) / 56f;
+                if (scale <= 0.1f) scale = 0.1f;
+                if (scale > 3) scale = 3 + (scale - 3) / 2;
                 spriteBatch.Draw(moonlight, npc.Center - Main.screenPosition, null,
                     new Color(1f, 1f, 1f, 0.3f), 0, new Vector2(moonlight.Width, moonlight.Height) / 2, scale,
                     SpriteEffects.None, 0f);
