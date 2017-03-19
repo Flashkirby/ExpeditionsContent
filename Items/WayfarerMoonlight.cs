@@ -19,7 +19,7 @@ namespace ExpeditionsContent.Items
             item.knockBack = 0f;
             item.shoot = mod.ProjectileType<Projs.WayfarerMoonlight>();
 
-            item.rare = 2;
+            item.rare = 3;
             item.value = Item.buyPrice(0, 0, 40, 0);
         }
         public override void AddRecipes()

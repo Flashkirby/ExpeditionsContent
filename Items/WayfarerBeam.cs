@@ -17,7 +17,7 @@ namespace ExpeditionsContent.Items
             item.height = 16;
             item.UseSound = SoundID.Item12;
 
-            item.mana = 10;
+            item.mana = 11;
             item.damage = 30;
             item.useAnimation = 20;
             item.useTime = 19;
@@ -25,7 +25,7 @@ namespace ExpeditionsContent.Items
             item.shoot = mod.ProjectileType<Projs.WayBeam>();
             item.shootSpeed = 3f;
 
-            item.rare = 3;
+            item.rare = 2;
             item.value = Item.sellPrice(0, 1, 0, 0);
         }
         public override Vector2? HoldoutOffset()
