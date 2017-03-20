@@ -38,7 +38,7 @@ namespace ExpeditionsContent.Tiles
                 Tile t = Main.tile[i, j];
                 int style = t.frameX / 18;
                 style += styleWrapLimit * t.frameY / 18;
-                Main.NewText("xys: " + t.frameX + ", " + t.frameY + ", " + style);
+                // Main.NewText("xys: " + t.frameX + ", " + t.frameY + ", " + style);
                 int itemToDrop = ItemID.Book; // default to book
                 switch(style)
                 {

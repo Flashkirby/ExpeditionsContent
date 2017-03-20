@@ -8,7 +8,7 @@ namespace ExpeditionsContent.Items
         public override void SetDefaults()
         {
             item.name = "Vintage Coin";
-            item.toolTip = "'An old coin made of brass, it has no value'";
+            item.toolTip = "'Its value is in the eye of the beholder'";
             item.maxStack = 100;
             item.width = 16;
             item.height = 18;
