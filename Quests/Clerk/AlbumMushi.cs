@@ -12,7 +12,7 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             expedition.name = "Snap! Weird Mushrooms";
             SetNPCHead(ExpeditionC.NPCIDClerk);
-            expedition.difficulty = 1;
+            expedition.difficulty = 2;
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
             expedition.repeatable = true;
