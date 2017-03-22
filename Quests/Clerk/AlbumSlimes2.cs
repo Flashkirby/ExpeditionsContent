@@ -17,10 +17,10 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.ctgExplore = true;
             expedition.repeatable = true;
 
-            expedition.conditionDescription1 = "Mother Slime";
+            expedition.conditionDescription1 = "King Slime, Mother Slime";
             expedition.conditionDescription2 = "Dungeon Slime";
             expedition.conditionDescription3 = "Lava Slime";
-            expedition.conditionCountedMax = 3;
+            expedition.conditionCountedMax = 4;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
@@ -33,6 +33,8 @@ namespace ExpeditionsContent.Quests.Clerk
             return "There are plenty of diverse and interesting slimes out there, inhabiting all kinds of different places, and adapting to all kinds of environments! See if you can snap some good examples of these kinds of slimes. ";
         }
         #region Photo Bools
+        public static bool King
+        { get { return PhotoManager.PhotoOfNPC[NPCID.KingSlime ]; } }
         public static bool Mother
         { get { return PhotoManager.PhotoOfNPC[NPCID.MotherSlime]; } }
         public static bool Dungeon
@@ -51,6 +53,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
+            if (King) count++;
             if (Mother) count++;
             if (Dungeon) count++;
             if (Lava) count++;
@@ -58,7 +61,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = Mother;
+            cond1 = King && Mother;
             cond2 = Dungeon;
             cond3 = Lava;
             return cond1 && cond2 && cond3;
@@ -66,6 +69,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
+            PhotoManager.ConsumePhoto(NPCID.KingSlime);
             PhotoManager.ConsumePhoto(NPCID.MotherSlime);
             PhotoManager.ConsumePhoto(NPCID.DungeonSlime);
             PhotoManager.ConsumePhoto(NPCID.LavaSlime);
