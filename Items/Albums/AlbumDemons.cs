@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Items.Albums
         {
             AlbumAnimalFirst.SetDefaultAlbum(this,
                 "Spirits and Demons, 1st ed.",
-                "'It contains worrying photos of dark forces'",
+                "'It contains worrying signs of dark forces'",
                 Item.sellPrice(0, 3, 0, 0), 1, 20
                 );
         }

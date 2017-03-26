@@ -1,17 +1,16 @@
 ﻿using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.Albums
 {
-    public class AlbumPredators2 : ModItem
+    public class AlbumUndead3 : ModItem
     {
         public override void SetDefaults()
         {
             AlbumAnimalFirst.SetDefaultAlbum(this,
-                "Monster Almanac, 2nd ed.",
-                "'It holds information on surface and cavern monsters'",
-                Item.sellPrice(0, 30, 0, 0), 2, 9
+                "No Bones About It, 2nd ed.",
+                "'It discusses the hot topic of fashion trends amongst the undead'",
+                Item.sellPrice(0, 8, 0, 0), 2, 13
                 );
         }
     }

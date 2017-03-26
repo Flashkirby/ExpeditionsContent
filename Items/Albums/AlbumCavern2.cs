@@ -1,17 +1,16 @@
 ﻿using Terraria;
-using Terraria.ID;
 using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.Albums
 {
-    public class AlbumPredators2 : ModItem
+    public class AlbumCavern2 : ModItem
     {
         public override void SetDefaults()
         {
             AlbumAnimalFirst.SetDefaultAlbum(this,
-                "Monster Almanac, 2nd ed.",
-                "'It holds information on surface and cavern monsters'",
-                Item.sellPrice(0, 30, 0, 0), 2, 9
+                "Cavern Predators, 2nd ed.",
+                "'It contains photos of ravenous beasts'",
+                Item.sellPrice(0, 9, 0, 0), 3, 26
                 );
         }
     }
