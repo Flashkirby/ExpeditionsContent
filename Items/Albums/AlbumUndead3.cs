@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Items.Albums
             AlbumAnimalFirst.SetDefaultAlbum(this,
                 "No Bones About It, 2nd ed.",
                 "'It discusses the hot topic of fashion trends amongst the undead'",
-                Item.sellPrice(0, 8, 0, 0), 2, 13
+                Item.sellPrice(0, 8, 0, 0), 2, 14
                 );
         }
     }

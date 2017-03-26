@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Items.Albums
             AlbumAnimalFirst.SetDefaultAlbum(this,
                 "Rare Sights, 1st ed.",
                 "'It contains wonderful snapshots of rare creatures'",
-                Item.sellPrice(0, 10, 0, 0), 3, 18
+                Item.sellPrice(0, 10, 0, 0), 3, 11
                 );
         }
     }

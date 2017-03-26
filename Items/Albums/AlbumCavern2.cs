@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Items.Albums
             AlbumAnimalFirst.SetDefaultAlbum(this,
                 "Cavern Predators, 2nd ed.",
                 "'It contains photos of ravenous beasts'",
-                Item.sellPrice(0, 9, 0, 0), 3, 26
+                Item.sellPrice(0, 9, 0, 0), 3, 27
                 );
         }
     }

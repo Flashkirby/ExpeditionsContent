@@ -11,7 +11,7 @@ namespace ExpeditionsContent.Items.Albums
             AlbumAnimalFirst.SetDefaultAlbum(this,
                 "Monster Almanac, 3rd ed.",
                 "'It holds information on native terrarian monsters'",
-                Item.sellPrice(0, 50, 0, 0), 3, 9
+                Item.sellPrice(0, 50, 0, 0), 3, 10
                 );
         }
     }

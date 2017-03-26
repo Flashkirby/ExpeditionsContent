@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Items.Albums
             AlbumAnimalFirst.SetDefaultAlbum(this,
                 "Disaster Report: Corruption, 2nd ed.",
                 "'It documents the horrors born of ancient spirits'",
-                Item.sellPrice(0, 6, 0, 0), 2, 26
+                Item.sellPrice(0, 6, 0, 0), 2, 35
                 );
         }
     }

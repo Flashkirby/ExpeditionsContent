@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Items.Albums
             AlbumAnimalFirst.SetDefaultAlbum(this,
                 "Disaster Report: Corruption, 1st ed.",
                 "'It contains research on the corruption's influence on wildlife'",
-                Item.sellPrice(0, 6, 0, 0), 2, 26
+                Item.sellPrice(0, 6, 0, 0), 2, 32
                 );
         }
     }
