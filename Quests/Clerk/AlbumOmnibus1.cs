@@ -48,8 +48,10 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return (PlayerExplorer.HoldingCamera(mod)
-                && API.FindExpedition<AlbumSlimes>(mod).completed)
+            return (API.FindExpedition<AlbumSlimes>(mod).completed
+                || API.FindExpedition<AlbumWaters>(mod).completed
+                || API.FindExpedition<AlbumUndead>(mod).completed
+                || API.FindExpedition<AlbumDemons>(mod).completed)
                 || expedition.conditionCounted > 0;
         }
 
