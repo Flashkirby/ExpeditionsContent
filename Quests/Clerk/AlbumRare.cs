@@ -6,13 +6,13 @@ using System.Collections.Generic;
 
 namespace ExpeditionsContent.Quests.Clerk
 {
-    class AlbumCavern2 : ModExpedition
+    class AlbumRare : ModExpedition
     {
         public override void SetDefaults()
         {
             expedition.name = "Snap! Cave Life, Again";
             SetNPCHead(ExpeditionC.NPCIDClerk);
-            expedition.difficulty = 4;
+            expedition.difficulty = 2;
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
             expedition.repeatable = true;
