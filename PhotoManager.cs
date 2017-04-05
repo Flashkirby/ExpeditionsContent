@@ -2,11 +2,56 @@
 using System.Collections.Generic;
 
 using Terraria;
+using Terraria.ID;
 
 namespace ExpeditionsContent
 {
-    public static class PhotoManager
+    public class PhotoManager
     {
+        public bool requireAll;
+        public List<int> photoIDs;
+
+        public PhotoManager(int id)
+        {
+            photoIDs = new List<int>();
+            photoIDs.Add(id);
+        }
+        public PhotoManager(bool requireAll, params int[] ids)
+        {
+            photoIDs = new List<int>();
+            foreach(int i in ids)
+            {
+                photoIDs.Add(i);
+            }
+        }
+
+        public bool checkValid()
+        {
+            foreach (int id in photoIDs)
+            {
+                // If no require and is found, or require all and not found
+                if (PhotoManager.PhotoOfNPC[id] == !requireAll)
+                {
+                    // TRUE AND !FALSE, !FALSE
+                    // FALSE AND !TRUE, !TRUE
+                    return !requireAll;
+                }
+            }
+            return requireAll;
+        }
+        public void consumePhoto()
+        {
+            foreach (int id in photoIDs)
+            {
+                if (PhotoManager.ConsumePhoto(id) && requireAll)
+                {
+                    //Stop after first match
+                    return;
+                }
+            }
+        }
+
+        #region static methods
         private static bool[] npcPhotos;
         public static bool[] PhotoOfNPC
         {
@@ -137,5 +182,6 @@ namespace ExpeditionsContent
         {
             return ConsumePhotos(new int[] { NPCID }, true);
         }
+        #endregion
     }
 }
