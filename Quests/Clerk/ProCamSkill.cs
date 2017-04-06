@@ -16,7 +16,7 @@ namespace ExpeditionsContent.Quests.Clerk
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
 
-            expedition.conditionDescription1 = "Ice Golem";
+            expedition.conditionDescription1 = "Rainbow Slime";
             expedition.conditionDescription2 = "Moth";
             expedition.conditionDescription3 = "Truffle Worm";
             expedition.conditionCountedMax = 3;
@@ -32,43 +32,43 @@ namespace ExpeditionsContent.Quests.Clerk
             return "Do you think your photography skills are a cut above the rest? Well first you'll have to prove yourself - try getting shots of these rare creatures. If you can do that for me, I will gladly provide you with more professional equipment!  ";
         }
         #region Photo Bools
-        public static bool IceGolem
-        { get { return PhotoManager.PhotoOfNPC[NPCID.IceGolem]; } }
-        public static bool Moth
-        { get { return PhotoManager.PhotoOfNPC[NPCID.Moth]; } }
-        public static bool TruffleWorm
-        { get { return PhotoManager.PhotoOfNPC[NPCID.TruffleWorm] || PhotoManager.PhotoOfNPC[NPCID.TruffleWormDigger]; } }
+        public static PhotoManager rainbowSlime = new PhotoManager(NPCID.RainbowSlime);
+        public static PhotoManager moth = new PhotoManager(NPCID.Moth);
+        public static PhotoManager truffleWorm = new PhotoManager(false, NPCID.TruffleWorm, NPCID.TruffleWormDigger);
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return (PlayerExplorer.HoldingCamera(mod) && Main.hardMode)
-                 || expedition.conditionCounted > 0;
+            return (API.FindExpedition<AlbumOmnibus2>(mod).completed // Completed the second tier
+                )
+                || expedition.conditionCounted > 0; // Already done (repeatable)
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
-            if (IceGolem) count++;
-            if (Moth) count++;
-            if (TruffleWorm) count++;
+            if (rainbowSlime.checkValid()) count++;
+            if (moth.checkValid()) count++;
+            if (truffleWorm.checkValid()) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = IceGolem;
-            cond2 = Moth;
-            cond3 = TruffleWorm;
+            cond1 = rainbowSlime.checkValid();
+            cond2 = moth.checkValid();
+            cond3 = truffleWorm.checkValid();
             return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.IceGolem);
-            PhotoManager.ConsumePhoto(NPCID.Moth);
+            rainbowSlime.consumePhoto();
+            moth.consumePhoto();
+            truffleWorm.consumePhoto();
 
-            if (!PhotoManager.ConsumePhoto(NPCID.TruffleWormDigger))
-            { PhotoManager.ConsumePhoto(NPCID.TruffleWorm); }
+            // Only reward the coupon once!
+            if (expedition.completed)
+            { rewards[0] = new Item(); }
         }
     }
 }
