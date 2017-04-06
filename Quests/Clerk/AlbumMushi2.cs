@@ -10,43 +10,37 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "Snap! AAAAAAAAAAAAAAAAAAAAAA";
+            expedition.name = "Snap! Freakish Fungus";
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 2;
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
             expedition.repeatable = true;
 
-            expedition.conditionDescription1 = "Giant Bat";
-            expedition.conditionDescription2 = "Digger";
-            expedition.conditionDescription3 = "Black Recluse";
+            expedition.conditionDescription1 = "Anomura Fungus";
+            expedition.conditionDescription2 = "Giant Fungi Bulb";
+            expedition.conditionDescription3 = "Fungo Fish";
             expedition.conditionCountedMax = 3;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Albums.AlbumCavern2>());
+            AddRewardItem(mod.ItemType<Items.Albums.AlbumMushroom2>());
         }
         public override string Description(bool complete)
         {
             return "TODO: FILLER. ";
         }
         #region Photo Bools
-        public static bool CBat
-        { get { return PhotoManager.PhotoOfNPC[NPCID.GiantBat]; } }
-        public static bool Worm
-        { get { return 
-                    PhotoManager.PhotoOfNPC[NPCID.DiggerHead] ||
-                    PhotoManager.PhotoOfNPC[NPCID.DiggerBody] ||
-                    PhotoManager.PhotoOfNPC[NPCID.DiggerTail]; } }
-        public static bool WallCreeper
-        { get { return PhotoManager.PhotoOfNPC[NPCID.BlackRecluse] || PhotoManager.PhotoOfNPC[NPCID.BlackRecluseWall]; } }
+        public static PhotoManager af = new PhotoManager(NPCID.AnomuraFungus);
+        public static PhotoManager gfb = new PhotoManager(NPCID.GiantFungiBulb);
+        public static PhotoManager ff = new PhotoManager(NPCID.FungoFish);
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return (API.FindExpedition<AlbumOmnibus2>(mod).completed // Completed the second tier
+            return (API.FindExpedition<AlbumOmnibus3>(mod).completed // Completed the second tier
                 && Main.hardMode) // In hard mode
                 || expedition.conditionCounted > 0; // Already done (repeatable)
         }
@@ -54,29 +48,24 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
-            if (CBat) count++;
-            if (Worm) count++;
-            if (WallCreeper) count++;
+            if (af.checkValid()) count++;
+            if (gfb.checkValid()) count++;
+            if (ff.checkValid()) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = CBat;
-            cond2 = Worm;
-            cond3 = WallCreeper;
+            cond1 = af.checkValid();
+            cond2 = gfb.checkValid();
+            cond3 = ff.checkValid();
             return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.GiantBat);
-            if (!PhotoManager.ConsumePhoto(NPCID.DiggerHead))
-            {
-                if (!PhotoManager.ConsumePhoto(NPCID.DiggerBody))
-                { PhotoManager.ConsumePhoto(NPCID.DiggerTail); }
-            }
-            if (!PhotoManager.ConsumePhoto(NPCID.BlackRecluseWall))
-            { PhotoManager.ConsumePhoto(NPCID.BlackRecluse); }
+            af.consumePhoto();
+            gfb.consumePhoto();
+            ff.consumePhoto();
 
             // Only reward the coupon once!
             if (expedition.completed)

@@ -6,36 +6,39 @@ using System.Collections.Generic;
 
 namespace ExpeditionsContent.Quests.Clerk
 {
-    class AlbumFairy : ModExpedition
+    class AlbumCrimson : ModExpedition
     {
         public override void SetDefaults()
         {
-            expedition.name = "Snap! Magical Folk";
+            expedition.name = "Snap! Crimson Landscape";
             SetNPCHead(ExpeditionC.NPCIDClerk);
             expedition.difficulty = 2;
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
             expedition.repeatable = true;
 
-            expedition.conditionDescription1 = "Granite Elemental";
-            expedition.conditionDescription2 = "Granite Golem";
-            expedition.conditionDescription3 = "Meteor Head";
-            expedition.conditionCountedMax = 3;
+            expedition.conditionDescription1 = "Face Monster";
+            expedition.conditionDescription2 = "Blood Crawler, Crimera";
+            expedition.conditionDescription3 = "Brain of Cthulu, Creeper";
+            expedition.conditionCountedMax = 5;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Albums.AlbumCavern2>());
+            AddRewardItem(mod.ItemType<Items.Albums.AlbumCrimson>());
         }
         public override string Description(bool complete)
         {
             return "TODO: FILLER. ";
         }
         #region Photo Bools
-        public static PhotoManager gf = new PhotoManager(NPCID.GraniteFlyer);
-        public static PhotoManager gg = new PhotoManager(NPCID.GraniteGolem);
-        public static PhotoManager mh = new PhotoManager(NPCID.MeteorHead);
+        public static PhotoManager fm = new PhotoManager(NPCID.FaceMonster);
+        public static PhotoManager bc = new PhotoManager(false,
+            NPCID.BloodCrawler, NPCID.BloodCrawlerWall);
+        public static PhotoManager cr = new PhotoManager(NPCID.Crimera);
+        public static PhotoManager BoC = new PhotoManager(NPCID.BrainofCthulhu);
+        public static PhotoManager cp = new PhotoManager(NPCID.Creeper);
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -48,24 +51,28 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
-            if (gf.checkValid()) count++;
-            if (gg.checkValid()) count++;
-            if (mh.checkValid()) count++;
+            if (fm.checkValid()) count++;
+            if (bc.checkValid()) count++;
+            if (cr.checkValid()) count++;
+            if (cp.checkValid()) count++;
+            if (BoC.checkValid()) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = gf.checkValid();
-            cond2 = gg.checkValid();
-            cond3 = mh.checkValid();
+            cond1 = fm.checkValid();
+            cond2 = bc.checkValid() && cr.checkValid();
+            cond3 = BoC.checkValid() && cp.checkValid();
             return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            gf.consumePhoto();
-            gg.consumePhoto();
-            mh.consumePhoto();
+            fm.consumePhoto();
+            bc.consumePhoto();
+            cr.consumePhoto();
+            cp.consumePhoto();
+            BoC.consumePhoto();
 
             // Only reward the coupon once!
             if (expedition.completed)

@@ -43,7 +43,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             return (API.FindExpedition<AlbumOmnibus2>(mod).completed // Completed the second tier
-                && Main.hardMode) // In hard mode
+                && NPC.downedBoss3) // After skeletron
                 || expedition.conditionCounted > 0; // Already done (repeatable)
         }
 

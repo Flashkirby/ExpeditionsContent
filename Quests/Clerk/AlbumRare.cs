@@ -10,73 +10,68 @@ namespace ExpeditionsContent.Quests.Clerk
     {
         public override void SetDefaults()
         {
-            expedition.name = "Snap! Cave Life, Again";
+            expedition.name = "Snap! Rare Sights";
             SetNPCHead(ExpeditionC.NPCIDClerk);
-            expedition.difficulty = 2;
+            expedition.difficulty = 3;
             expedition.ctgCollect = true;
             expedition.ctgExplore = true;
             expedition.repeatable = true;
 
-            expedition.conditionDescription1 = "Giant Bat";
-            expedition.conditionDescription2 = "Digger";
-            expedition.conditionDescription3 = "Black Recluse";
-            expedition.conditionCountedMax = 3;
+            expedition.conditionDescription1 = "Goblin Scout, Nymph";
+            expedition.conditionDescription2 = "Doctor Bones";
+            expedition.conditionDescription3 = "The Bride, The Groom";
+            expedition.conditionCountedMax = 5;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Albums.AlbumCavern2>());
+            AddRewardItem(mod.ItemType<Items.Albums.AlbumRare>());
         }
         public override string Description(bool complete)
         {
             return "TODO: FILLER. ";
         }
         #region Photo Bools
-        public static bool CBat
-        { get { return PhotoManager.PhotoOfNPC[NPCID.GiantBat]; } }
-        public static bool Worm
-        { get { return 
-                    PhotoManager.PhotoOfNPC[NPCID.DiggerHead] ||
-                    PhotoManager.PhotoOfNPC[NPCID.DiggerBody] ||
-                    PhotoManager.PhotoOfNPC[NPCID.DiggerTail]; } }
-        public static bool WallCreeper
-        { get { return PhotoManager.PhotoOfNPC[NPCID.BlackRecluse] || PhotoManager.PhotoOfNPC[NPCID.BlackRecluseWall]; } }
+        public static PhotoManager gb = new PhotoManager(NPCID.GoblinScout);
+        public static PhotoManager ny = new PhotoManager(false, NPCID.Nymph, NPCID.LostGirl);
+        public static PhotoManager db = new PhotoManager(NPCID.DoctorBones);
+        public static PhotoManager br = new PhotoManager(NPCID.TheBride);
+        public static PhotoManager gr = new PhotoManager(NPCID.TheGroom);
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
             return (API.FindExpedition<AlbumOmnibus2>(mod).completed // Completed the second tier
-                && Main.hardMode) // In hard mode
+                )
                 || expedition.conditionCounted > 0; // Already done (repeatable)
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
-            if (CBat) count++;
-            if (Worm) count++;
-            if (WallCreeper) count++;
+            if (gb.checkValid()) count++;
+            if (ny.checkValid()) count++;
+            if (db.checkValid()) count++;
+            if (br.checkValid()) count++;
+            if (gr.checkValid()) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = CBat;
-            cond2 = Worm;
-            cond3 = WallCreeper;
+            cond1 = gb.checkValid() && ny.checkValid();
+            cond2 = db.checkValid();
+            cond3 = br.checkValid() && gr.checkValid();
             return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.GiantBat);
-            if (!PhotoManager.ConsumePhoto(NPCID.DiggerHead))
-            {
-                if (!PhotoManager.ConsumePhoto(NPCID.DiggerBody))
-                { PhotoManager.ConsumePhoto(NPCID.DiggerTail); }
-            }
-            if (!PhotoManager.ConsumePhoto(NPCID.BlackRecluseWall))
-            { PhotoManager.ConsumePhoto(NPCID.BlackRecluse); }
+            gb.consumePhoto();
+            ny.consumePhoto();
+            db.consumePhoto();
+            br.consumePhoto();
+            gr.consumePhoto();
 
             // Only reward the coupon once!
             if (expedition.completed)

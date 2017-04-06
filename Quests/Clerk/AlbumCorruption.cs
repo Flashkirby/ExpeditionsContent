@@ -26,62 +26,48 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Albums.AlbumCavern>());
+            AddRewardItem(mod.ItemType<Items.Albums.AlbumCorruption>());
         }
         public override string Description(bool complete)
         {
             return "TODO: FILLER. ";
         }
         #region Photo Bools
-        public static bool Eater
-        { get { return PhotoManager.PhotoOfNPC[NPCID.EaterofSouls]; } }
-        public static bool Devourer
-        { get { return 
-                    PhotoManager.PhotoOfNPC[NPCID.DevourerHead] ||
-                    PhotoManager.PhotoOfNPC[NPCID.DevourerBody] ||
-                    PhotoManager.PhotoOfNPC[NPCID.DevourerTail]; } }
-        public static bool EoW
-        { get { return
-                    PhotoManager.PhotoOfNPC[NPCID.EaterofWorldsHead] ||
-                    PhotoManager.PhotoOfNPC[NPCID.EaterofWorldsBody] ||
-                    PhotoManager.PhotoOfNPC[NPCID.EaterofWorldsTail]; } }
+        public static PhotoManager eos = new PhotoManager(NPCID.EaterofSouls);
+        public static PhotoManager dv = new PhotoManager(true,
+            NPCID.DevourerHead, NPCID.DevourerBody, NPCID.DevourerTail);
+        public static PhotoManager EoW = new PhotoManager(true,
+            NPCID.EaterofWorldsHead, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail);
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return (API.FindExpedition<AlbumOmnibus1>(mod).completed)
-                || expedition.conditionCounted > 0;
+            return (API.FindExpedition<AlbumOmnibus2>(mod).completed // Completed the second tier
+                )
+                || expedition.conditionCounted > 0; // Already done (repeatable)
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
-            if (Eater) count++;
-            if (Devourer) count++;
-            if (EoW) count++;
+            if (eos.checkValid()) count++;
+            if (dv.checkValid()) count++;
+            if (EoW.checkValid()) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = Eater;
-            cond2 = Devourer;
-            cond3 = EoW;
+            cond1 = eos.checkValid();
+            cond2 = dv.checkValid();
+            cond3 = EoW.checkValid();
             return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.EaterofSouls);
-            if (!PhotoManager.ConsumePhoto(NPCID.DevourerHead))
-            {
-                if (!PhotoManager.ConsumePhoto(NPCID.DevourerBody))
-                { PhotoManager.ConsumePhoto(NPCID.DevourerTail); }
-            }
-            if (!PhotoManager.ConsumePhoto(NPCID.EaterofWorldsHead))
-            {
-                if (!PhotoManager.ConsumePhoto(NPCID.EaterofWorldsBody))
-                { PhotoManager.ConsumePhoto(NPCID.EaterofWorldsTail); }
-            }
+            eos.consumePhoto();
+            dv.consumePhoto();
+            EoW.consumePhoto();
 
             // Only reward the coupon once!
             if (expedition.completed)
