@@ -60,6 +60,7 @@ namespace ExpeditionsContent.Quests.Clerk
             count = 0;
             if (Vulture) count++;
             if (JBat) count++;
+            if (Harpy) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
