@@ -39,8 +39,8 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return (API.FindExpedition<AlbumOmnibus2>(mod).completed // Completed the second tier
-                )
+            return (API.FindExpedition<AlbumOmnibus3>(mod).completed // Completed the third tier
+                && Main.hardMode) //Only after hardmode
                 || expedition.conditionCounted > 0; // Already done (repeatable)
         }
 
