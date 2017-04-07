@@ -24,7 +24,7 @@ namespace ExpeditionsContent.Quests.Daily
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.PhotoBlank>(), 3);
+            AddRewardItem(mod.ItemType<Items.QuestItems.PhotoBlank>(), 3);
         }
         public override string Description(bool complete)
         {

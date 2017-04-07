@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items
+namespace ExpeditionsContent.Items.Wayfarer
 {
     /// <summary>
     /// Summons 3 types of familiars:

@@ -7,7 +7,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items
+namespace ExpeditionsContent.Items.QuestItems
 {
     public class PhotoCamera : ModItem
     {

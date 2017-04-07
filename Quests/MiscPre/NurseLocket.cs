@@ -20,7 +20,7 @@ namespace ExpeditionsContent.Quests.MiscPre
             AddDeliverable(ItemID.GoldCoin);
             AddDeliverable(ItemID.Chain, 2);
 
-            AddRewardItem(mod.ItemType<Items.HeartLocket>(), 1);
+            AddRewardItem(mod.ItemType<Items.QuestItems.HeartLocket>(), 1);
         }
         public override string Description(bool complete)
         {

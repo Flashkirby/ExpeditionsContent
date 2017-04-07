@@ -598,15 +598,15 @@ namespace ExpeditionsContent.NPCs
             // Sell book
             shop.item[nextSlot].SetDefaults(API.ItemIDExpeditionBook); nextSlot++;
             // Sell Camera and ammo
-            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.PhotoCamera>()); nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.QuestItems.PhotoCamera>()); nextSlot++;
             if (API.FindExpedition<Quests.Clerk.ProCamSkill>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot,
-                    mod.ItemType<Items.PhotoCamPro>(), 2);
+                    mod.ItemType<Items.QuestItems.PhotoCamPro>(), 2);
             }
-            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.PhotoBlank>()); nextSlot++;
+            shop.item[nextSlot].SetDefaults(mod.ItemType<Items.QuestItems.PhotoBlank>()); nextSlot++;
             // Sell telescope
-            API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.Telescope>(), 1);
+            API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.QuestItems.Telescope>(), 1);
             // Sell boxes
             API.AddShopItemVoucher(shop, ref nextSlot, API.ItemIDRustedBox, 1);
             if (Main.hardMode)
@@ -615,27 +615,27 @@ namespace ExpeditionsContent.NPCs
             if (API.FindExpedition<Quests.Clerk.CrystalHeart>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, 
-                    mod.ItemType<Items.HeartCompass>(), 1);
+                    mod.ItemType<Items.QuestItems.HeartCompass>(), 1);
             }
             if (API.FindExpedition<Quests.Clerk.FruitsOfLabour>(mod).completed)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.JungleEyepiece>(), 1);
+                API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.QuestItems.JungleEyepiece>(), 1);
             }
             if (API.FindExpedition<Quests.Clerk.SecretSummon>(mod).completed ||
                 API.FindExpedition<Quests.Clerk.SecretSummon2>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot,
-                    mod.ItemType<Items.LoyaltyBadge>(), 1);
+                    mod.ItemType<Items.QuestItems.LoyaltyBadge>(), 1);
             }
 
             if (API.FindExpedition<Quests.Clerk.WayfarerWeapons>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, 
-                    mod.ItemType<Items.WayfarerSword>(), 1);
+                    mod.ItemType<Items.Wayfarer.WayfarerSword>(), 1);
                 API.AddShopItemVoucher(shop, ref nextSlot, 
-                    mod.ItemType<Items.WayfarerPike>(), 1);
+                    mod.ItemType<Items.Wayfarer.WayfarerPike>(), 1);
                 API.AddShopItemVoucher(shop, ref nextSlot, 
-                    mod.ItemType<Items.WayfarerBow>(), 1);
+                    mod.ItemType<Items.Wayfarer.WayfarerBow>(), 1);
             }
 
             // Alternate method of aquiring guns
@@ -644,12 +644,12 @@ namespace ExpeditionsContent.NPCs
                 if (!WorldGen.crimson)
                 {
                     API.AddShopItemVoucher(shop, ref nextSlot, 
-                        mod.ItemType<Items.WayfarerCarbine>(), 1);
+                        mod.ItemType<Items.Wayfarer.WayfarerCarbine>(), 1);
                 }
                 else
                 {
                     API.AddShopItemVoucher(shop, ref nextSlot, 
-                        mod.ItemType<Items.WayfarerRepeater>(), 1);
+                        mod.ItemType<Items.Wayfarer.WayfarerRepeater>(), 1);
                 }
                 shop.item[nextSlot].SetDefaults(ItemID.MusketBall); nextSlot++;
             }
@@ -657,19 +657,19 @@ namespace ExpeditionsContent.NPCs
             if (API.FindExpedition<Quests.Clerk.SkysTheLimit>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, 
-                    mod.ItemType<Items.WayfarerBook>(), 1);
+                    mod.ItemType<Items.Wayfarer.WayfarerBook>(), 1);
             }
 
             if (API.FindExpedition<Quests.Clerk.RoseByAnyName>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, 
-                    mod.ItemType<Items.WayfarerStaff>(), 1);
+                    mod.ItemType<Items.Wayfarer.WayfarerStaff>(), 1);
             }
 
             if (API.FindExpedition<Quests.Clerk.SecretSummon2>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot,
-                    mod.ItemType<Items.WayfarerSummon>(), 2);
+                    mod.ItemType<Items.Wayfarer.WayfarerSummon>(), 2);
             }
         }
 

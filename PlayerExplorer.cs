@@ -26,8 +26,8 @@ namespace ExpeditionsContent
         public static bool HoldingCamera(Mod mod)
         {
             return
-                API.InInventory[mod.ItemType<Items.PhotoCamera>()] ||
-                API.InInventory[mod.ItemType<Items.PhotoCamPro>()];
+                API.InInventory[mod.ItemType<Items.QuestItems.PhotoCamera>()] ||
+                API.InInventory[mod.ItemType<Items.QuestItems.PhotoCamPro>()];
         }
 
         public static PlayerExplorer Get(Player player, Mod mod)

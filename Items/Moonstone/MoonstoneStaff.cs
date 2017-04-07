@@ -5,9 +5,9 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items
+namespace ExpeditionsContent.Items.Moonstone
 {
-    public class MoonstoneBow : ModItem
+    public class MoonstoneStaff : ModItem
     {
         public static short customGlowMask = 0;
         public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
@@ -27,17 +27,15 @@ namespace ExpeditionsContent.Items
         }
         public override void SetDefaults()
         {
-            item.CloneDefaults(ItemID.WoodenBow);
-            item.name = "Yutu Moonshot";
-            item.toolTip = "Wooden arrows turn into yutu arrows";
-            item.width = 30;
-            item.height = 30;
+            item.CloneDefaults(ItemID.StaffoftheFrostHydra);
+            item.name = "Yutu Staff";
+            item.toolTip = "Summons an orb of moonlight to heal allies and damage enemies";
+            item.width = 36;
+            item.height = 20;
 
-            item.damage = 26;
-            item.knockBack += 2f;
-            item.shootSpeed = 8.5f;
-            item.useAnimation = 20;
-            item.useTime = 20;
+            item.damage = 0;
+            item.knockBack = 0f;
+            item.shoot = mod.ProjectileType<Projs.WayfarerMoonlight>();
 
             item.glowMask = customGlowMask; // See Autoload
             item.rare = 3;
@@ -51,13 +49,10 @@ namespace ExpeditionsContent.Items
             recipe.SetResult(this, 1);
             recipe.AddRecipe();
         }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-6f, 0);
-        }
+
         public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
         {
-            if (type == ProjectileID.WoodenArrowFriendly) type = mod.ProjectileType<Projs.MoonstoneArrow>();
+            position = Main.MouseWorld;
             return true;
         }
     }

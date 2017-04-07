@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items
+namespace ExpeditionsContent.Items.Moonstone
 {
     public class MoonstoneArrow : ModItem
     {

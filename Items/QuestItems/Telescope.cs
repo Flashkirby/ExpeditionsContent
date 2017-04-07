@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 //thx 2 zoomo for shiny new sprite
-namespace ExpeditionsContent.Items
+namespace ExpeditionsContent.Items.QuestItems
 {
     public class Telescope : ModItem
     {

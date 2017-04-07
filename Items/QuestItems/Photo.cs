@@ -10,7 +10,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace ExpeditionsContent.Items
+namespace ExpeditionsContent.Items.QuestItems
 {
     public class Photo : ModItem
     {

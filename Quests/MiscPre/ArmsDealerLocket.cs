@@ -17,7 +17,7 @@ namespace ExpeditionsContent.Quests.MiscPre
         }
         public override void AddItemsOnLoad()
         {
-            AddDeliverable(mod.ItemType<Items.HeartLocket>(), 1);
+            AddDeliverable(mod.ItemType<Items.QuestItems.HeartLocket>(), 1);
 
             AddRewardItem(ItemID.DPSMeter, 1);
         }
@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.MiscPre
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return API.InInventory[mod.ItemType<Items.HeartLocket>()];
+            return API.InInventory[mod.ItemType<Items.QuestItems.HeartLocket>()];
         }
     }
 }

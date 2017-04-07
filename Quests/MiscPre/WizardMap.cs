@@ -21,7 +21,7 @@ namespace ExpeditionsContent.Quests.MiscPre
             AddDeliverable(ItemID.Blinkroot);
             AddDeliverable(ItemID.HoneyBlock);
 
-            AddRewardItem(mod.ItemType<Items.ShrineMap>(), 1);
+            AddRewardItem(mod.ItemType<Items.QuestItems.ShrineMap>(), 1);
         }
         public override string Description(bool complete)
         {

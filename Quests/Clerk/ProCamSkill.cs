@@ -24,8 +24,8 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardItem(mod.ItemType<Items.PhotoCamPro>(), 1);
-            AddRewardItem(mod.ItemType<Items.PhotoBlank>(), 30);
+            AddRewardItem(mod.ItemType<Items.QuestItems.PhotoCamPro>(), 1);
+            AddRewardItem(mod.ItemType<Items.QuestItems.PhotoBlank>(), 30);
         }
         public override string Description(bool complete)
         {

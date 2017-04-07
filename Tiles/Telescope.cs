@@ -40,7 +40,7 @@ namespace ExpeditionsContent.Tiles
         {
             Item.NewItem(i * 16, j * 16,
                 tileWidth * 16, tileHeight * 16,
-                mod.ItemType<Items.Telescope>());
+                mod.ItemType<Items.QuestItems.Telescope>());
         }
     }
 }

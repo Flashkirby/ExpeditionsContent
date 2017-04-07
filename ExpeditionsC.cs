@@ -41,7 +41,7 @@ namespace ExpeditionsContent {
         public override void Load()
         {
             npcidclerk = NPCType("Clerk");
-            itemidphoto = ItemType<Items.Photo>();
+            itemidphoto = ItemType<Items.QuestItems.Photo>();
 
             if (Main.netMode != 2)
             {
