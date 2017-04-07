@@ -154,11 +154,19 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.AlbumSnow());
             API.AddExpedition(this, new Quests.Clerk.AlbumAntlions());
             API.AddExpedition(this, new Quests.Clerk.AlbumBEES());
-            API.AddExpedition(this, new Quests.Clerk.AlbumMushi());
             API.AddExpedition(this, new Quests.Clerk.AlbumFlora());
 
             API.AddExpedition(this, new Quests.Clerk.AlbumOmnibus2()); // Tier 2
+            API.AddExpedition(this, new Quests.Clerk.AlbumCorruption());
+            API.AddExpedition(this, new Quests.Clerk.AlbumCrimson());
             API.AddExpedition(this, new Quests.Clerk.AlbumSlimes2());
+            API.AddExpedition(this, new Quests.Clerk.AlbumFairy());
+            API.AddExpedition(this, new Quests.Clerk.AlbumMushi());
+            API.AddExpedition(this, new Quests.Clerk.AlbumUndead3());
+            API.AddExpedition(this, new Quests.Clerk.AlbumDemons2());
+
+            API.AddExpedition(this, new Quests.Clerk.AlbumOmnibus3()); // Tier 3
+            API.AddExpedition(this, new Quests.Clerk.AlbumRare());
             #endregion
 
             #region Misc NPCs
