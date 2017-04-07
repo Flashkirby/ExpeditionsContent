@@ -34,13 +34,13 @@ namespace ExpeditionsContent.Items.Albums
             item.rare = rare;
             item.value = value;
             
-            if (value >= Item.buyPrice(1, 0, 0, 0))
+            if (value >= Item.sellPrice(1, 0, 0, 0))
             { item.toolTip = "Fetches an insane price at shops"; }
-            else if (value >= Item.buyPrice(0, 50, 0, 0))
+            else if (value >= Item.sellPrice(0, 50, 0, 0))
             { item.toolTip = "Fetches a huge price at shops"; }
-            else if (value >= Item.buyPrice(0, 10, 0, 0))
+            else if (value >= Item.sellPrice(0, 10, 0, 0))
             { item.toolTip = "Fetches a great price at shops"; }
-            else if (value >= Item.buyPrice(0, 1, 0, 0))
+            else if (value >= Item.sellPrice(0, 1, 0, 0))
             { item.toolTip = "Fetches a good price at shops"; }
             else
             { item.toolTip = "Fetches a decent price at shops"; }
