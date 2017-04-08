@@ -9,17 +9,19 @@ namespace ExpeditionsContent.Items.Moonstone
     {
         public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
         {
-            //equips.Add(EquipType.Body);
+            equips.Add(EquipType.Body);
             return true;
         }
         public override void SetDefaults()
         {
             item.name = "Yutu Tunic";
-            item.toolTip = "Does something";
-            item.width = 22;
-            item.height = 20;
-            item.maxStack = 30;
-            item.rare = 2;
+            item.toolTip = "Provides 1 second of immunity to lava ";
+            item.toolTip2 = "10% increased mining speed";
+            item.width = 18;
+            item.height = 18;
+            item.defense = 6;
+            item.rare = 3;
+            item.value = Item.sellPrice(0, 3, 60, 0);
         }
         public override void AddRecipes()
         {
@@ -27,8 +29,22 @@ namespace ExpeditionsContent.Items.Moonstone
             recipe.AddIngredient(mod.ItemType<Moonstone>(), 15);
             recipe.AddIngredient(ItemID.Silk, 6);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 50);
+            recipe.SetResult(this);
             recipe.AddRecipe();
+        }
+
+        public override void UpdateEquip(Player player)
+        {
+            // Better Mining
+            player.pickSpeed -= 0.1f; // 10% pick speed
+
+            // Lava protection
+            player.lavaMax += 60; // 1 second lava protection
+        }
+
+        public override void DrawHands(ref bool drawHands, ref bool drawArms)
+        {
+            drawHands = true;
         }
     }
 }

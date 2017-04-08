@@ -9,17 +9,19 @@ namespace ExpeditionsContent.Items.Moonstone
     {
         public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
         {
-            //equips.Add(EquipType.Legs);
+            equips.Add(EquipType.Legs);
             return true;
         }
         public override void SetDefaults()
         {
             item.name = "Yutu Pants";
-            item.toolTip = "Does something";
-            item.width = 22;
-            item.height = 20;
-            item.maxStack = 30;
-            item.rare = 2;
+            item.toolTip = "5% increased movement speed";
+            item.toolTip2 = "40% increased rocket flight duration";
+            item.width = 18;
+            item.height = 18;
+            item.defense = 7;
+            item.rare = 3;
+            item.value = Item.sellPrice(0, 2, 40, 0);
         }
         public override void AddRecipes()
         {
@@ -27,8 +29,20 @@ namespace ExpeditionsContent.Items.Moonstone
             recipe.AddIngredient(mod.ItemType<Moonstone>(), 10);
             recipe.AddIngredient(ItemID.Silk, 4);
             recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 50);
+            recipe.SetResult(this);
             recipe.AddRecipe();
+        }
+
+        public override void UpdateEquip(Player player)
+        {
+            player.moveSpeed += 0.05f;
+
+            // Add rocket jump from pulley, grapping, or the others in the Main loop
+            if (player.pulley || player.grappling[0] >= 0 ||
+                player.velocity.Y == 0f || player.sliding || (player.autoJump && player.justJumped))
+            {
+                player.rocketTime += 3; // Add 3 rocket bursts (total 10)
+            }
         }
     }
 }
