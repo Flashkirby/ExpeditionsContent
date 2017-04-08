@@ -26,6 +26,7 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void AddItemsOnLoad()
         {
             AddRewardItem(API.ItemIDExpeditionCoupon);
+            AddRewardItem(mod.ItemType<Items.Moonstone.LootBagMoonstone>());
             AddRewardItem(mod.ItemType<Items.Albums.AlbumRare>());
         }
         public override string Description(bool complete)
@@ -75,7 +76,10 @@ namespace ExpeditionsContent.Quests.Clerk
 
             // Only reward the coupon once!
             if (expedition.completed)
-            { rewards[0] = new Item(); }
+            {
+                rewards[0] = new Item();
+                rewards[1] = new Item();
+            }
         }
     }
 }
