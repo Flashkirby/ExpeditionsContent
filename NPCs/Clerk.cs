@@ -612,15 +612,18 @@ namespace ExpeditionsContent.NPCs
             if (Main.hardMode)
             { API.AddShopItemVoucher(shop, ref nextSlot, API.ItemIDRelicBox, 2); }
 
+            // Heart Compass
             if (API.FindExpedition<Quests.Clerk.CrystalHeart>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, 
                     mod.ItemType<Items.QuestItems.HeartCompass>(), 1);
             }
+            // Jungle Eyepiece
             if (API.FindExpedition<Quests.Clerk.FruitsOfLabour>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.QuestItems.JungleEyepiece>(), 1);
             }
+            // Loyalty Badge
             if (API.FindExpedition<Quests.Clerk.SecretSummon>(mod).completed ||
                 API.FindExpedition<Quests.Clerk.SecretSummon2>(mod).completed)
             {
@@ -628,6 +631,7 @@ namespace ExpeditionsContent.NPCs
                     mod.ItemType<Items.QuestItems.LoyaltyBadge>(), 1);
             }
 
+            // Basic Wayfarer
             if (API.FindExpedition<Quests.Clerk.WayfarerWeapons>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, 
@@ -636,6 +640,12 @@ namespace ExpeditionsContent.NPCs
                     mod.ItemType<Items.Wayfarer.WayfarerPike>(), 1);
                 API.AddShopItemVoucher(shop, ref nextSlot, 
                     mod.ItemType<Items.Wayfarer.WayfarerBow>(), 1);
+                // Way Subber
+                if (NPC.downedBoss1 && NPC.downedBoss2 && NPC.downedBoss3)
+                {
+                    API.AddShopItemVoucher(shop, ref nextSlot,
+                        mod.ItemType<Items.Wayfarer.WayfarerClaymore>(), 1);
+                }
             }
 
             // Alternate method of aquiring guns
@@ -651,21 +661,40 @@ namespace ExpeditionsContent.NPCs
                     API.AddShopItemVoucher(shop, ref nextSlot, 
                         mod.ItemType<Items.Wayfarer.WayfarerRepeater>(), 1);
                 }
+                // Way Subber
+                if (NPC.downedBoss1 && NPC.downedBoss2 && NPC.downedBoss3)
+                {
+                    API.AddShopItemVoucher(shop, ref nextSlot,
+                        mod.ItemType<Items.Wayfarer.WayfarerSubArm>(), 1);
+                }
                 shop.item[nextSlot].SetDefaults(ItemID.MusketBall); nextSlot++;
             }
 
+            // Way Book
+            bool addBeam = false;
             if (API.FindExpedition<Quests.Clerk.SkysTheLimit>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot, 
                     mod.ItemType<Items.Wayfarer.WayfarerBook>(), 1);
+                addBeam = true;
             }
 
+            // Way Staff
             if (API.FindExpedition<Quests.Clerk.RoseByAnyName>(mod).completed)
             {
-                API.AddShopItemVoucher(shop, ref nextSlot, 
+                API.AddShopItemVoucher(shop, ref nextSlot,
                     mod.ItemType<Items.Wayfarer.WayfarerStaff>(), 1);
+                addBeam = true;
             }
 
+            // Way Beam
+            if (NPC.downedBoss1 && NPC.downedBoss2 && NPC.downedBoss3 && addBeam)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot,
+                    mod.ItemType<Items.Wayfarer.WayfarerBeam>(), 1);
+            }
+
+            // Summon Staff
             if (API.FindExpedition<Quests.Clerk.SecretSummon2>(mod).completed)
             {
                 API.AddShopItemVoucher(shop, ref nextSlot,
