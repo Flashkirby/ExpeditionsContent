@@ -51,7 +51,7 @@ namespace ExpeditionsContent.Items.Moonstone
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases exploration capability";
+            player.setBonus = "Greatly increases movement and control over ascent";
 
             // Better movespeed
             player.moveSpeed += 0.05f; // 10% movement speed
@@ -62,8 +62,8 @@ namespace ExpeditionsContent.Items.Moonstone
             player.jumpBoost = true; // Use increased base jump speed
             //player.jumpSpeedBoost += 2.4f;
             player.extraFall += 20; // 20 extra blocks fall resist (15+20=35)
-
-            if (player.velocity.Y < 0) // Floaty + controlled jumps when rising
+            
+            if (player.velocity.Y * player.gravDir < 0) // Floaty + controlled jumps when rising
             {
                 player.slowFall = true;
             }
