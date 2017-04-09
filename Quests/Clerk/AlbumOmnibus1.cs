@@ -19,8 +19,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
             expedition.conditionDescription1 = "Vulture";
             expedition.conditionDescription2 = "Jungle Bat";
-            expedition.conditionDescription3 = "Harpy";
-            expedition.conditionCountedMax = 3;
+            expedition.conditionCountedMax = 2;
             expedition.conditionDescriptionCountable = "Take photos of listed creatures";
         }
         public override void AddItemsOnLoad()
@@ -38,12 +37,8 @@ namespace ExpeditionsContent.Quests.Clerk
             return "You have photos of quite a few creatures now, perhaps you should compile them together? I can help you build an almanac of sorts, but first you'll need a couple more photos to complete the set. ";
         }
         #region Photo Bools
-        public static bool Vulture
-        { get { return PhotoManager.PhotoOfNPC[NPCID.Vulture]; } }
-        public static bool JBat
-        { get { return PhotoManager.PhotoOfNPC[NPCID.JungleBat]; } }
-        public static bool Harpy
-        { get { return PhotoManager.PhotoOfNPC[NPCID.Harpy]; } }
+        public static PhotoManager vulture = new PhotoManager(NPCID.Vulture);
+        public static PhotoManager jungleBat = new PhotoManager(NPCID.JungleBat);
         #endregion
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -58,24 +53,21 @@ namespace ExpeditionsContent.Quests.Clerk
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
             count = 0;
-            if (Vulture) count++;
-            if (JBat) count++;
-            if (Harpy) count++;
+            if (vulture.checkValid()) count++;
+            if (jungleBat.checkValid()) count++;
         }
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            cond1 = Vulture;
-            cond2 = JBat;
-            cond3 = Harpy;
+            cond1 = vulture.checkValid();
+            cond2 = jungleBat.checkValid();
             return cond1 && cond2 && cond3;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {
-            PhotoManager.ConsumePhoto(NPCID.Vulture);
-            PhotoManager.ConsumePhoto(NPCID.JungleBat);
-            PhotoManager.ConsumePhoto(NPCID.Harpy);
+            vulture.consumePhoto();
+            jungleBat.consumePhoto();
 
             // Only reward the coupon once!
             if (expedition.completed)
