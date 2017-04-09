@@ -13,5 +13,9 @@ namespace ExpeditionsContent.Items.Albums
                 Item.sellPrice(0, 6, 0, 0), 2, 18
                 );
         }
+        public override void AddRecipes()
+        {
+            AlbumAnimalFirst.AddCopyRecipes(this, 2);
+        }
     }
 }

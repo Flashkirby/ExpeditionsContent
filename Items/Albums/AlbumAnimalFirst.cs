@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.ID;
 
 namespace ExpeditionsContent.Items.Albums
 {
@@ -12,6 +13,10 @@ namespace ExpeditionsContent.Items.Albums
                 "'It contains cute animal photos'",
                 Item.sellPrice(0, 3, 0, 0), 1, 0
                 );
+        }
+        public override void AddRecipes()
+        {
+            AlbumAnimalFirst.AddCopyRecipes(this, 3);
         }
 
         public static void SetDefaultAlbum(ModItem mi, string name, string tooltip, int value, int rare, int placeStyle)
@@ -48,6 +53,18 @@ namespace ExpeditionsContent.Items.Albums
             { item.toolTip = "Fetches a good price at shops"; }
             else
             { item.toolTip = "Fetches a decent price at shops"; }
+        }
+
+        public static void AddCopyRecipes(ModItem mi, int filmCount)
+        {
+            Mod mod = mi.mod;
+            ModRecipe recipe = new ModRecipe(mod);
+            recipe.AddIngredient(mi, 1);
+            recipe.AddIngredient(mod.ItemType<CopyPrint>(), 1);
+            recipe.AddIngredient(mod.ItemType<QuestItems.PhotoBlank>(), filmCount);
+            recipe.AddTile(TileID.DyeVat);
+            recipe.SetResult(mi, 2);
+            recipe.AddRecipe();
         }
     }
 }

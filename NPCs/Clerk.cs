@@ -605,6 +605,9 @@ namespace ExpeditionsContent.NPCs
                     mod.ItemType<Items.QuestItems.PhotoCamPro>(), 2);
             }
             shop.item[nextSlot].SetDefaults(mod.ItemType<Items.QuestItems.PhotoBlank>()); nextSlot++;
+            API.AddShopItemVoucher(shop, ref nextSlot,
+                mod.ItemType<Items.Albums.CopyPrint>(), 1);
+
             // Sell telescope
             API.AddShopItemVoucher(shop, ref nextSlot, mod.ItemType<Items.QuestItems.Telescope>(), 1);
             // Sell boxes
