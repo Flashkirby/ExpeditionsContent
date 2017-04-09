@@ -34,9 +34,9 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         #region Photo Bools
         public static PhotoManager eos = new PhotoManager(NPCID.EaterofSouls);
-        public static PhotoManager dv = new PhotoManager(true,
+        public static PhotoManager dv = new PhotoManager(false,
             NPCID.DevourerHead, NPCID.DevourerBody, NPCID.DevourerTail);
-        public static PhotoManager EoW = new PhotoManager(true,
+        public static PhotoManager EoW = new PhotoManager(false,
             NPCID.EaterofWorldsHead, NPCID.EaterofWorldsBody, NPCID.EaterofWorldsTail);
         #endregion
 
