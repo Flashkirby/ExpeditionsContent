@@ -51,7 +51,7 @@ namespace ExpeditionsContent.Items.Moonstone
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = "Greatly increases movement and control over ascent";
+            player.setBonus = "Greatly increases movement capabilities\nPress UP or DOWN to control jump height";
 
             // Better movespeed
             player.moveSpeed += 0.05f; // 10% movement speed
