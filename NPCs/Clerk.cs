@@ -611,6 +611,12 @@ namespace ExpeditionsContent.NPCs
             API.AddShopItemVoucher(shop, ref nextSlot, API.ItemIDRustedBox, 1);
             if (Main.hardMode)
             { API.AddShopItemVoucher(shop, ref nextSlot, API.ItemIDRelicBox, 2); }
+            // Unlock Albums Moonstone set
+            if (API.FindExpedition<Quests.Clerk.AlbumRare>(mod).completed)
+            {
+                API.AddShopItemVoucher(shop, ref nextSlot,
+                    mod.ItemType<Items.Moonstone.LootBagMoonstone>(), 1);
+            }
 
             // Heart Compass
             if (API.FindExpedition<Quests.Clerk.CrystalHeart>(mod).completed)
