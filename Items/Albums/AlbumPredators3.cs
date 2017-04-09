@@ -9,8 +9,8 @@ namespace ExpeditionsContent.Items.Albums
         public override void SetDefaults()
         {
             AlbumAnimalFirst.SetDefaultAlbum(this,
-                "Monster Almanac, 3rd ed.",
-                "'It holds information on native terrarian monsters'",
+                "Terrarian Monster Almanac, 3rd ed.",
+                "'It holds information on monsters across the world'",
                 Item.sellPrice(0, 80, 0, 0), 3, 10
                 );
         }
