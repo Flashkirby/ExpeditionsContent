@@ -16,6 +16,11 @@ namespace ExpeditionsContent.Projs
         }
         public override void PostAI()
         {
+            if (projectile.ai[0] >= 15f)
+            {
+                projectile.velocity.Y -= 0.1f * 2; //Counter gravity
+            }
+
             Lighting.AddLight(projectile.position, new Vector3(
                 0.3f, 0.4f, 0.5f));
         }
