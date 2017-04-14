@@ -31,10 +31,15 @@ namespace ExpeditionsContent.Quests.Core
             // If not done by moonlord, we'll just hide it
             if (!expedition.completed && NPC.downedMoonlord) return false;
 
-            if(!cond3)
+            if (!cond1)
             {
                 cond3 = Main.hardMode && (player.ZoneGlowshroom || NPC.downedMechBossAny);
             }
+            else
+            {
+                cond3 = true;
+            }
+
             // Becomes available when a mushroom biome is visited during hardmode but really should be after a mech boss
             return cond3;
         }
