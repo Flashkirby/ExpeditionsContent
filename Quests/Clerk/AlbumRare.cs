@@ -25,8 +25,8 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardItem(API.ItemIDExpeditionCoupon);
-            AddRewardItem(mod.ItemType<Items.Moonstone.LootBagMoonstone>());
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1, true);
+            AddRewardItem(mod.ItemType<Items.Moonstone.LootBagMoonstone>(), 1, true);
             AddRewardItem(mod.ItemType<Items.Albums.AlbumRare>());
         }
         public override string Description(bool complete)

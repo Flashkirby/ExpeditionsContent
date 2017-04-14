@@ -25,9 +25,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override void AddItemsOnLoad()
         {
-            AddDeliverable(mod.ItemType<Items.Albums.AlbumAnimalFirst>());
-
-            AddRewardItem(API.ItemIDExpeditionCoupon);
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1, true);
             AddRewardItem(mod.ItemType<Items.Albums.AlbumAnimals>());
         }
         public override string Description(bool complete)

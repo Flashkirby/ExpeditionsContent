@@ -34,7 +34,7 @@ namespace ExpeditionsContent.Quests.Clerk
             AddDeliverable(mod.ItemType<Items.Albums.AlbumDemons2>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumRare>());
 
-            AddRewardItem(API.ItemIDExpeditionCoupon, 2);
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1, true);
             AddRewardItem(mod.ItemType<Items.Albums.AlbumPredators3>());
         }
         public override string Description(bool complete)

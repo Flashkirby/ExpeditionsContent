@@ -31,7 +31,7 @@ namespace ExpeditionsContent.Quests.Clerk
             AddDeliverable(mod.ItemType<Items.Albums.AlbumBee>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumFlora>());
 
-            AddRewardItem(API.ItemIDExpeditionCoupon);
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1, true);
             AddRewardItem(mod.ItemType<Items.Albums.AlbumPredators2>());
         }
         public override string Description(bool complete)

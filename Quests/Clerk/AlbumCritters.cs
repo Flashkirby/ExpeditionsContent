@@ -25,7 +25,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardItem(API.ItemIDExpeditionCoupon);
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1, true);
             AddRewardItem(mod.ItemType<Items.Albums.AlbumAnimalFirst>());
         }
         public override string Description(bool complete)
@@ -74,10 +74,6 @@ namespace ExpeditionsContent.Quests.Clerk
 
             if (!PhotoManager.ConsumePhoto(NPCID.Goldfish))
             { PhotoManager.ConsumePhoto(NPCID.GoldfishWalker); }
-
-            // Only reward the coupon once!
-            if (expedition.completed)
-            { rewards[0] = new Item(); }
         }
     }
 }

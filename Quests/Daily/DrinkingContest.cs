@@ -22,11 +22,11 @@ namespace ExpeditionsContent.Quests.Daily
         }
         public override void AddItemsOnLoad()
         {
-            AddRewardItem(API.ItemIDExpeditionCoupon, 1, "3rd Prize or Better");
-            AddRewardItem(ItemID.DepthMeter, 1, "< 2.8 Seconds");
-            AddRewardItem(ItemID.StickyDynamite, 1, "< 3 Seconds");
-            AddRewardItem(ItemID.Dynamite, 1, "< 3.2 Seconds");
-            AddRewardItem(ItemID.Bomb, 1, "Consolation");
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1, false, "3rd Prize or Better");
+            AddRewardItem(ItemID.DepthMeter, 1, false, "< 2.8 Seconds");
+            AddRewardItem(ItemID.StickyDynamite, 1, false, "< 3 Seconds");
+            AddRewardItem(ItemID.Dynamite, 1, false, "< 3.2 Seconds");
+            AddRewardItem(ItemID.Bomb, 1, false, "Consolation");
         }
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
         {

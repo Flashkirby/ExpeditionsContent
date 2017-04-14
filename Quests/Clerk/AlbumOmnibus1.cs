@@ -29,7 +29,7 @@ namespace ExpeditionsContent.Quests.Clerk
             AddDeliverable(mod.ItemType<Items.Albums.AlbumUndead>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumDemons>());
 
-            AddRewardItem(API.ItemIDExpeditionCoupon);
+            AddRewardItem(API.ItemIDExpeditionCoupon, 1, true);
             AddRewardItem(mod.ItemType<Items.Albums.AlbumPredators>());
         }
         public override string Description(bool complete)
