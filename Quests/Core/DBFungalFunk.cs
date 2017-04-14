@@ -48,7 +48,7 @@ namespace ExpeditionsContent.Quests.Core
                 for (int i = 0; i < 200; i++)
                 {
                     if (!Main.npc[i].active || Main.npc[i].type == NPCID.OldMan) continue;
-                    if (Main.npc[i].type == NPCID.Truffle && !Main.npc[i].homeless) cond1 = true;
+                    if (Main.npc[i].type == NPCID.Truffle && !Main.npc[i].homeless) cond2 = true;
                 }
             }
             return cond1 && cond2;
