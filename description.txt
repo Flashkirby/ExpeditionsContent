@@ -1,3 +1,5 @@
+RELOADING MODS: Remove photos contained in chests when reloading mods, otherwise mod data on them will be lost.
+
 The main content addon for the Expeditions Base mod. A work in progress.
 
 * 49 Main Quests provided by the Guide, up to Plantera.
@@ -12,7 +14,9 @@ Credits:
 Flashkirby99 - I am making this mod.
 Supeh Mario - Original sprite for fox familiar.
 Eli10293 - Resprite of Wayfarer's Cane.
-Zoomo - Allowing use of Telescope sprite
+Zoomo - Allowing use of Telescope sprite (with modification)
+
+Discord: https://discord.gg/zT9JC
 
 Special Thanks to the following for their support and feedback:
 Iara
