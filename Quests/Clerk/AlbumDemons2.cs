@@ -39,7 +39,10 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "TODO: FILLER. ";
+            string evilBiome = "corruption";
+            if (WorldGen.crimson) evilBiome = "crimson";
+            return "There are a lot of strange things happening as of late. The " + evilBiome
+                + " and blood moons seem to have an evil influence on some of the critters. Could you take some pictures to help investigate? ";
         }
         #region Photo Bools
         public static PhotoManager eoc = new PhotoManager(NPCID.EyeofCthulhu);

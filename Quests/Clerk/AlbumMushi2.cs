@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "TODO: FILLER. ";
+            return "Given how everything else has changed, what say you check out a mushroom biome, see what crazy new things you might find there.  ";
         }
         #region Photo Bools
         public static PhotoManager af = new PhotoManager(NPCID.AnomuraFungus);

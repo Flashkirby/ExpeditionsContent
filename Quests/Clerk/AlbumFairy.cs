@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "TODO: FILLER. ";
+            return "Can you imagine creatures powered purely by unknown magical forces? Well I can, and I believe it is your duty to take pictures of them!  ";
         }
         #region Photo Bools
         public static PhotoManager gf = new PhotoManager(NPCID.GraniteFlyer);

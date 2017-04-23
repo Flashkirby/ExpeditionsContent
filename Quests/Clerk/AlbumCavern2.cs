@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "TODO: FILLER. ";
+            return "There are a lot of powerful new enemies wandering about, but there should be some familiar creatures in the caverns for you to look out for. Bigger and tougher sure, but otherwise they're the same, I think. ";
         }
         #region Photo Bools
         public static bool CBat

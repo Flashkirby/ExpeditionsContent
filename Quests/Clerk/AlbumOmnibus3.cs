@@ -32,6 +32,7 @@ namespace ExpeditionsContent.Quests.Clerk
             AddDeliverable(mod.ItemType<Items.Albums.AlbumMushroom>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumUndead3>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumDemons2>());
+            AddDeliverable(mod.ItemType<Items.Albums.AlbumAnimals3>());
             AddDeliverable(mod.ItemType<Items.Albums.AlbumRare>());
 
             AddRewardItem(API.ItemIDExpeditionCoupon, 1, true);
@@ -39,7 +40,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "TODO: FILLER. ";
+            return "Hey, you're almost done! Just a couple of things, and I think that'll be all of the native terrarian creatures... give or take a few? ";
         }
         #region Photo Bools
         public static PhotoManager harpy = new PhotoManager(NPCID.Harpy);

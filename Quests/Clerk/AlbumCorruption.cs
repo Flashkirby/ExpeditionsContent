@@ -30,7 +30,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "TODO: FILLER. ";
+            return "Please be extra careful when you're in the corruption. The chasms are treacherously deep, and the monsters attack from all angles. At least it will be easier to take pictures of them, right? ";
         }
         #region Photo Bools
         public static PhotoManager eos = new PhotoManager(NPCID.EaterofSouls);

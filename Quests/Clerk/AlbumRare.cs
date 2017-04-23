@@ -31,7 +31,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "TODO: FILLER. ";
+            return "So there are a couple of creatures out there that are much rarer than normal, either because of the biome they appear in or that they're just hard to come by. It's your job to go find them! ";
         }
         #region Photo Bools
         public static PhotoManager gb = new PhotoManager(NPCID.GoblinScout);

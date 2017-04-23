@@ -29,7 +29,7 @@ namespace ExpeditionsContent.Quests.Clerk
         }
         public override string Description(bool complete)
         {
-            return "Some beasts live in the snow caverns that you may want to take pictures of. Especially a snow flinx! With a name like that they must look cute! ";
+            return "Some beasts live in the snow caverns that you may want to take pictures of. I've heard the snow flinx look especially cute! Get me some pictures!  ";
         }
         #region Photo Bools
         public static bool Flinx
