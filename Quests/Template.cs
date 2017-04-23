@@ -22,6 +22,9 @@ namespace ExpeditionsContent.Quests.Daily
             return "DESCRIPTION";
         }
 
-
+        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+            return false;
+        }
     }
 }

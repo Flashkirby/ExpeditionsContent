@@ -5,7 +5,7 @@ using Expeditions;
 
 namespace ExpeditionsContent.Quests.Core
 {
-    class EATheDuke : ModExpedition
+    class EBTheDuke : ModExpedition
     {
         public override void SetDefaults()
         {

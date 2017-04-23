@@ -106,6 +106,11 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Core.EAGhostBusters());
             API.AddExpedition(this, new Quests.Core.EAFrostMoon());
             API.AddExpedition(this, new Quests.Core.EAPumpkinMoon());
+            API.AddExpedition(this, new Quests.Core.EBTheDuke());
+            API.AddExpedition(this, new Quests.Core.EBMartianMadness());
+            API.AddExpedition(this, new Quests.Core.EBLunatic());
+            API.AddExpedition(this, new Quests.Core.ECPillars());
+            API.AddExpedition(this, new Quests.Core.EDMoonlord());
             #endregion
 
             #region Clerk - Misc
