@@ -11,7 +11,8 @@ namespace ExpeditionsContent.Items.QuestItems
         public override void SetDefaults()
         {
             item.name = "Enchanted Shrine Map";
-            item.toolTip = "Marks enchanted shrines on the world map";
+            item.toolTip = "Marks sword shrines on the world map";
+            item.toolTip2 = "'Are the shrines enchanted, or the map itself?'";
             item.width = 28;
             item.height = 30;
             item.rare = 2;
