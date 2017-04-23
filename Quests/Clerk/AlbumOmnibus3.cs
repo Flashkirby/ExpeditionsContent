@@ -36,11 +36,12 @@ namespace ExpeditionsContent.Quests.Clerk
             AddDeliverable(mod.ItemType<Items.Albums.AlbumRare>());
 
             AddRewardItem(API.ItemIDExpeditionCoupon, 1, true);
+            AddRewardItem(mod.ItemType<Items.Moonstone.LootBagMoonstone>(), 1, true);
             AddRewardItem(mod.ItemType<Items.Albums.AlbumPredators3>());
         }
         public override string Description(bool complete)
         {
-            return "Hey, you're almost done! Just a couple of things, and I think that'll be all of the native terrarian creatures... give or take a few? ";
+            return "Hey, you're almost done! Just a couple of things, and I think that'll be all of the native terrarian creatures... give or take a few? I've even imported some cool materials to celebrate completing it! ";
         }
         #region Photo Bools
         public static PhotoManager harpy = new PhotoManager(NPCID.Harpy);
