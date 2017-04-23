@@ -53,7 +53,7 @@ namespace ExpeditionsContent.Quests.Core
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
-            if (Main.invasionType == ExpeditionC.InvasionIDFrostLegion)
+            if (Main.invasionType == InvasionID.SnowLegion)
             {
                 expedition.conditionCounted = Main.invasionProgress;
                 expedition.conditionCountedMax = Main.invasionProgressMax;

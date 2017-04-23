@@ -37,7 +37,7 @@ namespace ExpeditionsContent.Quests.Core
             {
                 foreach (Item i in player.inventory) if (i.type == ItemID.TatteredCloth) cond3 = true;
             }
-            return WorldGen.shadowOrbSmashed || (cond1 || cond3 || Main.invasionType == ExpeditionC.InvasionIDGoblins);
+            return WorldGen.shadowOrbSmashed || (cond1 || cond3 || Main.invasionType == InvasionID.GoblinArmy);
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -54,7 +54,7 @@ namespace ExpeditionsContent.Quests.Core
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
-            if (Main.invasionType == ExpeditionC.InvasionIDGoblins)
+            if (Main.invasionType == InvasionID.GoblinArmy)
             {
                 expedition.conditionCounted = Main.invasionProgress;
                 expedition.conditionCountedMax = Main.invasionProgressMax;

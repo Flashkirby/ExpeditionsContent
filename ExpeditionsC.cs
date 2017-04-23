@@ -33,11 +33,6 @@ namespace ExpeditionsContent {
 
         public static Texture2D CameraFrameTexture;
 
-        public const int InvasionIDGoblins = 1;
-        public const int InvasionIDFrostLegion = 2;
-        public const int InvasionIDPirates = 3;
-        public const int InvasionIDMartians = 4;
-
         public override void Load()
         {
             npcidclerk = NPCType("Clerk");

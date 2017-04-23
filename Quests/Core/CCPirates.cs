@@ -36,7 +36,7 @@ namespace ExpeditionsContent.Quests.Core
             {
                 foreach (Item i in player.inventory) if (i.type == ItemID.PirateMap) cond3 = true;
             }
-            return WorldGen.altarCount > 0 || (cond1 || cond3 || Main.invasionType == ExpeditionC.InvasionIDPirates);
+            return WorldGen.altarCount > 0 || (cond1 || cond3 || Main.invasionType == InvasionID.PirateInvasion);
         }
 
         public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
@@ -56,7 +56,7 @@ namespace ExpeditionsContent.Quests.Core
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
-            if (Main.invasionType == ExpeditionC.InvasionIDPirates)
+            if (Main.invasionType == InvasionID.PirateInvasion)
             {
                 expedition.conditionCounted = Main.invasionProgress;
                 expedition.conditionCountedMax = Main.invasionProgressMax;
