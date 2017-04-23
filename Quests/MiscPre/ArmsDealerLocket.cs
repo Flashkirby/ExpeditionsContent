@@ -25,7 +25,7 @@ namespace ExpeditionsContent.Quests.MiscPre
         {
             string nurse = NPC.GetFirstNPCNameOrNull(NPCID.Nurse);
             if (nurse == "") nurse = "The nurse";
-            return nurse + " gave you a silly little locket? Well, I'm a man of priorites, and I think I have a little arrangement that might work out. Would you be interest in this... damage meter? It's not like you need that locket anyway, am I right? ";
+            return nurse + " gave you a silly little locket? Well, I'm a man of priorites, and I think I have a little arrangement that might work out. Would you be interested in this... damage meter? It's not like you need that locket anyway, am I right? ";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
