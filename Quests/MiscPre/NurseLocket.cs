@@ -24,7 +24,7 @@ namespace ExpeditionsContent.Quests.MiscPre
         }
         public override string Description(bool complete)
         {
-            return "It's in my professional interest to prevent you from dying. I think it's safe to say we would both much prefer to see you come back heavily injured than dead. If you have the coin and some spare pieces, I can fix up this old locket which should help keep you alive just a little longer.";
+            return "It's in my professional interest to prevent you from dying. I think it's safe to say we would both much prefer to see you come back almost dead than actually dead. If you have the coin and some spare pieces, I can fix up this old locket which should keep you alive just a little longer.";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
