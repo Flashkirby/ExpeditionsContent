@@ -19,7 +19,7 @@ namespace ExpeditionsContent.Quests.MiscPre
         {
             AddDeliverable(mod.ItemType<Items.QuestItems.HeartLocket>(), 1);
 
-            AddRewardItem(ItemID.LifeformAnalyzer, 1);
+            AddRewardItem(ItemID.Radar, 1);
         }
         public override string Description(bool complete)
         {

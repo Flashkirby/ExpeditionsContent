@@ -173,7 +173,7 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.MiscPre.DryadHerbs());
             API.AddExpedition(this, new Quests.MiscPre.NurseLocket());
             API.AddExpedition(this, new Quests.MiscPre.ArmsDealerLocket()); // INFACC: DPS Metre
-            API.AddExpedition(this, new Quests.MiscPre.TinkererLocket()); // INFACC: Lifeform Analyzer
+            API.AddExpedition(this, new Quests.MiscPre.TinkererLocket()); // INFACC: Radar
             API.AddExpedition(this, new Quests.MiscPre.WizardMap());
             #endregion
 
