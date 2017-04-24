@@ -18,9 +18,10 @@ namespace ExpeditionsContent.Quests.MiscPre
         }
         public override void AddItemsOnLoad()
         {
+            AddDeliverable(ItemID.DaybloomSeeds);
+            AddDeliverable(ItemID.MoonglowSeeds);
             AddDeliverable(ItemID.WaterleafSeeds);
-            AddDeliverable(ItemID.FireblossomSeeds);
-            AddDeliverable(ItemID.DeathweedSeeds);
+            AddDeliverable(ItemID.ShiverthornSeeds);
 
             AddRewardItem(ItemID.HerbBag, 2);
             AddRewardItem(ItemID.DayBloomPlanterBox, 8);

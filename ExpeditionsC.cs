@@ -124,10 +124,12 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.Clerk.CrystalHeart()); // Unlock heart finder
             API.AddExpedition(this, new Quests.Clerk.SecretSummon()); // Unlock loyalty badge
             API.AddExpedition(this, new Quests.Clerk.SkysTheLimit()); // Unlock book gust
+            API.AddExpedition(this, new Quests.Clerk.IntoOrbit()); // INFACC: Weather Radio
             API.AddExpedition(this, new Quests.Clerk.BloodMoonDefence());
             API.AddExpedition(this, new Quests.Clerk.SecretSummon2()); // Unlock summon weapon
             API.AddExpedition(this, new Quests.Clerk.RoseByAnyName()); // Unlock staff
             API.AddExpedition(this, new Quests.Clerk.DarkBlade());
+
             API.AddExpedition(this, new Quests.Clerk.FruitsOfLabour()); // Unlock fruit lens
 
             // Clerk SOS
@@ -174,7 +176,13 @@ namespace ExpeditionsContent {
             API.AddExpedition(this, new Quests.MiscPre.NurseLocket());
             API.AddExpedition(this, new Quests.MiscPre.ArmsDealerLocket()); // INFACC: DPS Metre
             API.AddExpedition(this, new Quests.MiscPre.TinkererLocket()); // INFACC: Radar
+            API.AddExpedition(this, new Quests.MiscPre.AnglerGuide()); // INFACC: Pocket Guide
+
             API.AddExpedition(this, new Quests.MiscPre.WizardMap());
+            API.AddExpedition(this, new Quests.MiscHard.TaxCollectorTally()); // INFACC: Tally Counter
+            API.AddExpedition(this, new Quests.MiscHard.TaxCollectorCoin());
+            API.AddExpedition(this, new Quests.MiscHard.SteampunkerCoin()); // INFACC: Metal Detector
+            API.AddExpedition(this, new Quests.MiscHard.PirateSextant()); // INFACC: Sextant
             #endregion
 
             #region DD2
