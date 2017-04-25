@@ -22,14 +22,16 @@ namespace ExpeditionsContent.Quests.MiscHard
         public override void AddItemsOnLoad()
         {
             AddRewardItem(ItemID.Sextant, 1);
+            AddRewardItem(ItemID.Keg, 1);
+            AddRewardItem(ItemID.Mug, 4);
         }
         public override string Description(bool complete)
         {
             if(complete)
             {
-                return "Arr, ye be a fine captain. It's an honour to work with ye. ";
+                return "Arr, ye be a fine captain indeed. It's an honour to work with ye. ";
             }
-            return "Good captains commandeer a mighty crew. A great captain has the powers to look after their own. Prove to me that ye be a great captain against me old crew, and I'll share with you a little old treasure of mine, ahar!";
+            return "Only the best captains have the brawn to sail with a mighty crew. Prove to me that ye be a great captain against me old crew, and I'll share with you a little old treasure of mine, aharr!";
         }
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
