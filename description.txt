@@ -2,9 +2,10 @@ RELOADING MODS: Remove photos contained in chests when reloading mods, otherwise
 
 The main content addon for the Expeditions Base mod. A work in progress.
 
-* 49 Main Quests provided by the Guide, up to Plantera.
+* 54 Main Quests provided by the Guide, up to Moonlord.
 * 69 Cycling daily quests.
-* 48 Sidequests, up to Mechanical Bosses.
+* 37 Sidequests, up to Mechanical Bosses.
+* 26 Photo quests, up to end of Pre-Hardmode.
 * Clerk NPC that sells expedition-unlockable items.
 * Take photos of enemies because you can!
 * Special expedition items that display extra map information.
