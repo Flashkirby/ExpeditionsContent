@@ -58,9 +58,14 @@ namespace ExpeditionsContent.Quests.Core
             }
         }
 
+        public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+        {
+            if (npc.type == NPCID.MoonLordCore) cond1 = true;
+        }
+
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return cond1;
+            return cond1 && cond2;
         }
     }
 }
