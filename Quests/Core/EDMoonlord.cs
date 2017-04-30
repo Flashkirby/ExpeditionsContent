@@ -25,7 +25,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             if(!expedition.condition2Met)
             {
-                return "Something's not right...";
+                return "\n\n\n\n";
             }
             return "The Moonlord is a powerful adversary. Be prepared for wide, sweeping lasers and beams flying your way. Its bite is worse than its bark, preventing you from healing, as well as stealing life.";
         }
@@ -34,7 +34,7 @@ namespace ExpeditionsContent.Quests.Core
         {
             if (!cond2)
             {
-                expedition.name = "\n\n\n...?";
+                expedition.name = "...?";
                 expedition.conditionDescription1 = "Prepare yourself";
             }
             else
