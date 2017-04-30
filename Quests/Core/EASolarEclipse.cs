@@ -9,7 +9,7 @@ namespace ExpeditionsContent.Quests.Core
     {
         public override void SetDefaults()
         {
-            expedition.name = "​Total Eclipse of The Sun";
+            expedition.name = "Total Eclipse of The Sun";
             SetNPCHead(NPCID.Guide, false);
             expedition.difficulty = 8;
             expedition.ctgExplore = true;

@@ -10,7 +10,7 @@ namespace ExpeditionsContent.Quests.Core
         public override void SetDefaults()
         {
             expedition.name = "Swashbuckling Sailors";
-            SetNPCHead(NPCID.Guide, false);
+            SetNPCHead(NPCID.Pirate, false);
             expedition.difficulty = 5;
             expedition.ctgSlay = true;
 

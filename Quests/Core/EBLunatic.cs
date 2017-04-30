@@ -23,7 +23,7 @@ namespace ExpeditionsContent.Quests.Core
         }
         public override string Description(bool complete)
         {
-            string message = "With the golem's defeat, cultists have moved into the dungeon. They don't seem to be aggressive, rather they would much prefer worshipping a mysterious tablet. ";
+            string message = "Cultists have moved into the dungeon since the Golem was destroyed. They don't seem to be aggressive, rather they would much prefer worshipping a mysterious tablet. ";
             bool foolish = (Main.player[Main.myPlayer].statLifeMax < 500 ||
                 (
                 Main.player[Main.myPlayer].armor[0].rare < 8 ||
