@@ -31,9 +31,7 @@ namespace ExpeditionsContent.Quests.MiscHard
             if(!cond1)
             {
                 cond1 = player.ZoneDesert && (
-                    Main.screenTileCounts[789] > 1 || // Ankh Banner
-                    Main.screenTileCounts[790] > 1 || // Snake Banner
-                    Main.screenTileCounts[791] > 1 ); // Omega Banner
+                    Main.screenTileCounts[TileID.SandstoneBrick] > 1 );
             }
             return cond1;
         }
