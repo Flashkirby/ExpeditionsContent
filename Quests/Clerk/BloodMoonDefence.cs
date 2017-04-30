@@ -18,6 +18,7 @@ namespace ExpeditionsContent.Quests.Clerk
 
             expedition.conditionDescription1 = "Survive a Blood Moon without losing anyone";
             expedition.conditionDescription2 = "Prevent any town deaths";
+            // expedition.conditionDescription3 = "Have at least 5 other people in town";
         }
         public override void AddItemsOnLoad()
         {
@@ -31,7 +32,25 @@ namespace ExpeditionsContent.Quests.Clerk
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return Main.bloodMoon || expedition.completed || cond1 || cond2;
+            if(!cond3 && Main.time % 120 == 0)
+            {
+                // check occasionally to see if there are enough townspeople for the quest to show
+                int townieCount = 0;
+                for (int i = 0; i < 200; i++)
+                {
+                    if (!Main.npc[i].active || Main.npc[i].type == NPCID.OldMan) continue;
+                    if (Main.npc[i].townNPC && !Main.npc[i].homeless) townieCount++;
+                }
+                if (townieCount > 5) // 5 NPCs + Clerk. Not too hard to get.
+                {
+                    cond2 = true;
+                }
+            }
+            return cond3 && (
+                Main.bloodMoon || 
+                expedition.completed || 
+                cond1 || 
+                cond2);
         }
 
         public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

@@ -18,6 +18,8 @@ namespace ExpeditionsContent.Quests.MiscHard
 
             expedition.conditionDescription1 = "Survive a Pirate Invasion without losing anyone";
             expedition.conditionDescription2 = "Prevent any town deaths";
+            // expedition.conditionDescription3 = "pirate invasion start";
+            // expedition.conditionDescriptionCountable = "Have at least 5 other people in town";
         }
         public override void AddItemsOnLoad()
         {
@@ -36,7 +38,17 @@ namespace ExpeditionsContent.Quests.MiscHard
 
         public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            return Main.hardMode;
+            if (expedition.conditionCounted <= 5 && Main.time % 120 == 0)
+            {
+                // check occasionally to see if there are enough townspeople for the quest to show
+                int townieCount = 0;
+                for (int i = 0; i < 200; i++)
+                {
+                    if (!Main.npc[i].active || Main.npc[i].type == NPCID.OldMan) continue;
+                    if (Main.npc[i].townNPC && !Main.npc[i].homeless) townieCount++;
+                }
+            }
+            return Main.hardMode && expedition.conditionCounted > 5;
         }
 
         public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
