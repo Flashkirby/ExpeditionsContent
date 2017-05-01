@@ -1,3 +1,27 @@
+Expeditions Base updated to 2.2
+* UI can now filter by NPC (click the head icon).
+* UI can now scroll with the scroll wheel.
+* Modders can specify to autoload quests instead of manually adding them.
+* Skeleton Merchant now only sells box every other day.
+https://github.com/Flashkirby/Expeditions/compare/v2.1.2...v2.2
+
+Expeditions Content updated to 1.2
+* Add 'Yutu' moonstone equipment.
+* Add more photo quests up to the end of pre-hardmode.
+* Add cycle of quests to provide an alternate means of obtaining info accessories.
+* Changed telescope to use Zoomo's sprite.
+* Fix quest unlocks to be less picky about having to complete previous ones.
+* Fix bugs causing some quests to be uncompletable.
+https://github.com/Flashkirby/ExpeditionsContent/compare/v1.1.1...v1.2
+
+
+
+
+
+
+
+
+
 Expeditions Base updated to 2.1
 * Add ability to drag the window.
 * Add new button to filter tracked only.
