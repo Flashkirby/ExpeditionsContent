@@ -67,7 +67,7 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             cond1 = harpy.checkValid();
             cond2 = boneSerpent.checkValid();
-            return cond1 && cond2 && cond3;
+            return cond1 && cond2;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)

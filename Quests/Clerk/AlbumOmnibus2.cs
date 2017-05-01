@@ -60,7 +60,7 @@ namespace ExpeditionsContent.Quests.Clerk
         {
             cond1 = flyingFish.checkValid();
             cond2 = blueJelly.checkValid();
-            return cond1 && cond2 && cond3;
+            return cond1 && cond2;
         }
 
         public override void PreCompleteExpedition(List<Item> rewards, List<Item> deliveredItems)
