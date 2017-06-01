@@ -33,7 +33,18 @@ namespace ExpeditionsContent.Quests.MiscHard
             {
                 cond1 = player.taxMoney == 0;
             }
-            return cond1;
+            if(cond1 && !cond2)
+            {
+                foreach(NPC npc in Main.npc)
+                {
+                    if(npc.active && npc.type == NPCID.TaxCollector)
+                    {
+                        cond2 = true;
+                        break;
+                    }
+                }
+            }
+            return cond1 && cond2;
         }
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
