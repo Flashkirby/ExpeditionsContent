@@ -49,7 +49,7 @@ namespace ExpeditionsContent.Quests.MiscHard
 
         public override void CheckConditionCountable(Player player, ref int count, int max)
         {
-            if (expedition.condition2Met)
+            if (expedition.condition3Met)
             {
                 count = max;
                 return; // BREAK
@@ -58,7 +58,7 @@ namespace ExpeditionsContent.Quests.MiscHard
             count = player.taxMoney / Item.buyPrice(0, 0, 0, 50);
             if(count == max)
             {
-                expedition.condition2Met = true;
+                expedition.condition3Met = true;
             }
         }
     }
