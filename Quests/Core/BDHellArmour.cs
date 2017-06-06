@@ -39,7 +39,7 @@ namespace ExpeditionsContent.Quests.Core
 
         public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
         {
-            if (!cond1) cond1 = player.statManaMax >= 200;
+            if (!cond1) cond1 = player.ZoneUnderworldHeight;
             if (!cond2) cond2 = Main.screenTileCounts[TileID.Hellforge] > 0;
             if (!cond3)
             {
