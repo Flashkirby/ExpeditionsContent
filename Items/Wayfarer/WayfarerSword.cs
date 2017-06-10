@@ -6,10 +6,13 @@ namespace ExpeditionsContent.Items.Wayfarer
 {
     public class WayfarerSword : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Sword");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.GoldBroadsword);
-            item.name = "Wayfarer's Sword";
             item.width = 32;
             item.height = 36;
             item.scale = 1.1f;

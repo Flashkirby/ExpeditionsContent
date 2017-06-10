@@ -10,8 +10,11 @@ namespace ExpeditionsContent.Items.Moonstone
     public class MoonstoneBow : ModItem
     {
         public static short customGlowMask = 0;
-        public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+        public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Yutu Moonshot");
+            Tooltip.SetDefault("Wooden arrows turn into yutu arrows\n"
+                + "'Defying gravitational expectations'");
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -23,13 +26,10 @@ namespace ExpeditionsContent.Items.Moonstone
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            return true;
         }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.WoodenBow);
-            item.name = "Yutu Moonshot";
-            item.toolTip = "Wooden arrows turn into yutu arrows";
             item.width = 30;
             item.height = 30;
 

@@ -11,10 +11,13 @@ namespace ExpeditionsContent.Projs
 {
     class WayBeam : ModProjectile
     {
-        public const float length = 25f;
+        public const float length = 30f;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Purple Beam");
+        }
         public override void SetDefaults()
         {
-            projectile.name = "Purple Beam";
             projectile.width = 12;
             projectile.height = 12;
             projectile.penetrate = 10;
@@ -29,14 +32,23 @@ namespace ExpeditionsContent.Projs
         {
             AI_ManageLaserFX();
 
-            Lighting.AddLight(projectile.position, new Vector3(0.16f, 0.05f, 0.2f));
+            if (projectile.ai[0] <= 0)
+            {
+                Lighting.AddLight(projectile.position, new Vector3(0.16f, 0.05f, 0.2f));
+            }
         }
 
         private void AI_ManageLaserFX()
         {
+            // Count up to reduce laser length once collision occurs
             if (projectile.ai[0] > 0)
             {
                 projectile.ai[0]++;
+                float lightDivider = 3f + projectile.ai[0];
+                Lighting.AddLight(projectile.position, new Vector3(
+                    12 * 0.16f / lightDivider,
+                    12 * 0.05f / lightDivider,
+                    12 * 0.2f / lightDivider));
             }
             else
             {
@@ -64,10 +76,17 @@ namespace ExpeditionsContent.Projs
             projectile.velocity = new Vector2();
             return false;
         }
-        public override void TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
         {
-            width = 8;
-            height = 8;
+            width = 4;
+            height = 4;
+            return fallThrough;
+        }
+
+        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
+        {
+            // Always crit on hitting on the ground (concentrated beam)
+            if (projectile.ai[0] > 0) crit = true;
         }
 
         public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)

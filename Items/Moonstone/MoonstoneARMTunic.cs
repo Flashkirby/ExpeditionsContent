@@ -5,18 +5,17 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.Moonstone
 {
+    [AutoloadEquip(EquipType.Body)]
     public class MoonstoneARMTunic : ModItem
     {
-        public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+        public override void SetStaticDefaults()
         {
-            equips.Add(EquipType.Body);
-            return true;
+            DisplayName.SetDefault("Yutu Tunic");
+            Tooltip.SetDefault("Provides 1 second of immunity to lava\n"
+                + "10% increased mining speed");
         }
         public override void SetDefaults()
         {
-            item.name = "Yutu Tunic";
-            item.toolTip = "Provides 1 second of immunity to lava ";
-            item.toolTip2 = "10% increased mining speed";
             item.width = 18;
             item.height = 18;
             item.defense = 6;

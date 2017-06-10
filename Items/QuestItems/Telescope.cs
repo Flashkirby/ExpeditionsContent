@@ -9,11 +9,14 @@ namespace ExpeditionsContent.Items.QuestItems
 {
     public class Telescope : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Stargazing Telescope");
+            Tooltip.SetDefault("<right> to zoom when at a telescope\n"
+                + "Watch stars fall from the world map");
+        }
         public override void SetDefaults()
         {
-            item.name = "Stargazing Telescope";
-            item.toolTip = "<right> to zoom when at a telescope";
-            item.toolTip2 = "Watch falling stars from the world map";
             item.width = 14;
             item.height = 16;
             item.maxStack = 99;

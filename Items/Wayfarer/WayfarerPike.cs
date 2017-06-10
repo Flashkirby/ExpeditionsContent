@@ -6,10 +6,13 @@ namespace ExpeditionsContent.Items.Wayfarer
 {
     public class WayfarerPike : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Pike");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Trident);
-            item.name = "Wayfarer's Pike";
             item.width = 32;
             item.height = 36;
 

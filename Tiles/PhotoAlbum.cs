@@ -21,7 +21,9 @@ namespace ExpeditionsContent.Tiles
             Main.tileNoFail[Type] = true;
             Main.tileNoAttach[Type] = true;
             Main.tileLavaDeath[Type] = true;
-            AddMapEntry(new Color(170, 48, 114), "Album");
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Album");
+            AddMapEntry(new Color(170, 48, 114), name);
             dustType = 18;
             
             TileObjectData.newTile.CopyFrom(TileObjectData.GetTileData(TileID.Books, 0));

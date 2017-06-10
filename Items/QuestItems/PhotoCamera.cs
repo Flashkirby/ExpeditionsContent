@@ -14,11 +14,14 @@ namespace ExpeditionsContent.Items.QuestItems
         public const int frameWidth = 180;
         public const int frameHeight = 120;
         public const float maxFreeCapture = 350; // Max capture distance not relying on light
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("PhotoTron");
+            Tooltip.SetDefault("Takes photos of creatures\n"
+                + "'Say cheese!'");
+        }
         public override void SetDefaults()
         {
-            item.name = "PhotoTron";
-            item.toolTip = "Takes photos of creatures";
-            item.toolTip2 = "'Say cheese!'";
             item.width = 34;
             item.height = 26;
             item.useAmmo = mod.ItemType<PhotoBlank>();
@@ -150,7 +153,7 @@ namespace ExpeditionsContent.Items.QuestItems
             // Send the item
             if (Main.netMode == 1)
             {
-                NetMessage.SendData(21, -1, -1, "", number, 1f, 0f, 0f, 0, 0, 0);
+                NetMessage.SendData(21, -1, -1, null, number, 1f, 0f, 0f, 0, 0, 0);
             }
             return true;
         }

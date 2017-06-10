@@ -25,26 +25,14 @@ namespace ExpeditionsContent.NPCs
     /// Rain.
     /// Not having coffee.
     /// 
-    /// </summary>
+    /// </summary>    
+	[AutoloadHead]
     class Clerk : ModNPC
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
-            npc.name = "Clerk";
-            npc.width = 18;
-            npc.height = 40;
-            npc.townNPC = true;
-            npc.friendly = true;
+            DisplayName.SetDefault("Clerk");
             Main.npcFrameCount[npc.type] = 21;
-
-            npc.aiStyle = 7;
-            npc.damage = 10;
-            npc.defense = 15;
-            npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.5f;
-
             NPCID.Sets.ExtraTextureCount[npc.type] = 1;
             NPCID.Sets.ExtraFramesCount[npc.type] = 7; // Extra frames after walk animation
             NPCID.Sets.AttackFrameCount[npc.type] = 2; // Attack frames at the end
@@ -54,12 +42,34 @@ namespace ExpeditionsContent.NPCs
             NPCID.Sets.AttackTime[npc.type] = 30; // time to execute 1 attack
             NPCID.Sets.AttackAverageChance[npc.type] = 40; // 1/chance to attack per frame
             NPCID.Sets.HatOffsetY[npc.type] = 2;
+        }
+        public override void SetDefaults()
+        {
+            npc.width = 18;
+            npc.height = 40;
+            npc.townNPC = true;
+            npc.friendly = true;
+
+            npc.aiStyle = 7;
+            npc.damage = 10;
+            npc.defense = 15;
+            npc.lifeMax = 250;
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath1;
+            npc.knockBackResist = 0.5f;
 
             animationType = NPCID.Stylist;
         }
-        public override bool Autoload(ref string name, ref string texture, ref string[] altTextures)
+        public override string[] AltTextures
         {
-            altTextures = new string[] { "ExpeditionsContent/NPCs/Clerk_Party" };
+            get
+            {
+                return new string[] { "ExpeditionsContent/NPCs/Clerk_Party" };
+            }
+        }
+        public override bool Autoload(ref string name)
+        {
+            name = "Clerk";
             return mod.Properties.Autoload;
         }
 
@@ -577,7 +587,7 @@ namespace ExpeditionsContent.NPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = Lang.inter[28];
+            button = Lang.inter[28].Value;
             button2 = "Expeditions";
         }
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)

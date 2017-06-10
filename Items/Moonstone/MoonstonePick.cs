@@ -11,8 +11,9 @@ namespace ExpeditionsContent.Items.Moonstone
     public class MoonstonePick : ModItem
     {
         public static short customGlowMask = 0;
-        public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+        public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Yutu Pickaxe");
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -24,12 +25,10 @@ namespace ExpeditionsContent.Items.Moonstone
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            return true;
         }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.MoltenPickaxe);
-            item.name = "Yutu Pickaxe";
             item.width = 34;
             item.height = 30;
 

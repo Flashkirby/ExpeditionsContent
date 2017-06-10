@@ -8,10 +8,14 @@ namespace ExpeditionsContent.Items.Moonstone
 {
     public class Moonstone : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Moonlit Gemstone");
+            Tooltip.SetDefault("'Touched by the night sky'");
+            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(30, 8));
+        }
         public override void SetDefaults()
         {
-            item.name = "Moonlit Gemstone";
-            item.toolTip = "'Touched by the night sky'";
             item.width = 22;
             item.height = 22;
             item.maxStack = 99;
@@ -28,36 +32,16 @@ namespace ExpeditionsContent.Items.Moonstone
                 0.62f + 0.05f * lightMult, 0.9f);
         }
 
-        public override DrawAnimation GetAnimation()
+        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            return new DrawAnimationMoonstone(8);
+            Main.itemAnimations[item.type].Frame = Main.moonPhase;
+            Main.itemAnimations[item.type].FrameCounter = 0;
         }
 
-        public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
+        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
         {
             Main.itemFrame[whoAmI] = Main.moonPhase;
             Main.itemFrameCounter[whoAmI] = 0;
-            return true;
-        }
-    }
-
-    internal class DrawAnimationMoonstone : DrawAnimation
-    {
-        public DrawAnimationMoonstone(int frameCount)
-        {
-            this.FrameCount = frameCount;
-            this.TicksPerFrame = 2;
-        }
-
-        public override void Update()
-        {
-            this.Frame = Main.moonPhase;
-            this.FrameCounter = 0;
-        }
-
-        public override Rectangle GetFrame(Texture2D texture)
-        {
-            return texture.Frame(1, this.FrameCount, 0, this.Frame);
         }
     }
 }

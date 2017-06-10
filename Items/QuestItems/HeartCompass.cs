@@ -3,15 +3,18 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.QuestItems
 {
+    /// <summary>
+    /// Powerful accessory that reveals life crystals
+    /// </summary>
     public class HeartCompass : ModItem
     {
-        /// <summary>
-        /// Powerful accessory that reveals life crystals
-        /// </summary>
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Heart Compass");
+            Tooltip.SetDefault("Reveals nearby life crystals on the world map");
+        }
         public override void SetDefaults()
         {
-            item.name = "Heart Compass";
-            item.toolTip = "Reveals nearby life crystals on the world map";
             item.width = 28;
             item.height = 30;
             item.rare = 2;

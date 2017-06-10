@@ -6,10 +6,13 @@ namespace ExpeditionsContent.Items.QuestItems
 {
     public class PhotoBlank : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Photo Film");
+            Tooltip.SetDefault("'Contains enchanted paper, capable of preserving images'");
+        }
         public override void SetDefaults()
         {
-            item.name = "Photo Film";
-            item.toolTip = "'Contains enchanted paper, capable of preserving images'";
             item.width = 30;
             item.height = 36;
             item.ammo = item.type;

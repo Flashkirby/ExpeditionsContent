@@ -52,11 +52,14 @@ namespace ExpeditionsContent.Items.QuestItems
             }
         }
 
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Photo Film");
+            Tooltip.SetDefault("Used in conjuction with a camera\n"
+                + "<right> to clear the image");
+        }
         public override void SetDefaults()
         {
-            item.name = "Photo Film";
-            item.toolTip = "Used in conjuction with a Photocam";
-            item.toolTip2 = "<right> to clear the image";
             item.width = 28;
             item.height = 28;
             item.rare = 0;
@@ -154,23 +157,14 @@ namespace ExpeditionsContent.Items.QuestItems
             // Early stop, if this NPC doesn't exist or photo is broken
             if (npc == null || item.prefix == brokenPrefix)
             {
-                item.name = "Photo"; //With 'Damaged' prefix
+                item.SetNameOverride("Photo"); //With 'Damaged' prefix
                 item.stack = 1;
                 item.prefix = brokenPrefix;
-                if (npcMod != "")
-                {
-                    item.toolTip = "The image is clouded beyond recognition";
-                    item.toolTip2 = "Mod: " + npcMod;
-                }
-                else
-                {
-                    item.toolTip = "The image is damaged beyond repair...";
-                }
                 return;
             }
 
             // Save the name of the NPC
-            npcName = npc.name;
+            npcName = npc.TypeName;
             npcMod = "VANILLA";
             if (npc.modNPC != null) // Non-vanilla
             {
@@ -180,28 +174,24 @@ namespace ExpeditionsContent.Items.QuestItems
 
             // Set photo info
             if (npc.townNPC)
-            { item.name = "Photo of " + npc.displayName + ", no."; }
+            { item.SetNameOverride("Photo of " + npc.GivenName + ", no."); }
             else
             {
                 if (npc.type == 1)
                 {
                     // Slimes are just slimes
-                    item.name = "Photo of " + Lang.npcName(NPCID.SlimeRibbonWhite) + ", no. (1)";
+                    item.SetNameOverride( "Photo of " + Lang.GetNPCName(NPCID.SlimeRibbonWhite) + ", no. (1)");
                 }
                 else
                 {
-                    item.name = "Photo of " + npc.name + ", no.";
+                    item.SetNameOverride("Photo of " + npc.TypeName + ", no.");
                     // If a more specialised name exists, use that instead.
-                    if(npc.displayName.Length >= npc.name.Length)
+                    if(npc.GivenName.Length >= npc.TypeName.Length)
                     {
-                        item.name = "Photo of " + npc.displayName + ", no.";
+                        item.SetNameOverride("Photo of " + npc.GivenName + ", no.");
                     }
                 }
             }
-
-            // Add set tooltip
-            item.toolTip = "<right> to clear the image";
-            item.toolTip2 = "";
 
             // Set stack
             item.maxStack = item.stack;
@@ -212,6 +202,30 @@ namespace ExpeditionsContent.Items.QuestItems
             if (npc.boss || npc.townNPC)
             {
                 item.rare++;
+            }
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if(npcName != "")
+            {
+                if (item.prefix == brokenPrefix)
+                {
+                    tooltips.Clear();
+                    if (npcMod != "")
+                    {
+                        tooltips.Add(new TooltipLine(mod, "PhotoImageUnloaded", "The image is clouded beyond recognition"));
+                        tooltips.Add(new TooltipLine(mod, "PhotoImageMod", "Mod: " + npcMod));
+                    }
+                    else
+                    {
+                        tooltips.Add(new TooltipLine(mod, "PhotoImageMissing", "The image is damaged beyond repair"));
+                    }
+                }
+                else
+                {
+                    tooltips.RemoveAt(0);
+                }
             }
         }
 

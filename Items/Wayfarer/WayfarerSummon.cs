@@ -13,11 +13,14 @@ namespace ExpeditionsContent.Items.Wayfarer
     /// </summary>
     public class WayfarerSummon : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Bell");
+            Tooltip.SetDefault("Summons a familiar to fight for you");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.HornetStaff);
-            item.name = "Wayfarer's Bell";
-            item.toolTip = "Summons a familiar to fight for you";
             item.UseSound = SoundID.Item25;
             
             item.damage = 11;

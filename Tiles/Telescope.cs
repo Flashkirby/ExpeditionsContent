@@ -17,7 +17,9 @@ namespace ExpeditionsContent.Tiles
             //extra info
             Main.tileFrameImportant[Type] = true;
             Main.tileLavaDeath[Type] = true;
-            AddMapEntry(new Color(49, 121, 221), "Telescope");
+            ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Telescope");
+            AddMapEntry(new Color(49, 121, 221), name);
             dustType = 7;
             disableSmartCursor = true;
 

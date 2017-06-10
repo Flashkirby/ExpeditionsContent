@@ -9,12 +9,15 @@ namespace ExpeditionsContent.Projs
     class Gust : ModProjectile
     {
         public const int extraSize = 16;
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Gust");
+        }
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.WaterBolt);
             projectile.aiStyle = 0;
-
-            projectile.name = "Gust";
+            
             projectile.width = 28 + extraSize;
             projectile.height = 28 + extraSize;
             projectile.timeLeft = 180;
@@ -53,10 +56,11 @@ namespace ExpeditionsContent.Projs
             }
         }
 
-        public override void TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
+        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
         {
             width = 8;
             height = 8;
+            return fallThrough;
         }
 
         public override bool OnTileCollide(Vector2 oldVelocity)

@@ -4,19 +4,17 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.QuestItems
 {
+    [AutoloadEquip(EquipType.Neck)]
     public class HeartLocket : ModItem
     {
-        public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+        public override void SetStaticDefaults()
         {
-            equips.Add(EquipType.Neck);
-            return true;
+            DisplayName.SetDefault("Heart Locket");
+            Tooltip.SetDefault("Temporarily increases maximum life by 20\n"
+                + "'Practical yet stylish'");
         }
-
         public override void SetDefaults()
         {
-            item.name = "Heart Locket";
-            item.toolTip = "Temporarily increases maximum life by 20";
-            item.toolTip2 = "'Practical and stylish'";
             item.width = 22;
             item.height = 22;
             item.accessory = true;

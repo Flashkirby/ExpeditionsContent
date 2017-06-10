@@ -3,16 +3,19 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.QuestItems
 {
+    /// <summary>
+    /// Powerful accessory that reveals life fruit
+    /// </summary>
     public class ShrineMap : ModItem
     {
-        /// <summary>
-        /// Powerful accessory that reveals life fruit
-        /// </summary>
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Enchanted Shrine Map");
+            Tooltip.SetDefault("Marks sword shrines on the world map\n"
+                + "'Which is enchanted, the shrine or the map?'");
+        }
         public override void SetDefaults()
         {
-            item.name = "Enchanted Shrine Map";
-            item.toolTip = "Marks sword shrines on the world map";
-            item.toolTip2 = "'Are the shrines enchanted, or the map itself?'";
             item.width = 28;
             item.height = 30;
             item.rare = 2;

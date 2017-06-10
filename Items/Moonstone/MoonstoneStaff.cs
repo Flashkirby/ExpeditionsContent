@@ -10,8 +10,10 @@ namespace ExpeditionsContent.Items.Moonstone
     public class MoonstoneStaff : ModItem
     {
         public static short customGlowMask = 0;
-        public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+        public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Yutu Staff");
+            Tooltip.SetDefault("Summons an orb of moonlight to heal allies and damage enemies'");
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -23,13 +25,10 @@ namespace ExpeditionsContent.Items.Moonstone
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            return true;
         }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.StaffoftheFrostHydra);
-            item.name = "Yutu Staff";
-            item.toolTip = "Summons an orb of moonlight to heal allies and damage enemies";
             item.width = 36;
             item.height = 20;
 

@@ -7,12 +7,15 @@ namespace ExpeditionsContent.Items.Wayfarer
 {
     public class WayfarerBook : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Wind");
+            Tooltip.SetDefault("Casts a mighty gust of wind\n"
+                + "'It werfs nebels'");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.WaterBolt);
-            item.name = "Wayfarer's Wind";
-            item.toolTip = "Casts a mighty gust of wind";
-            item.toolTip2 = "'It werfs nebels'";
             item.UseSound = SoundID.Item34;
 
             item.mana = 12;

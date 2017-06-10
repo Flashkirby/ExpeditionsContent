@@ -11,8 +11,10 @@ namespace ExpeditionsContent.Items.Moonstone
     public class MoonstonePizzaCutter : ModItem
     {
         public static short customGlowMask = 0;
-        public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+        public override void SetStaticDefaults()
         {
+            DisplayName.SetDefault("Yutu Domokkon"); //Blame MPTs silly naming convention for this
+            Tooltip.SetDefault("Inflicts enemies with piercing moonlight'");
             if (Main.netMode != 2)
             {
                 Texture2D[] glowMasks = new Texture2D[Main.glowMaskTexture.Length + 1];
@@ -24,13 +26,10 @@ namespace ExpeditionsContent.Items.Moonstone
                 customGlowMask = (short)(glowMasks.Length - 1);
                 Main.glowMaskTexture = glowMasks;
             }
-            return true;
         }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.FieryGreatsword);
-            item.name = "Yutu Domokkon"; //Blame MPTs silly naming convention for this
-            item.toolTip = "Inflicts enemies with piercing moonlight";
             item.width = 58;
             item.height = 30;
             item.scale = 1.1f;

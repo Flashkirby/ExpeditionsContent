@@ -8,12 +8,15 @@ namespace ExpeditionsContent.Items.Wayfarer
 {
     public class WayfarerSubArm : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Subber");
+            Tooltip.SetDefault("50% chance not to consume ammo\n"
+                + "'Spray and pray'");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Minishark);
-            item.name = "Wayfarer's Subber";
-            item.toolTip = "50% chance not to consume ammo";
-            item.toolTip2 = "'Spray and pray'";
             item.width = 42;
             item.height = 24;
 

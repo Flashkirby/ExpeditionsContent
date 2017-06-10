@@ -10,9 +10,12 @@ namespace ExpeditionsContent.Projs
 {
     class WayfarerMoonlight : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Moonlight Orb");
+        }
         public override void SetDefaults()
         {
-            projectile.name = "Moonlight Orb";
             projectile.width = 40;
             projectile.height = 40;
             projectile.timeLeft = Projectile.SentryLifeTime;

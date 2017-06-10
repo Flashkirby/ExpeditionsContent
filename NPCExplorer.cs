@@ -3,7 +3,6 @@
 using Microsoft.Xna.Framework;
 
 using Terraria;
-using Terraria.Map;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,6 +13,9 @@ namespace ExpeditionsContent
 {
     public class NPCExplorer : GlobalNPC
     {
+        public override bool InstancePerEntity { get { return true; } }
+        public bool moonlight = false;
+
         public override void GetChat(NPC npc, ref string chat)
         {
             if (npc.type == NPCID.Guide &&
@@ -36,13 +38,13 @@ namespace ExpeditionsContent
         #region ModInfo FX
         public override void ResetEffects(NPC npc)
         {
-            npc.GetModInfo<ModNPCInfo>(mod).moonlight = false;
+            moonlight = false;
         }
 
         public override bool StrikeNPC(NPC npc, ref double damage, int defense, ref float knockback, int hitDirection, ref bool crit)
         {
             int tempDefence = 0;
-            if (npc.GetModInfo<ModNPCInfo>(mod).moonlight) tempDefence -= 10;
+            if (moonlight) tempDefence -= 10;
             if (tempDefence != 0)
             {
                 double currentDamage = Main.CalculateDamage((int)damage, defense);
@@ -54,14 +56,14 @@ namespace ExpeditionsContent
 
         public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Color drawColor)
         {
-            if (npc.GetModInfo<ModNPCInfo>(mod).moonlight)
+            if (moonlight)
             {
-                Texture2D moonlight = Main.goreTexture[mod.GetGoreSlot("Gores/Moonlight")];
+                Texture2D texture = Main.goreTexture[mod.GetGoreSlot("Gores/Moonlight")];
                 float scale = 0.8f * npc.scale * Math.Max(npc.width, npc.height) / 56f;
                 if (scale <= 0.1f) scale = 0.1f;
                 if (scale > 3) scale = 3 + (scale - 3) / 2;
-                spriteBatch.Draw(moonlight, npc.Center - Main.screenPosition, null,
-                    new Color(1f, 1f, 1f, 0.3f), 0, new Vector2(moonlight.Width, moonlight.Height) / 2, scale,
+                spriteBatch.Draw(texture, npc.Center - Main.screenPosition + new Vector2(0, 20), null,
+                    new Color(1f, 1f, 1f, 0.3f), 0, new Vector2(texture.Width, texture.Height) / 2, scale,
                     SpriteEffects.None, 0f);
             }
         }

@@ -5,10 +5,13 @@ namespace ExpeditionsContent.Items.Albums
 {
     public class CopyPrint : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Photo Binder");
+            Tooltip.SetDefault("Used for copying albums at a Dye Vat");
+        }
         public override void SetDefaults()
         {
-            item.name = "Photo Binder";
-            item.toolTip = "Used for copying albums at a Dye Vat";
             item.width = 22;
             item.height = 30;
             item.maxStack = 99;

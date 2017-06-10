@@ -5,11 +5,15 @@ namespace ExpeditionsContent.Items.Albums
 {
     public class AlbumBee : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Albeem, 1st ed.");
+            Tooltip.SetDefault("'Buzzing with bee tales'"
+                + AlbumAnimalFirst.Value2ToolTip(this, Item.sellPrice(0, 6, 0, 0)));
+        }
         public override void SetDefaults()
         {
             AlbumAnimalFirst.SetDefaultAlbum(this,
-                "Albeem, 1st ed.",
-                "'Buzzing with bee tales'",
                 Item.sellPrice(0, 6, 0, 0), 1, 19
                 );
         }

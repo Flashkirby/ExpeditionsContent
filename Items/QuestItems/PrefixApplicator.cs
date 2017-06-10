@@ -1,14 +1,18 @@
-﻿using Terraria;
+﻿using System.Collections.Generic;
+using Terraria;
 using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.QuestItems
 {
     public class PrefixApplicator : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Prefix Applicator");
+            Tooltip.SetDefault("<right> to use on next favourited accessory");
+        }
         public override void SetDefaults()
         {
-            item.name = "Prefix Applicator";
-            item.toolTip = "<right> to use on next favourited accessory";
             item.width = 32;
             item.height = 24;
             item.consumable = true;
@@ -22,11 +26,11 @@ namespace ExpeditionsContent.Items.QuestItems
         {
             return matchingAccessory != null && item.prefix != 0;
         }
-        public override void UpdateInventory(Player player)
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             if (item.prefix == 0)
             {
-                item.toolTip2 = "Apply to: No prefix to apply";
+                tooltips.Add(new TooltipLine(mod, "ApplyPrefixNull", "Apply to: No prefix to apply"));
                 return;
             }
 
@@ -34,11 +38,11 @@ namespace ExpeditionsContent.Items.QuestItems
             // look for favourited items from that point, looping 
             // back to where my index is
             int myIndex = -1;
-            
+
             // iterate first time to find me and items past me
-            for(int i = 0; i < player.inventory.Length; i++)
+            for (int i = 0; i < Main.LocalPlayer.inventory.Length; i++)
             {
-                if (LookForMeAndMatch(ref myIndex, player.inventory[i], i))
+                if (LookForMeAndMatch(ref myIndex, Main.LocalPlayer.inventory[i], i, tooltips))
                 {
                     return;
                 }
@@ -46,17 +50,17 @@ namespace ExpeditionsContent.Items.QuestItems
             //iterate a second time and end at me
             for (int i = 0; i < myIndex; i++)
             {
-                if (LookForMeAndMatch(ref myIndex, player.inventory[i], i))
+                if (LookForMeAndMatch(ref myIndex, Main.LocalPlayer.inventory[i], i, tooltips))
                 {
                     return;
                 }
             }
 
             matchingAccessory = null;
-            item.toolTip2 = "Apply to: No favourited accessory";
+            tooltips.Add(new TooltipLine(mod, "ApplyPrefixNone", "Apply to: No favourited accessory"));
         }
 
-        private bool LookForMeAndMatch(ref int myIndex, Item invItem, int i)
+        private bool LookForMeAndMatch(ref int myIndex, Item invItem, int i, List<TooltipLine> tooltips)
         {
             if (myIndex == -1)
             {
@@ -70,7 +74,7 @@ namespace ExpeditionsContent.Items.QuestItems
                     invItem.favorited)
                 {
                     matchingAccessory = invItem;
-                    item.toolTip2 = "Apply to: " + invItem.name;
+                    tooltips.Add(new TooltipLine(mod, "ApplyPrefixAccessory", "Apply to: " + invItem.Name));
                     return true;
                 }
             }

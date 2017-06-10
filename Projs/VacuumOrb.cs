@@ -8,14 +8,17 @@ namespace ExpeditionsContent.Projs
 {
     class VacuumOrb : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Vacuum Orb");
+        }
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.WaterBolt);
             projectile.aiStyle = 0;
             projectile.alpha = 0;
             projectile.penetrate = 256;
-
-            projectile.name = "Vacuum Orb";
+            
             projectile.alpha = 100;
             projectile.timeLeft = 600;
         }

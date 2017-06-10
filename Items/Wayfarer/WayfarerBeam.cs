@@ -8,11 +8,14 @@ namespace ExpeditionsContent.Items.Wayfarer
 {
     public class WayfarerBeam : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Beam");
+            Tooltip.SetDefault("Fires a concentrated beam");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.AquaScepter);
-            item.name = "Wayfarer's Beam";
-            item.toolTip = "Fires a concentrated beam";
             item.width = 46;
             item.height = 16;
             item.UseSound = SoundID.Item12;

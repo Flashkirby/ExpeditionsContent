@@ -13,14 +13,19 @@ namespace ExpeditionsContent.NPCs
 {
     class ClerkHiding : ModNPC
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Sleeping Clerk");
+            Main.npcFrameCount[npc.type] = 5;
+            NPCID.Sets.TownCritter[npc.type] = true;
+
+        }
         public override void SetDefaults()
         {
-            npc.name = "Sleeping Clerk";
             npc.width = 32;
             npc.height = 22;
             npc.friendly = true;
             npc.dontTakeDamage = true; //hide the health bar
-            Main.npcFrameCount[npc.type] = 5;
 
             npc.aiStyle = -1;
             npc.damage = 10;
@@ -30,20 +35,18 @@ namespace ExpeditionsContent.NPCs
             npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
             npc.rarity = 1;
-
-            NPCID.Sets.TownCritter[npc.type] = true;
         }
 
-        public override float CanSpawn(NPCSpawnInfo spawnInfo)
+        public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             // Skip if 'rescued' clerk already (no more natural spawn)
             if (WorldExplorer.savedClerk) return 0f;
 
             // Will only spawn once a player has armour, and has powered up at least once
             bool spawnCondition = false;
-            foreach(Player p in Main.player)
+            foreach (Player p in Main.player)
             {
-                if(p.statDefense >= 6 && p.statLifeMax > 100 && p.statManaMax > 20)
+                if (p.statDefense >= 6 && p.statLifeMax > 100 && p.statManaMax > 20)
                 {
                     spawnCondition = true;
                     break;
@@ -170,7 +173,7 @@ namespace ExpeditionsContent.NPCs
             }
 
             npc.dontTakeDamage = false;
-            npc.Transform(mod.NPCType("Clerk"));
+            npc.Transform(mod.NPCType<Clerk>());
         }
 
         public override void FindFrame(int frameHeight)
@@ -187,6 +190,8 @@ namespace ExpeditionsContent.NPCs
                     return "Waah!? I wasn't sleeping on the job, honest. ";
                 case 2:
                     return "Oh! Don't mind me, I was just taking a... power nap. Yes. ";
+                case 3:
+                    return "Mmhmmn, give me five more minutes.... What? You need something? ";
                 default:
                     return "Y-yes sir? Wait a minute, you're not my boss. Eh, whatever. ";
             }

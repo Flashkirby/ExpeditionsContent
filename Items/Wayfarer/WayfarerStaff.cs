@@ -7,11 +7,14 @@ namespace ExpeditionsContent.Items.Wayfarer
 {
     public class WayfarerStaff : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Cane");
+            Tooltip.SetDefault("Shoots an explosive bolt");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.AquaScepter);
-            item.name = "Wayfarer's Cane";
-            item.toolTip = "Shoots an explosive bolt";
             item.width = 36;
             item.height = 36;
             item.UseSound = SoundID.Item72;

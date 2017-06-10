@@ -7,10 +7,13 @@ namespace ExpeditionsContent.Items.Wayfarer
 {
     public class WayfarerCarbine : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Carbine");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.TheUndertaker);
-            item.name = "Wayfarer's Carbine";
             item.width = 36;
             item.height = 18;
 

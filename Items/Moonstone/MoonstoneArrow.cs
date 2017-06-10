@@ -8,11 +8,14 @@ namespace ExpeditionsContent.Items.Moonstone
 {
     public class MoonstoneArrow : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Yutu Arrow");
+            Tooltip.SetDefault("Decreases target's defense");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.WoodenArrow);
-            item.name = "Yutu Arrow";
-            item.toolTip = "Decreases target's defense";
 
             item.shoot = mod.ProjectileType<Projs.MoonstoneArrow>();
 

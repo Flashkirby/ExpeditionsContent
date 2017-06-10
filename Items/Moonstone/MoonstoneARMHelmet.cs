@@ -5,18 +5,17 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.Moonstone
 {
+    [AutoloadEquip(EquipType.Head)]
     public class MoonstoneARMHelmet : ModItem
     {
-        public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+        public override void SetStaticDefaults()
         {
-            equips.Add(EquipType.Head);
-            return true;
+            DisplayName.SetDefault("Yutu Helmet");
+            Tooltip.SetDefault("Halves damage taken from drowning\n"
+                + "Provides a dim light");
         }
         public override void SetDefaults()
         {
-            item.name = "Yutu Helmet";
-            item.toolTip = "Halves damage taken from drowning";
-            item.toolTip2 = "Provides a dim light";
             item.width = 18;
             item.height = 18;
             item.defense = 7;

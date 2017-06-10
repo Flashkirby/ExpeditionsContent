@@ -7,10 +7,13 @@ namespace ExpeditionsContent.Items.Wayfarer
 {
     public class WayfarerRepeater : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Wayfarer's Repeater");
+        }
         public override void SetDefaults()
         {
             item.CloneDefaults(ItemID.Musket);
-            item.name = "Wayfarer's Repeater";
             item.width = 46;
             item.height = 20;
 

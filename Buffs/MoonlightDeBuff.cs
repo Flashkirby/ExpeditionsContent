@@ -10,15 +10,15 @@ namespace ExpeditionsContent.Buffs
     {
         public override void SetDefaults()
         {
-            Main.buffName[Type] = "Piercing Moonlight";
-            Main.buffTip[Type] = "Reduced defense and taking damage";
+            DisplayName.SetDefault("Piercing Moonlight");
+            Description.SetDefault("Reduced defense and taking damage");
             Main.buffNoSave[Type] = true;
             Main.debuff[Type] = true;
         }
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.GetModInfo<ModNPCInfo>(mod).moonlight = true;
+            npc.GetGlobalNPC<NPCExplorer>(mod).moonlight = true;
 
             if (npc.lifeRegen > 0) npc.lifeRegen = 0;
             npc.lifeRegen -= 1 + Math.Min(npc.defDefense, npc.lifeMax / 10); // Same as venom/cursed/frost

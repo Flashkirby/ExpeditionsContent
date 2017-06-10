@@ -25,7 +25,13 @@ namespace ExpeditionsContent.Quests.Daily
         }
         public override string Description(bool complete)
         {
-            return "Looking for a boss challenge? Try defeating the Eater of Worlds, but without letting it split too many times. That means no more than 3 heads, or you will fail the challenge. You can summon the Eater of Worlds by crafting rotten chunks together at a demon altar. ";
+            expedition.conditionDescription2 = "Do not split more than " + headNumber() + " heads at once";
+            return "Looking for a boss challenge? Try defeating the Eater of Worlds, but without letting it split too many times. That means no more than " + headNumber() + " heads, or you will fail the challenge. You can summon the Eater of Worlds by crafting rotten chunks together at a demon altar. ";
+        }
+        private static int headNumber()
+        {
+            if (Main.expertMode) return 7;
+            return 3;
         }
 
         public override bool IncludeAsDaily()
@@ -103,7 +109,7 @@ namespace ExpeditionsContent.Quests.Daily
                     }
                     headCount = expedition.conditionCounted;
                     // FAIL!
-                    if (headCount > 3) 
+                    if (headCount > headNumber()) 
                     {
                         cond2 = false;
                     }
@@ -116,7 +122,7 @@ namespace ExpeditionsContent.Quests.Daily
                             string name = NPC.GetFirstNPCNameOrNull(NPCID.Guide);
                             if (name == "") name = "Guide";
                             string lastText = "";
-                            if (headCount == 3) lastText = "Any more and you will be unable to complete the challenge! ";
+                            if (headCount == headNumber()) lastText = "Any more and you will be unable to complete the challenge! ";
                             if (!cond2)
                             {
                                 lastText = "You will have to retry this challenge after defeating the boss. ";

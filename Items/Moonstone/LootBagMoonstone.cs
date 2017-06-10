@@ -6,10 +6,13 @@ namespace ExpeditionsContent.Items.Moonstone
 {
     public class LootBagMoonstone : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Moongem Box");
+            Tooltip.SetDefault("Right click to open");
+        }
         public override void SetDefaults()
         {
-            item.name = "Moongem Box";
-            item.toolTip = "Right click to open";
             item.width = 22;
             item.height = 20;
             item.maxStack = 30;

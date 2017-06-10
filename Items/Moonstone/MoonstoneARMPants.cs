@@ -5,18 +5,17 @@ using Terraria.ModLoader;
 
 namespace ExpeditionsContent.Items.Moonstone
 {
+    [AutoloadEquip(EquipType.Legs)]
     public class MoonstoneARMPants: ModItem
     {
-        public override bool Autoload(ref string name, ref string texture, IList<EquipType> equips)
+        public override void SetStaticDefaults()
         {
-            equips.Add(EquipType.Legs);
-            return true;
+            DisplayName.SetDefault("Yutu Pants");
+            Tooltip.SetDefault("5% increased movement speed\n"
+                + "40% increased rocket flight duration");
         }
         public override void SetDefaults()
         {
-            item.name = "Yutu Pants";
-            item.toolTip = "5% increased movement speed";
-            item.toolTip2 = "40% increased rocket flight duration";
             item.width = 18;
             item.height = 18;
             item.defense = 7;

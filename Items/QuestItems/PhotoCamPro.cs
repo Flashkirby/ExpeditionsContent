@@ -14,11 +14,14 @@ namespace ExpeditionsContent.Items.QuestItems
         public const int frameWidth = 180;
         public const int frameHeight = 120;
         public const float maxFreeCapture = 450; // Max capture distance not relying on light
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Hislops-3000");
+            Tooltip.SetDefault("Takes photos of creatures\n"
+                + "<right> to zoom out");
+        }
         public override void SetDefaults()
         {
-            item.name = "Hislops-3000";
-            item.toolTip = "Takes photos of creatures";
-            item.toolTip2 = "<right> to zoom out";
             item.width = 32;
             item.height = 24;
             item.useAmmo = mod.ItemType<PhotoBlank>();

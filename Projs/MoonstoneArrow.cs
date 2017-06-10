@@ -8,10 +8,13 @@ namespace ExpeditionsContent.Projs
 {
     class MoonstoneArrow : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Yutu Arrow");
+        }
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.WoodenArrowFriendly);
-            projectile.name = "Yutu Arrow";
             projectile.extraUpdates++;
         }
         public override void PostAI()

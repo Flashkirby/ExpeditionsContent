@@ -6,10 +6,13 @@ namespace ExpeditionsContent.Projs
 {
     class WayfarerPike : ModProjectile
     {
+        public override void SetStaticDefaults()
+        {
+            DisplayName.SetDefault("Pike");
+        }
         public override void SetDefaults()
         {
             projectile.CloneDefaults(ProjectileID.Spear);
-            projectile.name = "Pike";
             projectile.width = 14;
             projectile.height = 14;
             projectile.scale = 1.1f;
