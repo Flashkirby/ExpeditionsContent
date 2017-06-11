@@ -77,6 +77,7 @@ namespace ExpeditionsContent.Quests.Daily
                     expedition.trackingActive = saveTracked;
                     resetFrame = false;
                     prevCount = 0;
+                    expedition.conditionCounted = 0;
                 }
             }
 

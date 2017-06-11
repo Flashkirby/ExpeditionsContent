@@ -25,7 +25,13 @@ namespace ExpeditionsContent.Quests.Daily
         }
         public override string Description(bool complete)
         {
-            return "Looking for a boss challenge? Defeat all of the Brain of Cthulu's Creepers within 60 seconds of each other. The timer starts after the first seeker is slain, and stops when all are defeated. You can summon the Brain of Cthulu by crafting vertebrae together at a crimson altar. ";
+            expedition.conditionDescription2 = "Destroy all Creepers within " + timeLimit() + " seconds of each other";
+            return "Looking for a boss challenge? Defeat all of the Brain of Cthulu's Creepers within " + timeLimit() + " seconds of each other. The timer starts after the first seeker is slain, and stops when all are defeated. You can summon the Brain of Cthulu by crafting vertebrae together at a crimson altar. ";
+        }
+        private static int timeLimit()
+        {
+            if (Main.expertMode) return 120;
+            return 60;
         }
 
         public override bool IncludeAsDaily()
@@ -57,7 +63,7 @@ namespace ExpeditionsContent.Quests.Daily
                             string name = NPC.GetFirstNPCNameOrNull(NPCID.Guide);
                             if (name == "") name = "Guide";
                             Main.NewText(String.Concat(
-                                "<", name, "> The first creeper is down. You have 60 seconds to defeat the rest of them, starting now! "
+                                "<", name, "> The first creeper is down. You have " + timeLimit() + " seconds to defeat the rest of them, starting now! "
                                 ));
                         }
                     }
@@ -79,6 +85,7 @@ namespace ExpeditionsContent.Quests.Daily
                     bool saveTracked = expedition.trackingActive;
                     expedition.ResetProgress();
                     expedition.trackingActive = saveTracked;
+                    expedition.conditionCounted = 0;
                 }
             }
 
@@ -93,7 +100,7 @@ namespace ExpeditionsContent.Quests.Daily
                         if (!Main.npc[i].active) continue;
                         if (Main.npc[i].type == NPCID.Creeper) count++;
                     }
-                    if (Main.time < expedition.conditionCounted + 3600)
+                    if (Main.time < expedition.conditionCounted + (timeLimit() * 60))
                     {
                         if (count == 0 && NPC.FindFirstNPC(NPCID.BrainofCthulhu) >= 0)
                         {
