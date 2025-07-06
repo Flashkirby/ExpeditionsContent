@@ -1,38 +1,39 @@
 ﻿using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 
-namespace ExpeditionsContent.Projs.Familiars
+namespace ExpeditionsContent144.Projs.Familiars
 {
-    class MinionFox : FamiliarMinion
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Familiar Fox");
-            Main.projFrames[projectile.type] = 13;
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-            ProjectileID.Sets.Homing[projectile.type] = true;
+	class MinionFox : FamiliarMinion
+	{
+		public override void SetStaticDefaults()
+		{
+			//****DisplayName.SetDefault("Familiar Fox");
+			Main.projFrames[Type] = 13;
+			ProjectileID.Sets.MinionSacrificable[Type] = true;
+			ProjectileID.Sets.MinionTargettingFeature[Type] = true;
+			ProjectileID.Sets.CultistIsResistantTo[Type] = true; //**** was "Homming" instead of "CultistIsResistantTo"
 
-            AIPrioritiseNearPlayer = true;
-            AIPrioritiseFarEnemies = false;
+			AIPrioritiseNearPlayer = true;
+			AIPrioritiseFarEnemies = false;
 
-            // What does the fox say? "pls don't reference null instances"
-            if (Main.netMode == 2) return;
+			// What does the fox say? "pls don't reference null instances"
+			if (Main.netMode == 2) return;
 
-            drawOriginOffsetY = (Main.projectileTexture[projectile.type].Width - projectile.width) / 2;
-            drawOffsetX = (Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type]) - projectile.height - 4;
-        }
-        public override void SetDefaults()
-        {
-            projectile.netImportant = true;
-            projectile.width = 24;
-            projectile.height = 22;
+			DrawOriginOffsetY = (TextureAssets.Projectile[Type].Width() - Projectile.width) / 2;
+			DrawOffsetX = (TextureAssets.Projectile[Type].Height() / Main.projFrames[Type]) - Projectile.height - 4;
+		}
+		public override void SetDefaults()
+		{
+			Projectile.netImportant = true;
+			Projectile.width = 24;
+			Projectile.height = 22;
 
-            projectile.minion = true;
-            projectile.minionSlots = 1;
-            projectile.penetrate = -1;
-            projectile.timeLeft *= 5;
-            projectile.netImportant = true;
-        }
-    }
+			Projectile.minion = true;
+			Projectile.minionSlots = 1;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft *= 5;
+			Projectile.netImportant = true;
+		}
+	}
 }

@@ -2,24 +2,24 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items.QuestItems
+namespace ExpeditionsContent144.Items.QuestItems
 {
-    public class PhotoBlank : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Photo Film");
-            Tooltip.SetDefault("'Contains enchanted paper, capable of preserving images'");
-        }
-        public override void SetDefaults()
-        {
-            item.width = 30;
-            item.height = 36;
-            item.ammo = item.type;
-            item.maxStack = 99;
+	public class PhotoBlank : ModItem
+	{
+		public override void SetStaticDefaults()
+		{
+			/****DisplayName.SetDefault("Photo Film");
+            Tooltip.SetDefault("'Contains enchanted paper, capable of preserving images'");*/
+		}
+		public override void SetDefaults()
+		{
+			Item.width = 30;
+			Item.height = 36;
+			Item.ammo = Type;
+			Item.maxStack = 99;
 
-            item.rare = 0;
-            item.value = Item.buyPrice(0, 0, 15, 0);
-        }
-    }
+			Item.rare = 0;
+			Item.value = Item.buyPrice(0, 0, 15, 0);
+		}
+	}
 }

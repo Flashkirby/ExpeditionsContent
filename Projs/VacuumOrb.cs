@@ -1,115 +1,117 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Audio;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Projs
+namespace ExpeditionsContent144.Projs
 {
-    class VacuumOrb : ModProjectile
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Vacuum Orb");
-        }
-        public override void SetDefaults()
-        {
-            projectile.CloneDefaults(ProjectileID.WaterBolt);
-            projectile.aiStyle = 0;
-            projectile.alpha = 0;
-            projectile.penetrate = 256;
-            
-            projectile.alpha = 100;
-            projectile.timeLeft = 600;
-        }
+	class VacuumOrb : ModProjectile
+	{
+		public override void SetStaticDefaults()
+		{
+			//****DisplayName.SetDefault("Vacuum Orb");
+		}
+		public override void SetDefaults()
+		{
+			Projectile.CloneDefaults(ProjectileID.WaterBolt);
+			Projectile.aiStyle = 0;
+			Projectile.alpha = 0;
+			Projectile.penetrate = 256;
 
-        public const int explosionTimeLeft = 3;
-        public const float explosionDelay = 20f;
-        public override void AI()
-        {
-            int d;
-            if (projectile.ai[1] == 0f)
-            {
-                d = Dust.NewDust(projectile.Center - new Vector2(4, 4), 4, 4, 173,
-                    projectile.velocity.X * 10f, projectile.velocity.Y * 10f, 0, default(Color), 2f);
-                Main.dust[d].velocity *= 0.08f;
-                Main.dust[d].noGravity = true;
+			Projectile.alpha = 100;
+			Projectile.timeLeft = 600;
+		}
 
-                d = Dust.NewDust(projectile.position, projectile.width, projectile.height, 71,
-                    projectile.velocity.X, projectile.velocity.Y);
-                Main.dust[d].velocity *= 0.25f;
-            }
-            else
-            {
-                d = Dust.NewDust(projectile.position, projectile.width, projectile.height, 71,
-                    0, 0, 50, default(Color), 0.5f);
-                Main.dust[d].velocity *= 0.1f;
-                if (projectile.scale > 0) projectile.scale *= 0.9f;
-            }
+		public const int explosionTimeLeft = 3;
+		public const float explosionDelay = 20f;
+		public override void AI()
+		{
+			int d;
+			if (Projectile.ai[1] == 0f)
+			{
+				d = Dust.NewDust(Projectile.Center - new Vector2(4, 4), 4, 4, 173,
+					Projectile.velocity.X * 10f, Projectile.velocity.Y * 10f, 0, default(Color), 2f);
+				Main.dust[d].velocity *= 0.08f;
+				Main.dust[d].noGravity = true;
 
-            if (projectile.penetrate != projectile.maxPenetrate && projectile.penetrate > 0)
-            {
-                projectile.ai[1] = explosionDelay + explosionTimeLeft;
-                projectile.localAI[0] = projectile.damage;
-                projectile.timeLeft = (int)explosionDelay + explosionTimeLeft;
+				d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 71,
+					Projectile.velocity.X, Projectile.velocity.Y);
+				Main.dust[d].velocity *= 0.25f;
+			}
+			else
+			{
+				d = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 71,
+					0, 0, 50, default(Color), 0.5f);
+				Main.dust[d].velocity *= 0.1f;
+				if (Projectile.scale > 0) Projectile.scale *= 0.9f;
+			}
 
-                projectile.penetrate = -1;
-                projectile.damage = 0;
-                projectile.tileCollide = false;
-                projectile.velocity = projectile.velocity * 0.25f;
+			if (Projectile.penetrate != Projectile.maxPenetrate && Projectile.penetrate > 0)
+			{
+				Projectile.ai[1] = explosionDelay + explosionTimeLeft;
+				Projectile.localAI[0] = Projectile.damage;
+				Projectile.timeLeft = (int)explosionDelay + explosionTimeLeft;
 
-                Main.PlaySound(2, projectile.Center, 24);
-            }
-            
-            if(projectile.timeLeft <= explosionTimeLeft)
-            {
-                if(projectile.timeLeft == explosionTimeLeft) Main.PlaySound(2, projectile.Center, 27);
-                projectile.damage = (int)projectile.localAI[0];
+				Projectile.penetrate = -1;
+				Projectile.damage = 0;
+				Projectile.tileCollide = false;
+				Projectile.velocity = Projectile.velocity * 0.25f;
 
-                projectile.hide = true;
+				SoundEngine.PlaySound(SoundID.Item24, Projectile.Center);
+			}
 
-                projectile.Center = projectile.BottomRight;
-                projectile.width = 64;
-                projectile.height = 64;
-                projectile.Center = projectile.TopLeft;
+			if (Projectile.timeLeft <= explosionTimeLeft)
+			{
+				if (Projectile.timeLeft == explosionTimeLeft) SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
+				Projectile.damage = (int)Projectile.localAI[0];
 
-                for(int i = 0; i < 5; i++)
-                {
-                    d = Dust.NewDust(projectile.Center - new Vector2(4, 4), 0, 0, 72 + Main.rand.Next(2),
-                        projectile.velocity.X * 0.2f, projectile.velocity.Y * 0.2f);
-                    Main.dust[d].velocity *= 2f;
-                    Main.dust[d].noGravity = true;
+				Projectile.hide = true;
 
-                    d = Dust.NewDust(projectile.Center - new Vector2(4, 4), 0, 0, 173,
-                        projectile.velocity.X * -1f, projectile.velocity.Y * -1f, 0, default(Color), 2f);
-                    Main.dust[d].velocity *= 3f;
-                }
-            }
+				Projectile.Center = Projectile.BottomRight;
+				Projectile.width = 64;
+				Projectile.height = 64;
+				Projectile.Center = Projectile.TopLeft;
 
-            projectile.rotation += projectile.direction;
-        }
+				for (int i = 0; i < 5; i++)
+				{
+					d = Dust.NewDust(Projectile.Center - new Vector2(4, 4), 0, 0, 72 + Main.rand.Next(2),
+						Projectile.velocity.X * 0.2f, Projectile.velocity.Y * 0.2f);
+					Main.dust[d].velocity *= 2f;
+					Main.dust[d].noGravity = true;
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            projectile.penetrate = 1;
-            projectile.velocity = Vector2.Zero;
-            return false;
-        }
+					d = Dust.NewDust(Projectile.Center - new Vector2(4, 4), 0, 0, 173,
+						Projectile.velocity.X * -1f, Projectile.velocity.Y * -1f, 0, default(Color), 2f);
+					Main.dust[d].velocity *= 3f;
+				}
+			}
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            Texture2D t = Main.projectileTexture[projectile.type];
-            Vector2 p = projectile.position - Main.screenPosition;
-            Vector2 c = new Vector2(Main.projectileTexture[projectile.type].Width / 2, Main.projectileTexture[projectile.type].Height / 2);
-            spriteBatch.Draw(t,
-                p + c,
-                null, new Color(255, 255, 255, projectile.alpha),
-                projectile.rotation,
-                c,
-                projectile.scale,
-                SpriteEffects.None,
-                0f);
-            return false;
-        }
-    }
+			Projectile.rotation += Projectile.direction;
+		}
+
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			Projectile.penetrate = 1;
+			Projectile.velocity = Vector2.Zero;
+			return false;
+		}
+
+		public override bool PreDraw(ref Color lightColor)
+		{
+			Texture2D t = TextureAssets.Projectile[Projectile.type].Value;
+			Vector2 p = Projectile.position - Main.screenPosition;
+			Vector2 c = new Vector2(TextureAssets.Projectile[Projectile.type].Width() / 2, TextureAssets.Projectile[Projectile.type].Height() / 2);
+			Main.EntitySpriteDraw(t,
+				p + c,
+				null, new Color(255, 255, 255, Projectile.alpha),
+				Projectile.rotation,
+				c,
+				Projectile.scale,
+				SpriteEffects.None,
+				0f);
+			return false;
+		}
+	}
 }

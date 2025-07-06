@@ -4,112 +4,113 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Projs
+namespace ExpeditionsContent144.Projs
 {
-    class WayBeam : ModProjectile
-    {
-        public const float length = 30f;
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Purple Beam");
-        }
-        public override void SetDefaults()
-        {
-            projectile.width = 12;
-            projectile.height = 12;
-            projectile.penetrate = 10;
-            projectile.magic = true;
-            projectile.friendly = true;
-            
-            projectile.timeLeft = 600;
-            projectile.extraUpdates = 2;
-        }
+	class WayBeam : ModProjectile
+	{
+		public const float length = 30f;
+		public override void SetStaticDefaults()
+		{
+			//****DisplayName.SetDefault("Purple Beam");
+		}
+		public override void SetDefaults()
+		{
+			Projectile.width = 12;
+			Projectile.height = 12;
+			Projectile.penetrate = 10;
+			Projectile.DamageType = DamageClass.Magic;
+			Projectile.friendly = true;
 
-        public override void AI()
-        {
-            AI_ManageLaserFX();
+			Projectile.timeLeft = 600;
+			Projectile.extraUpdates = 2;
+		}
 
-            if (projectile.ai[0] <= 0)
-            {
-                Lighting.AddLight(projectile.position, new Vector3(0.16f, 0.05f, 0.2f));
-            }
-        }
+		public override void AI()
+		{
+			AI_ManageLaserFX();
 
-        private void AI_ManageLaserFX()
-        {
-            // Count up to reduce laser length once collision occurs
-            if (projectile.ai[0] > 0)
-            {
-                projectile.ai[0]++;
-                float lightDivider = 3f + projectile.ai[0];
-                Lighting.AddLight(projectile.position, new Vector3(
-                    12 * 0.16f / lightDivider,
-                    12 * 0.05f / lightDivider,
-                    12 * 0.2f / lightDivider));
-            }
-            else
-            {
-                projectile.ai[1]++;
-                if(projectile.ai[1] < 80)
-                {
-                    projectile.velocity *= 1.01f;
-                }
+			if (Projectile.ai[0] <= 0)
+			{
+				Lighting.AddLight(Projectile.position, new Vector3(0.16f, 0.05f, 0.2f));
+			}
+		}
 
-                projectile.rotation = (float)Math.Atan2((double)projectile.velocity.Y, (double)projectile.velocity.X) + 1.57f;
+		private void AI_ManageLaserFX()
+		{
+			// Count up to reduce laser length once collision occurs
+			if (Projectile.ai[0] > 0)
+			{
+				Projectile.ai[0]++;
+				float lightDivider = 3f + Projectile.ai[0];
+				Lighting.AddLight(Projectile.position, new Vector3(
+					12 * 0.16f / lightDivider,
+					12 * 0.05f / lightDivider,
+					12 * 0.2f / lightDivider));
+			}
+			else
+			{
+				Projectile.ai[1]++;
+				if (Projectile.ai[1] < 80)
+				{
+					Projectile.velocity *= 1.01f;
+				}
 
-                projectile.localAI[0] = projectile.velocity.X;
-                projectile.localAI[1] = projectile.velocity.Y;
-            }
+				Projectile.rotation = (float)Math.Atan2((double)Projectile.velocity.Y, (double)Projectile.velocity.X) + 1.57f;
 
-            if (projectile.ai[0] > length)
-            {
-                projectile.timeLeft = 0;
-            }
-        }
+				Projectile.localAI[0] = Projectile.velocity.X;
+				Projectile.localAI[1] = Projectile.velocity.Y;
+			}
 
-        public override bool OnTileCollide(Vector2 oldVelocity)
-        {
-            projectile.ai[0]++;
-            projectile.velocity = new Vector2();
-            return false;
-        }
-        public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough)
-        {
-            width = 4;
-            height = 4;
-            return fallThrough;
-        }
+			if (Projectile.ai[0] > length)
+			{
+				Projectile.timeLeft = 0;
+			}
+		}
 
-        public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
-        {
-            // Always crit on hitting on the ground (concentrated beam)
-            if (projectile.ai[0] > 0) crit = true;
-        }
+		public override bool OnTileCollide(Vector2 oldVelocity)
+		{
+			Projectile.ai[0]++;
+			Projectile.velocity = new Vector2();
+			return false;
+		}
+		public override bool TileCollideStyle(ref int width, ref int height, ref bool fallThrough, ref Vector2 hitboxCenterFrac)
+		{
+			width = 4;
+			height = 4;
+			return fallThrough;
+		}
 
-        public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
-        {
-            Texture2D texture = Main.projectileTexture[projectile.type];
-            Color colour = new Color(1f, 1f, 1f, 0.3f) * projectile.Opacity;
+		public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers hit)
+		{
+			// Always crit on hitting on the ground (concentrated beam)
+			if (Projectile.ai[0] > 0) hit.SetCrit();
+		}
 
-            int max = (int)(Math.Min(projectile.ai[1], length) - projectile.ai[0]);
+		public override bool PreDraw(ref Color lightColor)
+		{
+			Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+			Color colour = new Color(1f, 1f, 1f, 0.3f) * Projectile.Opacity;
 
-            Vector2 savedVel = new Vector2(projectile.localAI[0], projectile.localAI[1]);
-            Vector2 position = projectile.Center - Main.screenPosition;
+			int max = (int)(Math.Min(Projectile.ai[1], length) - Projectile.ai[0]);
 
-            for (int i = max - 1; i >= 0; i--)
-            {
-                spriteBatch.Draw(
-                    texture, position, null,
-                    colour * (i / length), projectile.rotation,
-                    new Vector2(texture.Width, texture.Height) / 2f,
-                    projectile.scale, SpriteEffects.None, 0f);
-                position -= savedVel;
-            }
+			Vector2 savedVel = new Vector2(Projectile.localAI[0], Projectile.localAI[1]);
+			Vector2 position = Projectile.Center - Main.screenPosition;
 
-            return false;
-        }
-    }
+			for (int i = max - 1; i >= 0; i--)
+			{
+				Main.EntitySpriteDraw(
+					texture, position, null,
+					colour * (i / length), Projectile.rotation,
+					new Vector2(texture.Width, texture.Height) / 2f,
+					Projectile.scale, SpriteEffects.None, 0f);
+				position -= savedVel;
+			}
+
+			return false;
+		}
+	}
 }

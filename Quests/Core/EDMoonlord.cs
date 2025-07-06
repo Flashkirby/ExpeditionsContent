@@ -1,71 +1,71 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions;
+using Expeditions144;
 
-namespace ExpeditionsContent.Quests.Core
+namespace ExpeditionsContent144.Quests.Core
 {
-    class EDMoonlord : ModExpedition
-    {
-        public override void SetDefaults()
-        {
-            expedition.name = "???";
-            SetNPCHead(NPCID.Guide, false);
-            expedition.difficulty = 10;
-            expedition.ctgSlay = true;
+	class EDMoonlord : ModExpedition
+	{
+		public override void SetDefaults()
+		{
+			expedition.name = "???";
+			SetNPCHead(NPCID.Guide, false);
+			expedition.difficulty = 10;
+			expedition.ctgSlay = true;
 
-            expedition.conditionDescription1 = "Defeat the Moonlord";
-            //expedition.conditionDescription2 = "Face the moonlord";
-        }
-        public override void AddItemsOnLoad()
-        {
-            AddRewardMoney(Item.buyPrice(0, 10, 0, 0));
-        }
-        public override string Description(bool complete)
-        {
-            if(!expedition.condition2Met)
-            {
-                return "\n\n\n\n";
-            }
-            return "The Moonlord is a powerful adversary. Be prepared for wide, sweeping lasers and beams flying your way. Its bite is worse than its bark, preventing you from healing, as well as stealing life.";
-        }
+			expedition.conditionDescription1 = "Defeat the Moonlord";
+			//expedition.conditionDescription2 = "Face the moonlord";
+		}
+		public override void AddItemsOnLoad()
+		{
+			AddRewardMoney(Item.buyPrice(0, 10, 0, 0));
+		}
+		public override string Description(bool complete)
+		{
+			if (!expedition.condition2Met)
+			{
+				return "\n\n\n\n";
+			}
+			return "The Moonlord is a powerful adversary. Be prepared for wide, sweeping lasers and beams flying your way. Its bite is worse than its bark, preventing you from healing, as well as stealing life.";
+		}
 
-        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
-        {
-            if (!cond2)
-            {
-                expedition.name = "...?";
-                expedition.conditionDescription1 = "Prepare yourself";
-            }
-            else
-            {
-                expedition.name = "To Dethrone A Lord";
-                expedition.conditionDescription1 = "Defeat the Moonlord";
-            }
-            return NPC.downedTowers;
-        }
+		public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+		{
+			if (!cond2)
+			{
+				expedition.name = "...?";
+				expedition.conditionDescription1 = "Prepare yourself";
+			}
+			else
+			{
+				expedition.name = "To Dethrone A Lord";
+				expedition.conditionDescription1 = "Defeat the Moonlord";
+			}
+			return NPC.downedTowers;
+		}
 
-        public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
-        {
-            if(!cond2)
-            {
-                cond2 =
-                    npc.type == NPCID.MoonLordCore ||
-                    npc.type == NPCID.MoonLordFreeEye ||
-                    npc.type == NPCID.MoonLordHand ||
-                    npc.type == NPCID.MoonLordHead ||
-                    npc.type == NPCID.MoonLordLeechBlob;
-            }
-        }
+		public override void OnCombatWithNPC(NPC npc, bool playerGotHit, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+		{
+			if (!cond2)
+			{
+				cond2 =
+					npc.type == NPCID.MoonLordCore ||
+					npc.type == NPCID.MoonLordFreeEye ||
+					npc.type == NPCID.MoonLordHand ||
+					npc.type == NPCID.MoonLordHead ||
+					npc.type == NPCID.MoonLordLeechBlob;
+			}
+		}
 
-        public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
-        {
-            if (npc.type == NPCID.MoonLordCore) cond1 = true;
-        }
+		public override void OnAnyNPCDeath(NPC npc, Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+		{
+			if (npc.type == NPCID.MoonLordCore) cond1 = true;
+		}
 
-        public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
-        {
-            return cond1 && cond2;
-        }
-    }
+		public override bool CheckConditions(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+		{
+			return cond1 && cond2;
+		}
+	}
 }

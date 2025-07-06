@@ -4,32 +4,31 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items.Moonstone
+namespace ExpeditionsContent144.Items.Moonstone
 {
-    public class MoonstoneArrow : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Yutu Arrow");
-            Tooltip.SetDefault("Decreases target's defense");
-        }
-        public override void SetDefaults()
-        {
-            item.CloneDefaults(ItemID.WoodenArrow);
+	public class MoonstoneArrow : ModItem
+	{
+		public override void SetStaticDefaults()
+		{
+			/****DisplayName.SetDefault("Yutu Arrow");
+            Tooltip.SetDefault("Decreases target's defense");*/
+		}
+		public override void SetDefaults()
+		{
+			Item.CloneDefaults(ItemID.WoodenArrow);
 
-            item.shoot = mod.ProjectileType<Projs.MoonstoneArrow>();
+			Item.shoot = ModContent.ProjectileType<Projs.MoonstoneArrow>();
 
-            item.damage = 9;
-            item.rare = 2;
-            item.value = Item.buyPrice(0, 0, 0, 50);
-        }
-        public override void AddRecipes()
-        {
-            ModRecipe recipe = new ModRecipe(mod);
-            recipe.AddIngredient(mod.ItemType<Moonstone>(), 1);
-            recipe.AddTile(TileID.Anvils);
-            recipe.SetResult(this, 50);
-            recipe.AddRecipe();
-        }
-    }
+			Item.damage = 9;
+			Item.rare = 2;
+			Item.value = Item.buyPrice(0, 0, 0, 50);
+		}
+		public override void AddRecipes()
+		{
+			Recipe recipe = CreateRecipe(50);
+			recipe.AddIngredient(ModContent.ItemType<Moonstone>(), 1);
+			recipe.AddTile(TileID.Anvils);
+			recipe.Register();
+		}
+	}
 }

@@ -5,44 +5,59 @@ using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
 using Terraria.Enums;
+using Terraria.GameContent.ObjectInteractions;
 
-namespace ExpeditionsContent.Tiles
+namespace ExpeditionsContent144.Tiles
 {
-    class Telescope : ModTile
-    {
-        public const int tileWidth = 2;
-        public const int tileHeight = 3;
-        public override void SetDefaults()
-        {
-            //extra info
-            Main.tileFrameImportant[Type] = true;
-            Main.tileLavaDeath[Type] = true;
-            ModTranslation name = CreateMapEntryName();
-            name.SetDefault("Telescope");
-            AddMapEntry(new Color(49, 121, 221), name);
-            dustType = 7;
-            disableSmartCursor = true;
+	class Telescope : ModTile
+	{
+		public static int itemType;
 
-            TileObjectData.newTile.CopyFrom(TileObjectData.GetTileData(TileID.Mannequin, 0));
-            TileObjectData.newTile.Width = tileWidth;
-            TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
+		public const int tileWidth = 2;
+		public const int tileHeight = 3;
+		public override void SetStaticDefaults()
+		{
+			//extra info
+			Main.tileFrameImportant[Type] = true;
+			Main.tileLavaDeath[Type] = true;
+			/****ModTranslation name = CreateMapEntryName();
+            name.SetDefault("Telescope");****/
+			AddMapEntry(new Color(49, 121, 221), Mod.GetLocalization("Tiles.Telescope"));
+			DustType = 7;
+			TileID.Sets.DisableSmartCursor[Type] = true;
 
-            //offset into ground
-            TileObjectData.newTile.DrawYOffset = 2;
+			TileObjectData.newTile.CopyFrom(TileObjectData.GetTileData(TileID.Mannequin, 0));
+			TileObjectData.newTile.Width = tileWidth;
+			TileObjectData.newTile.AnchorBottom = new AnchorData(AnchorType.SolidTile | AnchorType.SolidWithTop | AnchorType.SolidSide, TileObjectData.newTile.Width, 0);
 
-            TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
-            TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
-            TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
-            TileObjectData.addAlternate(1);
+			//offset into ground
+			TileObjectData.newTile.DrawYOffset = 2;
 
-            TileObjectData.addTile(Type);
-        }
+			TileObjectData.newTile.Direction = TileObjectDirection.PlaceLeft;
+			TileObjectData.newAlternate.CopyFrom(TileObjectData.newTile);
+			TileObjectData.newAlternate.Direction = TileObjectDirection.PlaceRight;
+			TileObjectData.addAlternate(1);
 
-        public override void KillMultiTile(int i, int j, int frameX, int frameY)
-        {
-            Item.NewItem(i * 16, j * 16,
-                tileWidth * 16, tileHeight * 16,
-                mod.ItemType<Items.QuestItems.Telescope>());
-        }
-    }
+			TileObjectData.addTile(Type);
+
+			itemType = ModContent.ItemType<Items.QuestItems.Telescope>();
+			RegisterItemDrop(itemType, 0, 1);
+		}
+
+		public override bool HasSmartInteract(int i, int j, SmartInteractScanSettings settings) => false;
+
+
+		public override void MouseOver(int i, int j)
+		{
+			// Unfixable issue - always uses mouseover of most recent player
+			// current comprimise is to remove when in multiplayer altogether
+			if (Main.netMode == NetmodeID.Server) return; // **** changed to "== NetmodeID.Server", was "> 0"
+
+			Player player = Main.LocalPlayer;
+
+			player.noThrow = 2;
+			player.cursorItemIconID = itemType;
+			player.cursorItemIconEnabled = true;
+		}
+	}
 }

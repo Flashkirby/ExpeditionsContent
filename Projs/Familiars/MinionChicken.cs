@@ -1,48 +1,49 @@
 ﻿using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 
-namespace ExpeditionsContent.Projs.Familiars
+namespace ExpeditionsContent144.Projs.Familiars
 {
-    class MinionChicken : FamiliarMinion
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Familiar Fowl");
-            Main.projFrames[projectile.type] = 15;
-            ProjectileID.Sets.MinionSacrificable[projectile.type] = true;
-            ProjectileID.Sets.MinionTargettingFeature[projectile.type] = true;
-            ProjectileID.Sets.Homing[projectile.type] = true;
+	class MinionChicken : FamiliarMinion
+	{
+		public override void SetStaticDefaults()
+		{
+			//****DisplayName.SetDefault("Familiar Fowl");
+			Main.projFrames[Type] = 15;
+			ProjectileID.Sets.MinionSacrificable[Type] = true;
+			ProjectileID.Sets.MinionTargettingFeature[Type] = true;
+			ProjectileID.Sets.CultistIsResistantTo[Type] = true; //**** was "Homming" instead of "CultistIsResistantTo"
 
-            // Animation Frames
-            attackFrame = 8;
-            attackFrameCount = 3;
-            runFrame = 1;
-            runFrameCount = 7;
-            flyFrame = 11;
-            flyFrameSpeed = 3;
-            flyRotationMod = 0.3f;
-            fallFrame = 11;
+			// Animation Frames
+			attackFrame = 8;
+			attackFrameCount = 3;
+			runFrame = 1;
+			runFrameCount = 7;
+			flyFrame = 11;
+			flyFrameSpeed = 3;
+			flyRotationMod = 0.3f;
+			fallFrame = 11;
 
-            // No servers allowed. Only authorised clients and hosts.
-            if (Main.netMode == 2) return;
+			// No servers allowed. Only authorised clients and hosts.
+			if (Main.netMode == 2) return;
 
-            drawOriginOffsetY = (Main.projectileTexture[projectile.type].Width - projectile.width) / 2;
-            drawOffsetX = (Main.projectileTexture[projectile.type].Height / Main.projFrames[projectile.type]) - projectile.height - 4;
-        }
-        public override void SetDefaults()
-        {
-            projectile.netImportant = true;
-            projectile.width = 30;
-            projectile.height = 24;
+			DrawOriginOffsetY = (TextureAssets.Projectile[Type].Width() - Projectile.width) / 2;
+			DrawOffsetX = (TextureAssets.Projectile[Type].Height() / Main.projFrames[Type]) - Projectile.height - 4;
+		}
+		public override void SetDefaults()
+		{
+			Projectile.netImportant = true;
+			Projectile.width = 30;
+			Projectile.height = 24;
 
-            projectile.minion = true;
-            projectile.minionSlots = 1;
-            projectile.penetrate = -1;
-            projectile.timeLeft *= 5;
-            projectile.netImportant = true;
+			Projectile.minion = true;
+			Projectile.minionSlots = 1;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft *= 5;
+			Projectile.netImportant = true;
 
-            AIPrioritiseNearPlayer = false;
-            AIPrioritiseFarEnemies = false;
-        }
-    }
+			AIPrioritiseNearPlayer = false;
+			AIPrioritiseFarEnemies = false;
+		}
+	}
 }

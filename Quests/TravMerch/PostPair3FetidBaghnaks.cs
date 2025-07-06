@@ -1,50 +1,50 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions;
+using Expeditions144;
 
-namespace ExpeditionsContent.Quests.TravMerch
+namespace ExpeditionsContent144.Quests.TravMerch
 {
-    class PostPair3FetidBaghnaks : ModExpedition
-    {
-        public override void SetDefaults()
-        {
-            expedition.name = "Trading  Baghnaks";
-            SetNPCHead(NPCID.TravellingMerchant);
-            expedition.difficulty = 5;
-            expedition.ctgCollect = true;
-        }
-        public override void AddItemsOnLoad()
-        {
-            AddDeliverable(ItemID.GoldCoin);
-            AddDeliverableAnyOf(new int[]{
-                ItemID.ChainGuillotines,
-                ItemID.DartRifle,
-            }, 1);
+	class PostPair3FetidBaghnaks : ModExpedition
+	{
+		public override void SetDefaults()
+		{
+			expedition.name = "Trading  Baghnaks";
+			SetNPCHead(NPCID.TravellingMerchant);
+			expedition.difficulty = 5;
+			expedition.ctgCollect = true;
+		}
+		public override void AddItemsOnLoad()
+		{
+			AddDeliverable(ItemID.GoldCoin);
+			AddDeliverableAnyOf(new int[]{
+				ItemID.ChainGuillotines,
+				ItemID.DartRifle,
+			}, 1);
 
-            AddRewardItem(ItemID.FetidBaghnakhs);
-        }
-        public override string Description(bool complete)
-        {
-            return "Who needs range? Not you! For what these claws lack in range, they make up for with sheer power. Rip and tear! ";
-        }
+			AddRewardItem(ItemID.FetidBaghnakhs);
+		}
+		public override string Description(bool complete)
+		{
+			return "Who needs range? Not you! For what these claws lack in range, they make up for with sheer power. Rip and tear! ";
+		}
 
-        public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
-        {
-            expedition.ResetProgress(true); //Reset after trade use
-        }
+		public override void OnNewDay(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+		{
+			expedition.ResetProgress(true); //Reset after trade use
+		}
 
-        public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
-        {
-            // Must have travelling merchant present
-            if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
+		public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)
+		{
+			// Must have travelling merchant present
+			if (NPC.FindFirstNPC(NPCID.TravellingMerchant) == -1) return false;
 
-            //Won't offer unless item is held
-            if (!API.InInventory[ItemID.ChainGuillotines] &&
-                !API.InInventory[ItemID.DartRifle]
-                ) return false;
+			//Won't offer unless item is held
+			if (!API.InInventory[ItemID.ChainGuillotines] &&
+				!API.InInventory[ItemID.DartRifle]
+				) return false;
 
-            return NPC.downedMechBossAny && !WorldGen.crimson;
-        }
-    }
+			return NPC.downedMechBossAny && !WorldGen.crimson;
+		}
+	}
 }

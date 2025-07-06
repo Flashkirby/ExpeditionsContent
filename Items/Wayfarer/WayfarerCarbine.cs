@@ -1,33 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items.Wayfarer
+namespace ExpeditionsContent144.Items.Wayfarer
 {
-    public class WayfarerCarbine : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Wayfarer's Carbine");
-        }
-        public override void SetDefaults()
-        {
-            item.CloneDefaults(ItemID.TheUndertaker);
-            item.width = 36;
-            item.height = 18;
+	public class WayfarerCarbine : ModItem
+	{
+		public override void SetStaticDefaults()
+		{
+			//****DisplayName.SetDefault("Wayfarer's Carbine");
+		}
+		public override void SetDefaults()
+		{
+			Item.CloneDefaults(ItemID.TheUndertaker);
+			Item.width = 36;
+			Item.height = 18;
 
-            item.damage += 1;
-            item.useAnimation += 2;
-            item.useTime += 2;
-            item.knockBack += 1f;
-            item.shootSpeed += 1.5f;
+			Item.damage += 1;
+			Item.useAnimation += 2;
+			Item.useTime += 2;
+			Item.useTime = Item.useAnimation; // **** for some reason, these are not equal normally
+			Item.knockBack += 1f;
+			Item.shootSpeed += 1.5f;
 
-            item.value = Item.buyPrice(0, 3, 0, 0);
-        }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2();
-        }
-    }
+			Item.value = Item.buyPrice(0, 3, 0, 0);
+		}
+
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2();
+		}
+	}
 }

@@ -2,31 +2,31 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items.Moonstone
+namespace ExpeditionsContent144.Items.Moonstone
 {
-    public class LootBagMoonstone : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Moongem Box");
-            Tooltip.SetDefault("Right click to open");
-        }
-        public override void SetDefaults()
-        {
-            item.width = 22;
-            item.height = 20;
-            item.maxStack = 30;
-            item.rare = 2;
-        }
+	public class LootBagMoonstone : ModItem
+	{
+		public override void SetStaticDefaults()
+		{
+			/****DisplayName.SetDefault("Moongem Box");
+            Tooltip.SetDefault("Right click to open");*/
+		}
+		public override void SetDefaults()
+		{
+			Item.width = 22;
+			Item.height = 20;
+			Item.maxStack = 30;
+			Item.rare = 2;
+		}
 
-        public override bool CanRightClick()
-        {
-            return true;
-        }
+		public override bool CanRightClick()
+		{
+			return true;
+		}
 
-        public override void RightClick(Player player)
-        {
-            player.QuickSpawnItem(mod.ItemType<Moonstone>(), Main.rand.Next(8, 13));
-        }
-    }
+		public override void RightClick(Player player)
+		{
+			player.QuickSpawnItem(Item.GetSource_FromThis("ExpeditionsContent144_LootBagMoonstone"), ModContent.ItemType<Moonstone>(), Main.rand.Next(8, 13));
+		}
+	}
 }

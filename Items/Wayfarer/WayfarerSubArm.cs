@@ -4,52 +4,51 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items.Wayfarer
+namespace ExpeditionsContent144.Items.Wayfarer
 {
-    public class WayfarerSubArm : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Wayfarer's Subber");
+	public class WayfarerSubArm : ModItem
+	{
+		public override void SetStaticDefaults()
+		{
+			/****DisplayName.SetDefault("Wayfarer's Subber");
             Tooltip.SetDefault("50% chance not to consume ammo\n"
-                + "'Spray and pray'");
-        }
-        public override void SetDefaults()
-        {
-            item.CloneDefaults(ItemID.Minishark);
-            item.width = 42;
-            item.height = 24;
+                + "'Spray and pray'");*/
+		}
+		public override void SetDefaults()
+		{
+			Item.CloneDefaults(ItemID.Minishark);
+			Item.width = 42;
+			Item.height = 24;
 
-            item.UseSound = new LegacySoundStyle(42, 194);
-            item.damage = 4;
-            item.knockBack = 0.5f;
-            item.useAnimation = 5;
-            item.useTime = 5;
-            item.shootSpeed += 2f;
+			Item.UseSound = SoundID.DD2_CrystalCartImpact; //**** new LegacySoundStyle(42, 194); // 100 is GoblinBomberThrow2. 194 is CrystalCartImpact1?
+			Item.damage = 4;
+			Item.knockBack = 0.5f;
+			Item.useAnimation = 5;
+			Item.useTime = 5;
+			Item.shootSpeed += 2f;
 
-            item.value = Item.sellPrice(0, 1, 0, 0);
-        }
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            speedX += Main.rand.NextFloatDirection() * 2f;
-            speedY += Main.rand.NextFloatDirection() * 2f;
-            return true;
-        }
-        public override bool ConsumeAmmo(Player player)
-        {
-            return Main.rand.NextBool();
-        }
+			Item.value = Item.sellPrice(0, 1, 0, 0);
+		}
+		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+		{
+			velocity.X += Main.rand.NextFloatDirection() * 2f;
+			velocity.Y += Main.rand.NextFloatDirection() * 2f;
+		}
+		public override bool CanConsumeAmmo(Item ammo, Player player)
+		{
+			return Main.rand.NextBool();
+		}
 
-        public override void HoldItem(Player player)
-        {
-            if (player.itemAnimation == player.itemAnimationMax - 1)
-            {
-                player.itemRotation += Main.rand.NextFloatDirection() * 0.13f;
-            }
-        }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2(-10, 3);
-        }
-    }
+		public override void HoldItem(Player player)
+		{
+			if (player.itemAnimation == player.itemAnimationMax - 1)
+			{
+				player.itemRotation += Main.rand.NextFloatDirection() * 0.13f;
+			}
+		}
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2(-10, 3);
+		}
+	}
 }

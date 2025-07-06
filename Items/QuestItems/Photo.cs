@@ -9,297 +9,272 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Terraria.GameContent;
+using ReLogic.Content;
+using Terraria.DataStructures;
 
-namespace ExpeditionsContent.Items.QuestItems
+namespace ExpeditionsContent144.Items.QuestItems
 {
-    public class Photo : ModItem
-    {
-        public const int brokenPrefix = 40;
-        public const int ignorantPrefix = 30;
-        public string npcName = "";
-        public string npcMod = "";
-        private Texture2D npcTexture = null;
-        public Texture2D NpcTexture
-        {
-            get
-            {
-                if (npcTexture == null)
-                {
-                    // Don't try setting up if the photo is not normal
-                    if (item.prefix == 0)
-                    {
-                        try
-                        {
-                            if (Main.netMode != 2)
-                            {
-                                npcTexture = Main.npcTexture[item.stack];
-                            }
-                        }
-                        catch
-                        {
-                            // NPC at this id doesn't exist
-                            npcTexture = Main.magicPixel;
-                        }
-                    }
-                    // Set photo info
-                    SetNameAndMod();
-                }
+	public class Photo : ModItem
+	{
+		public String npcModName = "";
+		public String npcInteralName = "";
+		public int npcType = 0;
 
-                // Give a magic pixel until mod photo can be resolved
-                if (item.prefix == ignorantPrefix) return Main.magicPixel;
+		public Rectangle npcFrame = default(Rectangle);
+		public Color npcColor = Color.White;
+		public String npcDisplayName = "";
+		public Asset<Texture2D> npcTexture = null;
 
-                return npcTexture;
-            }
-        }
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Photo Film");
+		public override void SetStaticDefaults()
+		{
+			/****DisplayName.SetDefault("Photo Film");
             Tooltip.SetDefault("Used in conjuction with a camera\n"
-                + "<right> to clear the image");
-        }
-        public override void SetDefaults()
-        {
-            item.width = 28;
-            item.height = 28;
-            item.rare = 0;
-            item.value = Item.buyPrice(0, 0, 0, 0);
+                + "<right> to clear the image");*/
+		}
+		public override void SetDefaults()
+		{
+			Item.width = 28;
+			Item.height = 28;
+			Item.rare = 0;
+			Item.value = Item.buyPrice(0, 0, 0, 0);
+			Item.maxStack = 1;
+			Item.holdStyle = ItemHoldStyleID.HoldFront;
+			Item.scale = 2;
 
-            npcName = "";
-            npcMod = "";
-            npcTexture = null;
-        }
-        public override TagCompound Save()
-        {
-            return new TagCompound
-            {
-                { "npcName", npcName },
-                { "npcMod", npcMod }
-            };
-        }
-        public override void Load(TagCompound tag)
-        {
-            npcName = tag.GetString("npcName");
-            npcMod = tag.GetString("npcMod");
-            npcTexture = null;
+			npcDisplayName = "";
+			npcType = 0;
+			npcFrame = default(Rectangle);
+			npcTexture = null;
+		}
 
-            // Set the photo to the item stack of this NPC
-            // In case the mod order shuffled around or something
-            Mod loadMod = ModLoader.GetMod(npcMod);
-            if (loadMod != null)
-            {
-                // Mod found!
-                item.prefix = ignorantPrefix; 
-                //ignorant lmao, just so the other method can assign it
-            }
-            else
-            {
-                if (npcMod.Equals("VANILLA"))
-                {
-                    // Vanilla NPC so yeah
-                    NPC npc = GenerateNPC();
-                    item.stack = npc.type;
-                }
-                // NPC is unloaded
-                else
-                {
-                    item.prefix = brokenPrefix;
-                }
-            }
-        }
+		public void SetupNPCInfo(int type, Rectangle frame, String displayName, Color col)
+		{
+			if (npcType < NPCID.Count)
+			{
+				this.npcModName = "Terraria";
+				this.npcInteralName = "" + type;
+			}
+			else
+			{
+				ModNPC inst = NPCLoader.GetNPC(npcType);
+				this.npcModName = inst.Mod.Name;
+				this.npcInteralName = inst.Name;
+			}
+			this.npcType = type;
+			this.npcFrame = frame;
+			this.npcDisplayName = displayName;
+			this.npcColor = col;
 
-        /// <summary>
-        /// Generate a default npc object
-        /// </summary>
-        /// <returns></returns>
-        private NPC GenerateNPC()
-        {
-            try
-            {
-                NPC n = new NPC();
-                n.SetDefaults(item.stack);
-                if (n.modNPC != null) n.modNPC.SetDefaults();
-                if (n.townNPC)
-                {
-                    // Get the actual town NPC if they exist already
-                    int whoAmI = NPC.FindFirstNPC(n.type);
-                    if (whoAmI >= 0)
-                    {
-                        return Main.npc[whoAmI];
-                    }
-                }
+			npcTexture = TextureAssets.Npc[npcType];
 
-                return n;
-            }
-            catch (Exception e)
-            {
-                // Main.NewText("Gen " + item.stack + ": " + e.ToString());
-            }
-            return null;
-        }
-        /// <summary>
-        /// Generate a
-        /// </summary>
-        public void SetNameAndMod()
-        {
-            if(item.prefix == ignorantPrefix)
-            {
-                // This is a 1 stack item that got loaded via a mod
-                // So we have to find where it is and re-set it.
-                item.prefix = 0;
-                Mod loadMod = ModLoader.GetMod(npcMod);
-                item.stack = loadMod.NPCType(npcName);
-            }
+			Item.SetNameOverride($"Photo of {npcDisplayName}, no. ({npcType})");
+		}
 
-            // Get NPC from the stack
-            NPC npc = GenerateNPC();
+		public override void SaveData(TagCompound tag)
+		{
+			tag.Add("npcName", npcInteralName);
+			tag.Add("modName", npcModName);
+			tag.Add("displayName", npcDisplayName);
+			tag.Add("npcFrameRect", npcFrame);
+			tag.Add("npcColor", npcColor);
+		}
 
-            // Early stop, if this NPC doesn't exist or photo is broken
-            if (npc == null || item.prefix == brokenPrefix)
-            {
-                item.SetNameOverride("Photo"); //With 'Damaged' prefix
-                item.stack = 1;
-                item.prefix = brokenPrefix;
-                return;
-            }
+		public override void LoadData(TagCompound tag)
+		{
+			npcInteralName = tag.GetString("npcName");
+			npcModName = tag.GetString("modName");
+			npcDisplayName = tag.GetString("displayName");
+			npcFrame = tag.Get<Rectangle>("npcFrameRect");
+			npcColor = tag.Get<Color>("npcColor");
 
-            // Save the name of the NPC
-            npcName = npc.TypeName;
-            npcMod = "VANILLA";
-            if (npc.modNPC != null) // Non-vanilla
-            {
-                npcName = npc.modNPC.GetType().Name; // Use mods
-                npcMod = npc.modNPC.mod.Name;
-            }
+			npcTexture = null;
+			npcType = 0;
 
-            // Set photo info
-            if (npc.townNPC)
-            { item.SetNameOverride("Photo of " + npc.GivenName + ", no."); }
-            else
-            {
-                if (npc.type == 1)
-                {
-                    // Slimes are just slimes
-                    item.SetNameOverride( "Photo of " + Lang.GetNPCName(NPCID.SlimeRibbonWhite) + ", no. (1)");
-                }
-                else
-                {
-                    item.SetNameOverride("Photo of " + npc.TypeName + ", no.");
-                    // If a more specialised name exists, use that instead.
-                    if(npc.GivenName.Length >= npc.TypeName.Length)
-                    {
-                        item.SetNameOverride("Photo of " + npc.GivenName + ", no.");
-                    }
-                }
-            }
+			// Find out the current type either from base game or a mod
+			if (npcModName != "Terraria")
+			{
+				Mod npcMod;
+				ModNPC npcInst;
+				if (ModLoader.TryGetMod(npcModName, out npcMod) && npcMod.TryFind<ModNPC>(npcInteralName, out npcInst))
+					npcType = npcInst.Type;
+				else
+					return;
+			}
+			else
+			{
+				if (!int.TryParse(npcInteralName, out npcType))
+				{
+					npcType = 0;
+					return;
+				}
+			}
 
-            // Set stack
-            item.maxStack = item.stack;
+			// Use the type to get the texture and frame count
+			npcTexture = TextureAssets.Npc[npcType];
 
-            // Set photo rarity
-            item.rare = 0;
-            if (npc.defense >= 16) item.rare = 4;
-            if (npc.boss || npc.townNPC)
-            {
-                item.rare++;
-            }
-        }
+			// Set the name of the item
+			Item.SetNameOverride($"Photo of {npcDisplayName}, no. ({npcType})");
+		}
 
-        public override void ModifyTooltips(List<TooltipLine> tooltips)
-        {
-            if(npcName != "")
-            {
-                if (item.prefix == brokenPrefix)
-                {
-                    tooltips.Clear();
-                    if (npcMod != "")
-                    {
-                        tooltips.Add(new TooltipLine(mod, "PhotoImageUnloaded", "The image is clouded beyond recognition"));
-                        tooltips.Add(new TooltipLine(mod, "PhotoImageMod", "Mod: " + npcMod));
-                    }
-                    else
-                    {
-                        tooltips.Add(new TooltipLine(mod, "PhotoImageMissing", "The image is damaged beyond repair"));
-                    }
-                }
-                else
-                {
-                    tooltips.RemoveAt(0);
-                }
-            }
-        }
+		public override void NetSend(BinaryWriter writer)
+		{
+			writer.Write7BitEncodedInt(npcType);
+			writer.Write7BitEncodedInt(npcFrame.X);
+			writer.Write7BitEncodedInt(npcFrame.Y);
+			writer.Write7BitEncodedInt(npcFrame.Width);
+			writer.Write7BitEncodedInt(npcFrame.Height);
+			writer.Write(npcColor.PackedValue);
+			writer.Write(npcDisplayName);
+		}
 
-        #region Draw Photo
-        // Going to use double size, since scale is half sized to fit NPC
-        public const int viewPortWidth = 16 * 2;
-        public const int viewPortHeight = 24 * 2;
-        private Rectangle CalculateSourceRectangle()
-        {
-            // Make rectangle of first frame and get the centre point
-            int frames = Main.npcFrameCount[item.stack];
-            Rectangle rect = new Rectangle(
-                0, 0, NpcTexture.Width,
-                NpcTexture.Height / frames);
-            Point center = new Point(rect.Width / 2, rect.Height / 2);
+		public override void NetReceive(BinaryReader reader)
+		{
+			int type = reader.Read7BitEncodedInt();
+			int frameX = reader.Read7BitEncodedInt();
+			int frameY = reader.Read7BitEncodedInt();
+			int frameW = reader.Read7BitEncodedInt();
+			int frameH = reader.Read7BitEncodedInt();
+			Rectangle frame = new Rectangle(frameX, frameY, frameW, frameH);
+			Color color = default(Color);
+			color.PackedValue = reader.ReadUInt32();
+			String displayName = reader.ReadString();
+			SetupNPCInfo(type, frame, displayName, color);
+		}
 
-            // Offset the frame by the width/height
-            int width = Math.Min(viewPortWidth, rect.Width);
-            int height = Math.Min(viewPortHeight, rect.Height);
-            rect.Location = new Point(
-                 center.X - width / 2,
-                center.Y - height / 2);
 
-            //Set size of source rectangle
-            rect.Width = width;
-            rect.Height = height;
-            return rect;
-        }
+		public override void ModifyTooltips(List<TooltipLine> tooltips)
+		{
+			if (npcType == 0)
+			{
+				tooltips.Clear();
+				tooltips.Add(new TooltipLine(Mod, "PhotoImageUnloaded", "The image is clouded beyond recognition"));
+				tooltips.Add(new TooltipLine(Mod, "PhotoImageMod", "Mod: " + npcModName));
+				tooltips.Add(new TooltipLine(Mod, "PhotoImageMod", "Name: " + npcInteralName));
+			}
+		}
 
-        // Photo Clearing, actually to prevent stack fiddling
-        public override bool CanRightClick()
-        {
-            return true;
-        }
-        public override void RightClick(Player player)
-        {
-            item.SetDefaults();
-            player.QuickSpawnItem(mod.ItemType<PhotoBlank>());
-        }
+		#region Draw Photo
+		// Going to use double size, since scale is half sized to fit NPC
+		public const int viewPortWidth = 16 * 2;
+		public const int viewPortHeight = 24 * 2;
+		public Rectangle CalculateSourceRectangle()
+		{
+			// Make rectangle of first frame and get the centre point
+			Rectangle rect = this.npcFrame;
 
-        // Draw
-        public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
-        {
-            if (NpcTexture == null) return;
+			if (rect.Width > viewPortWidth)
+			{
+				rect.X += (rect.Width - viewPortWidth) / 2;
+				rect.Width = viewPortWidth;
+			}
 
-            Rectangle rect = CalculateSourceRectangle();
+			if (rect.Height > viewPortHeight)
+			{
+				rect.Y += (rect.Height - viewPortHeight) * 3 / 4;
+				rect.Height = viewPortHeight;
+			}
 
-            spriteBatch.Draw(
-                NpcTexture,
-                position + new Vector2(6 * scale, 2 * scale),
-                rect,
-                drawColor,
-                0f,
-                origin,
-                scale / 2,
-                SpriteEffects.None, 0);
-        }
+			return rect;
+		}
 
-        public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
-        {
-            if (NpcTexture == null) return;
+		// Photo Clearing, actually to prevent stack fiddling
+		public override bool CanRightClick()
+		{
+			return true;
+		}
+		public override void RightClick(Player player)
+		{
+			Item.SetDefaults();
+			player.QuickSpawnItem(player.GetSource_ItemUse(Item), ModContent.ItemType<PhotoBlank>());
+		}
 
-            Rectangle rect = CalculateSourceRectangle();
+		// Draw
+		public override void PostDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
+		{
+			if (npcTexture == null) return;
 
-            spriteBatch.Draw(
-                NpcTexture,
-                item.Center - Main.screenPosition,
-                rect,
-                lightColor,
-                rotation,
-                item.Size / 2 + new Vector2(2, 6),
-                scale / 2,
-                SpriteEffects.None, 0);
-        }
-        #endregion
-    }
+			if (npcType < NPCID.Count)
+				Main.instance.LoadNPC(npcType);
+
+			Rectangle rect = CalculateSourceRectangle();
+
+			spriteBatch.Draw(
+				npcTexture.Value,
+				position - origin + frame.Size() / 2,
+				rect,
+				this.npcColor.MultiplyRGBA(drawColor),
+				0f,
+				rect.Size() / 2,
+				scale / 2,
+				SpriteEffects.None, 0);
+		}
+
+		public override void PostDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, float rotation, float scale, int whoAmI)
+		{
+			if (npcTexture == null) return;
+
+			if (npcType < NPCID.Count)
+				Main.instance.LoadNPC(npcType);
+
+			Rectangle rect = CalculateSourceRectangle();
+
+			spriteBatch.Draw(
+				npcTexture.Value,
+				Item.Center - Main.screenPosition,
+				rect,
+				this.npcColor.MultiplyRGBA(lightColor),
+				rotation,
+				rect.Size() / 2,
+				scale / 2,
+				SpriteEffects.None, 0);
+		}
+
+		#endregion
+
+		public override void HoldItemFrame(Player player)
+		{
+			player.itemLocation += Vector2.UnitX * (-8 * player.direction);
+			base.HoldItemFrame(player);
+		}
+	}
+
+
+	public class PhotoImageLayer : PlayerDrawLayer
+	{
+		public override bool GetDefaultVisibility(PlayerDrawSet drawInfo)
+		{
+
+			return drawInfo.heldItem != null
+				&& drawInfo.heldItem.type == ExpeditionC144.ItemIDPhoto;
+		}
+
+		public override Position GetDefaultPosition()
+		{
+			return new AfterParent(PlayerDrawLayers.HeldItem);
+		}
+
+		protected override void Draw(ref PlayerDrawSet drawinfo)
+		{
+			Photo photo = (Photo)drawinfo.heldItem.ModItem;
+			if (photo.npcTexture == null)
+				return;
+
+			if (photo.npcType < NPCID.Count)
+				Main.instance.LoadNPC(photo.npcType);
+
+			Rectangle rect = photo.CalculateSourceRectangle();
+
+			Vector2 position = new Vector2((int)(drawinfo.ItemLocation.X - Main.screenPosition.X), (int)(drawinfo.ItemLocation.Y - Main.screenPosition.Y));
+			Rectangle itemDrawFrame = drawinfo.drawPlayer.GetItemDrawFrame(ExpeditionC144.ItemIDPhoto);
+			Color col = drawinfo.heldItem.GetAlpha(drawinfo.itemColor);
+			float num5 = drawinfo.drawPlayer.itemRotation;
+			Vector2 origin = new Vector2((float)itemDrawFrame.Width * 0.5f - (float)itemDrawFrame.Width * 0.5f * (float)drawinfo.drawPlayer.direction, itemDrawFrame.Height);
+			float adjustedItemScale = drawinfo.drawPlayer.GetAdjustedItemScale(drawinfo.heldItem);
+			// drawinfo.itemEffect
+
+			DrawData data = new DrawData(photo.npcTexture.Value, position + (itemDrawFrame.Size() / 2 - origin) * adjustedItemScale, rect, photo.npcColor.MultiplyRGBA(col), num5, rect.Size() / 2, adjustedItemScale / 2, drawinfo.itemEffect);
+			drawinfo.DrawDataCache.Add(data);
+		}
+	}
 }

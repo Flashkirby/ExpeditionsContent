@@ -1,49 +1,51 @@
-﻿using Microsoft.Xna.Framework;
+﻿using ExpeditionsContent144.Projs;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent.Items.Wayfarer
+namespace ExpeditionsContent144.Items.Wayfarer
 {
-    public class WayfarerBook : ModItem
-    {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault("Wayfarer's Wind");
+	public class WayfarerBook : ModItem
+	{
+		public override void SetStaticDefaults()
+		{
+			/****DisplayName.SetDefault("Wayfarer's Wind");
             Tooltip.SetDefault("Casts a mighty gust of wind\n"
-                + "'It werfs nebels'");
-        }
-        public override void SetDefaults()
-        {
-            item.CloneDefaults(ItemID.WaterBolt);
-            item.UseSound = SoundID.Item34;
+                + "'It werfs nebels'");*/
+		}
+		public override void SetDefaults()
+		{
+			Item.CloneDefaults(ItemID.WaterBolt);
+			Item.UseSound = SoundID.Item34;
 
-            item.mana = 12;
-            item.damage = 6;
-            item.useAnimation = 45;
-            item.useTime = 45;
-            item.knockBack = 7f;
-            item.shoot = mod.ProjectileType("Gust");
-            item.shootSpeed = 7f;
+			Item.mana = 12;
+			Item.damage = 6;
+			Item.useAnimation = 45;
+			Item.useTime = 45;
+			Item.knockBack = 7f;
+			Item.shoot = ModContent.ProjectileType<Gust>();
+			Item.shootSpeed = 7f;
 
-            item.value = Item.buyPrice(0, 3, 0, 0);
-        }
-        public override Vector2? HoldoutOffset()
-        {
-            return new Vector2();
-        }
+			Item.value = Item.buyPrice(0, 3, 0, 0);
+		}
+		public override Vector2? HoldoutOffset()
+		{
+			return new Vector2();
+		}
 
-        public override bool Shoot(Player player, ref Vector2 position, ref float speedX, ref float speedY, ref int type, ref int damage, ref float knockBack)
-        {
-            Projectile.NewProjectile(position, new Vector2(
-                speedX + 2f * (Main.rand.NextFloat() - 0.5f),
-                speedY + 2f * (Main.rand.NextFloat() - 0.5f)
-                ), type, damage, knockBack, player.whoAmI);
-            Projectile.NewProjectile(position, new Vector2(
-                speedX + 4f * (Main.rand.NextFloat() - 0.5f),
-                speedY + 4f * (Main.rand.NextFloat() - 0.5f)
-                ), type, damage, knockBack, player.whoAmI);
-            return base.Shoot(player, ref position, ref speedX, ref speedY, ref type, ref damage, ref knockBack);
-        }
-    }
+		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+		{
+			Projectile.NewProjectile(source, position, new Vector2(
+				velocity.X + 2f * (Main.rand.NextFloat() - 0.5f),
+				velocity.Y + 2f * (Main.rand.NextFloat() - 0.5f)
+				), type, damage, knockback, player.whoAmI);
+			Projectile.NewProjectile(source, position, new Vector2(
+				velocity.X + 4f * (Main.rand.NextFloat() - 0.5f),
+				velocity.Y + 4f * (Main.rand.NextFloat() - 0.5f)
+				), type, damage, knockback, player.whoAmI);
+			return true;
+		}
+	}
 }
