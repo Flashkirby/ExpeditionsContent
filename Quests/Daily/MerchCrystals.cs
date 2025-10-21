@@ -1,9 +1,9 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Daily
+namespace ExpeditionsContent.Quests.Daily
 {
 	class MerchCrystals : ModExpedition
 	{
@@ -22,7 +22,7 @@ namespace ExpeditionsContent144.Quests.Daily
 		}
 		public override string Description(bool complete)
 		{
-			string clerk = NPC.GetFirstNPCNameOrNull(ExpeditionC144.NPCIDClerk);
+			string clerk = NPC.GetFirstNPCNameOrNull(ExpeditionsContent.NPCIDClerk);
 			if (clerk == "") clerk = "the clerk";
 			return "Hey, you know what sells amazingly well right now? Crystak shards. Overseas that is, I'm not paying you any extra to get it for me. But I'll put in a word with " + clerk + ", how's that? Now get me some crystals.";
 		}

@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Core
+namespace ExpeditionsContent.Quests.Core
 {
 	class CBSavingGrace : ModExpedition
 	{

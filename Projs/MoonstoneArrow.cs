@@ -6,7 +6,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Projs
+namespace ExpeditionsContent.Projs
 {
 	class MoonstoneArrow : ModProjectile
 	{
@@ -31,11 +31,11 @@ namespace ExpeditionsContent144.Projs
 		}
 		public override void OnHitNPC(NPC target, NPC.HitInfo info, int damageDone)
 		{
-			target.AddBuff(ModContent.BuffType<Buffs.MoonlightDeBuff>(), ExpeditionC144.MoonDebuffTime);
+			target.AddBuff(ModContent.BuffType<Buffs.MoonlightDeBuff>(), ExpeditionsContent.MoonDebuffTime);
 		}
 		public override void OnHitPlayer(Player target, Player.HurtInfo info)
 		{
-			target.AddBuff(ModContent.BuffType<Buffs.MoonlightDeBuff>(), ExpeditionC144.MoonDebuffTime);
+			target.AddBuff(ModContent.BuffType<Buffs.MoonlightDeBuff>(), ExpeditionsContent.MoonDebuffTime);
 		}
 
 		public override bool OnTileCollide(Vector2 oldVelocity)

@@ -6,7 +6,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Projs
+namespace ExpeditionsContent.Projs
 {
 	class VacuumOrb : ModProjectile
 	{

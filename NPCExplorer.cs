@@ -6,11 +6,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using Expeditions144;
+using Expeditions;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 
-namespace ExpeditionsContent144
+namespace ExpeditionsContent
 {
 	public class NPCExplorer : GlobalNPC
 	{

@@ -13,7 +13,7 @@ using Terraria.GameContent;
 using ReLogic.Content;
 using Terraria.DataStructures;
 
-namespace ExpeditionsContent144.Items.QuestItems
+namespace ExpeditionsContent.Items.QuestItems
 {
 	public class Photo : ModItem
 	{
@@ -246,7 +246,7 @@ namespace ExpeditionsContent144.Items.QuestItems
 		{
 
 			return drawInfo.heldItem != null
-				&& drawInfo.heldItem.type == ExpeditionC144.ItemIDPhoto;
+				&& drawInfo.heldItem.type == ExpeditionsContent.ItemIDPhoto;
 		}
 
 		public override Position GetDefaultPosition()
@@ -266,7 +266,7 @@ namespace ExpeditionsContent144.Items.QuestItems
 			Rectangle rect = photo.CalculateSourceRectangle();
 
 			Vector2 position = new Vector2((int)(drawinfo.ItemLocation.X - Main.screenPosition.X), (int)(drawinfo.ItemLocation.Y - Main.screenPosition.Y));
-			Rectangle itemDrawFrame = drawinfo.drawPlayer.GetItemDrawFrame(ExpeditionC144.ItemIDPhoto);
+			Rectangle itemDrawFrame = drawinfo.drawPlayer.GetItemDrawFrame(ExpeditionsContent.ItemIDPhoto);
 			Color col = drawinfo.heldItem.GetAlpha(drawinfo.itemColor);
 			float num5 = drawinfo.drawPlayer.itemRotation;
 			Vector2 origin = new Vector2((float)itemDrawFrame.Width * 0.5f - (float)itemDrawFrame.Width * 0.5f * (float)drawinfo.drawPlayer.direction, itemDrawFrame.Height);

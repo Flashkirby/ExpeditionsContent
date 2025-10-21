@@ -1,4 +1,4 @@
-﻿using ExpeditionsContent144.Tiles;
+﻿using ExpeditionsContent.Tiles;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144
+namespace ExpeditionsContent
 {
 	public class Port_TileCounts : ModSystem
 	{

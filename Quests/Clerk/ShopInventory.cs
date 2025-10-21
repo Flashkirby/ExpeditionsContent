@@ -1,16 +1,16 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Clerk
+namespace ExpeditionsContent.Quests.Clerk
 {
 	class ShopInventory : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "The Expeditions Shop";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 0;
 			expedition.ctgExplore = true;
 			expedition.ctgImportant = true;

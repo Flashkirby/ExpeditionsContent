@@ -1,18 +1,18 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 using System.Collections.Generic;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Quests.Clerk
+namespace ExpeditionsContent.Quests.Clerk
 {
 	class ProCamSkill : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "Professional Photographer";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 5;
 			expedition.ctgCollect = true;
 			expedition.ctgExplore = true;

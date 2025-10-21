@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.Albums
+namespace ExpeditionsContent.Items.Albums
 {
 	public class AlbumAnimals : ModItem
 	{

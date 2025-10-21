@@ -1,0 +1,367 @@
+Tiles.Telescope: Mods.ExpeditionsContent.Tiles.Telescope
+
+Buffs: {
+	FamiliarMinion: {
+		DisplayName: Familiar Minion
+		Description: Mods.ExpeditionsContent.Buffs.FamiliarMinion.Description
+	}
+
+	MoonlightBuff: {
+		DisplayName: Moonlight Buff
+		Description: Mods.ExpeditionsContent.Buffs.MoonlightBuff.Description
+	}
+
+	MoonlightDeBuff: {
+		DisplayName: Moonlight De Buff
+		Description: Mods.ExpeditionsContent.Buffs.MoonlightDeBuff.Description
+	}
+}
+
+Items: {
+	AlbumAnimalFirst: {
+		DisplayName: Album Animal First
+		Tooltip: ""
+	}
+
+	AlbumAnimals: {
+		DisplayName: Album Animals
+		Tooltip: ""
+	}
+
+	AlbumAnimals3: {
+		DisplayName: Album Animals3
+		Tooltip: ""
+	}
+
+	AlbumAntlion: {
+		DisplayName: Album Antlion
+		Tooltip: ""
+	}
+
+	AlbumBee: {
+		DisplayName: Album Bee
+		Tooltip: ""
+	}
+
+	AlbumCavern: {
+		DisplayName: Album Cavern
+		Tooltip: ""
+	}
+
+	AlbumCavern2: {
+		DisplayName: Album Cavern2
+		Tooltip: ""
+	}
+
+	AlbumCorruption: {
+		DisplayName: Album Corruption
+		Tooltip: ""
+	}
+
+	AlbumCorruption2: {
+		DisplayName: Album Corruption2
+		Tooltip: ""
+	}
+
+	AlbumCrimson: {
+		DisplayName: Album Crimson
+		Tooltip: ""
+	}
+
+	AlbumCrimson2: {
+		DisplayName: Album Crimson2
+		Tooltip: ""
+	}
+
+	AlbumDemons: {
+		DisplayName: Album Demons
+		Tooltip: ""
+	}
+
+	AlbumDemons2: {
+		DisplayName: Album Demons2
+		Tooltip: ""
+	}
+
+	AlbumFairy: {
+		DisplayName: Album Fairy
+		Tooltip: ""
+	}
+
+	AlbumFlora: {
+		DisplayName: Album Flora
+		Tooltip: ""
+	}
+
+	AlbumMushroom: {
+		DisplayName: Album Mushroom
+		Tooltip: ""
+	}
+
+	AlbumMushroom2: {
+		DisplayName: Album Mushroom2
+		Tooltip: ""
+	}
+
+	AlbumPredators: {
+		DisplayName: Album Predators
+		Tooltip: ""
+	}
+
+	AlbumPredators2: {
+		DisplayName: Album Predators2
+		Tooltip: ""
+	}
+
+	AlbumPredators3: {
+		DisplayName: Album Predators3
+		Tooltip: ""
+	}
+
+	AlbumRare: {
+		DisplayName: Album Rare
+		Tooltip: ""
+	}
+
+	AlbumSlimes: {
+		DisplayName: Album Slimes
+		Tooltip: ""
+	}
+
+	AlbumSlimes2: {
+		DisplayName: Album Slimes2
+		Tooltip: ""
+	}
+
+	AlbumSnow: {
+		DisplayName: Album Snow
+		Tooltip: ""
+	}
+
+	AlbumUndead: {
+		DisplayName: Album Undead
+		Tooltip: ""
+	}
+
+	AlbumUndead2: {
+		DisplayName: Album Undead2
+		Tooltip: ""
+	}
+
+	AlbumUndead3: {
+		DisplayName: Album Undead3
+		Tooltip: ""
+	}
+
+	AlbumWater: {
+		DisplayName: Album Water
+		Tooltip: ""
+	}
+
+	CopyPrint: {
+		DisplayName: Copy Print
+		Tooltip: ""
+	}
+
+	LootBagMoonstone: {
+		DisplayName: Loot Bag Moonstone
+		Tooltip: ""
+	}
+
+	Moonstone: {
+		DisplayName: Moonstone
+		Tooltip: ""
+	}
+
+	MoonstoneARMHelmet: {
+		DisplayName: Moonstone A R M Helmet
+		Tooltip: ""
+	}
+
+	MoonstoneARMPants: {
+		DisplayName: Moonstone A R M Pants
+		Tooltip: ""
+	}
+
+	MoonstoneARMTunic: {
+		DisplayName: Moonstone A R M Tunic
+		Tooltip: ""
+	}
+
+	MoonstoneArrow: {
+		DisplayName: Moonstone Arrow
+		Tooltip: ""
+	}
+
+	MoonstoneBow: {
+		DisplayName: Moonstone Bow
+		Tooltip: ""
+	}
+
+	MoonstonePick: {
+		DisplayName: Moonstone Pick
+		Tooltip: ""
+	}
+
+	MoonstonePizzaCutter: {
+		DisplayName: Moonstone Pizza Cutter
+		Tooltip: ""
+	}
+
+	MoonstoneStaff: {
+		DisplayName: Moonstone Staff
+		Tooltip: ""
+	}
+
+	BrassCoin: {
+		DisplayName: Brass Coin
+		Tooltip: ""
+	}
+
+	HeartCompass: {
+		DisplayName: Heart Compass
+		Tooltip: ""
+	}
+
+	HeartLocket: {
+		DisplayName: Heart Locket
+		Tooltip: ""
+	}
+
+	JungleEyepiece: {
+		DisplayName: Jungle Eyepiece
+		Tooltip: ""
+	}
+
+	LoyaltyBadge: {
+		DisplayName: Loyalty Badge
+		Tooltip: ""
+	}
+
+	Photo: {
+		DisplayName: Photo
+		Tooltip: ""
+	}
+
+	PhotoBlank: {
+		DisplayName: Photo Blank
+		Tooltip: ""
+	}
+
+	PhotoCamera: {
+		DisplayName: Photo Camera
+		Tooltip: ""
+	}
+
+	PhotoCamPro: {
+		DisplayName: Photo Cam Pro
+		Tooltip: ""
+	}
+
+	PrefixApplicator: {
+		DisplayName: Prefix Applicator
+		Tooltip: ""
+	}
+
+	ShrineMap: {
+		DisplayName: Shrine Map
+		Tooltip: ""
+	}
+
+	Telescope: {
+		DisplayName: Telescope
+		Tooltip: ""
+	}
+
+	WayfarerBeam: {
+		DisplayName: Wayfarer Beam
+		Tooltip: ""
+	}
+
+	WayfarerBook: {
+		DisplayName: Wayfarer Book
+		Tooltip: ""
+	}
+
+	WayfarerBow: {
+		DisplayName: Wayfarer Bow
+		Tooltip: ""
+	}
+
+	WayfarerCarbine: {
+		DisplayName: Wayfarer Carbine
+		Tooltip: ""
+	}
+
+	WayfarerClaymore: {
+		DisplayName: Wayfarer Claymore
+		Tooltip: ""
+	}
+
+	WayfarerPike: {
+		DisplayName: Wayfarer Pike
+		Tooltip: ""
+	}
+
+	WayfarerRepeater: {
+		DisplayName: Wayfarer Repeater
+		Tooltip: ""
+	}
+
+	WayfarerStaff: {
+		DisplayName: Wayfarer Staff
+		Tooltip: ""
+	}
+
+	WayfarerSubArm: {
+		DisplayName: Wayfarer Sub Arm
+		Tooltip: ""
+	}
+
+	WayfarerSummon: {
+		DisplayName: Wayfarer Summon
+		Tooltip: ""
+	}
+
+	WayfarerSword: {
+		DisplayName: Wayfarer Sword
+		Tooltip: ""
+	}
+}
+
+NPCs: {
+	Clerk: {
+		DisplayName: Clerk
+
+		TownNPCMood: {
+			Content: I am content.
+			NoHome: I hate not having a home.
+			FarFromHome: I am too far from home.
+			LoveSpace: I love having so much space.
+			DislikeCrowded: I dislike how crowded I am.
+			HateCrowded: I hate how crowded I am.
+			LikeBiome: I like {BiomeName}.
+			DislikeBiome: I dislike {BiomeName}.
+			LoveNPC: I love {NPCName}.
+			LikeNPC: I like {NPCName}.
+			DislikeNPC: I dislike {NPCName}.
+			HateNPC: I hate {NPCName}.
+			LikeNPC_Princess: I like {NPCName}.
+			Princess_LovesNPC: I like {NPCName}.
+		}
+	}
+
+	ClerkHiding.DisplayName: Clerk Hiding
+}
+
+Projectiles: {
+	MinionCat.DisplayName: Minion Cat
+	MinionChicken.DisplayName: Minion Chicken
+	MinionFox.DisplayName: Minion Fox
+	Gust.DisplayName: Gust
+	MoonstoneArrow.DisplayName: Moonstone Arrow
+	VacuumOrb.DisplayName: Vacuum Orb
+	WayBeam.DisplayName: Way Beam
+	WayfarerMoonlight.DisplayName: Wayfarer Moonlight
+	WayfarerPike.DisplayName: Wayfarer Pike
+}

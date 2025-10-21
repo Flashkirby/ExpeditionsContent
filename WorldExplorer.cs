@@ -5,7 +5,7 @@ using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 
-namespace ExpeditionsContent144
+namespace ExpeditionsContent
 {
 	public class WorldExplorer : ModSystem
 	{

@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.QuestItems
+namespace ExpeditionsContent.Items.QuestItems
 {
 	[AutoloadEquip(EquipType.Neck)]
 	public class HeartLocket : ModItem

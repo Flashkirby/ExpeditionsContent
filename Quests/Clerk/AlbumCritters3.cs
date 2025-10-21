@@ -1,18 +1,18 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 using System.Collections.Generic;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Quests.Clerk
+namespace ExpeditionsContent.Quests.Clerk
 {
 	class AlbumCritters3 : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "Snap! Exotic Critters";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 1;
 			expedition.ctgCollect = true;
 			expedition.ctgExplore = true;

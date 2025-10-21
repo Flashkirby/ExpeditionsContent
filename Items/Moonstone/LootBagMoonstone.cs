@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.Moonstone
+namespace ExpeditionsContent.Items.Moonstone
 {
 	public class LootBagMoonstone : ModItem
 	{
@@ -26,7 +26,7 @@ namespace ExpeditionsContent144.Items.Moonstone
 
 		public override void RightClick(Player player)
 		{
-			player.QuickSpawnItem(Item.GetSource_FromThis("ExpeditionsContent144_LootBagMoonstone"), ModContent.ItemType<Moonstone>(), Main.rand.Next(8, 13));
+			player.QuickSpawnItem(Item.GetSource_FromThis("ExpeditionsContent_LootBagMoonstone"), ModContent.ItemType<Moonstone>(), Main.rand.Next(8, 13));
 		}
 	}
 }

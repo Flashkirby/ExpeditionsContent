@@ -9,10 +9,10 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using Expeditions144;
+using Expeditions;
 using Terraria.GameContent;
 
-namespace ExpeditionsContent144
+namespace ExpeditionsContent
 {
 	public class PlayerExplorer : ModPlayer
 	{

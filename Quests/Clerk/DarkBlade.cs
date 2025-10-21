@@ -1,16 +1,16 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Clerk
+namespace ExpeditionsContent.Quests.Clerk
 {
 	class DarkBlade : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "Dark Blade";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 3;
 			expedition.ctgCollect = true;
 

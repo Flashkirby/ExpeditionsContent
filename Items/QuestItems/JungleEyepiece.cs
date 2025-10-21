@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.QuestItems
+namespace ExpeditionsContent.Items.QuestItems
 {
 	/// <summary>
 	/// Powerful accessory that reveals life fruit

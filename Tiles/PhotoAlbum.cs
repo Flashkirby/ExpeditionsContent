@@ -7,7 +7,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 
-namespace ExpeditionsContent144.Tiles
+namespace ExpeditionsContent.Tiles
 {
 	public class PhotoAlbum : ModTile
 	{

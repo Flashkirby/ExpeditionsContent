@@ -1,4 +1,4 @@
-﻿using ExpeditionsContent144.Items.QuestItems;
+﻿using ExpeditionsContent.Items.QuestItems;
 using System;
 using System.Collections.Generic;
 
@@ -6,7 +6,7 @@ using Terraria;
 using Terraria.GameContent;
 using Terraria.ID;
 
-namespace ExpeditionsContent144
+namespace ExpeditionsContent
 {
 	public class PhotoManager
 	{
@@ -88,7 +88,7 @@ namespace ExpeditionsContent144
 			Player player = Main.player[Main.myPlayer];
 			foreach (Item i in player.inventory)
 			{
-				if (i.type == ExpeditionC144.ItemIDPhoto)
+				if (i.type == ExpeditionsContent.ItemIDPhoto)
 				{
 					// Only add photos within of NPCs that exist and not 'unloaded'
 					int photoType = ((Photo)i.ModItem).npcType;
@@ -101,7 +101,7 @@ namespace ExpeditionsContent144
 			}
 
 			// **** Check the player's held item too
-			if (player.HeldItem.type == ExpeditionC144.ItemIDPhoto)
+			if (player.HeldItem.type == ExpeditionsContent.ItemIDPhoto)
 			{
 				// Only add photos within of NPCs that exist and not 'unloaded'
 				int photoType = ((Photo)player.HeldItem.ModItem).npcType;
@@ -175,7 +175,7 @@ namespace ExpeditionsContent144
 			Player ply = Main.LocalPlayer;
 			foreach (Item i in ply.inventory)
 			{
-				if (i.type == ExpeditionC144.ItemIDPhoto)
+				if (i.type == ExpeditionsContent.ItemIDPhoto)
 				{
 					int photoType = ((Photo)i.ModItem).npcType;
 					if (photosToConsume.Contains(photoType))
@@ -189,7 +189,7 @@ namespace ExpeditionsContent144
 			}
 
 			// **** Remove from the player's hand
-			if (ply.HeldItem.type == ExpeditionC144.ItemIDPhoto)
+			if (ply.HeldItem.type == ExpeditionsContent.ItemIDPhoto)
 			{
 				// Only add photos within of NPCs that exist and not 'unloaded'
 				int photoType = ((Photo)ply.HeldItem.ModItem).npcType;

@@ -2,7 +2,7 @@
 using Terraria.GameContent;
 using Terraria.ID;
 
-namespace ExpeditionsContent144.Projs.Familiars
+namespace ExpeditionsContent.Projs.Familiars
 {
 	class MinionFox : FamiliarMinion
 	{

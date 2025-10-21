@@ -1,16 +1,16 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Clerk
+namespace ExpeditionsContent.Quests.Clerk
 {
 	class BeaconOfPurity : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "Beacon of Purity";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 0;
 			expedition.ctgExplore = true;
 

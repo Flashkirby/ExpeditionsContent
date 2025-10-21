@@ -1,10 +1,10 @@
-﻿using ExpeditionsContent144.Projs.Familiars;
+﻿using ExpeditionsContent.Projs.Familiars;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.Wayfarer
+namespace ExpeditionsContent.Items.Wayfarer
 {
 	/// <summary>
 	/// Summons 3 types of familiars:

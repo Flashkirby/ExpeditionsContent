@@ -3,7 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ID;
 using System.Collections.Generic;
 
-namespace ExpeditionsContent144.Items.Albums
+namespace ExpeditionsContent.Items.Albums
 {
 	public class AlbumAnimalFirst : ModItem
 	{

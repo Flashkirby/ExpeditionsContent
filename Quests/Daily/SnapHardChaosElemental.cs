@@ -1,17 +1,17 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 using System.Collections.Generic;
 
-namespace ExpeditionsContent144.Quests.Daily
+namespace ExpeditionsContent.Quests.Daily
 {
 	class SnapHardChaosElemental : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "Super Snap! Chaos Elemental";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 5;
 			expedition.ctgExplore = true;
 			expedition.ctgCollect = true;
@@ -30,7 +30,7 @@ namespace ExpeditionsContent144.Quests.Daily
 
 		public override bool IncludeAsDaily()
 		{
-			return NPC.FindFirstNPC(ExpeditionC144.NPCIDClerk) >= 0 && Main.hardMode;
+			return NPC.FindFirstNPC(ExpeditionsContent.NPCIDClerk) >= 0 && Main.hardMode;
 		}
 
 		public override bool CheckPrerequisites(Player player, ref bool cond1, ref bool cond2, ref bool cond3, bool condCount)

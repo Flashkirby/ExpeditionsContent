@@ -1,9 +1,9 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.TravMerch
+namespace ExpeditionsContent.Quests.TravMerch
 {
 	class PrePair2TheRottedFork : ModExpedition
 	{

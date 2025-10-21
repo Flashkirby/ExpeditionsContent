@@ -1,9 +1,9 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Daily
+namespace ExpeditionsContent.Quests.Daily
 {
 	class MerchFadSpookyWood : ModExpedition
 	{
@@ -27,7 +27,7 @@ namespace ExpeditionsContent144.Quests.Daily
 		}
 		public override string Description(bool complete)
 		{
-			string clerk = NPC.GetFirstNPCNameOrNull(ExpeditionC144.NPCIDClerk);
+			string clerk = NPC.GetFirstNPCNameOrNull(ExpeditionsContent.NPCIDClerk);
 			if (clerk == "") clerk = "the clerk";
 			return "There's an fad going on for spooky wood! If you can aquire a selection of furniture for me, I could make a big profit! Oh, and " + clerk + " will give you something for your troubles, I'm sure. ";
 		}

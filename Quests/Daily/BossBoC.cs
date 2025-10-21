@@ -1,9 +1,9 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Daily
+namespace ExpeditionsContent.Quests.Daily
 {
 	class BossBoC : ModExpedition
 	{

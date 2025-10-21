@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.Moonstone
+namespace ExpeditionsContent.Items.Moonstone
 {
 	[AutoloadEquip(EquipType.Legs)]
 	public class MoonstoneARMPants : ModItem

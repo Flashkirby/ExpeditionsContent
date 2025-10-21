@@ -1,16 +1,16 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Clerk
+namespace ExpeditionsContent.Quests.Clerk
 {
 	class SkysTheLimit : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "Sky's the Limit";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 2;
 			expedition.ctgExplore = true;
 			expedition.partyShare = true;

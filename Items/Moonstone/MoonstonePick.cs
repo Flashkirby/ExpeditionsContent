@@ -8,7 +8,7 @@ using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.Moonstone
+namespace ExpeditionsContent.Items.Moonstone
 {
 	public class MoonstonePick : ModItem
 	{
@@ -54,7 +54,7 @@ namespace ExpeditionsContent144.Items.Moonstone
 		}
 		public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
 		{
-			target.AddBuff(ModContent.BuffType<Buffs.MoonlightDeBuff>(), ExpeditionC144.MoonDebuffTime);
+			target.AddBuff(ModContent.BuffType<Buffs.MoonlightDeBuff>(), ExpeditionsContent.MoonDebuffTime);
 		}
 		public override void OnHitPvp(Player player, Player target, Player.HurtInfo hurtInfo)
 		{

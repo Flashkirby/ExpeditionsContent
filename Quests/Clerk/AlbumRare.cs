@@ -1,18 +1,18 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 using System.Collections.Generic;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Quests.Clerk
+namespace ExpeditionsContent.Quests.Clerk
 {
 	class AlbumRare : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "Snap! Rare Sights";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 3;
 			expedition.ctgCollect = true;
 			expedition.ctgExplore = true;

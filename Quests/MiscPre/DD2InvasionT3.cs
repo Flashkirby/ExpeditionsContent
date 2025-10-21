@@ -2,9 +2,9 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.GameContent.Events;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.MiscPre
+namespace ExpeditionsContent.Quests.MiscPre
 {
 	class DD2InvasionT3 : ModExpedition
 	{

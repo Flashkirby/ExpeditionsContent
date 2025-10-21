@@ -7,10 +7,10 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using Expeditions144;
+using Expeditions;
 using Terraria.Audio;
 
-namespace ExpeditionsContent144.NPCs
+namespace ExpeditionsContent.NPCs
 {
 	class ClerkHiding : ModNPC
 	{
@@ -72,7 +72,7 @@ namespace ExpeditionsContent144.NPCs
 					!WorldExplorer.savedClerk &&
 					// None of me exists
 					!NPC.AnyNPCs(NPC.type) &&
-					!NPC.AnyNPCs(ExpeditionC144.NPCIDClerk)
+					!NPC.AnyNPCs(ExpeditionsContent.NPCIDClerk)
 					)
 				{
 					//if (ExpeditionsContent.DEBUG) Main.NewText("Spawned succesfully!", 50, 255, 100);

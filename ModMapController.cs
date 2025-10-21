@@ -8,11 +8,11 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using Expeditions144;
+using Expeditions;
 using System.IO;
 using Terraria.GameContent;
 
-namespace ExpeditionsContent144
+namespace ExpeditionsContent
 {
 	public static class ModMapController
 	{

@@ -1,16 +1,16 @@
 ﻿using System;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 
-namespace ExpeditionsContent144.Quests.Clerk
+namespace ExpeditionsContent.Quests.Clerk
 {
 	class WayfarerWeapons : ModExpedition
 	{
 		public override void SetDefaults()
 		{
 			expedition.name = "Wayfarer's Armory";
-			SetNPCHead(ExpeditionC144.NPCIDClerk);
+			SetNPCHead(ExpeditionsContent.NPCIDClerk);
 			expedition.difficulty = 0;
 			expedition.ctgCollect = true;
 			expedition.partyShare = true;
@@ -46,7 +46,7 @@ namespace ExpeditionsContent144.Quests.Clerk
 			Expedition itemUnlock = new Expedition();
 			itemUnlock.name = itemName;
 			itemUnlock.difficulty = difficulty;
-			Expeditions144.Expeditions144.DisplayUnlockedExpedition(
+			Expeditions.Expeditions.DisplayUnlockedExpedition(
 				itemUnlock, "Shop Unlock: "
 				);
 		}

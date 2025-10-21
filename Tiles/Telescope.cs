@@ -7,7 +7,7 @@ using Terraria.DataStructures;
 using Terraria.Enums;
 using Terraria.GameContent.ObjectInteractions;
 
-namespace ExpeditionsContent144.Tiles
+namespace ExpeditionsContent.Tiles
 {
 	class Telescope : ModTile
 	{

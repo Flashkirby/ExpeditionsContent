@@ -5,15 +5,15 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using Expeditions144;
+using Expeditions;
 using System;
-using Expeditions144.Tiles;
+using Expeditions.Tiles;
 using Terraria.GameContent;
 using Terraria.GameContent.Bestiary;
 using Terraria.Audio;
 using Terraria.GameContent.Personalities;
 
-namespace ExpeditionsContent144.NPCs
+namespace ExpeditionsContent.NPCs
 {
 	/// <summary>
 	/// The sole executive in charge of the Ministry of Cartography and 
@@ -54,7 +54,7 @@ namespace ExpeditionsContent144.NPCs
 
 			//**** port: Bestiary stuff
 			NPCProfile = new Profiles.StackedNPCProfile(
-				new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture), "ExpeditionsContent144/NPCs/Clerk_Party")
+				new Profiles.DefaultNPCProfile(Texture, NPCHeadLoader.GetHeadSlot(HeadTexture), "ExpeditionsContent/NPCs/Clerk_Party")
 			);
 
 			NPCID.Sets.NPCBestiaryDrawModifiers drawModifiers = new NPCID.Sets.NPCBestiaryDrawModifiers()
@@ -102,7 +102,7 @@ namespace ExpeditionsContent144.NPCs
 				BestiaryDatabaseNPCsPopulator.CommonTags.SpawnConditions.Biomes.Surface,
 
 				// Sets your NPC's flavor text in the bestiary. (use localization keys)
-				new FlavorTextBestiaryInfoElement("Mods.ExpeditionsContent144.Bestiary.Clerk"),
+				new FlavorTextBestiaryInfoElement("Mods.ExpeditionsContent.Bestiary.Clerk"),
 			});
 		}
 
@@ -193,11 +193,11 @@ namespace ExpeditionsContent144.NPCs
 
 			// Track if leaving npc whilst window is open
 			bool anotherNPC = player.talkNPC > 0 && Main.npc[player.talkNPC].type == NPC.type;
-			if (Expeditions144.ExpeditionUI.viewMode == Expeditions144.ExpeditionUI.viewMode_NPC && Expeditions144.ExpeditionUI.visible &&
+			if (Expeditions.ExpeditionUI.viewMode == Expeditions.ExpeditionUI.viewMode_NPC && Expeditions.ExpeditionUI.visible &&
 				(player.talkNPC != NPC.whoAmI && !anotherNPC)
 				)
 			{
-				Expeditions144.Expeditions144.CloseExpeditionMenu();
+				Expeditions.Expeditions.CloseExpeditionMenu();
 			}
 
 			SitAtBountyBoard();
@@ -416,7 +416,7 @@ namespace ExpeditionsContent144.NPCs
 
 		public override string GetChat()
 		{
-			Expeditions144.Expeditions144.CloseExpeditionMenu(true); // Stop conflict caused by Bounty Book
+			Expeditions.Expeditions.CloseExpeditionMenu(true); // Stop conflict caused by Bounty Book
 			if (NPC.homeless)
 			{
 				if (Main.bloodMoon)
@@ -632,7 +632,7 @@ namespace ExpeditionsContent144.NPCs
 			}
 			else
 			{
-				Expeditions144.Expeditions144.OpenExpeditionMenu(ExpeditionUI.viewMode_NPC);
+				Expeditions.Expeditions.OpenExpeditionMenu(ExpeditionUI.viewMode_NPC);
 			}
 		}
 

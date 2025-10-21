@@ -3,7 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.Wayfarer
+namespace ExpeditionsContent.Items.Wayfarer
 {
 	public class WayfarerRepeater : ModItem
 	{

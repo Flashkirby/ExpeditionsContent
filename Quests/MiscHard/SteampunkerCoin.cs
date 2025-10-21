@@ -2,10 +2,10 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
-using Expeditions144;
+using Expeditions;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Quests.MiscHard
+namespace ExpeditionsContent.Quests.MiscHard
 {
 	class SteampunkerCoin : ModExpedition
 	{

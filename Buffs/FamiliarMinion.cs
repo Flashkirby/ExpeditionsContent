@@ -1,9 +1,9 @@
-﻿using ExpeditionsContent144.Projs.Familiars;
+﻿using ExpeditionsContent.Projs.Familiars;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Buffs
+namespace ExpeditionsContent.Buffs
 {
 	class FamiliarMinion : ModBuff
 	{

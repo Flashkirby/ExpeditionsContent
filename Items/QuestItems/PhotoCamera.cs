@@ -7,7 +7,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Items.QuestItems
+namespace ExpeditionsContent.Items.QuestItems
 {
 	public class PhotoCamera : ModItem
 	{
@@ -84,7 +84,7 @@ namespace ExpeditionsContent144.Items.QuestItems
 			{
 				// Draw camera frame
 				spriteBatch.Draw(
-				ExpeditionC144.CameraFrameTexture.Value,
+				ExpeditionsContent.CameraFrameTexture.Value,
 				r.Location.ToVector2() - Main.screenPosition,
 				Color.White
 				);
@@ -148,7 +148,7 @@ namespace ExpeditionsContent144.Items.QuestItems
 			if (!canTakePicture) return true;
 
 			// Spawn the item
-			int number = Item.NewItem(player.GetSource_ItemUse_WithPotentialAmmo(item, item.useAmmo), (int)player.position.X, (int)player.position.Y, player.width, player.height, ExpeditionC144.ItemIDPhoto, 1, false, -1, false, false);
+			int number = Item.NewItem(player.GetSource_ItemUse_WithPotentialAmmo(item, item.useAmmo), (int)player.position.X, (int)player.position.Y, player.width, player.height, ExpeditionsContent.ItemIDPhoto, 1, false, -1, false, false);
 
 			// **** Get the NPC's frame
 			Rectangle npcFrame = npc.frame;

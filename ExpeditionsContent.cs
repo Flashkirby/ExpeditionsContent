@@ -8,19 +8,19 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using Expeditions144;
+using Expeditions;
 using System.IO;
-using ExpeditionsContent144.NPCs;
+using ExpeditionsContent.NPCs;
 using ReLogic.Content;
 using Terraria.GameContent;
 
 using ReLogic.Graphics;
 
-namespace ExpeditionsContent144
+namespace ExpeditionsContent
 {
-	public class ExpeditionC144 : Mod
+	public class ExpeditionsContent : Mod
 	{
-		public ExpeditionC144()
+		public ExpeditionsContent()
 		{
 			this.GoreAutoloadingEnabled = true;
 			/****Properties = new ModProperties()

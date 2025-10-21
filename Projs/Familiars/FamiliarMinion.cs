@@ -4,7 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Projs.Familiars
+namespace ExpeditionsContent.Projs.Familiars
 {
 	abstract class FamiliarMinion : ModProjectile
 	{

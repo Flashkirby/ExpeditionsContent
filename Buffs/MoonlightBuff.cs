@@ -2,7 +2,7 @@
 using Terraria;
 using Terraria.ModLoader;
 
-namespace ExpeditionsContent144.Buffs
+namespace ExpeditionsContent.Buffs
 {
 	class MoonlightBuff : ModBuff
 	{
